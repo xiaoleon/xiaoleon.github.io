@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      H5(6) 拖放API | Xiao Leon 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="Leon">
+    
+    
+
+    <meta name="description" content="HTML5中，提供了直接支持拖放操作的API。虽然HTML5之前已经可以使用mousedown、mousemove、mouseup来实现拖放操作，但是这只支持浏览器内部的拖放，而在HTML5中，已经支持在浏览器与其他应用程序之间的数据互相拖动，同时也大大简化了有关于拖放方面的代码。">
+<meta name="keywords" content="读书笔记,前端开发,HTML5">
+<meta property="og:type" content="article">
+<meta property="og:title" content="H5(6) 拖放API | Xiao Leon">
+<meta property="og:url" content="http://www.xiaoleon.cn/2018/01/21/html5-6/index.html">
+<meta property="og:site_name" content="Xiao Leon">
+<meta property="og:description" content="HTML5中，提供了直接支持拖放操作的API。虽然HTML5之前已经可以使用mousedown、mousemove、mouseup来实现拖放操作，但是这只支持浏览器内部的拖放，而在HTML5中，已经支持在浏览器与其他应用程序之间的数据互相拖动，同时也大大简化了有关于拖放方面的代码。">
+<meta property="og:updated_time" content="2018-01-21T14:27:36.872Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="H5(6) 拖放API | Xiao Leon">
+<meta name="twitter:description" content="HTML5中，提供了直接支持拖放操作的API。虽然HTML5之前已经可以使用mousedown、mousemove、mouseup来实现拖放操作，但是这只支持浏览器内部的拖放，而在HTML5中，已经支持在浏览器与其他应用程序之间的数据互相拖动，同时也大大简化了有关于拖放方面的代码。">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">Xiao Leon</a></h1>
+        <hr class="panel-cover__divider" />
+
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title="" class="">关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title="" class="">归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">H5(6) 拖放API</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2018-01-21" class="post-meta__date date">2018-01-21</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+
+          
+             &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/HTML5/">HTML5</a>, <a class="tags-link" href="/tags/前端开发/">前端开发</a>, <a class="tags-link" href="/tags/读书笔记/">读书笔记</a>
+            </font>
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <p>HTML5中，提供了直接支持拖放操作的API。虽然HTML5之前已经可以使用<code>mousedown</code>、<code>mousemove</code>、<code>mouseup</code>来实现拖放操作，但是这只支持浏览器内部的拖放，而在HTML5中，已经支持在浏览器与其他应用程序之间的数据互相拖动，同时也大大简化了有关于拖放方面的代码。</p>
+<a id="more"></a>
+<p>实现拖放的步骤:</p>
+<ul>
+<li><h4 id="1-将想要拖放的对象元素的draggable属性设为true。这样才能将该元素进行拖放。另外，img元素与a元素（必须指定href）默认允许拖放。"><a href="#1-将想要拖放的对象元素的draggable属性设为true。这样才能将该元素进行拖放。另外，img元素与a元素（必须指定href）默认允许拖放。" class="headerlink" title="1. 将想要拖放的对象元素的draggable属性设为true。这样才能将该元素进行拖放。另外，img元素与a元素（必须指定href）默认允许拖放。"></a>1. 将想要拖放的对象元素的<code>draggable</code>属性设为<code>true</code>。这样才能将该元素进行拖放。另外，<code>img</code>元素与<code>a</code>元素（必须指定<code>href</code>）默认允许拖放。</h4></li>
+<li><h4 id="2-编写与拖放有关的事件处理代码。"><a href="#2-编写与拖放有关的事件处理代码。" class="headerlink" title="2.编写与拖放有关的事件处理代码。"></a>2.编写与拖放有关的事件处理代码。</h4></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>事件</th>
+<th>产生事件的元素</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dragstart</td>
+<td>被拖放的元素</td>
+<td>开始拖放操作</td>
+</tr>
+<tr>
+<td>drag</td>
+<td>被拖放的元素</td>
+<td>拖放过程中</td>
+</tr>
+<tr>
+<td>dragenter</td>
+<td>拖放过程中鼠标经过的元素</td>
+<td>被拖放的元素开始进入本元素的范围内</td>
+</tr>
+<tr>
+<td>dragover</td>
+<td>拖放过程中鼠标经过的元素</td>
+<td>被拖放的元素正在本元素范围内移动</td>
+</tr>
+<tr>
+<td>dragleave</td>
+<td>拖放过程中鼠标经过的元素</td>
+<td>被拖放的元素离开本元素的范围</td>
+</tr>
+<tr>
+<td>drop</td>
+<td>拖放的目标元素</td>
+<td>有其他元素被拖放到了本元素中</td>
+</tr>
+<tr>
+<td>dragend</td>
+<td>拖放的对象元素</td>
+<td>拖放操作结束</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><h4 id="3-DataTransfer对象的属性和方法"><a href="#3-DataTransfer对象的属性和方法" class="headerlink" title="3.DataTransfer对象的属性和方法"></a>3.DataTransfer对象的属性和方法</h4></li>
+</ul>
+<p><code>DataTransfer</code>对象的属性和方法可以实现定制拖放图标，让它只支持特定拖放（譬如拷贝/移动/）等，甚至可以实现更复杂的拖放操作</p>
+<ul>
+<li><h4 id="4-设定拖放时的视觉效果"><a href="#4-设定拖放时的视觉效果" class="headerlink" title="4.设定拖放时的视觉效果"></a>4.设定拖放时的视觉效果</h4></li>
+</ul>
+<p><code>dropEffect</code>属性与<code>effectAllowed</code>属性结合起来可以设定拖放时的视觉效果。</p>
+<p><code>effectAllowed</code>属性表示当一个元素被拖动时所允许的视觉效果，一般在<code>ondragstart</code>事件中设定，允许设定的值为<code>none</code>、<code>copy</code>、<code>copyLink</code>、<code>copyMove</code>、<code>link</code>、<code>linkMove</code>、<code>move</code>、<code>all</code>、<code>uninitialize</code>。</p>
+<p>dropEffect属性表示实际拖放时的视觉效果，一般在<code>ondragover</code>事件中指定，允许设定的值为<code>none</code>、<code>copy</code>、<code>link</code>、<code>move</code>。<code>dropEffect</code>属性所表示的实际视觉效果必须在<code>effectAllowed</code>属性所表示的允许的视觉效果范围内。</p>
+<blockquote>
+<ul>
+<li>1) 如果<code>effectAllowed</code>属性设定为<code>none</code>，则不允许拖放元素</li>
+<li>2) 如果<code>dropEffect</code>属性设定为<code>none</code>，则不允许被拖放到目标元素中</li>
+<li>3) 如果<code>effectAllowed</code>属性设定为<code>all</code>或不设定，则<code>dropEffect</code>属性允许被设定为任何值，并且按指定的视觉效果进行显示</li>
+<li>4) 如果<code>effectAllowed</code>属性设定为具体效果（不为<code>none</code>、<code>all</code>），<code>dropEffect</code>属性也设定了具体视觉效果，则两个具体效果值必须完全相等，否则不允许将被拖放元素拖放到目标元素中。</li>
+</ul>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">source.addEventListener(<span class="string">'dragstart'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">ev</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> dt = ev.dataTransfer;</span><br><span class="line">    dt.effectAllowed = <span class="string">'copy'</span>;</span><br><span class="line">    dt.setData(<span class="string">'text/plain'</span>, <span class="string">'hello world'</span>);</span><br><span class="line">&#125;, <span class="literal">false</span>);</span><br><span class="line"></span><br><span class="line">dest.addEventListener(<span class="string">'dragover'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">ev</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> dt = ev.dataTransfer;</span><br><span class="line">    dt.dropEffect = <span class="string">'copy'</span>;</span><br><span class="line">    ev.preventDefault();</span><br><span class="line">&#125;, <span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
+<ul>
+<li><h4 id="5-自定义拖放图标"><a href="#5-自定义拖放图标" class="headerlink" title="5.自定义拖放图标"></a>5.自定义拖放图标</h4></li>
+</ul>
+<p>HTML5中允许自定义拖放图标——指的是在用鼠标拖动元素的过程中，位于鼠标指针下部的小图标。</p>
+<p><code>DataTransfer</code>对象有一个<code>setDragImage</code>方法，该方法由三个参数，第一个参数<code>image</code>设定为拖放图标的图标元素，第二个参数x为拖放图标离鼠标指针的x轴方向的位移量，第三个参数y为拖放图标离鼠标指针的y轴方向的位移量。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> dragIcon = <span class="built_in">document</span>.createElement(<span class="string">'img'</span>);</span><br><span class="line">dragIcon.src = <span class="string">'http://twivatar.org/twitter/mini'</span>;</span><br><span class="line">source.addEventListener(<span class="string">'dragstart'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">ev &#123;</span></span></span><br><span class="line"><span class="function"><span class="params">    var dt = ev.dataTransfer;</span></span></span><br><span class="line"><span class="function"><span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">    dt.setDragImage(dragIcon, <span class="number">-10</span>, <span class="number">-10</span></span>);</span></span><br><span class="line"><span class="function">    <span class="title">dt</span>.<span class="title">setData</span>(<span class="params"><span class="string">"text/plain"</span>, <span class="string">"aaa"</span></span>);</span></span><br><span class="line"><span class="function">&#125;), <span class="title">false</span>);</span></span><br></pre></td></tr></table></figure>
+  </section>
+
+  <section class="post-comments">
+
+    <!-- 将评论系统（例如Disqus、多说、友言、畅言等）提供的代码片段粘贴在这里 -->
+    
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+    
+
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>

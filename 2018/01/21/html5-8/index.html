@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      H5(8) Web Storage与本地数据库 | Xiao Leon 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="Leon">
+    
+    
+
+    <meta name="description" content="Web Storage存储机制是对HTML4中cookies存储机制的一个改善。由于cookies存储机制有很多缺点，HTML5中不再使用它，转而使用改良后的Web Storage存储机制。 本地数据库是HTML5中新增的一个功能，使用它可以在客户端本地建立一个数据库——原本需要保存在服务器端数据库中的内容现在可以直接保存在客户端本地了，这大大减轻了服务器端的负担，同时也加快了访问数据的速度。">
+<meta name="keywords" content="读书笔记,前端开发,HTML5">
+<meta property="og:type" content="article">
+<meta property="og:title" content="H5(8) Web Storage与本地数据库 | Xiao Leon">
+<meta property="og:url" content="http://www.xiaoleon.cn/2018/01/21/html5-8/index.html">
+<meta property="og:site_name" content="Xiao Leon">
+<meta property="og:description" content="Web Storage存储机制是对HTML4中cookies存储机制的一个改善。由于cookies存储机制有很多缺点，HTML5中不再使用它，转而使用改良后的Web Storage存储机制。 本地数据库是HTML5中新增的一个功能，使用它可以在客户端本地建立一个数据库——原本需要保存在服务器端数据库中的内容现在可以直接保存在客户端本地了，这大大减轻了服务器端的负担，同时也加快了访问数据的速度。">
+<meta property="og:updated_time" content="2018-01-21T14:27:29.861Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="H5(8) Web Storage与本地数据库 | Xiao Leon">
+<meta name="twitter:description" content="Web Storage存储机制是对HTML4中cookies存储机制的一个改善。由于cookies存储机制有很多缺点，HTML5中不再使用它，转而使用改良后的Web Storage存储机制。 本地数据库是HTML5中新增的一个功能，使用它可以在客户端本地建立一个数据库——原本需要保存在服务器端数据库中的内容现在可以直接保存在客户端本地了，这大大减轻了服务器端的负担，同时也加快了访问数据的速度。">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">Xiao Leon</a></h1>
+        <hr class="panel-cover__divider" />
+
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title="" class="">关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title="" class="">归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">H5(8) Web Storage与本地数据库</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2018-01-21" class="post-meta__date date">2018-01-21</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+
+          
+             &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/HTML5/">HTML5</a>, <a class="tags-link" href="/tags/前端开发/">前端开发</a>, <a class="tags-link" href="/tags/读书笔记/">读书笔记</a>
+            </font>
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <p><code>Web Storage</code>存储机制是对HTML4中<code>cookies</code>存储机制的一个改善。由于<code>cookies</code>存储机制有很多缺点，HTML5中不再使用它，转而使用改良后的<code>Web Storage</code>存储机制。</p>
+<p>本地数据库是HTML5中新增的一个功能，使用它可以在客户端本地建立一个数据库——原本需要保存在服务器端数据库中的内容现在可以直接保存在客户端本地了，这大大减轻了服务器端的负担，同时也加快了访问数据的速度。</p>
+<a id="more"></a>
+<h3 id="一、Web-Storage"><a href="#一、Web-Storage" class="headerlink" title="一、Web Storage"></a>一、Web Storage</h3><p><code>Cookies</code>存储永久数据存在以下几个问题：</p>
+<ul>
+<li><p>大小：<code>cookies</code>的大小被限制在4KB</p>
+</li>
+<li><p>带宽：<code>cookies</code>是随HTTP事务一起被发送的，因此会浪费一部分发送<code>cookies</code>时使用的带宽</p>
+</li>
+<li><p>复杂性：要正确的操纵<code>cookies</code>是很困难的</p>
+</li>
+</ul>
+<p><code>Web Storage</code>，顾名思义，就是在Web上存储数据的功能，这里的存储是针对客户端本地而言的，具体来说，又分为两种</p>
+<ul>
+<li>sessionStorage</li>
+</ul>
+<p>将数据保存在<code>session</code>对象中。所谓<code>session</code>，是指用户在浏览某个网站时，从进入网站到浏览器关闭所经过的这段时间，也就是用户浏览这个网站所花费的时间。<code>session</code>对象可以用来保存在这段时间内所要求保存的任何数据</p>
+<ul>
+<li>localStorage</li>
+</ul>
+<p>将数据保存在客户端本地的硬件设备中，即使浏览器被关闭了，该数据仍然存在，下次打开浏览器访问网站时仍然可以继续使用</p>
+<p>两者区别在于，<code>sessionStorage</code>为临时保存，而<code>localStorage</code>为永久保存。</p>
+<p>读写数据时使用的基本方法：</p>
+<ul>
+<li>sessionStorage</li>
+</ul>
+<p>保存数据：<code>sessionStorage.setItem(key, value)</code></p>
+<p>读取数据：<code>var value = sessionStorage.getItem(key)</code></p>
+<ul>
+<li>localStorage</li>
+</ul>
+<p>保存数据：<code>localStorage.setItem(key, value)</code></p>
+<p>读取数据：<code>var value = localStorage.getItem(key)</code></p>
+<hr>
+<h3 id="二、本地数据库"><a href="#二、本地数据库" class="headerlink" title="二、本地数据库"></a>二、本地数据库</h3><p>HTML5中可以通过sql语句来访问本地的sqlite数据库，有两个必要的步骤</p>
+<ol>
+<li><p>创建访问数据库的对象</p>
+</li>
+<li><p>使用事务处理</p>
+</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> db = openDatabase(<span class="string">'mydb'</span>, <span class="string">'1.0'</span>, <span class="string">'Test DB'</span>, <span class="number">2</span> * <span class="number">1024</span> * <span class="number">1024</span>);</span><br></pre></td></tr></table></figure>
+<p>方法中的四个参数，第一个为数据库名，第二个为版本号，第三个为数据库的描述，第四个为数据库的大小。该方法返回创建后的数据库访问对象，如果该数据库不存在，则创建该数据库。</p>
+<p>实际访问数据库的时候，还需要调用<code>transaction</code>方法，来执行事务处理。使用事务处理，可以防止在对数据库进行访问及执行有关操作的时候受到外界的打扰，因为在web上，同时会有许多人都在对页面进行访问。如果在访问数据库的过程中，正在操作的数据被别的用户给修改掉的话，会引起很多意想不到的后果。因此，可以使用事务来达到在操作完了之前，阻止别的用户访问数据库的目的。</p>
+<p>transaction方法的使用如下</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">db.transaction(<span class="function"><span class="keyword">function</span>(<span class="params">tx</span>) </span>&#123;</span><br><span class="line">    tx.executeSql(<span class="string">'create table if not exists logs (id unique, Log)'</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p><code>transaction</code>方法使用一个回调函数为参数。在这个函数中，执行访问数据库的语句。</p>
+<p><code>executeSql</code>方法的完整定义如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">transaction.executeSql(sqlquery, [], dataHandler, errorHandler);</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>第一个参数为需要执行的SQL语句</p>
+</li>
+<li><p>第二个参数为SQL语句中所有使用到的参数的数组</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">transaction.executeSql(<span class="string">'update people set age=? where name=?;'</span>, [age, name]);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>第三个参数为执行SQL语句成功时调用的回调函数</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">dataHandler</span>(<span class="params">transaction, results</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 执行SQL语句成功后的处理</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>第四个参数为执行SQL语句出错时调用的回调函数</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">errorHandler</span>(<span class="params">transaction, errmsg</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 执行SQL语句出错时的处理</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+  </section>
+
+  <section class="post-comments">
+
+    <!-- 将评论系统（例如Disqus、多说、友言、畅言等）提供的代码片段粘贴在这里 -->
+    
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+    
+
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>

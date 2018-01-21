@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      H5(5) 文件API | Xiao Leon 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="Leon">
+    
+    
+
+    <meta name="description" content="HTML5中提供了一个关于文件操作的文件API，通过使用这个API，对于从Web页面上访问本地文件系统的相关处理会变得十分简单。">
+<meta name="keywords" content="读书笔记,前端开发,HTML5">
+<meta property="og:type" content="article">
+<meta property="og:title" content="H5(5) 文件API | Xiao Leon">
+<meta property="og:url" content="http://www.xiaoleon.cn/2018/01/21/html5-5/index.html">
+<meta property="og:site_name" content="Xiao Leon">
+<meta property="og:description" content="HTML5中提供了一个关于文件操作的文件API，通过使用这个API，对于从Web页面上访问本地文件系统的相关处理会变得十分简单。">
+<meta property="og:updated_time" content="2018-01-21T14:27:39.994Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="H5(5) 文件API | Xiao Leon">
+<meta name="twitter:description" content="HTML5中提供了一个关于文件操作的文件API，通过使用这个API，对于从Web页面上访问本地文件系统的相关处理会变得十分简单。">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">Xiao Leon</a></h1>
+        <hr class="panel-cover__divider" />
+
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title="" class="">关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title="" class="">归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">H5(5) 文件API</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2018-01-21" class="post-meta__date date">2018-01-21</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+
+          
+             &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/HTML5/">HTML5</a>, <a class="tags-link" href="/tags/前端开发/">前端开发</a>, <a class="tags-link" href="/tags/读书笔记/">读书笔记</a>
+            </font>
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <p>HTML5中提供了一个关于文件操作的文件API，通过使用这个API，对于从Web页面上访问本地文件系统的相关处理会变得十分简单。</p>
+<a id="more"></a>
+<h3 id="一、FileList与file对象"><a href="#一、FileList与file对象" class="headerlink" title="一、FileList与file对象"></a>一、FileList与file对象</h3><p><code>FileList</code>对象表示用户选择的文件列表。HTML5中，通过添加<code>multiple</code>属性，file控件内允许一次放置多个文件。控件内每一个用户选择的文件都是一个file对象，而<code>FileList</code>对象则为这些file对象的列表。</p>
+<p>file对象由两个属性，<code>name</code>属性表示文件名，不包括路径，<code>lastModifiedDate</code>属性表示文件的最后修改日期。</p>
+<hr>
+<h3 id="二、Blob对象"><a href="#二、Blob对象" class="headerlink" title="二、Blob对象"></a>二、Blob对象</h3><p><code>Blob</code>表示二进制原始数据，它提供一个<code>slice</code>方法，可以通过该方法访问到字节内部的原始数据块。事实上，上面的file对象也继承了这个<code>Blob</code>对象。</p>
+<p><code>Blob</code>对象由两个属性，<code>size</code>属性表示一个<code>Blob</code>对象的字节长度，<code>type</code>属性表示<code>Blob</code>的<code>MIME</code>类型，如果是未知类型，则返回一个空字符串。</p>
+<p>对于图像类型的文件，<code>Blob</code>对象的<code>type</code>属性都是以<code>“image/”</code>开头的，后跟图像类型，利用<code>cite</code>型我们可以在Javascript中判断用户选择的文件是否为图像文件。</p>
+<p>另外，HTML5中对file控件添加了<code>accept</code>属性，这样file控件只能接受某种类型的文件。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">id</span>=<span class="string">"file"</span> <span class="attr">accept</span>=<span class="string">"image/*"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="三、FileReader接口"><a href="#三、FileReader接口" class="headerlink" title="三、FileReader接口"></a>三、FileReader接口</h3><p><code>FileReader</code>接口主要用来把文件读入内存，并且读取文件中的数据。<code>FileReader</code>接口提供了一个异步API，使用该API可以在浏览器主线程中访问文件系统，读取文件中的数据。</p>
+<h4 id="1-FileReader接口的方法"><a href="#1-FileReader接口的方法" class="headerlink" title="1. FileReader接口的方法"></a>1. FileReader接口的方法</h4><p><code>FileReader</code>接口拥有4个方法。需要注意的是：无论读取成功或失败，方法并不会返回读取结果，这一结果存储在result属性中。</p>
+<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>参数</th>
+<th>描述  </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>readAdBinaryString</td>
+<td>file</td>
+<td>将文件读取为二进制码</td>
+</tr>
+<tr>
+<td>readAsText</td>
+<td>file, [encoding]</td>
+<td>将文件读取为文本</td>
+</tr>
+<tr>
+<td>readAdDataURL</td>
+<td>file</td>
+<td>将文件读取为DataURL</td>
+</tr>
+<tr>
+<td>abort</td>
+<td>(none)</td>
+<td>中断读取操作</td>
+</tr>
+</tbody>
+</table>
+<h4 id="2-FileReader接口的事件"><a href="#2-FileReader接口的事件" class="headerlink" title="2. FileReader接口的事件"></a>2. FileReader接口的事件</h4><p>FileReader接口包含了一套完整的事件模型，用于捕获读取文件时的状态。</p>
+<table>
+<thead>
+<tr>
+<th>事件</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>onabort</td>
+<td>数据读取中断时触发</td>
+</tr>
+<tr>
+<td>onerror</td>
+<td>数据读取出错时触发</td>
+</tr>
+<tr>
+<td>onloadstart</td>
+<td>数据读取开始时触发</td>
+</tr>
+<tr>
+<td>onprogress</td>
+<td>数据读取中</td>
+</tr>
+<tr>
+<td>onload</td>
+<td>数据读取成功完成时触发</td>
+</tr>
+<tr>
+<td>onloadend</td>
+<td>数据读取完成时触发，无论成功或失败</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> file = <span class="built_in">document</span>.getElementById(<span class="string">'file'</span>).files[<span class="number">0</span>];</span><br><span class="line"><span class="keyword">var</span> reader = <span class="keyword">new</span> FileReader();</span><br><span class="line">reader.readAsText(file);</span><br><span class="line">reader.onload = <span class="function"><span class="keyword">function</span>(<span class="params">f</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> result = <span class="built_in">document</span>.getElementById(<span class="string">'result'</span>);</span><br><span class="line">    result.innerHTML = <span class="keyword">this</span>.result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>FileReader对象读取到的数据都保存在了result属性中</p>
+</blockquote>
+
+  </section>
+
+  <section class="post-comments">
+
+    <!-- 将评论系统（例如Disqus、多说、友言、畅言等）提供的代码片段粘贴在这里 -->
+    
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+    
+
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>
