@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      H5(12) 使用Web Workers处理线程 | Xiao Leon 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="Leon">
+    
+    
+
+    <meta name="description" content="Web Workers是HTML5中新增的，用来在Web应用程序中实现后台处理的一项技术。 在使用HTML4与Javascript创建出来的Web程序中，因为所有的处理都是在单线程内执行的，所以如果花费的事件比较长的话，程序界面会处于长时间没有响应的状态。最恶劣的是，当时间长到一定程度的话，浏览器还会跳出一个提示脚本运行时间过长的提示框，使用户不得不中断正在执行的处理。">
+<meta name="keywords" content="读书笔记,前端开发,HTML5">
+<meta property="og:type" content="article">
+<meta property="og:title" content="H5(12) 使用Web Workers处理线程 | Xiao Leon">
+<meta property="og:url" content="http://www.xiaoleon.cn/2018/01/22/html5-12/index.html">
+<meta property="og:site_name" content="Xiao Leon">
+<meta property="og:description" content="Web Workers是HTML5中新增的，用来在Web应用程序中实现后台处理的一项技术。 在使用HTML4与Javascript创建出来的Web程序中，因为所有的处理都是在单线程内执行的，所以如果花费的事件比较长的话，程序界面会处于长时间没有响应的状态。最恶劣的是，当时间长到一定程度的话，浏览器还会跳出一个提示脚本运行时间过长的提示框，使用户不得不中断正在执行的处理。">
+<meta property="og:updated_time" content="2018-01-22T13:23:38.264Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="H5(12) 使用Web Workers处理线程 | Xiao Leon">
+<meta name="twitter:description" content="Web Workers是HTML5中新增的，用来在Web应用程序中实现后台处理的一项技术。 在使用HTML4与Javascript创建出来的Web程序中，因为所有的处理都是在单线程内执行的，所以如果花费的事件比较长的话，程序界面会处于长时间没有响应的状态。最恶劣的是，当时间长到一定程度的话，浏览器还会跳出一个提示脚本运行时间过长的提示框，使用户不得不中断正在执行的处理。">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">Xiao Leon</a></h1>
+        <hr class="panel-cover__divider" />
+
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title="" class="">关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title="" class="">归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">H5(12) 使用Web Workers处理线程</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2018-01-22" class="post-meta__date date">2018-01-22</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+
+          
+             &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/HTML5/">HTML5</a>, <a class="tags-link" href="/tags/前端开发/">前端开发</a>, <a class="tags-link" href="/tags/读书笔记/">读书笔记</a>
+            </font>
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <p><code>Web Workers</code>是HTML5中新增的，用来在Web应用程序中实现后台处理的一项技术。</p>
+<p>在使用HTML4与Javascript创建出来的Web程序中，因为所有的处理都是在单线程内执行的，所以如果花费的事件比较长的话，程序界面会处于长时间没有响应的状态。最恶劣的是，当时间长到一定程度的话，浏览器还会跳出一个提示脚本运行时间过长的提示框，使用户不得不中断正在执行的处理。</p>
+<a id="more"></a>
+<h3 id="一、Web-Worker介绍"><a href="#一、Web-Worker介绍" class="headerlink" title="一、Web Worker介绍"></a>一、Web Worker介绍</h3><p>为了解决这个问题，HTML5新增了一个<code>Web Workers API</code>。使用这个API，用户可以很容易地创建在后台运行的线程（在HTML5中被称为<code>worker</code>），如果将可能耗费较长时间的处理交给后台去执行的话，对用户在前台页面中执行的操作就完全没有影响了。</p>
+<p>创建后台线程的步骤十分简单。只要在<code>Worker</code>类的构造器中，将需要在后台线程中执行的脚本文件的url地址作为参数，然后创建<code>Worker</code>对象就可以了。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> worker = <span class="keyword">new</span> Worker(<span class="string">'worker.js'</span>);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>要注意在后台线程中是不能访问页面或窗口对象的。如果在后台线程的脚本文件中使用到<code>window</code>对象或<code>document</code>对象，则会引起错误的发生。</p>
+</blockquote>
+<p>另外，可以通过发送和接收消息来与后台线程互相传递数据。通过对<code>Worker</code>对象的<code>onmessage</code>事件句柄的获取可以在后台线程之中接收消息。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">worker.onmessage = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 处理收到的消息</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用<code>Worker</code>对象的<code>postMessage</code>方法来对后台线程发送消息。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">worker.postMessage(message);</span><br></pre></td></tr></table></figure>
+<p>另外，同样可以通过获取<code>Worker</code>对象的<code>onmessage</code>事件句柄及<code>Worker</code>对象的<code>postMessage</code>方法在后台线程内部进行消息的接收和发送。</p>
+<p>使用示例</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- index.html --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"ie=edge"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>从1到给定数值的求和示例<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    输入数值：</span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"number"</span> <span class="attr">id</span>=<span class="string">"num"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span>=<span class="string">"calculate()"</span>&gt;</span>计算<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> worker = <span class="keyword">new</span> Worker(<span class="string">'calculate.js'</span>);</span></span><br><span class="line"><span class="javascript">        worker.onmessage = <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">            alert(<span class="string">`合计值：<span class="subst">$&#123;event.data&#125;</span>`</span>);</span></span><br><span class="line"><span class="undefined">        &#125;;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">        <span class="function"><span class="keyword">function</span> <span class="title">calculate</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">var</span> num = <span class="built_in">parseInt</span>(<span class="built_in">document</span>.getElementById(<span class="string">'num'</span>).value, <span class="number">10</span>);</span></span><br><span class="line"><span class="undefined">            worker.postMessage(num);</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// calculate.js</span></span><br><span class="line"></span><br><span class="line">onmessage = <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> num = event.data;</span><br><span class="line">    <span class="keyword">var</span> result = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt;= num; i++) &#123;</span><br><span class="line">        result += i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 向线程创建源送回消息</span></span><br><span class="line">    postMessage(result);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="二、线程嵌套"><a href="#二、线程嵌套" class="headerlink" title="二、线程嵌套"></a>二、线程嵌套</h3><p>线程中可以嵌套子线程，这样的话我们可以把一个较大的后台线程切分成几个子线程，在每个子线程中各自完成相对独立的一部分工作。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// worker1.js</span></span><br><span class="line"></span><br><span class="line">onmessage = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> intArray = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">100</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</span><br><span class="line">        intArray[i] = <span class="built_in">parseInt</span>(<span class="built_in">Math</span>.random() * <span class="number">100</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> worker;</span><br><span class="line">    worker = <span class="keyword">new</span> Worker(<span class="string">'worker2.js'</span>);</span><br><span class="line">    worker.postMessage(<span class="built_in">JSON</span>.stringify(intArray));</span><br><span class="line">    worker.onmessage = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">        postMessage(event.data);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// worker2.js</span></span><br><span class="line"></span><br><span class="line">onmessage = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> intArray = <span class="built_in">JSON</span>.parse(event.data);</span><br><span class="line">    <span class="keyword">var</span> returnStr = <span class="string">''</span>;</span><br><span class="line">    ...</span><br><span class="line">    postMessage(returnStr);</span><br><span class="line">    close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>注意</strong>：在子线程中向发送源发送回消息后，最好使用<code>close</code>语句关闭子线程，如果该子线程不再使用的话。</p>
+</blockquote>
+<hr>
+<h3 id="三、线程中可用的变量、函数与类"><a href="#三、线程中可用的变量、函数与类" class="headerlink" title="三、线程中可用的变量、函数与类"></a>三、线程中可用的变量、函数与类</h3><p>我们总体看一下在线程用的Javascript中所有可用的变量、函数与类</p>
+<h4 id="1-self"><a href="#1-self" class="headerlink" title="1. self"></a>1. self</h4><p><code>self</code>关键词用来表示本线程范围内的作用域</p>
+<h4 id="2-postMessage-message"><a href="#2-postMessage-message" class="headerlink" title="2. postMessage(message)"></a>2. postMessage(message)</h4><p>向创建线程的源窗口发送消息</p>
+<h4 id="3-onmessage"><a href="#3-onmessage" class="headerlink" title="3. onmessage"></a>3. onmessage</h4><p>获取接收消息的事件句柄</p>
+<h4 id="4-importScripts-urls"><a href="#4-importScripts-urls" class="headerlink" title="4. importScripts(urls)"></a>4. importScripts(urls)</h4><p>导入其他Javascript文件，参数为该文件的url地址，可以导入多个文件</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">importScripts(<span class="string">'script1.js'</span>, <span class="string">'scripts\script2.js'</span>, <span class="string">'script\script3.js'</span>);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>导入的文件必须与使用该线程的文件的页面在同一个域中，并在同一个端口中</p>
+</blockquote>
+<h4 id="5-navigator对象"><a href="#5-navigator对象" class="headerlink" title="5. navigator对象"></a>5. navigator对象</h4><p>与<code>window.navigator</code>对象相似，具有<code>appName</code>、<code>platform</code>、<code>userAgent</code>、<code>appVersion</code>属性</p>
+<h4 id="6-sessionStorage-localStorage"><a href="#6-sessionStorage-localStorage" class="headerlink" title="6. sessionStorage/localStorage"></a>6. sessionStorage/localStorage</h4><p>可以在线程中使用<code>Web Storage</code></p>
+<h4 id="7-XMLHttpRequest"><a href="#7-XMLHttpRequest" class="headerlink" title="7. XMLHttpRequest"></a>7. XMLHttpRequest</h4><p>可以在线程中处理<code>Ajax</code>请求</p>
+<h4 id="8-Web-Workers"><a href="#8-Web-Workers" class="headerlink" title="8. Web Workers"></a>8. Web Workers</h4><p>可以在线程中嵌套线程</p>
+<h4 id="9-setTimeout-setInterval"><a href="#9-setTimeout-setInterval" class="headerlink" title="9. setTimeout()/setInterval()"></a>9. setTimeout()/setInterval()</h4><p>可以在线程中实现定时处理</p>
+<h4 id="10-close"><a href="#10-close" class="headerlink" title="10. close"></a>10. close</h4><p>可以结束本线程</p>
+<h4 id="11-eval-、isNaN-、escape-等"><a href="#11-eval-、isNaN-、escape-等" class="headerlink" title="11. eval()、isNaN()、escape()等"></a>11. eval()、isNaN()、escape()等</h4><p>可以使用所有的Javascript核心函数</p>
+<h4 id="12-object"><a href="#12-object" class="headerlink" title="12. object"></a>12. object</h4><p>可以创建和使用本地对象</p>
+<h4 id="13-WebSockets"><a href="#13-WebSockets" class="headerlink" title="13. WebSockets"></a>13. WebSockets</h4><p>可以使用<code>WebSockets API</code>来向服务器发送和接收消息</p>
+
+  </section>
+
+  <section class="post-comments">
+
+    <!-- 将评论系统（例如Disqus、多说、友言、畅言等）提供的代码片段粘贴在这里 -->
+    
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+    
+
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>

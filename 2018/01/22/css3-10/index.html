@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      CSS3(10) 其他重要样式和属性 | Xiao Leon 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="Leon">
+    
+    
+
+    <meta name="description" content="本文主要内容：  掌握css3中与颜色相关的样式，掌握alpha通道的使用方法，掌握css3中新增的rgba颜色、hsl颜色与hsla颜色的概念盒使用方法  掌握opacity属性的含义盒使用方法，了解使用alpha来指定透明度与使用opacity属性来指定透明度这两者之间的区别，掌握transparent颜色值的含义及其使用方法  掌握outline属性的含义及其使用方法，能够使用outline">
+<meta name="keywords" content="读书笔记,前端开发,CSS3">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS3(10) 其他重要样式和属性 | Xiao Leon">
+<meta property="og:url" content="http://www.xiaoleon.cn/2018/01/22/css3-10/index.html">
+<meta property="og:site_name" content="Xiao Leon">
+<meta property="og:description" content="本文主要内容：  掌握css3中与颜色相关的样式，掌握alpha通道的使用方法，掌握css3中新增的rgba颜色、hsl颜色与hsla颜色的概念盒使用方法  掌握opacity属性的含义盒使用方法，了解使用alpha来指定透明度与使用opacity属性来指定透明度这两者之间的区别，掌握transparent颜色值的含义及其使用方法  掌握outline属性的含义及其使用方法，能够使用outline">
+<meta property="og:updated_time" content="2018-01-22T14:15:01.682Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS3(10) 其他重要样式和属性 | Xiao Leon">
+<meta name="twitter:description" content="本文主要内容：  掌握css3中与颜色相关的样式，掌握alpha通道的使用方法，掌握css3中新增的rgba颜色、hsl颜色与hsla颜色的概念盒使用方法  掌握opacity属性的含义盒使用方法，了解使用alpha来指定透明度与使用opacity属性来指定透明度这两者之间的区别，掌握transparent颜色值的含义及其使用方法  掌握outline属性的含义及其使用方法，能够使用outline">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">Xiao Leon</a></h1>
+        <hr class="panel-cover__divider" />
+
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title="" class="">关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title="" class="">归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">CSS3(10) 其他重要样式和属性</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2018-01-22" class="post-meta__date date">2018-01-22</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+
+          
+             &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/CSS3/">CSS3</a>, <a class="tags-link" href="/tags/前端开发/">前端开发</a>, <a class="tags-link" href="/tags/读书笔记/">读书笔记</a>
+            </font>
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <p>本文主要内容：</p>
+<ul>
+<li><p>掌握css3中与颜色相关的样式，掌握<code>alpha</code>通道的使用方法，掌握css3中新增的<code>rgba</code>颜色、<code>hsl</code>颜色与<code>hsla</code>颜色的概念盒使用方法</p>
+</li>
+<li><p>掌握<code>opacity</code>属性的含义盒使用方法，了解使用<code>alpha</code>来指定透明度与使用<code>opacity</code>属性来指定透明度这两者之间的区别，掌握<code>transparent</code>颜色值的含义及其使用方法</p>
+</li>
+<li><p>掌握<code>outline</code>属性的含义及其使用方法，能够使用<code>outline</code>属性在元素周围绘制一条轮廓线并指定该轮廓线的线宽、颜色、线的样式，以及线与边框的位移距离</p>
+</li>
+<li><p>掌握<code>resize</code>属性的含义及其使用方法，能够使用<code>resize</code>属性来定义一个允许用户自己调节尺寸的元素</p>
+</li>
+<li><p>掌握<code>initial</code>属性值的含义及其使用方法，能够使用<code>initial</code>属性来取消对元素的样式设定</p>
+</li>
+</ul>
+<a id="more"></a>
+<h3 id="一、颜色相关样式"><a href="#一、颜色相关样式" class="headerlink" title="一、颜色相关样式"></a>一、颜色相关样式</h3><p>在css3之前，在样式中指定的颜色值只能为<code>rgb</code>颜色值，并且只能通过<code>opacity</code>属性来设置元素的透明度。css3中增加了3种颜色中——<code>rgba</code>颜色值、<code>hsl</code>颜色值及<code>hsla</code>颜色值，并且允许通过对<code>rgba</code>颜色值和<code>hsla</code>颜色值设定<code>alpha</code>通道的方法来更加容易地实现将半透明文字与图像互相重叠的效果。</p>
+<h4 id="1-利用alpha通道设定颜色"><a href="#1-利用alpha通道设定颜色" class="headerlink" title="1. 利用alpha通道设定颜色"></a>1. 利用alpha通道设定颜色</h4><h5 id="1-1-对rgb颜色设定alpha通道"><a href="#1-1-对rgb颜色设定alpha通道" class="headerlink" title="1.1 对rgb颜色设定alpha通道"></a>1.1 对rgb颜色设定alpha通道</h5><p>在css3中，可以通过对<code>rgb</code>颜色设定<code>alpha</code>通道的方法来定义<code>rgba</code>颜色。所谓<code>rgba</code>颜色，是指利用红色值（<code>R</code>）、绿色值（<code>G</code>）、蓝色值（<code>B</code>）、<code>alpha</code>通道值（<code>A</code>）来定义的颜色。其中，<code>alpha</code>通道值的范围是0-1.0，0表示完全透明，1表示不透明。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">background-color</span>: <span class="selector-tag">rgba</span>(255, 0, 0, 0<span class="selector-class">.5</span>);</span><br></pre></td></tr></table></figure>
+<h5 id="1-2-对hsl颜色设定alpha通道"><a href="#1-2-对hsl颜色设定alpha通道" class="headerlink" title="1.2 对hsl颜色设定alpha通道"></a>1.2 对hsl颜色设定alpha通道</h5><p>在css3中，除了可以使用<code>rgb</code>颜色外，还可以使用<code>hsl</code>颜色。<code>hsl</code>颜色使用色调（<code>H</code>）、饱和度（<code>S</code>）、亮度（<code>L</code>）来定义颜色。其中，色调值中用0或360表示红色，120表示绿色，240表示蓝色，当取值大于360时，实际的值等于该值除以360之后的余数。例如，如果色调值为480，则实际的颜色值为480除以360之后的余数，等于120。饱和度盒亮度的取值范围均为0%-100%。可以通过对<code>hsl</code>颜色设定<code>alpha</code>通道的方法来定义<code>hsla</code>颜色。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">background-color</span>: <span class="selector-tag">hsla</span>(120, 100%, 50%, 0<span class="selector-class">.5</span>);</span><br></pre></td></tr></table></figure>
+<h4 id="2-alpha通道和opacity属性的区别"><a href="#2-alpha通道和opacity属性的区别" class="headerlink" title="2. alpha通道和opacity属性的区别"></a>2. alpha通道和opacity属性的区别</h4><p>在css3中，除了使用<code>alpha</code>通道的方法来设定透明度外，也可以通过<code>opacity</code>属性来设定透明度。</p>
+<p><code>opacity</code>属性是css中专门用来指定透明度的一个属性，取值范围也在0-1之间，0表示完全透明，1表示不透明。使用<code>alpha</code>通道对元素设定透明度时，可以单独针对元素的背景色和文字颜色等来指定透明度，而<code>opacity</code>属性只能指定整个元素的透明度。</p>
+<p>下方示例中有4个<code>div</code>元素，其背景色均为绿色，其中第1个<code>div</code>元素不指定透明度，第2个<code>div</code>元素使用<code>alpha</code>通道指定背景色的透明度为0.5，第3个<code>div</code>元素使用<code>alpha</code>通道指定背景色与文字颜色的透明度均为0.5，第4个<code>div</code>元素使用<code>opacity</code>属性指定元素的透明度为0.5</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">color</span>: white;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">48px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">div</span><span class="selector-id">#div1</span> &#123;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="built_in">rgb</span>(0, 255, 100);</span><br><span class="line">    <span class="attribute">color</span>: <span class="built_in">rgb</span>(255, 255, 255);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">div</span><span class="selector-id">#div2</span> &#123;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="built_in">rgba</span>(0, 255, 100, 0.5);</span><br><span class="line">    <span class="attribute">color</span>: <span class="built_in">rbg</span>(255, 255, 255);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">div</span><span class="selector-id">#div3</span> &#123;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="built_in">rgba</span>(0, 255, 100, 0.5);</span><br><span class="line">    <span class="attribute">color</span>: <span class="built_in">rgba</span>(255, 255, 255, 0.5);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">div</span><span class="selector-id">#div4</span> &#123;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="built_in">rbg</span>(0, 255, 100);</span><br><span class="line">    <span class="attribute">color</span>: <span class="built_in">rgb</span>(255, 255, 255);</span><br><span class="line">    <span class="attribute">opacity</span>: <span class="number">0.5</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"div1"</span>&gt;</span>aaaaaa<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"div2"</span>&gt;</span>bbbbbb<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"div3"</span>&gt;</span>cccccc<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"div4"</span>&gt;</span>dddddd<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>示例代码中我们可以看出，对第2个<code>div</code>元素的背景色使用<code>alpha</code>通道时，并不会对文字产生影响，如果要让该元素的文字颜色也变成半透明，需要像第3个<code>div</code>元素那样同时对背景色和文字颜色使用<code>alpha</code>通道。但是，在第4个<code>div</code>元素的样式代码中，因为使用一次<code>opacity</code>属性，文字颜色和背景色都变成半透明的了。</p>
+<h4 id="3-指定颜色值为transparent"><a href="#3-指定颜色值为transparent" class="headerlink" title="3. 指定颜色值为transparent"></a>3. 指定颜色值为transparent</h4><p>如果将颜色值指定为<code>transparent</code>，则会将背景、文字或边框等的颜色设定为完全透明，相当于使用了值为0的<code>alpha</code>通道。</p>
+<hr>
+<h3 id="二、用户界面相关样式"><a href="#二、用户界面相关样式" class="headerlink" title="二、用户界面相关样式"></a>二、用户界面相关样式</h3><h4 id="1-outline属性"><a href="#1-outline属性" class="headerlink" title="1. outline属性"></a>1. outline属性</h4><p>css3中定义了一个<code>outline</code>属性，用来在元素周围绘制一条轮廓线，可以起到突出元素的作用。例如，可以在原本没有边框的<code>radio</code>单选框外围加上一条轮廓线，使其在页面上显得更加突出，也可以在一组<code>radio</code>单选框中只对某个单选框加上轮廓线，使其区别于别的单选框。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">outline</span>: <span class="selector-tag">outline-color</span> <span class="selector-tag">outline-style</span> <span class="selector-tag">outline-width</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p><code>outline-color</code>参数表示轮廓线的颜色，属性值为css中定义的颜色值</p>
+</li>
+<li><p><code>outline-style</code>参数表示轮廓线的样式，属性值为css中定义的线的样式</p>
+</li>
+<li><p><code>outline-width</code>参数表示轮廓线的宽度，属性值可以为一个宽度值</p>
+</li>
+</ul>
+<p><code>outline</code>属性的三个参数的顺序可以呼唤，也可以分开书写成三个属性</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">input</span> &#123;</span><br><span class="line">    <span class="attribute">outline-color</span>: red;</span><br><span class="line">    <span class="attribute">outline-style</span>: solid;</span><br><span class="line">    <span class="attribute">outline-width</span>: thin;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="2-out-offset属性"><a href="#2-out-offset属性" class="headerlink" title="2. out-offset属性"></a>2. out-offset属性</h4><p>在默认情况下，对带有边框的元素来说，使用<code>outline</code>属性将紧贴着边框外围绘制一条轮廓线。有时，我们不想让这条轮廓线紧贴着边框外围，想让轮廓线稍微向外偏离几个像素，以绘制出双层边框的效果。针对这种情况，css3新增了一个<code>outline-offset</code>属性，可以使用该属性实现这个效果。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">    <span class="attribute">border</span>: blue solid thin;</span><br><span class="line">    <span class="attribute">outline</span>: red solid thin;</span><br><span class="line">    <span class="attribute">outline-offset</span>: <span class="number">2px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以给<code>outline-offset</code>属性指定一个为负数的属性值，指定为负数的属性值后，轮廓线将向内偏移，绘制在边框内部。</p>
+<h4 id="3-resize属性"><a href="#3-resize属性" class="headerlink" title="3. resize属性"></a>3. resize属性</h4><p>为了增强用户体验，css3增加了很多新的属性，其中一个重要的属性就是<code>resize</code>，它允许用户通过拖动的方式来修改元素的尺寸，到目前为止，主要用于可以使用<code>overflow</code>属性的任何容器元素中。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">    <span class="attribute">background-color</span>: pink;</span><br><span class="line">    <span class="attribute">overflow</span>: auto;</span><br><span class="line">    <span class="attribute">resize</span>: both;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">150px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">150px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>resize</code>属性的值分为以下几种：</p>
+<ul>
+<li><p><code>none</code>：用户不能修改元素尺寸</p>
+</li>
+<li><p><code>both</code>：用户可以修改元素的宽度和高度</p>
+</li>
+<li><p><code>horizontal</code>：用户可以修改元素的宽度，但不能修改元素的高度</p>
+</li>
+<li><p><code>vertical</code>：用户可以修改元素的高度，但不能修改元素的宽度</p>
+</li>
+<li><p><code>inherit</code>：继承父元素的resize属性值</p>
+</li>
+</ul>
+<h4 id="4-initial属性值"><a href="#4-initial属性值" class="headerlink" title="4. initial属性值"></a>4. initial属性值</h4><p>要取消对元素的样式指定，可以通过几种方法来达到这个目的，其中最简单的方法时直接在样式表中删除设定该样式的代码。但是，在大多数情况下，一个样式写好了以后会对很多页面中的元素指定这个样式。所以，如果对单个元素取消其样式的指定时，这种做法是不可取的。</p>
+<p>第二种方法是目前采用的使用<code>class</code>的方法，要取消对单个元素的样式指定，只要把这个元素的<code>class</code>属性取消掉就可以了，但是<code>class</code>属性本身是一个多余的、没有任何语义的属性。同时，如果多个元素使用同一个样式，还必须为每一个元素增加同样的<code>class</code>属性；如果要删除一个样式，还要逐个删除这些元素的<code>class</code>属性，所以很不实用。css3中已经不推荐使用它，取而代之的是将样式与元素或元素<code>id</code>直接绑定的做法。所以，第二种方法在下一代Web平台中使用的机会也会越来越少，直到最终随着<code>class</code>属性一起被废弃掉。</p>
+<p>针对这种情况，css3中新增了一个<code>initial</code>属性值，使用这个<code>initail</code>属性值可以直接取消对某个元素的样式指定。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">    <span class="attribute">color</span>: green;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">200px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">200px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-id">#div1</span> &#123;</span><br><span class="line">    <span class="attribute">color</span>: initial;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"div1"</span>&gt;</span>aaaaaaa<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"div2"</span>&gt;</span>bbbbbbb<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"div3"</span>&gt;</span>ccccccc<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><code>initial</code>属性值的作用是让各种属性使用默认值，在浏览器中文字的颜色默认值是黑色，所以<code>id</code>为“div1”的元素中的文字会变成黑色。</p>
+<h5 id="4-1-使用initial属性值的特例"><a href="#4-1-使用initial属性值的特例" class="headerlink" title="4.1 使用initial属性值的特例"></a>4.1 使用initial属性值的特例</h5><p>个别情况下，对元素使用<code>initial</code>属性值后的显示结果并不等于该元素的样式设定直接删除后的结果。在浏览器中，为了使一些元素变得更容易阅读，浏览器可以自行对该元素使用一些样式，例如</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">2em</span>;</span><br><span class="line">    <span class="attribute">font-weight</span>: bold;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以在样式中对<code>h1</code>元素重新定义，例如对<code>h1</code>元素定义如下样式</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">3em</span>;</span><br><span class="line">    <span class="attribute">font-weight</span>: normal;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>接着，在这段样式后面追加一段<code>h1</code>元素使用的样式，对上面文字的字号和字体粗细均使用<code>initial</code>属性值，追加后的样式如下</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">3em</span>;</span><br><span class="line">    <span class="attribute">font-weight</span>: normal;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">    <span class="attribute">font-size</span>: initial;</span><br><span class="line">    <span class="attribute">font-weight</span>: initial;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>修改后我们会发现，<code>h1</code>元素在浏览器中的显示结果与最初不设定时并不相同。</p>
+<p>为什么在<code>h1</code>元素的样式代码中追加了<code>initial</code>属性值后的显示结果与不使用任何样式设定时的显示结果会不一样呢？因为追加了<code>initial</code>属性值的样式设定后，<code>h1</code>元素的字号和字体粗细均使用css中对子号和字体粗细属性设定的默认值，并不考虑浏览器对<code>h1</code>元素追加了什么样式。而在css中，字号的默认值为<code>medium</code>，字体粗细的默认值是<code>normal</code>，与浏览器对<code>h1</code>元素使用的样式并不一致，如果想要让<code>h1</code>元素的字号和字体粗细的默认值使用浏览器的默认值，还是不要在追加的样式代码中使用<code>initial</code>属性值，而是使用浏览器追加的默认样式中的属性值。在<a href="http://www.w3.org/TR/CSS21/sample.html" target="_blank" rel="noopener">http://www.w3.org/TR/CSS 21/sample.html</a>中可以查到浏览器对HTML4中元素所做的追加样式清单，目前各主流浏览器均遵照这个清单来对元素追加默认样式。</p>
+
+  </section>
+
+  <section class="post-comments">
+
+    <!-- 将评论系统（例如Disqus、多说、友言、畅言等）提供的代码片段粘贴在这里 -->
+    
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+    
+
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>

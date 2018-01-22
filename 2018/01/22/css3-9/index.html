@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      CSS3(9) Media Queries相关样式 | Xiao Leon 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="Leon">
+    
+    
+
+    <meta name="description" content="在css3的众多模块中，有一个与各种媒体相关的重要模块——Media Queries，该模块中允许添加媒体查询表达式，用以指定媒体类型，然后根据媒体类型来选择应该使用的样式。换句话说，允许我们在不改变内容的情况下在样式中选择一种页面的布局以精确地适应不同的设备，从而改善用户体验。">
+<meta name="keywords" content="读书笔记,前端开发,CSS3">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS3(9) Media Queries相关样式 | Xiao Leon">
+<meta property="og:url" content="http://www.xiaoleon.cn/2018/01/22/css3-9/index.html">
+<meta property="og:site_name" content="Xiao Leon">
+<meta property="og:description" content="在css3的众多模块中，有一个与各种媒体相关的重要模块——Media Queries，该模块中允许添加媒体查询表达式，用以指定媒体类型，然后根据媒体类型来选择应该使用的样式。换句话说，允许我们在不改变内容的情况下在样式中选择一种页面的布局以精确地适应不同的设备，从而改善用户体验。">
+<meta property="og:updated_time" content="2018-01-22T14:04:25.318Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS3(9) Media Queries相关样式 | Xiao Leon">
+<meta name="twitter:description" content="在css3的众多模块中，有一个与各种媒体相关的重要模块——Media Queries，该模块中允许添加媒体查询表达式，用以指定媒体类型，然后根据媒体类型来选择应该使用的样式。换句话说，允许我们在不改变内容的情况下在样式中选择一种页面的布局以精确地适应不同的设备，从而改善用户体验。">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">Xiao Leon</a></h1>
+        <hr class="panel-cover__divider" />
+
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title="" class="">关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title="" class="">归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">CSS3(9) Media Queries相关样式</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2018-01-22" class="post-meta__date date">2018-01-22</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+
+          
+             &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/CSS3/">CSS3</a>, <a class="tags-link" href="/tags/前端开发/">前端开发</a>, <a class="tags-link" href="/tags/读书笔记/">读书笔记</a>
+            </font>
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <p>在css3的众多模块中，有一个与各种媒体相关的重要模块——<code>Media Queries</code>，该模块中允许添加媒体查询表达式，用以指定媒体类型，然后根据媒体类型来选择应该使用的样式。换句话说，允许我们在不改变内容的情况下在样式中选择一种页面的布局以精确地适应不同的设备，从而改善用户体验。</p>
+<a id="more"></a>
+<h3 id="一、Media-Queries使用方法"><a href="#一、Media-Queries使用方法" class="headerlink" title="一、Media Queries使用方法"></a>一、Media Queries使用方法</h3><p><code>Media Queries</code>的使用方法如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@media 设备类型 and ( 设备特性 ) &#123; 样式代码 &#125;</span><br></pre></td></tr></table></figure>
+<p>在代码的开头必须要书写<code>“@media”</code>，然后指定设备类型，也可以称之为媒体类型。css定义了10种设备类型，在此处可以指定的值与该值所代表的设备类型如下所示。</p>
+<table>
+<thead>
+<tr>
+<th>可以指定的值</th>
+<th>设备类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>all</td>
+<td>所有设备</td>
+</tr>
+<tr>
+<td>screen</td>
+<td>电脑显示器</td>
+</tr>
+<tr>
+<td>print</td>
+<td>打印用纸或打印预览视图</td>
+</tr>
+<tr>
+<td>handheld</td>
+<td>便携设备</td>
+</tr>
+<tr>
+<td>tv</td>
+<td>电视机类型的设备</td>
+</tr>
+<tr>
+<td>speech</td>
+<td>语音和音频合成器</td>
+</tr>
+<tr>
+<td>braille</td>
+<td>忙人用点字法触觉回馈设备</td>
+</tr>
+<tr>
+<td>embossed</td>
+<td>盲文打印机</td>
+</tr>
+<tr>
+<td>projection</td>
+<td>各种投影设备</td>
+</tr>
+<tr>
+<td>tty</td>
+<td>使用固定密度字母栅格的媒介，比如电传打字机和终端</td>
+</tr>
+</tbody>
+</table>
+<p>设备特性的书写方式与样式的书写方式很相似，分为两个部分，当中由冒号分割，冒号前书写设备的某种特性，冒号后书写该特性的具体值，如需要指定浏览器的窗口宽度大于400px时所使用的样式，书写方法如下：<code>( min-width: 400px )</code></p>
+<p>css中的设备特性共有13种，是一个类似于css属性的集合，但与css属性不同的是，大部分设备特性的指定值接受<code>min/max</code>的前缀，用来表示大于等于或小于的逻辑，以此避免使用<code>&lt;</code>盒<code>&gt;</code>这些字符。</p>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th>可指定值</th>
+<th>是否允许使用min/max前缀</th>
+<th>特性说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>width</td>
+<td>带单位的长度数值，例如：400px</td>
+<td>允许</td>
+<td>浏览器窗口的宽度</td>
+</tr>
+<tr>
+<td>height</td>
+<td>带单位的长度数值，例如：200px</td>
+<td>允许</td>
+<td>浏览器窗口的高度</td>
+</tr>
+<tr>
+<td>device-width</td>
+<td>带单位的长度数值，例如：400px</td>
+<td>允许</td>
+<td>设备屏幕分辨率的宽度</td>
+</tr>
+<tr>
+<td>device-height</td>
+<td>带单位的宽度数值，例如：200px</td>
+<td>允许</td>
+<td>设备屏幕分辨率的高度</td>
+</tr>
+<tr>
+<td>orientation</td>
+<td>只能指定两个值：portrait或landscape</td>
+<td>不允许</td>
+<td>浏览器窗口的方向是纵向还是横向。当窗口的高度值大于等于宽度值时，该特性值为portrait，否则为landscape</td>
+</tr>
+<tr>
+<td>aspect-ratio</td>
+<td>比例值，例如：16/9</td>
+<td>允许</td>
+<td>浏览器窗口的纵横比，比例值为浏览器窗口的宽度值/高度值</td>
+</tr>
+<tr>
+<td>device-aspect-ratio</td>
+<td>比例值，例如：16/9</td>
+<td>允许</td>
+<td>屏幕分辨率的纵横比，比例值为设备屏幕分辨率的宽度值/高度值</td>
+</tr>
+<tr>
+<td>color</td>
+<td>整数值</td>
+<td>允许</td>
+<td>设备使用多少位的颜色值，如果不是彩色设备，该值为0</td>
+</tr>
+<tr>
+<td>color-index</td>
+<td>整数值</td>
+<td>允许</td>
+<td>色彩表中的色彩数</td>
+</tr>
+<tr>
+<td>monochrome</td>
+<td>整数值</td>
+<td>允许</td>
+<td>单色帧缓冲期中每像素的字节数</td>
+</tr>
+<tr>
+<td>resolution</td>
+<td>分辨率值，例如：300dpi</td>
+<td>允许</td>
+<td>设备的分辨率</td>
+</tr>
+<tr>
+<td>scan</td>
+<td>只能指定两个值：progressive或interlace</td>
+<td>不允许</td>
+<td>电视机类型设备的扫描方式。progressive表示逐行扫描，interlace表示隔行扫描</td>
+</tr>
+<tr>
+<td>grid</td>
+<td>只能指定两个值：0或1</td>
+<td>不允许</td>
+<td>设备是基于栅格还是基于位图。基于栅格时该值为1，否则该值为0</td>
+</tr>
+</tbody>
+</table>
+<p>使用<code>and</code>关键字来指定当某种设备类型的某种特性的值满足某个条件时所使用的样式</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">media</span> screen and (max-width: <span class="number">639px</span>) &#123; 样式代码 &#125;</span><br></pre></td></tr></table></figure>
+<p>可以使用多条语句来将同一个样式应用到不同的设备类型和设备特性中，指定方式如下</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">media</span> handheld and (min-width: <span class="number">360px</span>), screen and (min-width: <span class="number">480px</span>) &#123; 样式代码 &#125;</span><br></pre></td></tr></table></figure>
+<p>可以在表达式中加上<code>not</code>关键字或<code>only</code>关键字，<code>not</code>关键字表示对后面的表达式执行取反操作，书写方法如下</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 除便携设备之外的其他设备或非彩色便携设备 */</span></span><br><span class="line">@<span class="keyword">media</span> not handheld and (color) &#123; 样式代码 &#125;</span><br><span class="line"><span class="comment">/* 所有非彩色设备 */</span></span><br><span class="line">@<span class="keyword">media</span> all and (not color) &#123; 样式代码 &#125;</span><br></pre></td></tr></table></figure>
+<p><code>only</code>关键字，让那些不支持<code>Media Queries</code>但是能够读取<code>Media Type</code>的设备的浏览器将表达式的样式隐藏起来。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">media</span> only screen and (color) &#123; 样式代码 &#125;</span><br></pre></td></tr></table></figure>
+<p>对于支持<code>Media Queries</code>的设备来说，将能够正确地应用央视，就仿佛<code>only</code>不存在一样；对于不支持<code>Media Queries</code>但能够读取<code>Media Type</code>的设备来说，由于先读取到<code>only</code>而不是<code>screen</code>，将忽略这个样式；对于不支持<code>Media Queries</code>的浏览器，无论是否有<code>only</code>，都将忽略这个样式。</p>
+<p>css3中的<code>Media Queries</code>模块中也支持对外部样式表的引用，使用如下</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">import</span> url(color.css) screen and (min-width: <span class="number">1000px</span>);</span><br><span class="line"></span><br><span class="line">&lt;link rel="stylesheet" type="text/css" media="screen and (min-width: 1000px)" href="style.css"&gt;</span><br></pre></td></tr></table></figure>
+  </section>
+
+  <section class="post-comments">
+
+    <!-- 将评论系统（例如Disqus、多说、友言、畅言等）提供的代码片段粘贴在这里 -->
+    
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+    
+
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>

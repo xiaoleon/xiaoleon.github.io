@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      CSS3(6) 变形处理 | Xiao Leon 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="Leon">
+    
+    
+
+    <meta name="description" content="在css3中，可以利用transform功能来实现文字或图像的旋转、缩放、倾斜、移动这四种类型的变形处理。">
+<meta name="keywords" content="读书笔记,前端开发,CSS3">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS3(6) 变形处理 | Xiao Leon">
+<meta property="og:url" content="http://www.xiaoleon.cn/2018/01/22/css3-6/index.html">
+<meta property="og:site_name" content="Xiao Leon">
+<meta property="og:description" content="在css3中，可以利用transform功能来实现文字或图像的旋转、缩放、倾斜、移动这四种类型的变形处理。">
+<meta property="og:updated_time" content="2018-01-22T13:56:57.013Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS3(6) 变形处理 | Xiao Leon">
+<meta name="twitter:description" content="在css3中，可以利用transform功能来实现文字或图像的旋转、缩放、倾斜、移动这四种类型的变形处理。">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">Xiao Leon</a></h1>
+        <hr class="panel-cover__divider" />
+
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title="" class="">关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title="" class="">归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">CSS3(6) 变形处理</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2018-01-22" class="post-meta__date date">2018-01-22</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+
+          
+             &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/CSS3/">CSS3</a>, <a class="tags-link" href="/tags/前端开发/">前端开发</a>, <a class="tags-link" href="/tags/读书笔记/">读书笔记</a>
+            </font>
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <p>在css3中，可以利用<code>transform</code>功能来实现文字或图像的旋转、缩放、倾斜、移动这四种类型的变形处理。</p>
+<a id="more"></a>
+<h3 id="一、缩放"><a href="#一、缩放" class="headerlink" title="一、缩放"></a>一、缩放</h3><p>使用<code>scale</code>方法实现文字或图像的缩放处理，在参数中指定缩放倍率。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">    <span class="comment">/* 缩小50% */</span></span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">scale</span>(.5);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以分别指定元素水平方向的放大倍率与垂直方向的放大倍率。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">    <span class="comment">/* 水平方向缩小50%，垂直方向放大一倍 */</span></span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">scale</span>(.5, 2);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="二、倾斜"><a href="#二、倾斜" class="headerlink" title="二、倾斜"></a>二、倾斜</h3><p>使用<code>skew</code>方法实现文字或图像的倾斜处理，在参数中分别指定水平方向上的倾斜角度与垂直方向上的倾斜角度。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">    <span class="comment">/* 水平方向倾斜30度，垂直方向倾斜30度 */</span></span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">skew</span>(30deg, 30deg);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>skew</code>方法中的两个参数可以修改成只使用一个参数，省略另一个参数——这种情况下视为只在水平方向上进行倾斜，垂直方向上不倾斜。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">    <span class="comment">/* 水平方向倾斜30度，垂直方向不倾斜 */</span></span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">skew</span>(30deg);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="三、移动"><a href="#三、移动" class="headerlink" title="三、移动"></a>三、移动</h3><p>使用<code>translate</code>方法来将文字或图像进行移动，在参数中分别指定水平方向上的移动距离与垂直方向上的移动距离。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">    <span class="comment">/* 水平方向上移动50px，垂直方向上移动50px */</span></span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">translate</span>(50px, 50px);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>translate</code>方法中的两个参数可以修改成只使用一个参数，省略另一个参数——这种情况下视为只在水平方向上移动，垂直方向上不移动。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">    <span class="comment">/* 水平方向上移动50px，垂直方向不移动 */</span></span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">translate</span>(50px);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="四、指定变形的基准点"><a href="#四、指定变形的基准点" class="headerlink" title="四、指定变形的基准点"></a>四、指定变形的基准点</h3><p>在使用<code>transform</code>方法进行文字或图像的变形时，是以元素的中心点为基准点进行的。使用<code>transform-origin</code>属性，可以改变变形的基准点。</p>
+<p>指定<code>transform-origin</code>属性值的时候，采用“基准点在元素水平方向上的位置，基准点在元素垂直方向上的位置”的方法，其中“基准点在元素水平方向上的位置”中可以指定的值为<code>left</code>、<code>center</code>、<code>right</code>，“基准点在元素垂直方向上的位置”中可以指定的值为<code>top</code>、<code>center</code>、<code>bottom</code>。</p>
+
+  </section>
+
+  <section class="post-comments">
+
+    <!-- 将评论系统（例如Disqus、多说、友言、畅言等）提供的代码片段粘贴在这里 -->
+    
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+    
+
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>

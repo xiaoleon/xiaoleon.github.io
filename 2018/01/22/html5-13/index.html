@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      H5(13) Geolocation | Xiao Leon 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="Leon">
+    
+    
+
+    <meta name="description" content="在HTML5中，为window.navigator对象新增了一个geolocation属性，可以使用Geolocation API来对该属性进行访问。">
+<meta name="keywords" content="读书笔记,前端开发,HTML5">
+<meta property="og:type" content="article">
+<meta property="og:title" content="H5(13) Geolocation | Xiao Leon">
+<meta property="og:url" content="http://www.xiaoleon.cn/2018/01/22/html5-13/index.html">
+<meta property="og:site_name" content="Xiao Leon">
+<meta property="og:description" content="在HTML5中，为window.navigator对象新增了一个geolocation属性，可以使用Geolocation API来对该属性进行访问。">
+<meta property="og:updated_time" content="2018-01-22T13:28:37.409Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="H5(13) Geolocation | Xiao Leon">
+<meta name="twitter:description" content="在HTML5中，为window.navigator对象新增了一个geolocation属性，可以使用Geolocation API来对该属性进行访问。">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">Xiao Leon</a></h1>
+        <hr class="panel-cover__divider" />
+
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title="" class="">关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title="" class="">归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">H5(13) Geolocation</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2018-01-22" class="post-meta__date date">2018-01-22</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+
+          
+             &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/HTML5/">HTML5</a>, <a class="tags-link" href="/tags/前端开发/">前端开发</a>, <a class="tags-link" href="/tags/读书笔记/">读书笔记</a>
+            </font>
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <p>在HTML5中，为<code>window.navigator</code>对象新增了一个<code>geolocation</code>属性，可以使用<code>Geolocation API</code>来对该属性进行访问。</p>
+<a id="more"></a>
+<h3 id="一、获取当前位置"><a href="#一、获取当前位置" class="headerlink" title="一、获取当前位置"></a>一、获取当前位置</h3><p>可以使用<code>getCurrentPosition</code>方法来取得用户当前的地理位置信息，该方法如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> getCurrentPosition(onSuccess, onError, options);</span><br></pre></td></tr></table></figure>
+<p>第一个参数为获取当前地理位置信息成功时所执行的回调函数</p>
+<p>第二个参数为获取当前地理位置信息失败时所执行的回调函数（可选）</p>
+<p>第三个参数为一些可选属性的列表（可选）</p>
+<p><code>onSuccess</code>回调函数中，用到了一个参数<code>position</code>，它代表一个<code>position</code>对象，我们在后面对这个对象进行介绍</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">navigator.geolocation.getCurrentPosition(<span class="function"><span class="keyword">function</span>(<span class="params">position</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 获取成功时的处理</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p><code>onError</code>回调函数中，用到了一个<code>error</code>对象，该对象具有以下两个属性：</p>
+<ol>
+<li><p><code>code</code>属性。<code>code</code>属性为以下三个值其中之一：</p>
+<ul>
+<li><p>用户拒绝了位置服务（数字值为1）</p>
+</li>
+<li><p>获取不到位置信息（数字值为2）</p>
+</li>
+<li><p>获取信息超时错误（数字值为3）</p>
+</li>
+</ul>
+</li>
+<li><p><code>message</code>属性。</p>
+<p> <code>message</code>属性为一个字符串，在该字符串中包含了错误信息。</p>
+</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">navigator.geolocation.getCurrentPosition(</span><br><span class="line">    <span class="function"><span class="keyword">function</span>(<span class="params">position</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> coords = position.coords;</span><br><span class="line">        showMap(coords.latitude, coords.longitude, coords.accuracy);</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="function"><span class="keyword">function</span>(<span class="params">error</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> errorTypes = &#123;</span><br><span class="line">            <span class="number">1</span>: <span class="string">'位置服务被拒绝'</span>,</span><br><span class="line">            <span class="number">2</span>: <span class="string">'获取不到位置信息'</span>,</span><br><span class="line">            <span class="number">3</span>: <span class="string">'获取信息超时'</span></span><br><span class="line">        &#125;;</span><br><span class="line">        alert(errorTypes[error.code] + <span class="string">': 不能确定你的当前地理位置'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p><code>options</code>是一些可选属性的列表，包含如下：</p>
+<ul>
+<li>enableHighAccuracy</li>
+</ul>
+<p>是否要求高精度的地理位置信息，这个参数在很多设备上设置了都没用，因为使用在设备上时要结合设备电量、具体地理情况来综合考虑</p>
+<ul>
+<li>timeout</li>
+</ul>
+<p>对地理位置信息的获取操作做一个超时限制（单位为毫秒）。如果在改时间内未获取到地理位置信息，则返回错误</p>
+<ul>
+<li>maximumAge</li>
+</ul>
+<p>对地理位置信息进行缓存的有效时间（单位为毫秒）。如果该值指定为0，则无条件重新获取新的地理位置信息</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">navigator.geolocation.getCurrentPosition(</span><br><span class="line">    <span class="function"><span class="keyword">function</span>(<span class="params">position</span>) </span>&#123;&#125;,</span><br><span class="line">    <span class="function"><span class="keyword">function</span>(<span class="params">error</span>) </span>&#123;&#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        maximumAge: <span class="number">60</span> * <span class="number">1000</span> * <span class="number">2</span>,</span><br><span class="line">        timeout: <span class="number">5000</span></span><br><span class="line">    &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="二、持续监视当前地理位置信息"><a href="#二、持续监视当前地理位置信息" class="headerlink" title="二、持续监视当前地理位置信息"></a>二、持续监视当前地理位置信息</h3><p>使用<code>watchPosition</code>方法来持续获取用户当前地理位置信息，它会定期地自动获取</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int watchCurrentPosition(onSuccess, onError, options);</span><br></pre></td></tr></table></figure>
+<p>该方法与<code>getCurrentPosition</code>方法的参数说明与使用方法相同，该方法返回一个数字，这个数字的使用与<code>setInterval</code>的返回参数值类似，可以被<code>clearWatch</code>方法使用，停止对当前地理位置信息的监视。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> clearWatch(watchId)</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="三、position对象"><a href="#三、position对象" class="headerlink" title="三、position对象"></a>三、position对象</h3><p>通过访问<code>position</code>对象，可以得到地理位置信息</p>
+<ul>
+<li>latitude</li>
+</ul>
+<p>当前地理位置的纬度</p>
+<ul>
+<li>longitude</li>
+</ul>
+<p>当前地理位置的精度</p>
+<ul>
+<li>altitude</li>
+</ul>
+<p>当前位置的海拔高度</p>
+<ul>
+<li>accuracy</li>
+</ul>
+<p>获取到的纬度或经度的精度（单位为米）</p>
+<ul>
+<li>altitudeAccurancy</li>
+</ul>
+<p>获取到的海拔高度的精度（单位为米）</p>
+<ul>
+<li>heading</li>
+</ul>
+<p>设备的前进方向，以面朝正北方向的顺时针旋转角度来表示</p>
+<ul>
+<li>speed</li>
+</ul>
+<p>设备的前进速度（单位为米/秒）</p>
+<ul>
+<li>timestamp</li>
+</ul>
+<p>获取地理位置信息时的时间</p>
+
+  </section>
+
+  <section class="post-comments">
+
+    <!-- 将评论系统（例如Disqus、多说、友言、畅言等）提供的代码片段粘贴在这里 -->
+    
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+    
+
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>

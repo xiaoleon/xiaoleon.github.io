@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      CSS3(3) 文字与字体相关样式 | Xiao Leon 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="Leon">
+    
+    
+
+    <meta name="description" content="本章针对css3中与文字、字体相关的一些属性做详细介绍，其中包括text-shadow属性、word-break属性、word-wrap属性、Web Font和@font-face属性，以及font-size-adjust属性。">
+<meta name="keywords" content="读书笔记,前端开发,CSS3">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS3(3) 文字与字体相关样式 | Xiao Leon">
+<meta property="og:url" content="http://www.xiaoleon.cn/2018/01/22/css3-3/index.html">
+<meta property="og:site_name" content="Xiao Leon">
+<meta property="og:description" content="本章针对css3中与文字、字体相关的一些属性做详细介绍，其中包括text-shadow属性、word-break属性、word-wrap属性、Web Font和@font-face属性，以及font-size-adjust属性。">
+<meta property="og:updated_time" content="2018-01-22T13:43:46.491Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS3(3) 文字与字体相关样式 | Xiao Leon">
+<meta name="twitter:description" content="本章针对css3中与文字、字体相关的一些属性做详细介绍，其中包括text-shadow属性、word-break属性、word-wrap属性、Web Font和@font-face属性，以及font-size-adjust属性。">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">Xiao Leon</a></h1>
+        <hr class="panel-cover__divider" />
+
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title="" class="">关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title="" class="">归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">CSS3(3) 文字与字体相关样式</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2018-01-22" class="post-meta__date date">2018-01-22</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+
+          
+             &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/CSS3/">CSS3</a>, <a class="tags-link" href="/tags/前端开发/">前端开发</a>, <a class="tags-link" href="/tags/读书笔记/">读书笔记</a>
+            </font>
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <p>本章针对css3中与文字、字体相关的一些属性做详细介绍，其中包括<code>text-shadow</code>属性、<code>word-break</code>属性、<code>word-wrap</code>属性、<code>Web Font</code>和<code>@font-face</code>属性，以及<code>font-size-adjust</code>属性。</p>
+<a id="more"></a>
+<h3 id="一、给文字添加阴影"><a href="#一、给文字添加阴影" class="headerlink" title="一、给文字添加阴影"></a>一、给文字添加阴影</h3><p><code>text-shadow</code>属性用于给页面上的文字添加阴影效果</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">text-shadow</span>: <span class="selector-tag">length</span> <span class="selector-tag">length</span> <span class="selector-tag">length</span> <span class="selector-tag">color</span></span><br></pre></td></tr></table></figure>
+<p>其中，前三个<code>length</code>分别指阴影离开文字的 <strong>横方向距离</strong>、<strong>纵方向距离</strong>、<strong>模糊半径</strong>，color指阴影的 <strong>颜色</strong>。</p>
+<h4 id="1-指定多个阴影"><a href="#1-指定多个阴影" class="headerlink" title="1. 指定多个阴影"></a>1. 指定多个阴影</h4><p>可以使用<code>text-shadow</code>属性给文字指定多个阴影，并且针对每个阴影使用不同颜色，指定多个阴影时使用逗号将多个阴影进行分隔。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">    <span class="attribute">text-shadow</span>: <span class="number">10px</span> <span class="number">10px</span> <span class="number">5px</span> <span class="number">#f39800</span>,</span><br><span class="line">                <span class="number">40px</span> <span class="number">35px</span> <span class="number">5px</span> <span class="number">#fff100</span>,</span><br><span class="line">                <span class="number">70px</span> <span class="number">60px</span> <span class="number">5px</span> <span class="number">#c0ff00</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="二、文本自动换行"><a href="#二、文本自动换行" class="headerlink" title="二、文本自动换行"></a>二、文本自动换行</h3><p>在css3中，使用<code>word-break</code>属性来让文字自动换行</p>
+<p>浏览器显示文本的时候，会让文本在浏览器或div元素的右端自动实现换行。对于西方文字来说，浏览器会在半角空格或连字符的地方自动换行，而不会在单词的当中突然换行。对于中文来说，可以在任何一个中文字后面进行换行。如果中文当中含有西方文字，浏览器也会在半角空格或连字符的地方进行换行，而不会在单词中强制换行。</p>
+<p>当中文当中含有标点符号的时候，浏览器总是不可能让标点符号位于一行文字的行首，通常将标点符号以及它前面的一个文字作为一个整体来统一换行。</p>
+<h4 id="1-指定自动换行"><a href="#1-指定自动换行" class="headerlink" title="1. 指定自动换行"></a>1. 指定自动换行</h4><p>在css3中，可以使用<code>word-break</code>属性来自己决定自动换行的处理方法。通过<code>word-break</code>属性的指定，不仅仅可以让浏览器实现半角空格或连字符后面的换行，而且可以让浏览器实现任意位置的换行。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">    <span class="attribute">word-break</span>: keep-all;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>换行规则</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>normal</td>
+<td>使用浏览器默认换行规则</td>
+</tr>
+<tr>
+<td>keep-all</td>
+<td>只能在半角空格或连字符处换行</td>
+</tr>
+<tr>
+<td>break-all</td>
+<td>允许在单词内换行</td>
+</tr>
+</tbody>
+</table>
+<h4 id="2-让长单词与URL地址自动换行"><a href="#2-让长单词与URL地址自动换行" class="headerlink" title="2. 让长单词与URL地址自动换行"></a>2. 让长单词与URL地址自动换行</h4><p>对于西方文字来说，浏览器在半角空格或连字符的地方进行换行。因此，浏览器不能给较长的单词自动换行。当浏览器窗口比较窄的时候，文字会超出浏览器的窗口，浏览器下部出现滚动条，让用户通过拖动滚动条的方法来查看没有在当前窗口显示的文字。</p>
+<p>在css3中，使用<code>word-wrap</code>属性来实现长单词与url地址的自动换行</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">    <span class="attribute">word-wrap</span>: break-word;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>word-wrap</code>属性可以使用的属性值为<code>normal</code>与<code>break-word</code>两个。使用<code>normal</code>属性值时浏览器保持默认处理，只在半角空格或连字符的地方进行换行。使用<code>break-word</code>时浏览器可以在长单词或url地址内部进行换行。</p>
+<hr>
+<h3 id="三、使用服务器端字体"><a href="#三、使用服务器端字体" class="headerlink" title="三、使用服务器端字体"></a>三、使用服务器端字体</h3><p>在css3之前，页面文字所使用的字体必须已经在客户端中被安装才能正常显示，在样式表中允许指定当前字体不能正常显示时使用的替代字体，但是如果这个替代字体在客户端中也没有被安装时，使用这个字体的文字就不能正常显示了。</p>
+<p>在css3中，使用<code>@font-face</code>属性来利用服务器端字体</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">font-face</span> &#123;</span><br><span class="line">    <span class="attribute">font-family</span>: WebFont;</span><br><span class="line">    <span class="attribute">src</span>: <span class="built_in">url</span>(<span class="string">'font/Fontin_Sans_R_45b.otf'</span>) <span class="built_in">format</span>(<span class="string">'opentype'</span>);</span><br><span class="line">    <span class="attribute">font-weight</span>: normal;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>font-family</code>属性值用<code>WebFont</code>来声明使用服务器端的字体。<code>src</code>属性值指定服务器端字体的字体文件所在的路径。</p>
+<p>在针对元素使用这个服务器端字体的时候，还需要在元素样式中将<code>font-family</code>属性值指定为<code>WebFont</code></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">    <span class="attribute">font-family</span>: WebFont;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>@font-face</code>属性不仅可以用于显示服务器端的字体，也可以用来显示客户端本地的字体。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">font-face</span> &#123;</span><br><span class="line">    <span class="attribute">font-family</span>: Arial;</span><br><span class="line">    <span class="attribute">src</span>: <span class="built_in">local</span>(<span class="string">'Arial'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用<code>@font-face</code>属性显示客户端本地字体的好处是可以让浏览器在对字体进行显示时首先在客户端本地寻找是否存在该字体，当客户端寻找不到时在可使用服务器端的字体。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">font-face</span> &#123;</span><br><span class="line">    <span class="attribute">font-family</span>: MyHelvetica;</span><br><span class="line">    <span class="attribute">src</span>: <span class="built_in">local</span>(<span class="string">'Helvetica Neue'</span>) <span class="built_in">url</span>(MgOpenModernaRegular.ttf);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="四、修改字体种类而保持字体尺寸不变"><a href="#四、修改字体种类而保持字体尺寸不变" class="headerlink" title="四、修改字体种类而保持字体尺寸不变"></a>四、修改字体种类而保持字体尺寸不变</h3><p>如果改变了字体的种类，则页面中所有使用改字体的文字大小都可能发生变化，从而使得原来安排好的页面布局产生混乱。</p>
+<p>因此，在css3中增加了<code>font-size-adjust</code>属性，可以在保持文字大小不发生变化的情况下改变字体的种类。</p>
+<p><code>font-size-adjust</code>属性的使用方法很简单，但是它需要使用每个字体种类自带的一个<code>aspect</code>值（比例值）。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">16px</span>;</span><br><span class="line">    <span class="attribute">font-family</span>: Times New Roman;</span><br><span class="line">    <span class="attribute">font-size-adjust</span>: <span class="number">0.46</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>aspect</code>值可以用来在将字体修改为其他字体时保持字体大小基本不变，这个<code>aspect</code>值的计算方法为<code>x-height</code>值除以该字体的尺寸，<code>x-height</code>值是指使用这个字体书写出来的小写<code>x</code>的高度（像素为单位）。如果某个字体的尺寸为100px时，<code>x-height</code>值为58px，则该字体的<code>aspect</code>为0.58，因为字体的<code>x-height</code>值总是随着字体的尺寸一起改变的，所以字体的<code>aspect</code>值都是一个常数。</p>
+<h4 id="1-常用的西方字体aspect值"><a href="#1-常用的西方字体aspect值" class="headerlink" title="1. 常用的西方字体aspect值"></a>1. 常用的西方字体aspect值</h4><table>
+<thead>
+<tr>
+<th>字体种类</th>
+<th>aspect值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Verdana</td>
+<td>0.58</td>
+</tr>
+<tr>
+<td>Comic Sans MS</td>
+<td>0.54</td>
+</tr>
+<tr>
+<td>Trebuchet MS</td>
+<td>0.53</td>
+</tr>
+<tr>
+<td>Georgia</td>
+<td>0.5</td>
+</tr>
+<tr>
+<td>Myriad Web</td>
+<td>0.48</td>
+</tr>
+<tr>
+<td>Minion Web</td>
+<td>0.47</td>
+</tr>
+<tr>
+<td>Times New Roman</td>
+<td>0.46</td>
+</tr>
+<tr>
+<td>Gill Sans</td>
+<td>0.46</td>
+</tr>
+<tr>
+<td>Bernhard Modern</td>
+<td>0.4</td>
+</tr>
+<tr>
+<td>Caflisch Script Web</td>
+<td>0.37</td>
+</tr>
+<tr>
+<td>Fjemish Script</td>
+<td>0.28</td>
+</tr>
+</tbody>
+</table>
+
+  </section>
+
+  <section class="post-comments">
+
+    <!-- 将评论系统（例如Disqus、多说、友言、畅言等）提供的代码片段粘贴在这里 -->
+    
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+    
+
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>

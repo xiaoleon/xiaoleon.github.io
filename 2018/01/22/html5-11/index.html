@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      H5(11) Web Sockets通信 | Xiao Leon 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="Leon">
+    
+    
+
+    <meta name="description" content="Web Sockets是HTML5提供的在Web应用程序客户端与服务器端之间进行的非HTTP的通信机制。它实现了用HTTP不容易实现的服务器端的数据推送等智能通信技术，因此受到了高度关注。 使用Web Sockets API可以在服务器与客户端之间建立一个非HTTP的双向连接。这个连接时实时的，也是永久的，除非被显式关闭。这意味着当服务器想向客户端发送数据时，可以立即将数据推送到客户端的浏览器中，">
+<meta name="keywords" content="读书笔记,前端开发,HTML5">
+<meta property="og:type" content="article">
+<meta property="og:title" content="H5(11) Web Sockets通信 | Xiao Leon">
+<meta property="og:url" content="http://www.xiaoleon.cn/2018/01/22/html5-11/index.html">
+<meta property="og:site_name" content="Xiao Leon">
+<meta property="og:description" content="Web Sockets是HTML5提供的在Web应用程序客户端与服务器端之间进行的非HTTP的通信机制。它实现了用HTTP不容易实现的服务器端的数据推送等智能通信技术，因此受到了高度关注。 使用Web Sockets API可以在服务器与客户端之间建立一个非HTTP的双向连接。这个连接时实时的，也是永久的，除非被显式关闭。这意味着当服务器想向客户端发送数据时，可以立即将数据推送到客户端的浏览器中，">
+<meta property="og:updated_time" content="2018-01-22T13:18:35.988Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="H5(11) Web Sockets通信 | Xiao Leon">
+<meta name="twitter:description" content="Web Sockets是HTML5提供的在Web应用程序客户端与服务器端之间进行的非HTTP的通信机制。它实现了用HTTP不容易实现的服务器端的数据推送等智能通信技术，因此受到了高度关注。 使用Web Sockets API可以在服务器与客户端之间建立一个非HTTP的双向连接。这个连接时实时的，也是永久的，除非被显式关闭。这意味着当服务器想向客户端发送数据时，可以立即将数据推送到客户端的浏览器中，">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">Xiao Leon</a></h1>
+        <hr class="panel-cover__divider" />
+
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title="" class="">关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title="" class="">归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">H5(11) Web Sockets通信</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2018-01-22" class="post-meta__date date">2018-01-22</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+
+          
+             &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/HTML5/">HTML5</a>, <a class="tags-link" href="/tags/前端开发/">前端开发</a>, <a class="tags-link" href="/tags/读书笔记/">读书笔记</a>
+            </font>
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <p><code>Web Sockets</code>是HTML5提供的在Web应用程序客户端与服务器端之间进行的非HTTP的通信机制。它实现了用HTTP不容易实现的服务器端的数据推送等智能通信技术，因此受到了高度关注。</p>
+<p>使用<code>Web Sockets API</code>可以在服务器与客户端之间建立一个非HTTP的双向连接。这个连接时实时的，也是永久的，除非被显式关闭。这意味着当服务器想向客户端发送数据时，可以立即将数据推送到客户端的浏览器中，无须重新建立连接。只要客户端有一个被打开的<code>socket</code>（套接字）并且与服务器建立了连接，服务器就可以把数据推送到这个<code>socket</code>上，服务器不再需要轮训客户端的请求，从被动转为了主动。</p>
+<a id="more"></a>
+<h3 id="一、使用Web-Sockets-API"><a href="#一、使用Web-Sockets-API" class="headerlink" title="一、使用Web Sockets API"></a>一、使用Web Sockets API</h3><p><code>Web Sockets</code>的API本身非常简单，将url字符串作为参数，然后调用<code>WebSocket</code>对象的构造器来建立与服务器之间的通信连接</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> webSocket = <span class="keyword">new</span> WebSocket(<span class="string">'ws://localhost/socket'</span>);</span><br></pre></td></tr></table></figure>
+<p>url字符串必须以<code>“ws”</code>或<code>“wss”</code>（加密通信时）文字作为开头。这个url字符串被设定好之后，在JS脚本中可以通过访问<code>WebSocket</code>对象的<code>url</code>属性来重新获取。</p>
+<p>通信建立好之后，就可以进行客户端与服务器端的双向通信了。使用<code>WebSocket</code>对象的<code>send</code>方法对服务器发送数据，只能发送文本数据，但是可以使用JSON对象把任何Javascript对象转换成文本数据后进行发送</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">webSocket.send(<span class="string">'data'</span>);</span><br></pre></td></tr></table></figure>
+<p>通过获取<code>onmessage</code>事件的句柄来接收服务器传过来的数据</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">webSocket.onmessage = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> data = event.data;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>通过获取<code>onopen</code>事件句柄来监听<code>socket</code>的打开事件</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">webSocket.onopen = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 开始通信时的处理</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>通过获取<code>onclose</code>事件句柄来监听<code>socket</code>的关闭事件</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">webSocket.onclose = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 通信结束时的处理</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>通过<code>close</code>方法来关闭<code>socket</code>，切断通信连接</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">webSocket.close();</span><br></pre></td></tr></table></figure>
+<p>另外，可以通过读取<code>readyState</code>的属性值来获取<code>WebSocket</code>对象的状态，<code>readyState</code>属性存在以下几种值：</p>
+<ul>
+<li><p><code>CONNECTING</code>（数字值为0） —— 正在连接</p>
+</li>
+<li><p><code>OPEN</code>（数字值为1） —— 已建立连接</p>
+</li>
+<li><p><code>CLOSING</code>（数字值为2） —— 正在关闭连接</p>
+</li>
+<li><p><code>CLOSED</code>（数字值为3） —— 已关闭连接</p>
+</li>
+</ul>
+
+  </section>
+
+  <section class="post-comments">
+
+    <!-- 将评论系统（例如Disqus、多说、友言、畅言等）提供的代码片段粘贴在这里 -->
+    
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+    
+
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>

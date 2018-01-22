@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      CSS3(4) 盒相关样式 | Xiao Leon 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="Leon">
+    
+    
+
+    <meta name="description" content="在css中，使用display属性来定义盒的类型。总体上来说，css的盒分为block类型与inline类型。">
+<meta name="keywords" content="读书笔记,前端开发,CSS3">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS3(4) 盒相关样式 | Xiao Leon">
+<meta property="og:url" content="http://www.xiaoleon.cn/2018/01/22/css3-4/index.html">
+<meta property="og:site_name" content="Xiao Leon">
+<meta property="og:description" content="在css中，使用display属性来定义盒的类型。总体上来说，css的盒分为block类型与inline类型。">
+<meta property="og:updated_time" content="2018-01-22T13:48:46.798Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS3(4) 盒相关样式 | Xiao Leon">
+<meta name="twitter:description" content="在css中，使用display属性来定义盒的类型。总体上来说，css的盒分为block类型与inline类型。">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">Xiao Leon</a></h1>
+        <hr class="panel-cover__divider" />
+
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title="" class="">关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title="" class="">归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">CSS3(4) 盒相关样式</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2018-01-22" class="post-meta__date date">2018-01-22</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+
+          
+             &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/CSS3/">CSS3</a>, <a class="tags-link" href="/tags/前端开发/">前端开发</a>, <a class="tags-link" href="/tags/读书笔记/">读书笔记</a>
+            </font>
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <p>在css中，使用<code>display</code>属性来定义盒的类型。总体上来说，css的盒分为<code>block</code>类型与<code>inline</code>类型。</p>
+ <a id="more"></a>
+<h3 id="一、inline-block"><a href="#一、inline-block" class="headerlink" title="一、inline-block"></a>一、inline-block</h3><p><code>inline-block</code>是在css2.1中追加的一个盒类型，属于<code>block</code>类型盒的一种，但是在显示时具有<code>inline</code>类型盒的特点。</p>
+<p>默认情况下使用<code>inline-block</code>类型时并列显示的元素的垂直对齐方式是底部对其，为了将垂直对齐方式改为顶部对齐，还需要在<code>div</code>元素的样式中加入<code>vertical-align</code>属性。</p>
+<hr>
+<h3 id="二、inline-table"><a href="#二、inline-table" class="headerlink" title="二、inline-table"></a>二、inline-table</h3><p>由于<code>table</code>元素属于<code>block</code>类型，所以不能与其他文字处于同一行中，但是如果将<code>table</code>元素修改wei<code>inline-table</code>类型，就可以让表格与其他文字处于同一行中了。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">table</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: inline-table;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#00aaff</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以在样式中利用<code>vertical-align</code>属性显示指定表格与文字的对齐方式。</p>
+<hr>
+<h3 id="三、list-item"><a href="#三、list-item" class="headerlink" title="三、list-item"></a>三、list-item</h3><p>如果在<code>display</code>中将元素的类型设定为<code>list-item</code>类型，可以将多个元素作为列表来显示，同时在元素的开头加上列表的标记。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: list-item;</span><br><span class="line">    <span class="attribute">list-style-type</span>: circle;</span><br><span class="line">    <span class="attribute">margin-left</span>: <span class="number">30px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="四、run-in、compact"><a href="#四、run-in、compact" class="headerlink" title="四、run-in、compact"></a>四、run-in、compact</h3><p>将元素指定为<code>run-in</code>类型或者<code>compact</code>类型的时候，如果元素后面还有block类型的元素，<code>run-in</code>类型的元素将被包含在<code>block</code>类型的元素内部，而<code>compact</code>类型的元素将被放置在<code>block</code>类型的元素左边。</p>
+<hr>
+<h3 id="五、对于盒中容纳不下的内容的显示"><a href="#五、对于盒中容纳不下的内容的显示" class="headerlink" title="五、对于盒中容纳不下的内容的显示"></a>五、对于盒中容纳不下的内容的显示</h3><p>如果在样式中指定了盒的宽度与高度，就有可能出现某些内容在盒中容纳不下的情况，可以使用<code>overflow</code>属性来指定如何显示这些内容。</p>
+<h4 id="1-overflow-hidden"><a href="#1-overflow-hidden" class="headerlink" title="1. overflow: hidden"></a>1. overflow: hidden</h4><p>超出容纳范围的文字被隐藏</p>
+<h4 id="2-overflow-scroll"><a href="#2-overflow-scroll" class="headerlink" title="2. overflow: scroll"></a>2. overflow: scroll</h4><p>元素中出现固定的水平滚动条与垂直滚动条</p>
+<h4 id="3-overflow-auto"><a href="#3-overflow-auto" class="headerlink" title="3. overflow: auto"></a>3. overflow: auto</h4><p>文字超出div元素的容纳范围时，根据需要出现水平滚动条或垂直滚动条</p>
+<h4 id="4-overflow-visible"><a href="#4-overflow-visible" class="headerlink" title="4. overflow: visible"></a>4. overflow: visible</h4><p>显示效果与不使用overflow属性时一样</p>
+<h4 id="5-text-overflow"><a href="#5-text-overflow" class="headerlink" title="5. text-overflow"></a>5. text-overflow</h4><p>当通过把<code>overflow</code>属性设定为<code>ellipsis</code>，将盒中容纳不下的内容隐藏起来时，如果使用<code>text-overflow</code>属性，可以在盒的末尾显示一个代表省略的符号<code>“...”</code>。但是，<code>text-overflow</code>属性只在当盒中的内容在水平方向上超出盒的容纳范围时有效。通过将<code>white-space</code>属性设定为<code>nowrap</code>，使得盒右端的内容不能换行显示。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">    <span class="attribute">overflow</span>: hidden;</span><br><span class="line">    <span class="attribute">white-space</span>: nowrap;</span><br><span class="line">    <span class="attribute">text-overflow</span>: ellipsis;</span><br><span class="line">    <span class="attribute">-webkit-text-overflow</span>: ellipsis;</span><br><span class="line">    <span class="attribute">-o-text-overflow</span>: ellipsis;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="六、对盒使用阴影"><a href="#六、对盒使用阴影" class="headerlink" title="六、对盒使用阴影"></a>六、对盒使用阴影</h3><p>在css3中，可以使用<code>box-shadow</code>属性让盒在显示时产生阴影特效</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">box-shadow</span>: <span class="selector-tag">length</span> <span class="selector-tag">length</span> <span class="selector-tag">length</span> <span class="selector-tag">color</span>;</span><br><span class="line">-webkit-box-shadow: length length length color; // safari</span><br><span class="line">-moz-box-shadow: length length length color; // firefox</span><br></pre></td></tr></table></figure>
+<p>前面三个<code>length</code>分别指阴影离开文字的 <strong>横向距离</strong>、<strong>纵向距离</strong>、<strong>模糊半径</strong>，color指阴影的 <strong>颜色</strong></p>
+<h4 id="1-对第一个文字或第一行使用阴影"><a href="#1-对第一个文字或第一行使用阴影" class="headerlink" title="1. 对第一个文字或第一行使用阴影"></a>1. 对第一个文字或第一行使用阴影</h4><p>可以使用<code>first-letter</code>选择器或<code>first-line</code>选择器来只让第一个文字或第一行具有阴影效果</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span><span class="selector-pseudo">:first-letter</span> &#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">22px</span>;</span><br><span class="line">    <span class="attribute">box-shadow</span>: <span class="number">5px</span> <span class="number">5px</span> <span class="number">5px</span> gray;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">div</span><span class="selector-pseudo">:first-line</span> &#123;</span><br><span class="line">    <span class="attribute">background-color</span>: red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="七、盒的宽度和高度"><a href="#七、盒的宽度和高度" class="headerlink" title="七、盒的宽度和高度"></a>七、盒的宽度和高度</h3><p>在css3中，使用<code>box-sizing</code>属性来指定针对元素的宽度和高度的计算方法，是否包含元素内部的补白区域，以及边框的宽度和高度。</p>
+<h4 id="1-box-sizing-content-box"><a href="#1-box-sizing-content-box" class="headerlink" title="1. box-sizing: content-box"></a>1. box-sizing: content-box</h4><p>元素的宽度和高度不包括内容补白区域，以及边框的宽度和高度</p>
+<h4 id="2-box-sizing-border-box"><a href="#2-box-sizing-border-box" class="headerlink" title="2. box-sizing: border-box"></a>2. box-sizing: border-box</h4><p>元素的宽度和高度包括内部补白区域，以及边框的宽度和高度</p>
+<h4 id="3-为什么要使用box-sizing属性"><a href="#3-为什么要使用box-sizing属性" class="headerlink" title="3. 为什么要使用box-sizing属性"></a>3. 为什么要使用box-sizing属性</h4><p>使用<code>box-sizing</code>属性的目的是控制元素的总宽度，如果不使用该属性，样式中默认使用的是<code>content-box</code>属性值，它只对内容的宽度做了一个指定，却没有对元素的总宽度进行指定。有些场合下利用<code>border-box</code>属性值会使得页面布局更加方便。</p>
+
+  </section>
+
+  <section class="post-comments">
+
+    <!-- 将评论系统（例如Disqus、多说、友言、畅言等）提供的代码片段粘贴在这里 -->
+    
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+    
+
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>
