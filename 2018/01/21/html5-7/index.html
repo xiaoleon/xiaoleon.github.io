@@ -15,18 +15,18 @@
       <meta name="author" content="Leon">
     
     
-    <meta name="description" content="一、元素属性audio元素与video元素所具有的属性大致相同，所以我们看看这两个元素都具有哪些属性 1. src在该属性中指定媒体数据的URL地址 2. autoplay在该属性中指定媒体是否在页面加载后自动播放。该属性的使用方法如下所示： 1&amp;lt;video src=&quot;sample.mov&quot; autoplay&amp;gt;&amp;lt;/video&amp;gt; 3. preload该属性指定视频或音频数据">
-<meta name="keywords" content="读书笔记,前端开发,HTML5">
+    <meta name="description" content="本文介绍HTML5中新增的两个元素——video元素与audio元素，它们分别用来处理视频数据和音频数据。需要说明的是，本文中的“媒体”一词是对音频和视频的总称。">
+<meta name="keywords" content="Audio,Video">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Audio &amp;&amp; Video | 张啸">
 <meta property="og:url" content="http://www.xiaoleon.cn/2018/01/21/html5-7/index.html">
 <meta property="og:site_name" content="张啸">
-<meta property="og:description" content="一、元素属性audio元素与video元素所具有的属性大致相同，所以我们看看这两个元素都具有哪些属性 1. src在该属性中指定媒体数据的URL地址 2. autoplay在该属性中指定媒体是否在页面加载后自动播放。该属性的使用方法如下所示： 1&amp;lt;video src=&quot;sample.mov&quot; autoplay&amp;gt;&amp;lt;/video&amp;gt; 3. preload该属性指定视频或音频数据">
+<meta property="og:description" content="本文介绍HTML5中新增的两个元素——video元素与audio元素，它们分别用来处理视频数据和音频数据。需要说明的是，本文中的“媒体”一词是对音频和视频的总称。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-01-21T14:27:33.607Z">
+<meta property="og:updated_time" content="2018-01-27T01:18:27.828Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Audio &amp;&amp; Video | 张啸">
-<meta name="twitter:description" content="一、元素属性audio元素与video元素所具有的属性大致相同，所以我们看看这两个元素都具有哪些属性 1. src在该属性中指定媒体数据的URL地址 2. autoplay在该属性中指定媒体是否在页面加载后自动播放。该属性的使用方法如下所示： 1&amp;lt;video src=&quot;sample.mov&quot; autoplay&amp;gt;&amp;lt;/video&amp;gt; 3. preload该属性指定视频或音频数据">
+<meta name="twitter:description" content="本文介绍HTML5中新增的两个元素——video元素与audio元素，它们分别用来处理视频数据和音频数据。需要说明的是，本文中的“媒体”一词是对音频和视频的总称。">
     
     
     
@@ -117,11 +117,16 @@
       <span class="post-meta__tags tags">
 
           
+            &#8226; 分类:
+            <font class="categories">
+              <a class="categories-link" href="/categories/HTML5抄书笔记/">HTML5抄书笔记</a>
+            </font>
+          
 
           
             &#8226; 标签:
             <font class="tags">
-              <a class="tags-link" href="/tags/HTML5/">HTML5</a>, <a class="tags-link" href="/tags/前端开发/">前端开发</a>, <a class="tags-link" href="/tags/读书笔记/">读书笔记</a>
+              <a class="tags-link" href="/tags/Audio/">Audio</a>, <a class="tags-link" href="/tags/Video/">Video</a>
             </font>
           
       </span>
@@ -132,7 +137,8 @@
   </header>
 
   <section id="post-content" class="article-content post">
-    <a id="more"></a>
+    <p>本文介绍HTML5中新增的两个元素——<code>video</code>元素与<code>audio</code>元素，它们分别用来处理视频数据和音频数据。需要说明的是，本文中的“媒体”一词是对音频和视频的总称。</p>
+<a id="more"></a>
 <h3 id="一、元素属性"><a href="#一、元素属性" class="headerlink" title="一、元素属性"></a>一、元素属性</h3><p><code>audio</code>元素与<code>video</code>元素所具有的属性大致相同，所以我们看看这两个元素都具有哪些属性</p>
 <h4 id="1-src"><a href="#1-src" class="headerlink" title="1. src"></a>1. src</h4><p>在该属性中指定媒体数据的URL地址</p>
 <h4 id="2-autoplay"><a href="#2-autoplay" class="headerlink" title="2. autoplay"></a>2. autoplay</h4><p>在该属性中指定媒体是否在页面加载后自动播放。该属性的使用方法如下所示：</p>
@@ -148,7 +154,7 @@
 </li>
 </ul>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">video</span> <span class="attr">src</span>=<span class="string">"sample.mov"</span> <span class="attr">preload</span>=<span class="string">"auto"</span>&gt;</span><span class="tag">&lt;/<span class="name">video</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h4 id="4-poster-（video元素独有属性）"><a href="#4-poster-（video元素独有属性）" class="headerlink" title="4. poster （video元素独有属性）"></a>4. poster （video元素独有属性）</h4><p>当视频不可用时，可以使用该元素向用户展示一副替代用的图片。当视频不可用时，最好使用该属性，以免展示视频的区域内出现一片空白。</p>
+<h4 id="4-poster（video元素独有属性）"><a href="#4-poster（video元素独有属性）" class="headerlink" title="4. poster（video元素独有属性）"></a>4. poster（video元素独有属性）</h4><p>当视频不可用时，可以使用该元素向用户展示一副替代用的图片。当视频不可用时，最好使用该属性，以免展示视频的区域内出现一片空白。</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">video</span> <span class="attr">src</span>=<span class="string">"sample.mov"</span> <span class="attr">poster</span>=<span class="string">"cannotuse.jpg"</span>&gt;</span><span class="tag">&lt;/<span class="name">video</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <h4 id="5-loop"><a href="#5-loop" class="headerlink" title="5. loop"></a>5. loop</h4><p>在该属性中指定是否循环播放视频或音频</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">video</span> <span class="attr">src</span>=<span class="string">"sample.mov"</span> <span class="attr">autoplay</span> <span class="attr">loop</span>&gt;</span><span class="tag">&lt;/<span class="name">video</span>&gt;</span></span><br></pre></td></tr></table></figure>
@@ -234,95 +240,99 @@
 </thead>
 <tbody>
 <tr>
-<td>loadstart</td>
+<td><code>loadstart</code></td>
 <td>浏览器开始在网上寻找媒体数据</td>
 </tr>
 <tr>
-<td>progress</td>
+<td><code>progress</code></td>
 <td>浏览器正在获取媒体数据</td>
 </tr>
 <tr>
-<td>suspend</td>
+<td><code>suspend</code></td>
 <td>浏览器暂停获取媒体数据，但是下载过程并没有正常结束</td>
 </tr>
 <tr>
-<td>abort</td>
+<td><code>abort</code></td>
 <td>浏览器在下载完全部媒体数据之前中止获取媒体数据，但是并不是由错误引起的</td>
 </tr>
 <tr>
-<td>error</td>
+<td><code>error</code></td>
 <td>获取媒体数据过程中出错</td>
 </tr>
 <tr>
-<td>emptied</td>
-<td>video元素或audio元素所在的网络突然变为未初始化状态（可能原因：1. 载入媒体过程中突然发生一个致命错误；2. 在浏览器正在选择支持的播放格式时，又调用了load方法重新载入媒体）</td>
+<td><code>emptied</code></td>
+<td>video元素或audio元素所在的网络突然变为未初始化状态（可能原因：1. 载入媒体过程中突然发生一个致命错误；2. 在浏览器正在选择支持的播放格式时，又调用了<code>load</code>方法重新载入媒体）</td>
 </tr>
 <tr>
-<td>stalled</td>
+<td><code>stalled</code></td>
 <td>浏览器尝试获取媒体数据失败</td>
 </tr>
 <tr>
-<td>play</td>
-<td>即将开始播放，当执行了play方法时触发，或数据下载后元素被设为autoplay属性</td>
+<td><code>play</code></td>
+<td>即将开始播放，当执行了<code>play</code>方法时触发，或数据下载后元素被设为<code>autoplay</code>属性</td>
 </tr>
 <tr>
-<td>pause</td>
-<td>播放暂停，当执行了pause方法时触发</td>
+<td><code>pause</code></td>
+<td>播放暂停，当执行了<code>pause</code>方法时触发</td>
 </tr>
 <tr>
-<td>loadedmetadata</td>
+<td><code>loadedmetadata</code></td>
 <td>浏览器获取完毕媒体的时间长和字节数</td>
 </tr>
 <tr>
-<td>loadeddata</td>
+<td><code>loadeddata</code></td>
 <td>浏览器已加载完毕当前播放位置的媒体数据，准备播放</td>
 </tr>
 <tr>
-<td>waiting</td>
+<td><code>waiting</code></td>
 <td>播放过程由于得不到下一帧而暂停播放（例如下一帧尚未加载完毕），但很快就能够得到下一帧</td>
 </tr>
 <tr>
-<td>playing</td>
+<td><code>playing</code></td>
 <td>正在播放</td>
 </tr>
 <tr>
-<td>canplay</td>
+<td><code>canplay</code></td>
 <td>浏览器能够播放媒体，但估计以当前播放速率不能直接将媒体播放完毕，播放期间需要缓冲</td>
 </tr>
 <tr>
-<td>canplaythrough</td>
+<td><code>canplaythrough</code></td>
 <td>浏览器能够播放媒体，而且以当前播放速率能够将媒体播放完毕，不再需要进行缓冲</td>
 </tr>
 <tr>
-<td>seeking</td>
-<td>seeking属性变为true，浏览器正在请求数据</td>
+<td><code>seeking</code></td>
+<td><code>seeking</code>属性变为true，浏览器正在请求数据</td>
 </tr>
 <tr>
-<td>seeked</td>
-<td>seeking属性变为false，浏览器停止请求数据</td>
+<td><code>seeked</code></td>
+<td><code>seeking</code>属性变为false，浏览器停止请求数据</td>
 </tr>
 <tr>
-<td>timeupdate</td>
+<td><code>timeupdate</code></td>
 <td>当前播放位置被改变，可能是播放过程中的自然改变，也可能使被认为的改变，或由于播放不能连续而发生的跳变</td>
 </tr>
 <tr>
-<td>ended</td>
+<td><code>ended</code></td>
 <td>播放结束后停止播放</td>
 </tr>
 <tr>
-<td>ratechange</td>
-<td>defaultplaybackRate属性或playbackRate属性被改变</td>
+<td><code>ratechange</code></td>
+<td><code>defaultplaybackRate</code>属性或<code>playbackRate</code>属性被改变</td>
 </tr>
 <tr>
-<td>durationchange</td>
+<td><code>durationchange</code></td>
 <td>播放时长被改变</td>
 </tr>
 <tr>
-<td>volumnchange</td>
-<td>volumn属性被改变或muted属性被改变</td>
+<td><code>volumnchange</code></td>
+<td><code>volumn</code>属性被改变或<code>muted</code>属性被改变</td>
 </tr>
 </tbody>
 </table>
+<hr>
+<h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><ol>
+<li><a href="">《HTML5与CSS3权威指南》</a></li>
+</ol>
 
   </section>
 

@@ -16,14 +16,14 @@
     
     
     <meta name="description" content="在css3的众多模块中，有一个与各种媒体相关的重要模块——Media Queries，该模块中允许添加媒体查询表达式，用以指定媒体类型，然后根据媒体类型来选择应该使用的样式。换句话说，允许我们在不改变内容的情况下在样式中选择一种页面的布局以精确地适应不同的设备，从而改善用户体验。">
-<meta name="keywords" content="读书笔记,前端开发,CSS3">
+<meta name="keywords" content="响应式布局,媒体查询">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Media Queries相关样式 | 张啸">
 <meta property="og:url" content="http://www.xiaoleon.cn/2018/01/22/css3-9/index.html">
 <meta property="og:site_name" content="张啸">
 <meta property="og:description" content="在css3的众多模块中，有一个与各种媒体相关的重要模块——Media Queries，该模块中允许添加媒体查询表达式，用以指定媒体类型，然后根据媒体类型来选择应该使用的样式。换句话说，允许我们在不改变内容的情况下在样式中选择一种页面的布局以精确地适应不同的设备，从而改善用户体验。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-01-22T14:04:25.318Z">
+<meta property="og:updated_time" content="2018-01-27T03:46:32.243Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Media Queries相关样式 | 张啸">
 <meta name="twitter:description" content="在css3的众多模块中，有一个与各种媒体相关的重要模块——Media Queries，该模块中允许添加媒体查询表达式，用以指定媒体类型，然后根据媒体类型来选择应该使用的样式。换句话说，允许我们在不改变内容的情况下在样式中选择一种页面的布局以精确地适应不同的设备，从而改善用户体验。">
@@ -117,11 +117,16 @@
       <span class="post-meta__tags tags">
 
           
+            &#8226; 分类:
+            <font class="categories">
+              <a class="categories-link" href="/categories/CSS3抄书笔记/">CSS3抄书笔记</a>
+            </font>
+          
 
           
             &#8226; 标签:
             <font class="tags">
-              <a class="tags-link" href="/tags/CSS3/">CSS3</a>, <a class="tags-link" href="/tags/前端开发/">前端开发</a>, <a class="tags-link" href="/tags/读书笔记/">读书笔记</a>
+              <a class="tags-link" href="/tags/响应式布局/">响应式布局</a>, <a class="tags-link" href="/tags/媒体查询/">媒体查询</a>
             </font>
           
       </span>
@@ -290,6 +295,11 @@
 <p>对于支持<code>Media Queries</code>的设备来说，将能够正确地应用央视，就仿佛<code>only</code>不存在一样；对于不支持<code>Media Queries</code>但能够读取<code>Media Type</code>的设备来说，由于先读取到<code>only</code>而不是<code>screen</code>，将忽略这个样式；对于不支持<code>Media Queries</code>的浏览器，无论是否有<code>only</code>，都将忽略这个样式。</p>
 <p>css3中的<code>Media Queries</code>模块中也支持对外部样式表的引用，使用如下</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">import</span> url(color.css) screen and (min-width: <span class="number">1000px</span>);</span><br><span class="line"></span><br><span class="line">&lt;link rel="stylesheet" type="text/css" media="screen and (min-width: 1000px)" href="style.css"&gt;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><ol>
+<li><a href="">《HTML5与CSS3权威指南》</a></li>
+</ol>
+
   </section>
 
 

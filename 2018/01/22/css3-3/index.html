@@ -16,14 +16,14 @@
     
     
     <meta name="description" content="本章针对css3中与文字、字体相关的一些属性做详细介绍，其中包括text-shadow属性、word-break属性、word-wrap属性、Web Font和@font-face属性，以及font-size-adjust属性。">
-<meta name="keywords" content="读书笔记,前端开发,CSS3">
+<meta name="keywords" content="文字样式,服务器端字体">
 <meta property="og:type" content="article">
 <meta property="og:title" content="文字与字体相关样式 | 张啸">
 <meta property="og:url" content="http://www.xiaoleon.cn/2018/01/22/css3-3/index.html">
 <meta property="og:site_name" content="张啸">
 <meta property="og:description" content="本章针对css3中与文字、字体相关的一些属性做详细介绍，其中包括text-shadow属性、word-break属性、word-wrap属性、Web Font和@font-face属性，以及font-size-adjust属性。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-01-22T13:43:46.491Z">
+<meta property="og:updated_time" content="2018-01-27T03:21:34.279Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="文字与字体相关样式 | 张啸">
 <meta name="twitter:description" content="本章针对css3中与文字、字体相关的一些属性做详细介绍，其中包括text-shadow属性、word-break属性、word-wrap属性、Web Font和@font-face属性，以及font-size-adjust属性。">
@@ -117,11 +117,16 @@
       <span class="post-meta__tags tags">
 
           
+            &#8226; 分类:
+            <font class="categories">
+              <a class="categories-link" href="/categories/CSS3抄书笔记/">CSS3抄书笔记</a>
+            </font>
+          
 
           
             &#8226; 标签:
             <font class="tags">
-              <a class="tags-link" href="/tags/CSS3/">CSS3</a>, <a class="tags-link" href="/tags/前端开发/">前端开发</a>, <a class="tags-link" href="/tags/读书笔记/">读书笔记</a>
+              <a class="tags-link" href="/tags/文字样式/">文字样式</a>, <a class="tags-link" href="/tags/服务器端字体/">服务器端字体</a>
             </font>
           
       </span>
@@ -134,10 +139,11 @@
   <section id="post-content" class="article-content post">
     <p>本章针对css3中与文字、字体相关的一些属性做详细介绍，其中包括<code>text-shadow</code>属性、<code>word-break</code>属性、<code>word-wrap</code>属性、<code>Web Font</code>和<code>@font-face</code>属性，以及<code>font-size-adjust</code>属性。</p>
 <a id="more"></a>
-<h3 id="一、给文字添加阴影"><a href="#一、给文字添加阴影" class="headerlink" title="一、给文字添加阴影"></a>一、给文字添加阴影</h3><p><code>text-shadow</code>属性用于给页面上的文字添加阴影效果</p>
+<h3 id="一、文字添加阴影"><a href="#一、文字添加阴影" class="headerlink" title="一、文字添加阴影"></a>一、文字添加阴影</h3><p><code>text-shadow</code>属性用于给页面上的文字添加阴影效果</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">text-shadow</span>: <span class="selector-tag">length</span> <span class="selector-tag">length</span> <span class="selector-tag">length</span> <span class="selector-tag">color</span></span><br></pre></td></tr></table></figure>
 <p>其中，前三个<code>length</code>分别指阴影离开文字的 <strong>横方向距离</strong>、<strong>纵方向距离</strong>、<strong>模糊半径</strong>，color指阴影的 <strong>颜色</strong>。</p>
-<h4 id="1-指定多个阴影"><a href="#1-指定多个阴影" class="headerlink" title="1. 指定多个阴影"></a>1. 指定多个阴影</h4><p>可以使用<code>text-shadow</code>属性给文字指定多个阴影，并且针对每个阴影使用不同颜色，指定多个阴影时使用逗号将多个阴影进行分隔。</p>
+<p><strong>指定多个阴影</strong></p>
+<p>可以使用<code>text-shadow</code>属性给文字指定多个阴影，并且针对每个阴影使用不同颜色，指定多个阴影时使用逗号将多个阴影进行分隔。</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">    <span class="attribute">text-shadow</span>: <span class="number">10px</span> <span class="number">10px</span> <span class="number">5px</span> <span class="number">#f39800</span>,</span><br><span class="line">                <span class="number">40px</span> <span class="number">35px</span> <span class="number">5px</span> <span class="number">#fff100</span>,</span><br><span class="line">                <span class="number">70px</span> <span class="number">60px</span> <span class="number">5px</span> <span class="number">#c0ff00</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <hr>
 <h3 id="二、文本自动换行"><a href="#二、文本自动换行" class="headerlink" title="二、文本自动换行"></a>二、文本自动换行</h3><p>在css3中，使用<code>word-break</code>属性来让文字自动换行</p>
@@ -167,7 +173,7 @@
 </tr>
 </tbody>
 </table>
-<h4 id="2-让长单词与URL地址自动换行"><a href="#2-让长单词与URL地址自动换行" class="headerlink" title="2. 让长单词与URL地址自动换行"></a>2. 让长单词与URL地址自动换行</h4><p>对于西方文字来说，浏览器在半角空格或连字符的地方进行换行。因此，浏览器不能给较长的单词自动换行。当浏览器窗口比较窄的时候，文字会超出浏览器的窗口，浏览器下部出现滚动条，让用户通过拖动滚动条的方法来查看没有在当前窗口显示的文字。</p>
+<h4 id="2-长单词与URL地址自动换行"><a href="#2-长单词与URL地址自动换行" class="headerlink" title="2. 长单词与URL地址自动换行"></a>2. 长单词与URL地址自动换行</h4><p>对于西方文字来说，浏览器在半角空格或连字符的地方进行换行。因此，浏览器不能给较长的单词自动换行。当浏览器窗口比较窄的时候，文字会超出浏览器的窗口，浏览器下部出现滚动条，让用户通过拖动滚动条的方法来查看没有在当前窗口显示的文字。</p>
 <p>在css3中，使用<code>word-wrap</code>属性来实现长单词与url地址的自动换行</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">    <span class="attribute">word-wrap</span>: break-word;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><code>word-wrap</code>属性可以使用的属性值为<code>normal</code>与<code>break-word</code>两个。使用<code>normal</code>属性值时浏览器保持默认处理，只在半角空格或连字符的地方进行换行。使用<code>break-word</code>时浏览器可以在长单词或url地址内部进行换行。</p>
@@ -188,7 +194,8 @@
 <p><code>font-size-adjust</code>属性的使用方法很简单，但是它需要使用每个字体种类自带的一个<code>aspect</code>值（比例值）。</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">16px</span>;</span><br><span class="line">    <span class="attribute">font-family</span>: Times New Roman;</span><br><span class="line">    <span class="attribute">font-size-adjust</span>: <span class="number">0.46</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><code>aspect</code>值可以用来在将字体修改为其他字体时保持字体大小基本不变，这个<code>aspect</code>值的计算方法为<code>x-height</code>值除以该字体的尺寸，<code>x-height</code>值是指使用这个字体书写出来的小写<code>x</code>的高度（像素为单位）。如果某个字体的尺寸为100px时，<code>x-height</code>值为58px，则该字体的<code>aspect</code>为0.58，因为字体的<code>x-height</code>值总是随着字体的尺寸一起改变的，所以字体的<code>aspect</code>值都是一个常数。</p>
-<h4 id="1-常用的西方字体aspect值"><a href="#1-常用的西方字体aspect值" class="headerlink" title="1. 常用的西方字体aspect值"></a>1. 常用的西方字体aspect值</h4><table>
+<p><strong>常用的西方字体aspect值</strong></p>
+<table>
 <thead>
 <tr>
 <th>字体种类</th>
@@ -242,6 +249,10 @@
 </tr>
 </tbody>
 </table>
+<hr>
+<h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><ol>
+<li><a href="">《HTML5与CSS3权威指南》</a></li>
+</ol>
 
   </section>
 

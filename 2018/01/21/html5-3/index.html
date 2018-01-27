@@ -15,17 +15,18 @@
       <meta name="author" content="Leon">
     
     
-    <meta name="description" content="一、HTML5中关于表单新增了以下属性。1. form属性在HTML4中，表单内的从属元素必须书写在表单内部，但是在HTML5中，可以把它们书写在页面上任何地方，然后给该元素指定一个form属性，属性值为该表单的id，这样就可以声明该元素从属于指定表单了。 1234&amp;lt;form id=&quot;testform&quot;&amp;gt;    &amp;lt;input type=&quot;text&quot;&amp;gt;&amp;lt;/form&amp;g">
+    <meta name="description" content="在创建Web应用程序的时候，免不了会用到大量的表单元素。在HTML5标准中，吸纳了Web Forms 2.0的标准，大幅度强化了针对表单元素的功能，使得关于表单的开发更快、更方便。">
+<meta name="keywords" content="input类型,表单属性,表单验证">
 <meta property="og:type" content="article">
 <meta property="og:title" content="表单 | 张啸">
 <meta property="og:url" content="http://www.xiaoleon.cn/2018/01/21/html5-3/index.html">
 <meta property="og:site_name" content="张啸">
-<meta property="og:description" content="一、HTML5中关于表单新增了以下属性。1. form属性在HTML4中，表单内的从属元素必须书写在表单内部，但是在HTML5中，可以把它们书写在页面上任何地方，然后给该元素指定一个form属性，属性值为该表单的id，这样就可以声明该元素从属于指定表单了。 1234&amp;lt;form id=&quot;testform&quot;&amp;gt;    &amp;lt;input type=&quot;text&quot;&amp;gt;&amp;lt;/form&amp;g">
+<meta property="og:description" content="在创建Web应用程序的时候，免不了会用到大量的表单元素。在HTML5标准中，吸纳了Web Forms 2.0的标准，大幅度强化了针对表单元素的功能，使得关于表单的开发更快、更方便。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-01-26T15:19:38.932Z">
+<meta property="og:updated_time" content="2018-01-27T00:51:14.002Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="表单 | 张啸">
-<meta name="twitter:description" content="一、HTML5中关于表单新增了以下属性。1. form属性在HTML4中，表单内的从属元素必须书写在表单内部，但是在HTML5中，可以把它们书写在页面上任何地方，然后给该元素指定一个form属性，属性值为该表单的id，这样就可以声明该元素从属于指定表单了。 1234&amp;lt;form id=&quot;testform&quot;&amp;gt;    &amp;lt;input type=&quot;text&quot;&amp;gt;&amp;lt;/form&amp;g">
+<meta name="twitter:description" content="在创建Web应用程序的时候，免不了会用到大量的表单元素。在HTML5标准中，吸纳了Web Forms 2.0的标准，大幅度强化了针对表单元素的功能，使得关于表单的开发更快、更方便。">
     
     
     
@@ -118,10 +119,15 @@
           
             &#8226; 分类:
             <font class="categories">
-              <a class="categories-link" href="/categories/HTML5/">HTML5</a>, <a class="categories-link" href="/categories/HTML5/抄书笔记/">抄书笔记</a>
+              <a class="categories-link" href="/categories/HTML5抄书笔记/">HTML5抄书笔记</a>
             </font>
           
 
+          
+            &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/input类型/">input类型</a>, <a class="tags-link" href="/tags/表单属性/">表单属性</a>, <a class="tags-link" href="/tags/表单验证/">表单验证</a>
+            </font>
           
       </span>
     </div>
@@ -131,41 +137,51 @@
   </header>
 
   <section id="post-content" class="article-content post">
-    <a id="more"></a>
-<h3 id="一、HTML5中关于表单新增了以下属性。"><a href="#一、HTML5中关于表单新增了以下属性。" class="headerlink" title="一、HTML5中关于表单新增了以下属性。"></a>一、HTML5中关于表单新增了以下属性。</h3><h4 id="1-form属性"><a href="#1-form属性" class="headerlink" title="1. form属性"></a>1. form属性</h4><p>在HTML4中，表单内的从属元素必须书写在表单内部，但是在HTML5中，可以把它们书写在页面上任何地方，然后给该元素指定一个form属性，属性值为该表单的id，这样就可以声明该元素从属于指定表单了。</p>
+    <p>在创建Web应用程序的时候，免不了会用到大量的表单元素。在HTML5标准中，吸纳了Web Forms 2.0的标准，大幅度强化了针对表单元素的功能，使得关于表单的开发更快、更方便。</p>
+<a id="more"></a>
+<h3 id="一、新增元素与属性"><a href="#一、新增元素与属性" class="headerlink" title="一、新增元素与属性"></a>一、新增元素与属性</h3><h4 id="1-form属性"><a href="#1-form属性" class="headerlink" title="1. form属性"></a>1. form属性</h4><p>在HTML4中，表单内的从属元素必须书写在表单内部，但是在HTML5中，可以把它们书写在页面上任何地方，然后给该元素指定一个form属性，属性值为该表单的id，这样就可以声明该元素从属于指定表单了。</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">id</span>=<span class="string">"testform"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">textarea</span> <span class="attr">form</span>=<span class="string">"testform"</span>&gt;</span><span class="tag">&lt;/<span class="name">textarea</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h4 id="2-formaction属性"><a href="#2-formaction属性" class="headerlink" title="2. formaction属性"></a>2. formaction属性</h4><p>在HTML4中，一个表单内的所有元素都只能通过表单的action属性统一提交到另一个页面，而在HTML5中可以给所有的提交按钮，诸如<code>&lt;input type=&quot;submit&quot;&gt;</code>、<code>&lt;input type=&quot;image&quot;&gt;</code>、<code>&lt;button type=&quot;submit&quot;&gt;</code>都增加不同的formaction属性，可以将表单提交到不同的页面。</p>
+<h4 id="2-formaction属性"><a href="#2-formaction属性" class="headerlink" title="2. formaction属性"></a>2. formaction属性</h4><p>在HTML4中，一个表单内的所有元素都只能通过表单的<code>action</code>属性统一提交到另一个页面，而在HTML5中可以给所有的提交按钮，诸如<code>&lt;input type=&quot;submit&quot;&gt;</code>、<code>&lt;input type=&quot;image&quot;&gt;</code>、<code>&lt;button type=&quot;submit&quot;&gt;</code>都增加不同的<code>formaction</code>属性，可以将表单提交到不同的页面。</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">id</span>=<span class="string">"testform"</span> <span class="attr">action</span>=<span class="string">"serve.php"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">name</span>=<span class="string">"s1"</span> <span class="attr">value</span>=<span class="string">"v1"</span> <span class="attr">formaction</span>=<span class="string">"s1.php"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">name</span>=<span class="string">"s2"</span> <span class="attr">value</span>=<span class="string">"v2"</span> <span class="attr">formaction</span>=<span class="string">"s2.php"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">name</span>=<span class="string">"s3"</span> <span class="attr">value</span>=<span class="string">"v3"</span> <span class="attr">formaction</span>=<span class="string">"s3.php"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h4 id="3-formmethod属性"><a href="#3-formmethod属性" class="headerlink" title="3. formmethod属性"></a>3. formmethod属性</h4><p>在HTML4中，一个表单内只有一个action属性来对表单内的所有元素统一指定提交页面，所以每个表单内也只有一个method属性来统一指定提交方法。在HTML5中，可以使用formaction属性来对每个表单元素分别指定不同的提交页面，同时也可以使用formmethod属性来对每个表单元素分别指定不同的提交方法。</p>
+<h4 id="3-formmethod属性"><a href="#3-formmethod属性" class="headerlink" title="3. formmethod属性"></a>3. formmethod属性</h4><p>在HTML4中，一个表单内只有一个<code>action</code>属性来对表单内的所有元素统一指定提交页面，所以每个表单内也只有一个<code>method</code>属性来统一指定提交方法。在HTML5中，可以使用<code>formaction</code>属性来对每个表单元素分别指定不同的提交页面，同时也可以使用<code>formmethod</code>属性来对每个表单元素分别指定不同的提交方法。</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">id</span>=<span class="string">"testform"</span> <span class="attr">action</span>=<span class="string">"serve.php"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">name</span>=<span class="string">"s1"</span> <span class="attr">value</span>=<span class="string">"v1"</span> <span class="attr">formaction</span>=<span class="string">"s1.php"</span> <span class="attr">formmethod</span>=<span class="string">"post"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">name</span>=<span class="string">"s2"</span> <span class="attr">value</span>=<span class="string">"v2"</span> <span class="attr">formaction</span>=<span class="string">"s2.php"</span> <span class="attr">formmethod</span>=<span class="string">"get"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">name</span>=<span class="string">"s3"</span> <span class="attr">value</span>=<span class="string">"v3"</span> <span class="attr">formaction</span>=<span class="string">"s3.php"</span> <span class="attr">formmethod</span>=<span class="string">"delete"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h4 id="4-placeholder属性"><a href="#4-placeholder属性" class="headerlink" title="4. placeholder属性"></a>4. placeholder属性</h4><p>placeholder是指当文本框处于未输入状态时文本框中显示的输入提示。</p>
+<h4 id="4-placeholder属性"><a href="#4-placeholder属性" class="headerlink" title="4. placeholder属性"></a>4. placeholder属性</h4><p><code>placeholder</code>是指当文本框处于未输入状态时文本框中显示的输入提示。</p>
 <h4 id="5-autofocus属性"><a href="#5-autofocus属性" class="headerlink" title="5. autofocus属性"></a>5. autofocus属性</h4><p>给文本框、选择框或按钮控件加上该属性，当画面打开时，该控件自动获取光标焦点。</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">autofocus</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h4 id="6-list属性"><a href="#6-list属性" class="headerlink" title="6. list属性"></a>6. list属性</h4><p>在HTML5中，为单行文本框（<code>&lt;input type=&quot;text&quot;&gt;</code>）增加了一个list属性，该属性的值为某个datalist元素的id。datalist元素也是HTML5中新增元素，该元素类似于选择框，但是当用户想要设定的值不在选择列表之内时，允许其自行输入。</p>
+<h4 id="6-list属性"><a href="#6-list属性" class="headerlink" title="6. list属性"></a>6. list属性</h4><p>在HTML5中，为单行文本框（<code>&lt;input type=&quot;text&quot;&gt;</code>）增加了一个<code>list</code>属性，该属性的值为某个<code>datalist</code>元素的<code>id</code>。<code>datalist</code>元素也是HTML5中新增元素，该元素类似于选择框，但是当用户想要设定的值不在选择列表之内时，允许其自行输入。</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"greeting"</span> <span class="attr">list</span>=<span class="string">"greetings"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">datalist</span> <span class="attr">id</span>=<span class="string">"display:none"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"Good Morning"</span>&gt;</span>Good Morning<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"Hello"</span>&gt;</span>Hello<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"Good Afternoon"</span>&gt;</span>Good Afternoon<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">datalist</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="7-autocomplete属性"><a href="#7-autocomplete属性" class="headerlink" title="7. autocomplete属性"></a>7. autocomplete属性</h4><p>辅助输入所用的自动完成功能，是一个节省输入时间，同时也十分方便的功能。在HTML5之前，因为谁都可以看见输入的值，所以存在安全隐患，但只要使用<code>autocomplete</code>属性，安全性就可以得到很好的控制。</p>
+<p>对于<code>autocomplete</code>属性，可以指定“<code>on</code>”、“<code>off</code>”与“”这三种值。不指定时，使用浏览器的默认值。设定为“<code>on</code>”时，可以显式指定候补输入的数据列表。使用<code>datalist</code>元素与<code>list</code>属性提供候补输入的数据列表，自动完成时，可以将该<code>datalist</code>元素中的数据作为候补输入的数据在文本框中自动显示。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">text</span> <span class="attr">name</span>=<span class="string">greeting</span> <span class="attr">autocomplete</span>=<span class="string">on</span> <span class="attr">list</span>=<span class="string">greetings</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <hr>
-<h3 id="二、input新增种类"><a href="#二、input新增种类" class="headerlink" title="二、input新增种类"></a>二、input新增种类</h3><h4 id="1-search"><a href="#1-search" class="headerlink" title="1. search"></a>1. search</h4><p>与text文本框类似，但是它用于搜索</p>
+<h3 id="二、input新增种类"><a href="#二、input新增种类" class="headerlink" title="二、input新增种类"></a>二、input新增种类</h3><p>在HTML5中，大幅度地增加与改良了<code>input</code>元素的种类，可以简单地使用这些元素来实现HTML5之前需要使用JavaScript才能实现的许多功能。</p>
+<h4 id="1-search"><a href="#1-search" class="headerlink" title="1. search"></a>1. search</h4><p>与text文本框类似，但是它用于搜索，比如站点搜索或Google搜索</p>
 <h4 id="2-tel"><a href="#2-tel" class="headerlink" title="2. tel"></a>2. tel</h4><p>与text文本框类似，但是专用于电话</p>
 <h4 id="3-url"><a href="#3-url" class="headerlink" title="3. url"></a>3. url</h4><p>与text文本框类似，但是要求用户必须在其中正确输入url格式的文字</p>
 <h4 id="4-email"><a href="#4-email" class="headerlink" title="4. email"></a>4. email</h4><p>与text文本框类似，但是要求用户必须在其中正确输入email格式的文字</p>
 <h4 id="5-datetime、date、month、week、time、datetime-local"><a href="#5-datetime、date、month、week、time、datetime-local" class="headerlink" title="5. datetime、date、month、week、time、datetime-local"></a>5. datetime、date、month、week、time、datetime-local</h4><p>各种日期与时间输入文本框</p>
 <h4 id="6-number"><a href="#6-number" class="headerlink" title="6. number"></a>6. number</h4><p>数值输入文本框。外观与text文本框相同，但不能输入数值以外的文字</p>
-<h4 id="7-range"><a href="#7-range" class="headerlink" title="7. range"></a>7. range</h4><p>只允许输入一段范围内数值的文本框。</p>
-<h4 id="8-color"><a href="#8-color" class="headerlink" title="8. color"></a>8. color</h4><p>颜色选择文本框，选择的值为“#000000”格式的文字。</p>
+<h4 id="7-range"><a href="#7-range" class="headerlink" title="7. range"></a>7. range</h4><p>只允许输入一段范围内数值的文本框。具有<code>min</code>属性和<code>max</code>属性，可以设定最小值与最大值（默认为0与100）</p>
+<h4 id="8-color"><a href="#8-color" class="headerlink" title="8. color"></a>8. color</h4><p>颜色选择文本框，选择的值为<code>“#000000”</code>格式的文字</p>
+<h4 id="9-file"><a href="#9-file" class="headerlink" title="9. file"></a>9. file</h4><p>文件选择文本框。与HTML4最大的不同是，可以通过指定<code>multiple</code>属性，一次选择多个文件。<code>value</code>属性的值为用逗号分割的一个或多个文件名。同时，通过把<code>MIME</code>类型指定给<code>accept</code>属性，可以限制选择文件的种类</p>
 <hr>
-<h3 id="三、表单验证"><a href="#三、表单验证" class="headerlink" title="三、表单验证"></a>三、表单验证</h3><h4 id="1-required属性"><a href="#1-required属性" class="headerlink" title="1. required属性"></a>1. required属性</h4><p>HTML5中新增的required属性可以应用在大多数输入元素上，在提交时，如果元素中内容为空白，则不允许提交。</p>
-<h4 id="2-pattern属性"><a href="#2-pattern属性" class="headerlink" title="2. pattern属性"></a>2. pattern属性</h4><p>对input元素使用pattern属性，并且将属性值设为某个格式的正则表达式，在提交时会检查其内容是否符合给定格式。</p>
-<h4 id="3-min和max属性"><a href="#3-min和max属性" class="headerlink" title="3. min和max属性"></a>3. min和max属性</h4><p>min、max属性是数值类型或日期类型的input元素的专用属性，它们限制了在input元素中输入的数值与日期的范围。</p>
-<h4 id="4-step属性"><a href="#4-step属性" class="headerlink" title="4. step属性"></a>4. step属性</h4><p>step属性控制input元素中的值增加或减少时的步幅。</p>
+<h3 id="三、表单验证"><a href="#三、表单验证" class="headerlink" title="三、表单验证"></a>三、表单验证</h3><h4 id="1-required属性"><a href="#1-required属性" class="headerlink" title="1. required属性"></a>1. required属性</h4><p>HTML5中新增的<code>required</code>属性可以应用在大多数输入元素上，在提交时，如果元素中内容为空白，则不允许提交。</p>
+<h4 id="2-pattern属性"><a href="#2-pattern属性" class="headerlink" title="2. pattern属性"></a>2. pattern属性</h4><p>对<code>input</code>元素使用<code>pattern</code>属性，并且将属性值设为某个格式的正则表达式，在提交时会检查其内容是否符合给定格式。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">pattern</span>=<span class="string">"[0-9][A-Z]&#123;3&#125;"</span> <span class="attr">name</span>=<span class="string">part</span> <span class="attr">placeholder</span>=<span class="string">"输入内容：一个数字与三个大写字母"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="3-min和max属性"><a href="#3-min和max属性" class="headerlink" title="3. min和max属性"></a>3. min和max属性</h4><p><code>min</code>、<code>max</code>属性是数值类型或日期类型的<code>input</code>元素的专用属性，它们限制了在<code>input</code>元素中输入的数值与日期的范围。</p>
+<h4 id="4-step属性"><a href="#4-step属性" class="headerlink" title="4. step属性"></a>4. step属性</h4><p><code>step</code>属性控制<code>input</code>元素中的值增加或减少时的步幅。</p>
 <hr>
-<h3 id="四、显式验证"><a href="#四、显式验证" class="headerlink" title="四、显式验证"></a>四、显式验证</h3><p>除了input元素添加属性进行元素内容有效性的自动验证外，在HTML5中，form元素与input元素都具有一个<code>checkValidity</code>方法。调用该方法，可以显式地对表单内所有元素内容或单个内容进行有效性验证。</p>
-<p>form元素与input元素还存在一个validity属性，该属性反悔了一个ValidityState对象。该对象具有很多属性，但最简单、最重要的属性为valid属性，表示了表单内所有元素内容是否有效或者单个input元素内容是否有效。</p>
+<h3 id="四、显式验证"><a href="#四、显式验证" class="headerlink" title="四、显式验证"></a>四、显式验证</h3><p>除了<code>input</code>元素添加属性进行元素内容有效性的自动验证外，在HTML5中，form元素与<code>input</code>元素都具有一个<code>checkValidity</code>方法。调用该方法，可以显式地对表单内所有元素内容或单个内容进行有效性验证。</p>
+<p>form元素与<code>input</code>元素还存在一个<code>validity</code>属性，该属性返回了一个<code>ValidityState</code>对象。该对象具有很多属性，但最简单、最重要的属性为<code>valid</code>属性，表示了表单内所有元素内容是否有效或者单个<code>input</code>元素内容是否有效。</p>
 <hr>
 <h3 id="五、取消验证"><a href="#五、取消验证" class="headerlink" title="五、取消验证"></a>五、取消验证</h3><p>有两种方法取消表单验证：</p>
 <ol>
-<li>利用form元素的novalidate属性，它可以关闭整个表单验证。当整个表单的第二部分需要验证的内容比较多，但又想先提交表单的第一部分内容时，可以使用这种方法。先把该属性设为true，关闭表单验证，提交第一部分内容，然后在提交第二部分时再把它设为false，打开表单验证，提交第二部分内容。</li>
-<li>利用input元素或submit元素的formnovalidate属性，利用input元素的formnovalidate属性可以让表单验证对单个input元素失效。当表单的第二部分中需要验证的元素数量很少时，可以只利用这些元素的formnovalidate属性，让表单验证对这些元素失效。</li>
-<li>如果对submit按钮使用了formnovalidate属性，点击该按钮时，相当于利用了form元素的novalidate属性，整个表单验证都失效了。</li>
+<li><p>利用form元素的<code>novalidate</code>属性，它可以关闭整个表单验证。当整个表单的第二部分需要验证的内容比较多，但又想先提交表单的第一部分内容时，可以使用这种方法。先把该属性设为true，关闭表单验证，提交第一部分内容，然后在提交第二部分时再把它设为false，打开表单验证，提交第二部分内容。</p>
+</li>
+<li><p>利用<code>input</code>元素或<code>submit</code>元素的<code>formnovalidate</code>属性，利用<code>input</code>元素的<code>formnovalidate</code>属性可以让表单验证对单个<code>input</code>元素失效。当表单的第二部分中需要验证的元素数量很少时，可以只利用这些元素的<code>formnovalidate</code>属性，让表单验证对这些元素失效。</p>
+</li>
+<li><p>如果对<code>submit</code>按钮使用了<code>formnovalidate</code>属性，点击该按钮时，相当于利用了form元素的<code>novalidate</code>属性，整个表单验证都失效了。</p>
+</li>
 </ol>
 <hr>
 <h3 id="六、自定义错误信息"><a href="#六、自定义错误信息" class="headerlink" title="六、自定义错误信息"></a>六、自定义错误信息</h3><p>HTML5中，可以使用Javascript调用input元素的<code>setCustomValidity</code>方法来自定义错误信息。</p>

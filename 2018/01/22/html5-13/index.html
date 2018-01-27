@@ -16,14 +16,14 @@
     
     
     <meta name="description" content="在HTML5中，为window.navigator对象新增了一个geolocation属性，可以使用Geolocation API来对该属性进行访问。">
-<meta name="keywords" content="读书笔记,前端开发,HTML5">
+<meta name="keywords" content="Geolocation">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Geolocation | 张啸">
 <meta property="og:url" content="http://www.xiaoleon.cn/2018/01/22/html5-13/index.html">
 <meta property="og:site_name" content="张啸">
 <meta property="og:description" content="在HTML5中，为window.navigator对象新增了一个geolocation属性，可以使用Geolocation API来对该属性进行访问。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-01-22T13:28:37.409Z">
+<meta property="og:updated_time" content="2018-01-27T03:05:17.671Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Geolocation | 张啸">
 <meta name="twitter:description" content="在HTML5中，为window.navigator对象新增了一个geolocation属性，可以使用Geolocation API来对该属性进行访问。">
@@ -117,11 +117,16 @@
       <span class="post-meta__tags tags">
 
           
+            &#8226; 分类:
+            <font class="categories">
+              <a class="categories-link" href="/categories/HTML5抄书笔记/">HTML5抄书笔记</a>
+            </font>
+          
 
           
             &#8226; 标签:
             <font class="tags">
-              <a class="tags-link" href="/tags/HTML5/">HTML5</a>, <a class="tags-link" href="/tags/前端开发/">前端开发</a>, <a class="tags-link" href="/tags/读书笔记/">读书笔记</a>
+              <a class="tags-link" href="/tags/Geolocation/">Geolocation</a>
             </font>
           
       </span>
@@ -142,7 +147,7 @@
 <p><code>onSuccess</code>回调函数中，用到了一个参数<code>position</code>，它代表一个<code>position</code>对象，我们在后面对这个对象进行介绍</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">navigator.geolocation.getCurrentPosition(<span class="function"><span class="keyword">function</span>(<span class="params">position</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 获取成功时的处理</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <p><code>onError</code>回调函数中，用到了一个<code>error</code>对象，该对象具有以下两个属性：</p>
-<ol>
+<ul>
 <li><p><code>code</code>属性。<code>code</code>属性为以下三个值其中之一：</p>
 <ul>
 <li><p>用户拒绝了位置服务（数字值为1）</p>
@@ -154,23 +159,22 @@
 </ul>
 </li>
 <li><p><code>message</code>属性。</p>
-<p> <code>message</code>属性为一个字符串，在该字符串中包含了错误信息。</p>
+<p>  <code>message</code>属性为一个字符串，在该字符串中包含了错误信息。</p>
 </li>
-</ol>
+</ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">navigator.geolocation.getCurrentPosition(</span><br><span class="line">    <span class="function"><span class="keyword">function</span>(<span class="params">position</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> coords = position.coords;</span><br><span class="line">        showMap(coords.latitude, coords.longitude, coords.accuracy);</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="function"><span class="keyword">function</span>(<span class="params">error</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> errorTypes = &#123;</span><br><span class="line">            <span class="number">1</span>: <span class="string">'位置服务被拒绝'</span>,</span><br><span class="line">            <span class="number">2</span>: <span class="string">'获取不到位置信息'</span>,</span><br><span class="line">            <span class="number">3</span>: <span class="string">'获取信息超时'</span></span><br><span class="line">        &#125;;</span><br><span class="line">        alert(errorTypes[error.code] + <span class="string">': 不能确定你的当前地理位置'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
 <p><code>options</code>是一些可选属性的列表，包含如下：</p>
 <ul>
-<li>enableHighAccuracy</li>
+<li><p>enableHighAccuracy</p>
+<p>  是否要求高精度的地理位置信息，这个参数在很多设备上设置了都没用，因为使用在设备上时要结合设备电量、具体地理情况来综合考虑</p>
+</li>
+<li><p>timeout</p>
+<p>  对地理位置信息的获取操作做一个超时限制（单位为毫秒）。如果在改时间内未获取到地理位置信息，则返回错误</p>
+</li>
+<li><p>maximumAge</p>
+<p>  对地理位置信息进行缓存的有效时间（单位为毫秒）。如果该值指定为0，则无条件重新获取新的地理位置信息</p>
+</li>
 </ul>
-<p>是否要求高精度的地理位置信息，这个参数在很多设备上设置了都没用，因为使用在设备上时要结合设备电量、具体地理情况来综合考虑</p>
-<ul>
-<li>timeout</li>
-</ul>
-<p>对地理位置信息的获取操作做一个超时限制（单位为毫秒）。如果在改时间内未获取到地理位置信息，则返回错误</p>
-<ul>
-<li>maximumAge</li>
-</ul>
-<p>对地理位置信息进行缓存的有效时间（单位为毫秒）。如果该值指定为0，则无条件重新获取新的地理位置信息</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">navigator.geolocation.getCurrentPosition(</span><br><span class="line">    <span class="function"><span class="keyword">function</span>(<span class="params">position</span>) </span>&#123;&#125;,</span><br><span class="line">    <span class="function"><span class="keyword">function</span>(<span class="params">error</span>) </span>&#123;&#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        maximumAge: <span class="number">60</span> * <span class="number">1000</span> * <span class="number">2</span>,</span><br><span class="line">        timeout: <span class="number">5000</span></span><br><span class="line">    &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
 <hr>
 <h3 id="二、持续监视当前地理位置信息"><a href="#二、持续监视当前地理位置信息" class="headerlink" title="二、持续监视当前地理位置信息"></a>二、持续监视当前地理位置信息</h3><p>使用<code>watchPosition</code>方法来持续获取用户当前地理位置信息，它会定期地自动获取</p>
@@ -180,37 +184,35 @@
 <hr>
 <h3 id="三、position对象"><a href="#三、position对象" class="headerlink" title="三、position对象"></a>三、position对象</h3><p>通过访问<code>position</code>对象，可以得到地理位置信息</p>
 <ul>
-<li>latitude</li>
+<li><p>latitude</p>
+<p>  当前地理位置的纬度</p>
+</li>
+<li><p>longitude</p>
+<p>  当前地理位置的精度</p>
+</li>
+<li><p>altitude</p>
+<p>  当前位置的海拔高度</p>
+</li>
+<li><p>accuracy</p>
+<p>  获取到的纬度或经度的精度（单位为米）</p>
+</li>
+<li><p>altitudeAccurancy</p>
+<p>  获取到的海拔高度的精度（单位为米）</p>
+</li>
+<li><p>heading</p>
+<p>  设备的前进方向，以面朝正北方向的顺时针旋转角度来表示</p>
+</li>
+<li><p>speed</p>
+<p>  设备的前进速度（单位为米/秒）</p>
+</li>
+<li><p>timestamp</p>
+<p>  获取地理位置信息时的时间</p>
+</li>
 </ul>
-<p>当前地理位置的纬度</p>
-<ul>
-<li>longitude</li>
-</ul>
-<p>当前地理位置的精度</p>
-<ul>
-<li>altitude</li>
-</ul>
-<p>当前位置的海拔高度</p>
-<ul>
-<li>accuracy</li>
-</ul>
-<p>获取到的纬度或经度的精度（单位为米）</p>
-<ul>
-<li>altitudeAccurancy</li>
-</ul>
-<p>获取到的海拔高度的精度（单位为米）</p>
-<ul>
-<li>heading</li>
-</ul>
-<p>设备的前进方向，以面朝正北方向的顺时针旋转角度来表示</p>
-<ul>
-<li>speed</li>
-</ul>
-<p>设备的前进速度（单位为米/秒）</p>
-<ul>
-<li>timestamp</li>
-</ul>
-<p>获取地理位置信息时的时间</p>
+<hr>
+<h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><ol>
+<li><a href="">《HTML5与CSS3权威指南》</a></li>
+</ol>
 
   </section>
 

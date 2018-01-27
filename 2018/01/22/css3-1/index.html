@@ -15,18 +15,18 @@
       <meta name="author" content="Leon">
     
     
-    <meta name="description" content="选择器是CSS3中的一个重要内容，使用它可以大幅度提高开发人员书写或修改样式表时的工作效率。 通常我们会在元素上定义class属性，然后根据元素的class属性在css文件中定义相关的样式。使用class属性有两个缺点：">
-<meta name="keywords" content="读书笔记,前端开发,CSS3">
+    <meta name="description" content="选择器是CSS3中的一个重要内容，使用它可以大幅度提高开发人员书写或修改样式表时的工作效率。">
+<meta name="keywords" content="CSS选择器">
 <meta property="og:type" content="article">
 <meta property="og:title" content="选择器 | 张啸">
 <meta property="og:url" content="http://www.xiaoleon.cn/2018/01/22/css3-1/index.html">
 <meta property="og:site_name" content="张啸">
-<meta property="og:description" content="选择器是CSS3中的一个重要内容，使用它可以大幅度提高开发人员书写或修改样式表时的工作效率。 通常我们会在元素上定义class属性，然后根据元素的class属性在css文件中定义相关的样式。使用class属性有两个缺点：">
+<meta property="og:description" content="选择器是CSS3中的一个重要内容，使用它可以大幅度提高开发人员书写或修改样式表时的工作效率。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-01-23T14:20:52.429Z">
+<meta property="og:updated_time" content="2018-01-27T03:12:01.490Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="选择器 | 张啸">
-<meta name="twitter:description" content="选择器是CSS3中的一个重要内容，使用它可以大幅度提高开发人员书写或修改样式表时的工作效率。 通常我们会在元素上定义class属性，然后根据元素的class属性在css文件中定义相关的样式。使用class属性有两个缺点：">
+<meta name="twitter:description" content="选择器是CSS3中的一个重要内容，使用它可以大幅度提高开发人员书写或修改样式表时的工作效率。">
     
     
     
@@ -117,11 +117,16 @@
       <span class="post-meta__tags tags">
 
           
+            &#8226; 分类:
+            <font class="categories">
+              <a class="categories-link" href="/categories/CSS3抄书笔记/">CSS3抄书笔记</a>
+            </font>
+          
 
           
             &#8226; 标签:
             <font class="tags">
-              <a class="tags-link" href="/tags/CSS3/">CSS3</a>, <a class="tags-link" href="/tags/前端开发/">前端开发</a>, <a class="tags-link" href="/tags/读书笔记/">读书笔记</a>
+              <a class="tags-link" href="/tags/CSS选择器/">CSS选择器</a>
             </font>
           
       </span>
@@ -133,68 +138,77 @@
 
   <section id="post-content" class="article-content post">
     <p>选择器是CSS3中的一个重要内容，使用它可以大幅度提高开发人员书写或修改样式表时的工作效率。</p>
-<p>通常我们会在元素上定义<code>class</code>属性，然后根据元素的<code>class</code>属性在css文件中定义相关的样式。使用<code>class</code>属性有两个缺点：</p>
 <a id="more"></a>
-<ol>
+<p>通常我们会在元素上定义<code>class</code>属性，然后根据元素的<code>class</code>属性在css文件中定义相关的样式。使用<code>class</code>属性有两个缺点：</p>
+<ul>
 <li><p><code>class</code>属性本身没有语义，它纯粹时用来为css样式服务的，属于多余属性。</p>
 </li>
 <li><p>使用<code>class</code>属性的话，并没有把样式与元素绑定起来，针对同一个<code>class</code>属性，文本框也可以使用，下拉框也可以使用，甚至按钮也可以使用，这样其实是非常混乱的，修改样式的时候也很不方便。</p>
 </li>
-</ol>
+</ul>
 <p>所以在CSS3中，提倡使用选择器来将样式与元素直接绑定起来，这样的话，在样式表中什么样式与什么元素相匹配变得一目了然，修改起来也很方便。不仅如此，通过选择器，我们还可以实现各种复杂的指定，同时也能大量减少样式表的代码书写量，最终书写出来的样式表也会变得简洁明了。</p>
 <h3 id="一、属性选择器"><a href="#一、属性选择器" class="headerlink" title="一、属性选择器"></a>一、属性选择器</h3><p>html中，我们可以通过各种各样的属性，给元素增加很多附加信息。例如通过<code>width</code>属性，我们可以指定<code>div</code>元素的宽度；通过<code>id</code>属性，我们可以将不同的<code>div</code>元素进行区分。</p>
 <p>css3中，增加了如下所示三种属性选择器，使得属性选择器有了通配符的概念</p>
-<ol>
+<ul>
 <li><p>[att*=val]</p>
-<p> 如果元素用<code>att</code>表示的属性之属性值包含用<code>val</code>指定的字符的话，则该元素使用这个样式。</p>
- <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-attr">[id*=section]</span> &#123;</span><br><span class="line">    <span class="attribute">background-color</span>: yellow;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;div id="section1"&gt;&lt;/div&gt;</span><br><span class="line">&lt;div id="section1-1"&gt;&lt;/div&gt;</span><br><span class="line">&lt;div id="hs-section"&gt;&lt;/div&gt;</span><br><span class="line">&lt;div id="hs-section-1"&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>  如果元素用<code>att</code>表示的属性之属性值包含用<code>val</code>指定的字符的话，则该元素使用这个样式。</p>
 </li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-attr">[id*=section]</span> &#123;</span><br><span class="line">    <span class="attribute">background-color</span>: yellow;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;div id="section1"&gt;&lt;/div&gt;</span><br><span class="line">&lt;div id="section1-1"&gt;&lt;/div&gt;</span><br><span class="line">&lt;div id="hs-section"&gt;&lt;/div&gt;</span><br><span class="line">&lt;div id="hs-section-1"&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<ul>
 <li><p>[att^=val]</p>
-<p> 如果元素用<code>att</code>表示的属性之属性值的开头字符为用<code>val</code>指定的字符的话，则该元素使用这个样式。</p>
- <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-attr">[id^=section]</span> &#123;</span><br><span class="line">    <span class="attribute">background-color</span>: yellow;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;div id="section1"&gt;&lt;/div&gt;</span><br><span class="line">&lt;div id="section1-1"&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>  如果元素用<code>att</code>表示的属性之属性值的开头字符为用<code>val</code>指定的字符的话，则该元素使用这个样式。</p>
 </li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-attr">[id^=section]</span> &#123;</span><br><span class="line">    <span class="attribute">background-color</span>: yellow;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;div id="section1"&gt;&lt;/div&gt;</span><br><span class="line">&lt;div id="section1-1"&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<ul>
 <li><p>[att$=val]</p>
-<p> 如果元素用<code>att</code>表示的属性之属性值的结尾字符为用<code>val</code>指定的字符的话，则该元素使用这个样式。</p>
- <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-attr">[id$=section]</span> &#123;</span><br><span class="line">    <span class="attribute">background-color</span>: yellow;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;div id="hssection"&gt;&lt;/div&gt;</span><br><span class="line">&lt;div id="hs-section"&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>  如果元素用<code>att</code>表示的属性之属性值的结尾字符为用<code>val</code>指定的字符的话，则该元素使用这个样式。</p>
 </li>
-</ol>
-<p>使用示例: 根据<code>a</code>标签的<code>href</code>中不同的文件扩展符，使用不同的样式，在超链接地址的末尾添加不同的文字</p>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-attr">[id$=section]</span> &#123;</span><br><span class="line">    <span class="attribute">background-color</span>: yellow;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;div id="hssection"&gt;&lt;/div&gt;</span><br><span class="line">&lt;div id="hs-section"&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>使用示例</strong>: 根据<code>a</code>标签的<code>href</code>中不同的文件扩展符，使用不同的样式，在超链接地址的末尾添加不同的文字</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">a</span><span class="selector-attr">[href$=\/]</span><span class="selector-pseudo">:after</span>, <span class="selector-tag">a</span><span class="selector-attr">[href$=htm]</span><span class="selector-pseudo">:after</span>, <span class="selector-tag">a</span><span class="selector-attr">[href$=html]</span><span class="selector-pseudo">:after</span> &#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">'web网页'</span>;</span><br><span class="line">    <span class="attribute">color</span>: red;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">a</span><span class="selector-attr">[href$=jpg]</span><span class="selector-pseudo">:after</span> &#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">'jpg图片'</span>;</span><br><span class="line">    <span class="attribute">color</span>: green;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <hr>
 <h3 id="二、伪类选择器"><a href="#二、伪类选择器" class="headerlink" title="二、伪类选择器"></a>二、伪类选择器</h3><p>所谓伪类选择器，是指并不是针对真正的元素使用的选择器，而针对CSS中已经定义号的伪元素使用的选择器。CSS中主要有四个伪元素选择器：</p>
-<ol>
+<ul>
 <li><p><code>first-line</code>伪元素选择器</p>
-<p> 用于为某个元素中的第一行文字使用样式</p>
+<p>  用于为某个元素中的第一行文字使用样式</p>
 </li>
 <li><p><code>first-letter</code>伪元素选择器</p>
-<p> 用于为某个元素中的文字的首字母或第一个字使用样式</p>
+<p>  用于为某个元素中的文字的首字母或第一个字使用样式</p>
 </li>
 <li><p><code>before</code>伪元素选择器</p>
-<p> 用于在某个元素之前插入一些内容</p>
+<p>  用于在某个元素之前插入一些内容</p>
 </li>
 <li><p><code>after</code>伪元素选择器</p>
-<p> 用于在某个元素之后插入一些内容</p>
+<p>  用于在某个元素之后插入一些内容</p>
 </li>
-</ol>
+</ul>
 <hr>
-<h3 id="三、选择器root、not、empty、target"><a href="#三、选择器root、not、empty、target" class="headerlink" title="三、选择器root、not、empty、target"></a>三、选择器root、not、empty、target</h3><h4 id="1-root选择器"><a href="#1-root选择器" class="headerlink" title="1. root选择器"></a>1. root选择器</h4><p><code>root</code>选择器将样式绑定到页面的根元素中。所谓根元素，是指位于文档树中最顶层结构的元素，在HTML页面中就是指包含着整个页面的<code>“&lt;html&gt;”</code>部分。</p>
+<h3 id="三、root、not、empty、target"><a href="#三、root、not、empty、target" class="headerlink" title="三、root、not、empty、target"></a>三、root、not、empty、target</h3><h4 id="1-root选择器"><a href="#1-root选择器" class="headerlink" title="1. root选择器"></a>1. root选择器</h4><p><code>root</code>选择器将样式绑定到页面的根元素中。所谓根元素，是指位于文档树中最顶层结构的元素，在HTML页面中就是指包含着整个页面的<code>“&lt;html&gt;”</code>部分。</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-pseudo">:root</span> &#123;</span><br><span class="line">    <span class="attribute">background-color</span>: yellow;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">    <span class="attribute">background-color</span>: limegreen;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="2-not选择器"><a href="#2-not选择器" class="headerlink" title="2. not选择器"></a>2. not选择器</h4><p>如果相对某个结构元素使用样式，但是想排除这个结构元素下面的子结构元素，让它不使用这个样式时，可以使用<code>not</code>选择器。</p>
+<h4 id="2-not"><a href="#2-not" class="headerlink" title="2. not"></a>2. not</h4><p>如果相对某个结构元素使用样式，但是想排除这个结构元素下面的子结构元素，让它不使用这个样式时，可以使用<code>not</code>选择器。</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span> *<span class="selector-pseudo">:not(h1)</span> &#123;</span><br><span class="line">    <span class="attribute">background-color</span>: yellow;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="3-empty选择器"><a href="#3-empty选择器" class="headerlink" title="3. empty选择器"></a>3. empty选择器</h4><p>使用<code>empty</code>选择器来指定当元素内容为空白时使用的样式。</p>
+<h4 id="3-empty"><a href="#3-empty" class="headerlink" title="3. empty"></a>3. empty</h4><p>使用<code>empty</code>选择器来指定当元素内容为空白时使用的样式。</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-pseudo">:empty</span> &#123;</span><br><span class="line">    <span class="attribute">background-color</span>: yellow</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="4-target选择器"><a href="#4-target选择器" class="headerlink" title="4. target选择器"></a>4. target选择器</h4><p>使用<code>target</code>选择器来对页面中的某个<code>target</code>元素（该元素的<code>id</code>被当作页面中的超链接来使用）指定样式，该样式只在用户点击了页面中的超链接，并且跳转到<code>target</code>元素后起作用。</p>
+<h4 id="4-target"><a href="#4-target" class="headerlink" title="4. target"></a>4. target</h4><p>使用<code>target</code>选择器来对页面中的某个<code>target</code>元素（该元素的<code>id</code>被当作页面中的超链接来使用）指定样式，该样式只在用户点击了页面中的超链接，并且跳转到<code>target</code>元素后起作用。</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-pseudo">:target</span> &#123;</span><br><span class="line">    <span class="attribute">background-color</span>: yellow;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="四、选择器：first-child、last-child、nth-child、nth-last-child"><a href="#四、选择器：first-child、last-child、nth-child、nth-last-child" class="headerlink" title="四、选择器：first-child、last-child、nth-child、nth-last-child"></a>四、选择器：first-child、last-child、nth-child、nth-last-child</h3><p>利用这几个选择器，能够特殊针对父元素的第一个子元素、最后一个子元素、指定序号的子元素、甚至第偶数个、第奇数个子元素进行样式的指定。</p>
+<hr>
+<h3 id="四、first-child、last-child、nth-child、nth-last-child"><a href="#四、first-child、last-child、nth-child、nth-last-child" class="headerlink" title="四、first-child、last-child、nth-child、nth-last-child"></a>四、first-child、last-child、nth-child、nth-last-child</h3><p>利用这几个选择器，能够特殊针对父元素的第一个子元素、最后一个子元素、指定序号的子元素、甚至第偶数个、第奇数个子元素进行样式的指定。</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">li</span><span class="selector-pseudo">:first-child</span> &#123;</span><br><span class="line">    <span class="attribute">background-color</span>: yellow;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">li</span><span class="selector-pseudo">:last-child</span> &#123;</span><br><span class="line">    <span class="attribute">background-color</span>: skyblue;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">li</span><span class="selector-pseudo">:nth-child(n)</span> &#123;</span><br><span class="line">    <span class="comment">/* css中的n从1开始计数 */</span></span><br><span class="line">    <span class="attribute">background-color</span>: red;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">li</span><span class="selector-pseudo">:nth-child(even)</span> &#123;</span><br><span class="line">    <span class="comment">/* 所有正数下来的第偶数个子元素 */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">li</span><span class="selector-pseudo">:nth-child(odd)</span> &#123;</span><br><span class="line">    <span class="comment">/* 所有正数下来的第奇数个子元素 */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">li</span><span class="selector-pseudo">:nth-last-child(odd)</span> &#123;</span><br><span class="line">    <span class="comment">/* 所有倒数上去的第奇数个子元素 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="五、选择器：nth-of-type、nth-last-of-type"><a href="#五、选择器：nth-of-type、nth-last-of-type" class="headerlink" title="五、选择器：nth-of-type、nth-last-of-type"></a>五、选择器：nth-of-type、nth-last-of-type</h3><p>在css3中，使用<code>nth-of-type</code>选择器与<code>nth-last-of-type</code>选择器可以避免父元素下不同类型子元素的序号选择问题。使用这两个选择器的时候，css3在计算子元素是第奇数个还是第偶数个的时候，就只针对同类型的子元素进行计算。</p>
+<hr>
+<h3 id="五、nth-of-type、nth-last-of-type"><a href="#五、nth-of-type、nth-last-of-type" class="headerlink" title="五、nth-of-type、nth-last-of-type"></a>五、nth-of-type、nth-last-of-type</h3><p>在css3中，使用<code>nth-of-type</code>选择器与<code>nth-last-of-type</code>选择器可以避免父元素下不同类型子元素的序号选择问题。使用这两个选择器的时候，css3在计算子元素是第奇数个还是第偶数个的时候，就只针对同类型的子元素进行计算。</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h2</span><span class="selector-pseudo">:nth-of-type(odd)</span> &#123;</span><br><span class="line">    <span class="attribute">background-color</span>: yellow;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">h2</span><span class="selector-pseudo">:nth-of-type(even)</span> &#123;</span><br><span class="line">    <span class="attribute">background-color</span>: skyblue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
 <h3 id="六、循环使用样式"><a href="#六、循环使用样式" class="headerlink" title="六、循环使用样式"></a>六、循环使用样式</h3><p>如果我们有100个列表项目，需要重复使用前四种样式的设置，可以采用循环指定的方式，只要在 <code>nth-child(n)</code> 语句中，把参数 <code>n</code> 改成可循环的 <code>an + b</code> 的形式就可以，<code>a</code> 表示每次循环中共包括几种样式， <code>b</code> 表示指定的样式在循环中的位置。</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">li</span><span class="selector-pseudo">:nth-child(4n+1)</span> &#123;</span><br><span class="line">    <span class="attribute">background-color</span>: yellow;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">li</span><span class="selector-pseudo">:nth-child(4n+2)</span> &#123;</span><br><span class="line">    <span class="attribute">background-color</span>: limegreen;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">li</span><span class="selector-pseudo">:nth-child(4n+3)</span> &#123;</span><br><span class="line">    <span class="attribute">background-color</span>: red;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">li</span><span class="selector-pseudo">:nth-child(4n)</span> &#123;</span><br><span class="line">    <span class="attribute">background-color</span>: white;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="七、only-child选择器"><a href="#七、only-child选择器" class="headerlink" title="七、only-child选择器"></a>七、only-child选择器</h3><p>如果采用如下琐事的方法结合运用<code>nth-child</code>选择器与<code>nth-last-child</code>选择器的话，可以指定当某个父元素中只有一个子元素时才使用的样式。</p>
+<hr>
+<h3 id="七、only-child"><a href="#七、only-child" class="headerlink" title="七、only-child"></a>七、only-child</h3><p>如果采用如下琐事的方法结合运用<code>nth-child</code>选择器与<code>nth-last-child</code>选择器的话，可以指定当某个父元素中只有一个子元素时才使用的样式。</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span><span class="selector-pseudo">:nth-child(1)</span><span class="selector-pseudo">:nth-last-child(1)</span> &#123;</span><br><span class="line">    <span class="attribute">background-color</span>: red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>另外也可以使用<code>only-child</code>选择器来替代上面的实现方法</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span><span class="selector-pseudo">:only-child</span> &#123;</span><br><span class="line">    <span class="attribute">background-color</span>: red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
 <h3 id="八、UI元素状态伪类选择器"><a href="#八、UI元素状态伪类选择器" class="headerlink" title="八、UI元素状态伪类选择器"></a>八、UI元素状态伪类选择器</h3><p>在CSS3的选择器中，除了结构性伪类选择器外，还有一种UI元素状态伪类选择器。这些选择器的共同特征是：指定的样式只有当元素处于某种状态下时才起作用，在默认状态下不起作用。</p>
 <p>在CSS3中，共有11种UI元素状态伪类选择器，分别是</p>
 <p><code>E:hover  E:active  E:focus  E:enabled  E:disabled  E:read-only  E:read-write  E:checked  E:default  E:indeterminate  E::selection</code></p>
@@ -212,6 +226,10 @@
 <hr>
 <h3 id="九、通用兄弟元素选择器"><a href="#九、通用兄弟元素选择器" class="headerlink" title="九、通用兄弟元素选择器"></a>九、通用兄弟元素选择器</h3><p>通用兄弟元素选择器，用来指定位于同一个父元素之中的某个元素之后的所有其他某个种类的兄弟元素所使用的样式</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;子元素&gt;~&lt;子元素之后的同级兄弟元素&gt; &#123;</span><br><span class="line">    // 指定样式</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><ol>
+<li><a href="">《HTML5与CSS3权威指南》</a></li>
+</ol>
 
   </section>
 

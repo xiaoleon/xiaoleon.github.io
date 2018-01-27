@@ -7,7 +7,7 @@
     
 
     <title>
-      Web Sockets通信 | 张啸 
+      Web Sockets | 张啸 
     </title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -16,16 +16,16 @@
     
     
     <meta name="description" content="Web Sockets是HTML5提供的在Web应用程序客户端与服务器端之间进行的非HTTP的通信机制。它实现了用HTTP不容易实现的服务器端的数据推送等智能通信技术，因此受到了高度关注。 使用Web Sockets API可以在服务器与客户端之间建立一个非HTTP的双向连接。这个连接时实时的，也是永久的，除非被显式关闭。这意味着当服务器想向客户端发送数据时，可以立即将数据推送到客户端的浏览器中，">
-<meta name="keywords" content="读书笔记,前端开发,HTML5">
+<meta name="keywords" content="Web Sockets">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Web Sockets通信 | 张啸">
+<meta property="og:title" content="Web Sockets | 张啸">
 <meta property="og:url" content="http://www.xiaoleon.cn/2018/01/22/html5-11/index.html">
 <meta property="og:site_name" content="张啸">
 <meta property="og:description" content="Web Sockets是HTML5提供的在Web应用程序客户端与服务器端之间进行的非HTTP的通信机制。它实现了用HTTP不容易实现的服务器端的数据推送等智能通信技术，因此受到了高度关注。 使用Web Sockets API可以在服务器与客户端之间建立一个非HTTP的双向连接。这个连接时实时的，也是永久的，除非被显式关闭。这意味着当服务器想向客户端发送数据时，可以立即将数据推送到客户端的浏览器中，">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-01-22T13:18:35.988Z">
+<meta property="og:updated_time" content="2018-01-27T03:01:02.570Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Web Sockets通信 | 张啸">
+<meta name="twitter:title" content="Web Sockets | 张啸">
 <meta name="twitter:description" content="Web Sockets是HTML5提供的在Web应用程序客户端与服务器端之间进行的非HTTP的通信机制。它实现了用HTTP不容易实现的服务器端的数据推送等智能通信技术，因此受到了高度关注。 使用Web Sockets API可以在服务器与客户端之间建立一个非HTTP的双向连接。这个连接时实时的，也是永久的，除非被显式关闭。这意味着当服务器想向客户端发送数据时，可以立即将数据推送到客户端的浏览器中，">
     
     
@@ -107,7 +107,7 @@
 
   <header class="post-header">
     
-    <h2 class="post-title">H5(11) Web Sockets通信</h2>
+    <h2 class="post-title">H5(11) Web Sockets</h2>
 
     
 
@@ -117,11 +117,16 @@
       <span class="post-meta__tags tags">
 
           
+            &#8226; 分类:
+            <font class="categories">
+              <a class="categories-link" href="/categories/HTML5抄书笔记/">HTML5抄书笔记</a>
+            </font>
+          
 
           
             &#8226; 标签:
             <font class="tags">
-              <a class="tags-link" href="/tags/HTML5/">HTML5</a>, <a class="tags-link" href="/tags/前端开发/">前端开发</a>, <a class="tags-link" href="/tags/读书笔记/">读书笔记</a>
+              <a class="tags-link" href="/tags/Web-Sockets/">Web Sockets</a>
             </font>
           
       </span>
@@ -135,7 +140,7 @@
     <p><code>Web Sockets</code>是HTML5提供的在Web应用程序客户端与服务器端之间进行的非HTTP的通信机制。它实现了用HTTP不容易实现的服务器端的数据推送等智能通信技术，因此受到了高度关注。</p>
 <p>使用<code>Web Sockets API</code>可以在服务器与客户端之间建立一个非HTTP的双向连接。这个连接时实时的，也是永久的，除非被显式关闭。这意味着当服务器想向客户端发送数据时，可以立即将数据推送到客户端的浏览器中，无须重新建立连接。只要客户端有一个被打开的<code>socket</code>（套接字）并且与服务器建立了连接，服务器就可以把数据推送到这个<code>socket</code>上，服务器不再需要轮训客户端的请求，从被动转为了主动。</p>
 <a id="more"></a>
-<h3 id="一、使用Web-Sockets-API"><a href="#一、使用Web-Sockets-API" class="headerlink" title="一、使用Web Sockets API"></a>一、使用Web Sockets API</h3><p><code>Web Sockets</code>的API本身非常简单，将url字符串作为参数，然后调用<code>WebSocket</code>对象的构造器来建立与服务器之间的通信连接</p>
+<p><code>Web Sockets</code>的API本身非常简单，将url字符串作为参数，然后调用<code>WebSocket</code>对象的构造器来建立与服务器之间的通信连接</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> webSocket = <span class="keyword">new</span> WebSocket(<span class="string">'ws://localhost/socket'</span>);</span><br></pre></td></tr></table></figure>
 <p>url字符串必须以<code>“ws”</code>或<code>“wss”</code>（加密通信时）文字作为开头。这个url字符串被设定好之后，在JS脚本中可以通过访问<code>WebSocket</code>对象的<code>url</code>属性来重新获取。</p>
 <p>通信建立好之后，就可以进行客户端与服务器端的双向通信了。使用<code>WebSocket</code>对象的<code>send</code>方法对服务器发送数据，只能发送文本数据，但是可以使用JSON对象把任何Javascript对象转换成文本数据后进行发送</p>
@@ -159,6 +164,10 @@
 <li><p><code>CLOSED</code>（数字值为3） —— 已关闭连接</p>
 </li>
 </ul>
+<hr>
+<h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><ol>
+<li><a href="">《HTML5与CSS3权威指南》</a></li>
+</ol>
 
   </section>
 

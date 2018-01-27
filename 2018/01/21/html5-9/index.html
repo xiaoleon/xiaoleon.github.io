@@ -15,18 +15,18 @@
       <meta name="author" content="Leon">
     
     
-    <meta name="description" content="Web应用程序已经变得越来越复杂，越来越成熟了，很多领域都在利用着Web应用程序。但是，它有一个致命的缺点：如果用户没有和Internet建立连接，他就不能利用这个Web应用程序了。 因此，HTML5中新增了一个API，它使用一个本地缓存机制很好地解决了这个问题，为离线Web应用程序的开发提供了可能性。 为了让Web应用程序在离线状态时候也能正常工作，就必须要把所有构成Web应用程序的资源文件，诸">
-<meta name="keywords" content="读书笔记,前端开发,HTML5">
+    <meta name="description" content="Web应用程序已经变得越来越复杂，越来越成熟了，很多领域都在利用着Web应用程序。但是，它有一个致命的缺点：如果用户没有和Internet建立连接，他就不能利用这个Web应用程序了。">
+<meta name="keywords" content="本地缓存,离线Web应用程序">
 <meta property="og:type" content="article">
 <meta property="og:title" content="离线Web应用程序 | 张啸">
 <meta property="og:url" content="http://www.xiaoleon.cn/2018/01/21/html5-9/index.html">
 <meta property="og:site_name" content="张啸">
-<meta property="og:description" content="Web应用程序已经变得越来越复杂，越来越成熟了，很多领域都在利用着Web应用程序。但是，它有一个致命的缺点：如果用户没有和Internet建立连接，他就不能利用这个Web应用程序了。 因此，HTML5中新增了一个API，它使用一个本地缓存机制很好地解决了这个问题，为离线Web应用程序的开发提供了可能性。 为了让Web应用程序在离线状态时候也能正常工作，就必须要把所有构成Web应用程序的资源文件，诸">
+<meta property="og:description" content="Web应用程序已经变得越来越复杂，越来越成熟了，很多领域都在利用着Web应用程序。但是，它有一个致命的缺点：如果用户没有和Internet建立连接，他就不能利用这个Web应用程序了。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-01-22T13:09:27.563Z">
+<meta property="og:updated_time" content="2018-01-27T03:31:15.601Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="离线Web应用程序 | 张啸">
-<meta name="twitter:description" content="Web应用程序已经变得越来越复杂，越来越成熟了，很多领域都在利用着Web应用程序。但是，它有一个致命的缺点：如果用户没有和Internet建立连接，他就不能利用这个Web应用程序了。 因此，HTML5中新增了一个API，它使用一个本地缓存机制很好地解决了这个问题，为离线Web应用程序的开发提供了可能性。 为了让Web应用程序在离线状态时候也能正常工作，就必须要把所有构成Web应用程序的资源文件，诸">
+<meta name="twitter:description" content="Web应用程序已经变得越来越复杂，越来越成熟了，很多领域都在利用着Web应用程序。但是，它有一个致命的缺点：如果用户没有和Internet建立连接，他就不能利用这个Web应用程序了。">
     
     
     
@@ -117,11 +117,16 @@
       <span class="post-meta__tags tags">
 
           
+            &#8226; 分类:
+            <font class="categories">
+              <a class="categories-link" href="/categories/HTML5抄书笔记/">HTML5抄书笔记</a>
+            </font>
+          
 
           
             &#8226; 标签:
             <font class="tags">
-              <a class="tags-link" href="/tags/HTML5/">HTML5</a>, <a class="tags-link" href="/tags/前端开发/">前端开发</a>, <a class="tags-link" href="/tags/读书笔记/">读书笔记</a>
+              <a class="tags-link" href="/tags/本地缓存/">本地缓存</a>, <a class="tags-link" href="/tags/离线Web应用程序/">离线Web应用程序</a>
             </font>
           
       </span>
@@ -133,9 +138,9 @@
 
   <section id="post-content" class="article-content post">
     <p>Web应用程序已经变得越来越复杂，越来越成熟了，很多领域都在利用着Web应用程序。但是，它有一个致命的缺点：如果用户没有和Internet建立连接，他就不能利用这个Web应用程序了。</p>
+<a id="more"></a>
 <p>因此，HTML5中新增了一个API，它使用一个本地缓存机制很好地解决了这个问题，为离线Web应用程序的开发提供了可能性。</p>
 <p>为了让Web应用程序在离线状态时候也能正常工作，就必须要把所有构成Web应用程序的资源文件，诸如HTML文件、CSS文件、Javascript脚本文件等放在本地缓存中，当服务器没有和Internet建立连接的时候，也可以利用本地缓存中的资源文件来正常运行Web应用程序。</p>
-<a id="more"></a>
 <h3 id="一、本地缓存与浏览器网页缓存的区别"><a href="#一、本地缓存与浏览器网页缓存的区别" class="headerlink" title="一、本地缓存与浏览器网页缓存的区别"></a>一、本地缓存与浏览器网页缓存的区别</h3><p>本地缓存是为整个Web应用程序服务的，而浏览器的网页缓存只服务于单个网页。任何网页都具有网页缓存，而本地缓存只缓存那些你指定缓存的网页。</p>
 <p>网页缓存是不安全、不可靠的，因为我们不知道在网站中到底缓存了哪些网页，以及缓存了网页上的哪些资源。而本地缓存是可靠的，我们可以控制对哪些内容进行缓存，不对哪些内容进行缓存，开发人员还可以用编程的手段来控制缓存的更新，利用缓存对象的各种属性、状态和事件来开发出更为强大的离线应用程序。</p>
 <hr>
@@ -162,30 +167,50 @@
 <p>例如一个<code>http://lulingniu</code>网站，以<code>index.html</code>为主页，<code>index.manifest</code>文件为<code>manifest</code>文件，在该文件中请求本地缓存<code>index.html</code>、<code>hello.js</code>、<code>hello1.jpg</code>、<code>hello2.jpg</code>这几个资源文件。</p>
 <p><strong>交互过程</strong>：</p>
 <h4 id="1-首次访问"><a href="#1-首次访问" class="headerlink" title="1. 首次访问"></a>1. 首次访问</h4><ul>
-<li>1)浏览器请求访问<code>http://lulingniu</code></li>
-<li>2)服务器返回<code>index.html</code>网页</li>
-<li>3)浏览器解析<code>index.html</code>网页，请求页面上所有资源文件，包括HTML文件、图像文件、CSS文件、JS文件，以及<code>manifest</code>文件</li>
-<li>4)服务器返回所有资源文件</li>
-<li>5)浏览器处理<code>manifest</code>文件，请求<code>manifest</code>中所有要求本地缓存的文件，包括<code>index.html</code>。如果要求本地缓存所有文件，这将是一个比较大的重复的请求过程</li>
-<li>6)服务器返回所有要求本地缓存的文件</li>
-<li>7)浏览器对本地缓存进行更新，存入包括页面本身在内的所有要求本地缓存的资源文件，并且触发一个事件，通知本地缓存被更新</li>
+<li><p>1) 浏览器请求访问<code>http://lulingniu</code></p>
+</li>
+<li><p>2) 服务器返回<code>index.html</code>网页</p>
+</li>
+<li><p>3) 浏览器解析<code>index.html</code>网页，请求页面上所有资源文件，包括HTML文件、图像文件、CSS文件、JS文件，以及<code>manifest</code>文件</p>
+</li>
+<li><p>4) 服务器返回所有资源文件</p>
+</li>
+<li><p>5) 浏览器处理<code>manifest</code>文件，请求<code>manifest</code>中所有要求本地缓存的文件，包括<code>index.html</code>。如果要求本地缓存所有文件，这将是一个比较大的重复的请求过程</p>
+</li>
+<li><p>6) 服务器返回所有要求本地缓存的文件</p>
+</li>
+<li><p>7) 浏览器对本地缓存进行更新，存入包括页面本身在内的所有要求本地缓存的资源文件，并且触发一个事件，通知本地缓存被更新</p>
+</li>
 </ul>
-<h4 id="2-再次访问，manifest文件没有被修改"><a href="#2-再次访问，manifest文件没有被修改" class="headerlink" title="2. 再次访问，manifest文件没有被修改"></a>2. 再次访问，manifest文件没有被修改</h4><ul>
-<li>1)浏览器再次请求访问<code>http://lulingniu</code></li>
-<li>2)浏览器发现这个页面被本地缓存，于是使用本地缓存中的<code>index.html</code>页面</li>
-<li>3)浏览器解析<code>index.html</code>页面，使用所有本地缓存中的资源文件</li>
-<li>4)浏览器向服务器请求<code>manifest</code>文件</li>
-<li>5)服务器返回一个304代码，通知浏览器<code>manifest</code>没有发生变化</li>
+<h4 id="2-再次访问（manifest文件未更新）"><a href="#2-再次访问（manifest文件未更新）" class="headerlink" title="2. 再次访问（manifest文件未更新）"></a>2. 再次访问（manifest文件未更新）</h4><ul>
+<li><p>1) 浏览器再次请求访问<code>http://lulingniu</code></p>
+</li>
+<li><p>2) 浏览器发现这个页面被本地缓存，于是使用本地缓存中的<code>index.html</code>页面</p>
+</li>
+<li><p>3) 浏览器解析<code>index.html</code>页面，使用所有本地缓存中的资源文件</p>
+</li>
+<li><p>4) 浏览器向服务器请求<code>manifest</code>文件</p>
+</li>
+<li><p>5) 服务器返回一个304代码，通知浏览器<code>manifest</code>没有发生变化</p>
+</li>
 </ul>
-<h4 id="3-再次访问，manifest文件已更新"><a href="#3-再次访问，manifest文件已更新" class="headerlink" title="3. 再次访问，manifest文件已更新"></a>3. 再次访问，manifest文件已更新</h4><ul>
-<li>1)浏览器再次请求访问<code>http://lulingniu</code></li>
-<li>2)浏览器发现这个页面被本地缓存，于是使用本地缓存中的<code>index.html</code>页面</li>
-<li>3)浏览器解析<code>index.html</code>页面，使用所有本地缓存中的资源文件</li>
-<li>4)浏览器向服务器请求<code>manifest</code>文件</li>
-<li>5)服务器返回更新过的<code>manifest</code>文件</li>
-<li>6)浏览器处理<code>manifest</code>文件，发现该文件已被更新，于是请求所有要求进行本地缓存的资源文件，包括<code>index.html</code>页面本身</li>
-<li>7)浏览器返回要求进行本地缓存的资源文件</li>
-<li>8)浏览器对本地缓存进行更新，存入所有新的资源文件。并且触发一个事件，通知本地缓存被更新。</li>
+<h4 id="3-再次访问（manifest文件已更新）"><a href="#3-再次访问（manifest文件已更新）" class="headerlink" title="3. 再次访问（manifest文件已更新）"></a>3. 再次访问（manifest文件已更新）</h4><ul>
+<li><p>1) 浏览器再次请求访问<code>http://lulingniu</code></p>
+</li>
+<li><p>2) 浏览器发现这个页面被本地缓存，于是使用本地缓存中的<code>index.html</code>页面</p>
+</li>
+<li><p>3) 浏览器解析<code>index.html</code>页面，使用所有本地缓存中的资源文件</p>
+</li>
+<li><p>4) 浏览器向服务器请求<code>manifest</code>文件</p>
+</li>
+<li><p>5) 服务器返回更新过的<code>manifest</code>文件</p>
+</li>
+<li><p>6) 浏览器处理<code>manifest</code>文件，发现该文件已被更新，于是请求所有要求进行本地缓存的资源文件，包括<code>index.html</code>页面本身</p>
+</li>
+<li><p>7) 浏览器返回要求进行本地缓存的资源文件</p>
+</li>
+<li><p>8) 浏览器对本地缓存进行更新，存入所有新的资源文件。并且触发一个事件，通知本地缓存被更新。</p>
+</li>
 </ul>
 <p>需要注意的时，即使资源文件被修改过了，上面的第3步中已装入的资源文件是不会发生变化的，譬如图片不会突然变成新的图片，脚本文件也不会突然使用新的脚本文件，也就是说，这时更新的本地缓存中的内容还不能被使用，只有重新打开这个页面的时候才会使用更新过后的资源文件。</p>
 <p>另外，如果不想修改<code>manifest</code>文件中对于资源文件的设置，但是对服务器上请求缓存的资源文件进行了修改，那么可以通过修改版本号的方式让浏览器认为<code>manifest</code>文件已经被更新过了，以便重新下载修改过的资源文件。</p>
@@ -205,25 +230,44 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># swapCache.manifest</span><br><span class="line"></span><br><span class="line">CACHE MANIFEST</span><br><span class="line">#version 1.20</span><br><span class="line">CACHE:</span><br><span class="line">script.js</span><br></pre></td></tr></table></figure>
 <hr>
 <h3 id="五、applicationCache对象的事件"><a href="#五、applicationCache对象的事件" class="headerlink" title="五、applicationCache对象的事件"></a>五、applicationCache对象的事件</h3><h4 id="1-首次访问-1"><a href="#1-首次访问-1" class="headerlink" title="1. 首次访问"></a>1. 首次访问</h4><ul>
-<li>1)浏览器请求访问<code>http://lilingniu</code></li>
-<li>2)服务器返回<code>index.html</code>网页</li>
-<li>3)浏览器发现该网页具有<code>manifest</code>属性，触发<code>checking</code>事件，检查<code>manifest</code>文件是否存在。不存在时，触发<code>error</code>事件，表示<code>manifest</code>文件未找到，不执行步骤6开始的交互过程</li>
-<li>4)浏览器解析<code>index.html</code>网页，请求页面上的所有资源文件</li>
-<li>5)服务器返回所有资源文件</li>
-<li>6)浏览器处理<code>manifest</code>文件，请求<code>manifest</code>中所有要求本地缓存的文件，包括<code>index.html</code>页面本身，即使刚才已经请求过该文件。如果要求本地缓存所有文件，这将是一个比较大的重复的请求过程。</li>
-<li>7)服务器返回所有要求本地缓存的文件</li>
-<li>8)浏览器触发<code>downloading</code>事件，然后开始下载这些资源。在下载的同时，周期性地触发<code>progress</code>事件，开发人员可以用编程的手段获取多少文件已被下载，多少文件仍然处于下载队列等信息</li>
-<li>9)下载结束后触发<code>cached</code>事件，表示首次缓存成功，存入所有要求本地缓存的资源文件</li>
+<li><p>1) 浏览器请求访问<code>http://lilingniu</code></p>
+</li>
+<li><p>2) 服务器返回<code>index.html</code>网页</p>
+</li>
+<li><p>3) 浏览器发现该网页具有<code>manifest</code>属性，触发<code>checking</code>事件，检查<code>manifest</code>文件是否存在。不存在时，触发<code>error</code>事件，表示<code>manifest</code>文件未找到，不执行步骤6开始的交互过程</p>
+</li>
+<li><p>4) 浏览器解析<code>index.html</code>网页，请求页面上的所有资源文件</p>
+</li>
+<li><p>5) 服务器返回所有资源文件</p>
+</li>
+<li><p>6) 浏览器处理<code>manifest</code>文件，请求<code>manifest</code>中所有要求本地缓存的文件，包括<code>index.html</code>页面本身，即使刚才已经请求过该文件。如果要求本地缓存所有文件，这将是一个比较大的重复的请求过程</p>
+</li>
+<li><p>7) 服务器返回所有要求本地缓存的文件</p>
+</li>
+<li><p>8) 浏览器触发<code>downloading</code>事件，然后开始下载这些资源。在下载的同时，周期性地触发<code>progress</code>事件，开发人员可以用编程的手段获取多少文件已被下载，多少文件仍然处于下载队列等信息</p>
+</li>
+<li><p>9) 下载结束后触发<code>cached</code>事件，表示首次缓存成功，存入所有要求本地缓存的资源文件</p>
+</li>
 </ul>
 <h4 id="2-再次访问"><a href="#2-再次访问" class="headerlink" title="2. 再次访问"></a>2. 再次访问</h4><ul>
-<li>1)步骤1-5同上，步骤5执行完之后，浏览器将核对<code>manifest</code>文件是否被更新。</li>
-<li>2)若没有被更新，触发<code>noupdate</code>事件，步骤6开始的交互过程不会被执行。</li>
-<li>3)若发生了更新，将继续执行后面的步骤，在步骤9中不触发<code>cached</code>事件，而是触发<code>updateready</code>事件，这表示下载结束，可以通过刷新页面来使用更新后的本地缓存，或调用<code>swapCache</code>方法来立刻使用更新后的本地缓存。</li>
-<li>4)另外，在访问缓存名单时如果返回一个HTTP 404错误，或者410错误，则触发<code>obsolete</code>事件。</li>
-<li>5)在整个过程中，如果任何与本地缓存有关的处理中发生错误的话，都会触发<code>error</code>事件。</li>
+<li><p>1) 步骤1-5同上，步骤5执行完之后，浏览器将核对<code>manifest</code>文件是否被更新。</p>
+</li>
+<li><p>2) 若没有被更新，触发<code>noupdate</code>事件，步骤6开始的交互过程不会被执行。</p>
+</li>
+<li><p>3) 若发生了更新，将继续执行后面的步骤，在步骤9中不触发<code>cached</code>事件，而是触发<code>updateready</code>事件，这表示下载结束，可以通过刷新页面来使用更新后的本地缓存，或调用<code>swapCache</code>方法来立刻使用更新后的本地缓存。</p>
+</li>
+<li><p>4) 另外，在访问缓存名单时如果返回一个HTTP 404错误，或者410错误，则触发<code>obsolete</code>事件。</p>
+</li>
+<li><p>5) 在整个过程中，如果任何与本地缓存有关的处理中发生错误的话，都会触发<code>error</code>事件。</p>
+</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">CACHE MANIFEST</span><br><span class="line">#version 1.0</span><br><span class="line">CACHE:</span><br><span class="line">index.html</span><br></pre></td></tr></table></figure>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span> <span class="attr">manifest</span>=<span class="string">"applicationCacheEvent.manifest"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"ie=edge"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">        <span class="function"><span class="keyword">function</span> <span class="title">init</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">var</span> msg = <span class="built_in">document</span>.getElementById(<span class="string">'msg'</span>);</span></span><br><span class="line"><span class="javascript">            applicationCache.addEventListener(<span class="string">'checking'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                msg.innerHTML += <span class="string">'checking &lt;br&gt;'</span>;</span></span><br><span class="line"><span class="javascript">            &#125;, <span class="literal">true</span>);</span></span><br><span class="line"><span class="javascript">            applicationCache.addEventListener(<span class="string">'noupdate'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                msg.innerHTML += <span class="string">'noupdate &lt;br&gt;'</span>;</span></span><br><span class="line"><span class="javascript">            &#125;, <span class="literal">true</span>);</span></span><br><span class="line"><span class="javascript">            applicationCache.addEventListener(<span class="string">'downloading'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                msg.innerHTML += <span class="string">'downloading &lt;br&gt;'</span>;</span></span><br><span class="line"><span class="javascript">            &#125;, <span class="literal">true</span>);</span></span><br><span class="line"><span class="javascript">            applicationCache.addEventListener(<span class="string">'progress'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                msg.innerHTML += <span class="string">'progress &lt;br&gt;'</span>;</span></span><br><span class="line"><span class="javascript">            &#125;, <span class="literal">true</span>);</span></span><br><span class="line"><span class="javascript">            applicationCache.addEventListener(<span class="string">'updateready'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                msg.innerHTML += <span class="string">'updateready &lt;br&gt;'</span>;</span></span><br><span class="line"><span class="javascript">            &#125;, <span class="literal">true</span>);</span></span><br><span class="line"><span class="javascript">            applicationCache.addEventListener(<span class="string">'cached'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                msg.innerHTML += <span class="string">'cached &lt;br&gt;'</span>;</span></span><br><span class="line"><span class="javascript">            &#125;, <span class="literal">true</span>);</span></span><br><span class="line"><span class="javascript">            applicationCache.addEventListener(<span class="string">'error'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                msg.innerHTML += <span class="string">'error &lt;br&gt;'</span>;</span></span><br><span class="line"><span class="javascript">            &#125;, <span class="literal">true</span>);</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span> <span class="attr">onload</span>=<span class="string">"init()"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>applicationCache事件流程示例<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">"msg"</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><ol>
+<li><a href="">《HTML5与CSS3权威指南》</a></li>
+</ol>
+
   </section>
 
 
