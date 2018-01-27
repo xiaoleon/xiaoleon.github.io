@@ -16,14 +16,14 @@
     
     
     <meta name="description" content="对象是JavaScript的基本数据类型。对象是一种复合值：它将很多值（原始值或者其他对象）聚合在一起，可以通过名字访问这些值。对象也可看作是属性的无序集合，每个属性都是一个名值对，属性名是字符串，因此我们可以把对象看成是从字符串到值的映射。">
-<meta name="keywords" content="读书笔记,前端开发,JavaScript,原生JS">
+<meta name="keywords" content="JavaScript对象">
 <meta property="og:type" content="article">
 <meta property="og:title" content="对象 | 张啸">
 <meta property="og:url" content="http://www.xiaoleon.cn/2018/01/22/js-2/index.html">
 <meta property="og:site_name" content="张啸">
 <meta property="og:description" content="对象是JavaScript的基本数据类型。对象是一种复合值：它将很多值（原始值或者其他对象）聚合在一起，可以通过名字访问这些值。对象也可看作是属性的无序集合，每个属性都是一个名值对，属性名是字符串，因此我们可以把对象看成是从字符串到值的映射。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-01-24T13:02:03.434Z">
+<meta property="og:updated_time" content="2018-01-27T09:03:32.667Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="对象 | 张啸">
 <meta name="twitter:description" content="对象是JavaScript的基本数据类型。对象是一种复合值：它将很多值（原始值或者其他对象）聚合在一起，可以通过名字访问这些值。对象也可看作是属性的无序集合，每个属性都是一个名值对，属性名是字符串，因此我们可以把对象看成是从字符串到值的映射。">
@@ -107,7 +107,7 @@
 
   <header class="post-header">
     
-    <h2 class="post-title">JavaScript(2) 对象</h2>
+    <h2 class="post-title">JS(2) 对象</h2>
 
     
 
@@ -119,14 +119,14 @@
           
             &#8226; 分类:
             <font class="categories">
-              <a class="categories-link" href="/categories/JavaScript/">JavaScript</a>
+              <a class="categories-link" href="/categories/JS抄书笔记/">JS抄书笔记</a>
             </font>
           
 
           
             &#8226; 标签:
             <font class="tags">
-              <a class="tags-link" href="/tags/JavaScript/">JavaScript</a>, <a class="tags-link" href="/tags/前端开发/">前端开发</a>, <a class="tags-link" href="/tags/原生JS/">原生JS</a>, <a class="tags-link" href="/tags/读书笔记/">读书笔记</a>
+              <a class="tags-link" href="/tags/JavaScript对象/">JavaScript对象</a>
             </font>
           
       </span>
@@ -142,23 +142,34 @@
 <p>JavaScript对象还可以从一个称为原型的对象继承属性，对象的方法通常是继承的属性，这种原型式继承（<code>prototypal inheritance</code>）是JavaScript的核心特征。</p>
 <p>对象最常见的用法是创建（<code>create</code>）、设置（<code>set</code>）、查找（<code>query</code>）、删除（<code>delete</code>）、检测（<code>test</code>）和枚举（<code>enumerate</code>）它的属性。属性包括名字和值，属性名可以是包含空字符串在内的任意字符串，但对象中不能存在两个同名的属性，值可以是任意JavaScript值，或者可以是一个<code>getter</code>或<code>setter</code>函数。除了名字和值以外，每个属性还有一些与之相关的值，称为“属性特征”（<code>property attribute</code>）。</p>
 <ul>
-<li>可写（<code>writable attribute</code>），表明是否可以设置该属性的值。</li>
-<li>可枚举（<code>enumerable attribute</code>），表明是否可以通过<code>for/in</code>循环返回该属性。</li>
-<li>可配置（<code>configurable attribute</code>），表明是否可以删除或修改该属性。</li>
+<li><p>可写（<code>writable attribute</code>），表明是否可以设置该属性的值。</p>
+</li>
+<li><p>可枚举（<code>enumerable attribute</code>），表明是否可以通过<code>for/in</code>循环返回该属性。</p>
+</li>
+<li><p>可配置（<code>configurable attribute</code>），表明是否可以删除或修改该属性。</p>
+</li>
 </ul>
 <p>除了包含属性之外，每个对象还拥有三个相关的对象特性（<code>object attribute</code>）：</p>
 <ul>
-<li>对象的原型（<code>prototype</code>）指向另外一个对象，本对象的属性继承自它的原型对象。</li>
-<li>对象的类（<code>class</code>）是一个标识对象类型的字符串。</li>
-<li>对象的扩展标记（<code>extensible flag</code>）指明了是否可以向该对象添加新属性。</li>
+<li><p>对象的原型（<code>prototype</code>）指向另外一个对象，本对象的属性继承自它的原型对象。</p>
+</li>
+<li><p>对象的类（<code>class</code>）是一个标识对象类型的字符串。</p>
+</li>
+<li><p>对象的扩展标记（<code>extensible flag</code>）指明了是否可以向该对象添加新属性。</p>
+</li>
 </ul>
 <p>最后，我们用下面这些术语来对三类JavaScript对象和两类属性作区分：</p>
 <ul>
-<li>内置对象（<code>native object</code>）是由ECMAScript规范定义的对象或类。例如，数组、函数、日期和正则表达式都是内置对象。</li>
-<li>宿主对象（<code>host object</code>）是由JavaScript解释器所嵌入的宿主环境（比如Web浏览器）定义的。客户端JavaScript中表示网页结构的<code>HTMLElement</code>对象均是宿主对象。既然宿主环境定义的方法可以当成普通的JavaScript函数对象，那么宿主对象也可以当成内置对象。</li>
-<li>自定义对象（<code>user-defined object</code>）是由运行中的JavaScript代码创建的对象。</li>
-<li>自有属性（<code>own property</code>）是直接在对象中定义的属性。</li>
-<li>继承属性（<code>inherited property</code>）是在对象的原型对象中定义的属性。</li>
+<li><p>内置对象（<code>native object</code>）是由ECMAScript规范定义的对象或类。例如，数组、函数、日期和正则表达式都是内置对象。</p>
+</li>
+<li><p>宿主对象（<code>host object</code>）是由JavaScript解释器所嵌入的宿主环境（比如Web浏览器）定义的。客户端JavaScript中表示网页结构的<code>HTMLElement</code>对象均是宿主对象。既然宿主环境定义的方法可以当成普通的JavaScript函数对象，那么宿主对象也可以当成内置对象。</p>
+</li>
+<li><p>自定义对象（<code>user-defined object</code>）是由运行中的JavaScript代码创建的对象。</p>
+</li>
+<li><p>自有属性（<code>own property</code>）是直接在对象中定义的属性。</p>
+</li>
+<li><p>继承属性（<code>inherited property</code>）是在对象的原型对象中定义的属性。</p>
+</li>
 </ul>
 <h3 id="一、创建对象"><a href="#一、创建对象" class="headerlink" title="一、创建对象"></a>一、创建对象</h3><p>可以通过对象直接量、关键字<code>new</code>和<code>Object.create()</code>函数来创建对象。</p>
 <h4 id="1-对象直接量"><a href="#1-对象直接量" class="headerlink" title="1. 对象直接量"></a>1. 对象直接量</h4><p>创建对象最简单的方式就是在JavaScript代码中使用对象直接量。</p>
@@ -175,7 +186,9 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// o2不继承任何属性和方法</span></span><br><span class="line"><span class="keyword">var</span> o2 = <span class="built_in">Object</span>.create(<span class="literal">null</span>);</span><br></pre></td></tr></table></figure>
 <p>如果想创建一个普通的空对象（比如通过<code>{}</code>或<code>new Object()</code>创建的对象），需要传入<code>Object.prototype</code></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// o3和&#123;&#125;和new Object()一样</span></span><br><span class="line"><span class="keyword">var</span> o3 = <span class="built_in">Object</span>.create(<span class="built_in">Object</span>.prototype);</span><br></pre></td></tr></table></figure>
-<p><strong><em>可以通过任意原型创建新对象（换句话说，可以使任意对象可继承），这是一个强大的特性。</em></strong></p>
+<blockquote>
+<p><strong>可以通过任意原型创建新对象（换句话说，可以使任意对象可继承），这是一个强大的特性。</strong></p>
+</blockquote>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// inherit()返回一个继承自原型对象p的属性的新对象</span></span><br><span class="line"><span class="comment">// 这里使用ECMAScript5中的Object.create()函数（如果存在的话）</span></span><br><span class="line"><span class="comment">// 如果不存在，则退化使用其他方法</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">inherit</span>(<span class="params">p</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (p == <span class="literal">null</span>)</span><br><span class="line">        <span class="comment">// p是一个对象，但不能是null</span></span><br><span class="line">        <span class="keyword">throw</span> <span class="built_in">TypeError</span>();              </span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">Object</span>.create)</span><br><span class="line">        <span class="comment">// 如果Object.create()存在，直接使用它</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">Object</span>.create(p);</span><br><span class="line">    <span class="keyword">var</span> t = <span class="keyword">typeof</span> p;</span><br><span class="line">    <span class="keyword">if</span> (t !== <span class="string">'object'</span> &amp;&amp; t !== <span class="string">'function'</span>)</span><br><span class="line">        <span class="keyword">throw</span> <span class="built_in">TypeError</span>();</span><br><span class="line">    <span class="comment">// 定义一个空构造函数</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;&#125;;</span><br><span class="line">    <span class="comment">// 将其原型属性设置为p</span></span><br><span class="line">    f.prototype = p;</span><br><span class="line">    <span class="comment">// 使用f()创建p的继承对象</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> f();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>注意，<code>inherit()</code>方法并不能完全代替<code>Object.create()</code>，它不能通过传入<code>null</code>原型来创建对象，而且不能接收可选的第二个参数。</p>
@@ -204,9 +217,12 @@
 <p>严格模式下，任何失败的属性设置操作都会抛出一个类型错误异常。</p>
 <p>在以下场景下给对象<code>o</code>设置属性p会失败：</p>
 <ul>
-<li><code>o</code>中的属性p是只读的：不能给只读属性重新赋值（<code>defineProperty()</code>方法中有一个例外，可以对可配置的只读属性重新赋值）。</li>
-<li><code>o</code>中的属性p是继承属性，且它是只读的：不能通过同名自有属性覆盖只读的继承属性。</li>
-<li><code>o</code>中不存在自有属性<code>p</code>：<code>o</code>没有使用<code>setter</code>方法继承属性<code>p</code>，并且<code>o</code>的可扩展性（<code>extensible attribute</code>）是<code>false</code>。如果<code>o</code>中不存在<code>p</code>，而且没有<code>setter</code>方法可供调用，则<code>p</code>一定会添加至<code>o</code>中。但如果<code>o</code>不是可扩展的，那么在<code>o</code>中不能定义新属性。</li>
+<li><p><code>o</code>中的属性p是只读的：不能给只读属性重新赋值（<code>defineProperty()</code>方法中有一个例外，可以对可配置的只读属性重新赋值）。</p>
+</li>
+<li><p><code>o</code>中的属性p是继承属性，且它是只读的：不能通过同名自有属性覆盖只读的继承属性。</p>
+</li>
+<li><p><code>o</code>中不存在自有属性<code>p</code>：<code>o</code>没有使用<code>setter</code>方法继承属性<code>p</code>，并且<code>o</code>的可扩展性（<code>extensible attribute</code>）是<code>false</code>。如果<code>o</code>中不存在<code>p</code>，而且没有<code>setter</code>方法可供调用，则<code>p</code>一定会添加至<code>o</code>中。但如果<code>o</code>不是可扩展的，那么在<code>o</code>中不能定义新属性。</p>
+</li>
 </ul>
 <hr>
 <h3 id="三、删除属性"><a href="#三、删除属性" class="headerlink" title="三、删除属性"></a>三、删除属性</h3><p><code>delete</code>运算符可以删除对象的属性。让人感到意外的是，<code>delete</code>只是断开属性和宿主对象的联系，而不会去操作属性中的属性</p>
@@ -270,8 +286,10 @@
 <hr>
 <h3 id="七、属性的特性"><a href="#七、属性的特性" class="headerlink" title="七、属性的特性"></a>七、属性的特性</h3><p>除了包含名字和值之外，属性还包含一些标识它们可写、可枚举和可配置的特性。本节将讲述ES5中查询和设置这些属性特性的API</p>
 <ul>
-<li>可以通过这些API给原型对象添加方法，并将它们设置成不可枚举的，这让它们看起来更像内置方法</li>
-<li>可以通过这些API给对象定义不能修改或删除的属性，借此“锁定”这个对象</li>
+<li><p>可以通过这些API给原型对象添加方法，并将它们设置成不可枚举的，这让它们看起来更像内置方法</p>
+</li>
+<li><p>可以通过这些API给对象定义不能修改或删除的属性，借此“锁定”这个对象</p>
+</li>
 </ul>
 <p>我们将存取器属性的<code>getter</code>和<code>setter</code>方法看成是属性的特性，按照这个逻辑，我们也可以把数据属性的值同样看作属性的特性。因此，可以认为一个属性包含一个名字和4个特性。</p>
 <p><strong><em>数据属性的4个特性分别是它的值（<code>value</code>）、可写性（<code>writable</code>）、可枚举性（<code>enumerable</code>）和可配置性（<code>configurable</code>）</em></strong></p>
@@ -287,12 +305,18 @@
 <p>这段代码从一个空对象开始，然后给它添加两个数据属性和一个只读存取器属性。最终<code>Object.defineProperties()</code>返回修改后的对象（和<code>Object.defineProperty()</code>一样）。</p>
 <p>对于那些不允许创建或修改的属性来说，如果用<code>Object.defineProperty()</code>和<code>Object.defineProperties()</code>对其操作就会抛出类型错误异常，比如给一个不可扩展的对象新增属性就会抛出类型错误异常。造成这些方法抛出类型错误异常的其他原因则和特性本身相关。可写性控制着对值特性的修改。可配置性控制着对其他特性（包括属性是否可以删除）的修改。然而规则远不止这么简单，例如，如果属性是可配置的话，则可以修改不可写属性的值。同样，如果属性是不可配置的，仍然可以将可写属性修改为不可写属性。下面是完整规则，任何对<code>Object.defineProperty()</code>或<code>Object.defineProperties()</code>违反规则的使用都会抛出类型错误异常</p>
 <ul>
-<li>如果对象是不可扩展的，则可以编辑已有的自有属性，但不能给它添加新属性</li>
-<li>如果属性是不可配置的，则不能修改它的可配置性和可枚举性</li>
-<li>如果存取器属性是不可配置的，则不能修改其<code>getter</code>和<code>setter</code>方法，也不能将它转换为数据属性</li>
-<li>如果数据属性是不可配置的，则不能将它转换为存取器属性</li>
-<li>如果数据属性是不可配置的，则不能将它的可写性从<code>false</code>修改为<code>true</code>，但可以从<code>true</code>修改为<code>false</code></li>
-<li>如果数据属性是不可配置且不可写的，则不能修改它的值。然而可配置但不可写属性的值是可以修改的（实际上是先将它标记为可写的，然后修改它的值，最后转换为不可写的）。</li>
+<li><p>如果对象是不可扩展的，则可以编辑已有的自有属性，但不能给它添加新属性</p>
+</li>
+<li><p>如果属性是不可配置的，则不能修改它的可配置性和可枚举性</p>
+</li>
+<li><p>如果存取器属性是不可配置的，则不能修改其<code>getter</code>和<code>setter</code>方法，也不能将它转换为数据属性</p>
+</li>
+<li><p>如果数据属性是不可配置的，则不能将它转换为存取器属性</p>
+</li>
+<li><p>如果数据属性是不可配置的，则不能将它的可写性从<code>false</code>修改为<code>true</code>，但可以从<code>true</code>修改为<code>false</code></p>
+</li>
+<li><p>如果数据属性是不可配置且不可写的，则不能修改它的值。然而可配置但不可写属性的值是可以修改的（实际上是先将它标记为可写的，然后修改它的值，最后转换为不可写的）。</p>
+</li>
 </ul>
 <p>上文中的<code>extend()</code>函数，只是简单的复制属性名和值，没有复制属性的特性，而且也没有复制存取器属性的<code>getter</code>和<code>setter</code>方法，只是将它们简单的转换为静态的数据属性。下面给出改进的<code>extend()</code>，它使用<code>Object.getOwnPropertyDescriptor()</code>和<code>Object.defineProperty()</code>对属性的所有特性进行复制。新的<code>extend()</code>作为不可枚举属性添加到<code>Object.prototype</code>中，因此它是<code>Object</code>上定义的方法，而不是一个独立的函数。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">给Object.prototype添加一个不可枚举的extend()方法</span></span><br><span class="line"><span class="comment">这个方法继承自调用它的对象，将作为参数传入的对象的属性一一复制</span></span><br><span class="line"><span class="comment">除了值以外，也复制属性的所有特性，除非在目标对象中存在同名的属性</span></span><br><span class="line"><span class="comment">参数对象的所有自由对象（包括不可枚举的属性）也会一一复制</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="built_in">Object</span>.defineProperty(<span class="built_in">Object</span>.prototype, <span class="string">'extend'</span>, &#123;</span><br><span class="line">    writable: <span class="literal">true</span>,</span><br><span class="line">    enumerable: <span class="literal">false</span>,</span><br><span class="line">    configurable: <span class="literal">true</span>,</span><br><span class="line">    value: <span class="function"><span class="keyword">function</span>(<span class="params">o</span>) </span>&#123;</span><br><span class="line">        <span class="comment">// 得到所有的自有属性，包括不可枚举属性</span></span><br><span class="line">        <span class="keyword">var</span> names = <span class="built_in">Object</span>.getOwnPropertyNames(o);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; names.length; i++ ) &#123;</span><br><span class="line">            <span class="comment">// 如果属性存在，则跳过</span></span><br><span class="line">            <span class="keyword">if</span> (names[i] <span class="keyword">in</span> <span class="keyword">this</span>)</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            <span class="comment">// 获得o中的属性描述符</span></span><br><span class="line">            <span class="keyword">var</span> desc = <span class="built_in">Object</span>.getOwnPropertyDescriptor(o, names[i]);</span><br><span class="line">            <span class="comment">// 用它给this创建一个属性</span></span><br><span class="line">            <span class="built_in">Object</span>.defineProperty(<span class="keyword">this</span>, names[i], desc);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
@@ -331,7 +355,9 @@
 <hr>
 <h3 id="九、序列化对象"><a href="#九、序列化对象" class="headerlink" title="九、序列化对象"></a>九、序列化对象</h3><p>对象序列化（<code>serialization</code>）是指将对象的状态转换为字符串，也可将字符串还原为对象。ES5提供了内置函数<code>JSON.stringfigy()</code>和<code>JSON.parse()</code>用来序列化和还原JavaScript对象。这些方法都是用JSON作为数据交换格式。</p>
 <p>JSON的语法是JavaScript语法的子集，它并不能表示JavaScript离的所有值，支持对象、数组、字符串、无穷大数字、<code>true</code>、<code>false</code>和<code>null</code>，并且它们可以序列化和还原。<code>NaN</code>、<code>Infinity</code>和<code>-Infinity</code>序列化的结果是<code>null</code>，日期对象序列化的结果是ISO格式的日期字符串（参照<code>Date.toJson()</code>函数），但<code>JSON.parse()</code>依然保留它们的字符串形态，而不会将它们还原为原始日期对象。函数、<code>RegExp</code>、<code>Error</code>对象和<code>undefined</code>值不能序列化和还原。</p>
-<p><strong><em><code>JSON.stringfy()</code>只能序列化对象可枚举的自有属性</em></strong></p>
+<blockquote>
+<p><strong><code>JSON.stringfy()</code>只能序列化对象可枚举的自有属性</strong></p>
+</blockquote>
 <p>对于一个不能序列化的属性来说，在序列化后的输出字符串中会将这个属性省略掉。<code>JSON.stringify()</code>和<code>JSON.parse()</code>都可以接收第二个可选参数，通过传入需要序列化或还原的属性列表来定制自定义的序列化或还原操作。</p>
 <hr>
 <h3 id="十、对象方法"><a href="#十、对象方法" class="headerlink" title="十、对象方法"></a>十、对象方法</h3><p>所有的JavaScript对象都从<code>Object.prototype</code>继承属性（除了那些不通过原型显示创建的对象）。这些继承属性主要是方法，我们已经讨论过<code>hasOwnProperty()</code>、<code>propertyIsEnumerable()</code>、<code>isPrototypeOf()</code>三个方法，以及在Object构造函数里定义的静态函数<code>Object.create()</code>和<code>Object.getPrototypeOf()</code>等。本节将对定义在<code>Object.prototype</code>里的对象方法展开讲解，这些方法非常好用而且使用广泛，但一些特定的类会重写这些方法。</p>
@@ -344,7 +370,7 @@
 <h4 id="4-valueOf-方法"><a href="#4-valueOf-方法" class="headerlink" title="4. valueOf()方法"></a>4. valueOf()方法</h4><p><code>valueOf()</code>方法和<code>toString()</code>方法非常类似，但往往当JavaScript需要将对象转换为某种原始值而非字符串的时候才会调用它，尤其是转换为数字的时候。如果在需要使用原始值的上下文中使用了对象，JavaScript就会自动调用这个方法。默认的<code>valueOf()</code>方法不足为奇，但有些内置类自定义了<code>valueOf()</code>方法（比如<code>Date.valueOf()</code>）。</p>
 <hr>
 <h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><ol>
-<li><a href="">JavaScript权威指南（第6版）</a></li>
+<li><a href="">《JavaScript权威指南（第6版）》</a></li>
 </ol>
 
   </section>

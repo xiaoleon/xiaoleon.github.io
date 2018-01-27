@@ -7,7 +7,7 @@
     
 
     <title>
-      域名发散与域名收敛 | 张啸 
+      js-3 | 张啸 
     </title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -15,18 +15,15 @@
       <meta name="author" content="Leon">
     
     
-    <meta name="description" content="浏览器对于同一域名下允许的并发请求做了限制，通常同一域名下最大并发请求数量为6个">
-<meta name="keywords" content="JavaScript对象">
+    <meta name="keywords" content="tag1">
 <meta property="og:type" content="article">
-<meta property="og:title" content="域名发散与域名收敛 | 张啸">
-<meta property="og:url" content="http://www.xiaoleon.cn/2018/01/22/web-1/index.html">
+<meta property="og:title" content="js-3 | 张啸">
+<meta property="og:url" content="http://www.xiaoleon.cn/2018/01/27/js-3/index.html">
 <meta property="og:site_name" content="张啸">
-<meta property="og:description" content="浏览器对于同一域名下允许的并发请求做了限制，通常同一域名下最大并发请求数量为6个">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-01-27T09:03:40.571Z">
+<meta property="og:updated_time" content="2018-01-27T08:59:45.298Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="域名发散与域名收敛 | 张啸">
-<meta name="twitter:description" content="浏览器对于同一域名下允许的并发请求做了限制，通常同一域名下最大并发请求数量为6个">
+<meta name="twitter:title" content="js-3 | 张啸">
     
     
     
@@ -107,26 +104,26 @@
 
   <header class="post-header">
     
-    <h2 class="post-title">Web(1) 域名发散与域名收敛</h2>
+    <h2 class="post-title">js-3</h2>
 
     
 
     <div class="post-meta">
-      <time datetime="2018-01-22" class="post-meta__date date">2018-01-22</time> 
+      <time datetime="2018-01-27" class="post-meta__date date">2018-01-27</time> 
 
       <span class="post-meta__tags tags">
 
           
             &#8226; 分类:
             <font class="categories">
-              <a class="categories-link" href="/categories/Web抄书笔记/">Web抄书笔记</a>
+              <a class="categories-link" href="/categories/category1/">category1</a>
             </font>
           
 
           
             &#8226; 标签:
             <font class="tags">
-              <a class="tags-link" href="/tags/JavaScript对象/">JavaScript对象</a>
+              <a class="tags-link" href="/tags/tag1/">tag1</a>
             </font>
           
       </span>
@@ -137,26 +134,19 @@
   </header>
 
   <section id="post-content" class="article-content post">
-    <p>浏览器对于同一域名下允许的并发请求做了限制，通常同一域名下最大并发请求数量为6个</p>
+    <!-- Todo -->
 <a id="more"></a>
-<ul>
-<li><p>为了适应当时服务器的负载能力；之前的服务器的负载能力并没有这么强，高并发的请求可能会导致服务器无法正常提供服务甚至崩溃</p>
-</li>
-<li><p>如果浏览器允许的最大并发请求数较大，容易造成<code>DDoS(Distributed Denial of Service)</code>攻击等安全隐患</p>
-</li>
-<li><p>过多的并发请求可能会造成浏览器阻塞，使之处于“假死”的无响应状态</p>
-</li>
-<li><p>浏览器目前已经支持了长连接，可以在同一个<code>TCP</code>连接中完成多个请求，没有必要再进行代价较大的重新开启新请求的操作</p>
-</li>
-</ul>
+<!-- Todo -->
+<h3 id="一、"><a href="#一、" class="headerlink" title="一、"></a>一、</h3><!-- Todo -->
 <hr>
-<h3 id="一、域名发散"><a href="#一、域名发散" class="headerlink" title="一、域名发散"></a>一、域名发散</h3><p>域名发散就是为了突破浏览器对于同一域名并发请求数的限制，使用域名发散为同一个服务申请多个域名，从而可以一定程度上提高并发量；当然，由于建立新的请求需要一定的代价，因此需要在域名发散与域名收敛之间进行<code>trade off</code>，通常发散的域名个数为2-4个。</p>
+<h3 id="二、"><a href="#二、" class="headerlink" title="二、"></a>二、</h3><!-- Todo -->
 <hr>
-<h3 id="二、域名收敛"><a href="#二、域名收敛" class="headerlink" title="二、域名收敛"></a>二、域名收敛</h3><p>域名收敛就是将静态资源放在一个域名下不进行发散，这主要是为了适应移动端的发展需求；通常DNS是一个开销较大的操作，而移动端由于网络带宽和实时性、资源等的限制，这些开销对于移动端的用户体验是致命的，因此需要进行域名收敛。</p>
+<h3 id="三、"><a href="#三、" class="headerlink" title="三、"></a>三、</h3><!-- Todo -->
 <hr>
-<h3 id="三、SPDY"><a href="#三、SPDY" class="headerlink" title="三、SPDY"></a>三、SPDY</h3><p><code>SPDY</code>是谷歌的一个商标，是由Google提出的一种更加快捷的应用层协议，可以说是对<code>HTTP</code>协议的一种补充，同时也推动了<code>HTTP/2</code>的发展。</p>
-<p><code>SPDY</code>的提出也给无线端/移动端优化提供进一步的方案。</p>
-<p>它并不是一种<code>HTTP</code>的替代，而是修改了<code>HTTP</code>请求和相应的发送方式；能够有效降低网页加载延时并提高网络安全性；可以通过<code>HTTP</code>头部压缩、多路复用、请求优先级排序降低加载延时；<code>SPDY</code>中使用<code>SSL/TLS</code>加密提高了网络安全性，同时向后兼容<code>TCP</code>；另外，服务器在页面请求后可以主动将需要的静态资源发送到客户端而不需要客户端再次请求。</p>
+<h3 id="四、"><a href="#四、" class="headerlink" title="四、"></a>四、</h3><!-- Todo -->
+<h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><ol>
+<li><a href="">《Todo》</a></li>
+</ol>
 
   </section>
 
@@ -166,7 +156,7 @@
 
     <!-- 将评论系统（例如Disqus、多说、友言、畅言等）提供的代码片段粘贴在这里 -->
     <!--PC和WAP自适应版-->
-<div id="SOHUCS" sid="2018/01/22/web-1/"  ></div> 
+<div id="SOHUCS" sid="2018/01/27/js-3/"  ></div> 
 <script type="text/javascript"> 
 (function(){ 
 var appid = 'cytoVRn2O';
