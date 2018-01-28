@@ -2,9 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.xiaoleon.cn/2018/01/22/js-1/</loc>
+    
+    <lastmod>2018-01-28T15:07:28.095Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.xiaoleon.cn/2018/01/22/js-2/</loc>
+    
+    <lastmod>2018-01-28T15:07:26.195Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.xiaoleon.cn/2018/01/27/js-3/</loc>
     
-    <lastmod>2018-01-27T10:08:46.827Z</lastmod>
+    <lastmod>2018-01-28T15:07:22.340Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.xiaoleon.cn/2018/01/28/js-4/</loc>
+    
+    <lastmod>2018-01-28T15:07:19.438Z</lastmod>
     
   </url>
   
@@ -12,20 +33,6 @@
     <loc>http://www.xiaoleon.cn/2018/01/22/web-1/</loc>
     
     <lastmod>2018-01-27T09:03:40.571Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.xiaoleon.cn/2018/01/22/js-2/</loc>
-    
-    <lastmod>2018-01-27T09:03:32.667Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.xiaoleon.cn/2018/01/22/js-1/</loc>
-    
-    <lastmod>2018-01-27T09:03:25.483Z</lastmod>
     
   </url>
   
