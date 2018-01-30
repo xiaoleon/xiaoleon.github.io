@@ -113,6 +113,106 @@
     <li>
 
       <h2 class="post-list__post-title post-title">
+        <a href="/2018/01/30/js-12/">JS(12) 客户端存储</a>
+      </h2>
+
+      <div class="post-list__meta">
+
+        <time datetime="2018-01-30" class="post-list__meta--date date">2018-01-30</time> 
+      </div>
+
+      <div class="excerpt">
+        
+          <p>Web应用允许使用浏览器提供的API实现将数据存储到用户的电脑上，这种客户端存储相当于赋予了Web浏览器记忆功能。比方说，Web应用就可以用这种方式来“记住”用户的偏好甚至是用户所有的状态信息，以便准确地“回忆”起用户上一次访问的位置。客户端存储遵循“同源策略”，因此不同站点的页面是无法互相读取对方存储的数据，而同一站点的不同页面之间是可以互相共享存储数据的，它为我们提供了一种通信机制，例如，一个页面上填写的表单数据可以显示在另外一个页面中。Web应用可以选择它们存储数据的有效期：比如采用临时存储可以让数据保存至当前窗口关闭或者浏览器退出；采用永久存储，可以将数据永久地存储到硬盘上，数年或者数月不失效。</p>
+        
+      </div>
+
+      <hr class="post-list__divider" />
+    </li>
+    
+    <li>
+
+      <h2 class="post-list__post-title post-title">
+        <a href="/2018/01/30/js-11/">JS(11) 脚本化HTTP</a>
+      </h2>
+
+      <div class="post-list__meta">
+
+        <time datetime="2018-01-30" class="post-list__meta--date date">2018-01-30</time> 
+      </div>
+
+      <div class="excerpt">
+        
+          <p>超文本传输协议（<code>HyperText Transfer Protocol，HTTP</code>）规定Web浏览器如何从Web服务器获取文档和向Web服务器提交表单内容，以及Web服务器如何响应这些请求和提交。Web浏览器会处理大量HTTP。通常，HTTP并不在脚本的控制下，只是当用户单机链接、提交表单和输入URL时才发生。</p>
+        
+      </div>
+
+      <hr class="post-list__divider" />
+    </li>
+    
+    <li>
+
+      <h2 class="post-list__post-title post-title">
+        <a href="/2018/01/30/js-10/">JS(10) 脚本化文档</a>
+      </h2>
+
+      <div class="post-list__meta">
+
+        <time datetime="2018-01-30" class="post-list__meta--date date">2018-01-30</time> 
+      </div>
+
+      <div class="excerpt">
+        
+          <p>客户端JavaScript的存在使得静态的HTML文档变成了交互式的Web应用。脚本化Web页面内容是JavaScript的核心目标。每一个Web浏览器窗口、标签页和框架由一个Window对象所表示。每个Window对象有一个document属性引用了Document对象。Document对象表示窗口的内容，Document对象并非独立的，它是一个巨大的API中的核心对象，叫做文档对象模型（<code>Document Object Model，DOM</code>），它代表和操作文档的内容。</p>
+        
+      </div>
+
+      <hr class="post-list__divider" />
+    </li>
+    
+    <li>
+
+      <h2 class="post-list__post-title post-title">
+        <a href="/2018/01/30/js-9/">JS(9) 类型、值和变量</a>
+      </h2>
+
+      <div class="post-list__meta">
+
+        <time datetime="2018-01-30" class="post-list__meta--date date">2018-01-30</time> 
+      </div>
+
+      <div class="excerpt">
+        
+          <p>计算机程序的运行需要对值（<code>value</code>）进行操作。在编程语言中，能够表示并操作的值的类型称作数据类型（<code>type</code>），编程语言最基本的特性就是能够支持多种数据类型。当程序需要将值保存起来以备将来使用时，便将其赋值给一个变量（<code>variable</code>）。变量是一个值的符号名称，可以通过名称来获得对值的引用。变量的工作机制是编程语言的另一个基本特性。</p>
+        
+      </div>
+
+      <hr class="post-list__divider" />
+    </li>
+    
+    <li>
+
+      <h2 class="post-list__post-title post-title">
+        <a href="/2018/01/30/js-8/">JS(8) Window对象</a>
+      </h2>
+
+      <div class="post-list__meta">
+
+        <time datetime="2018-01-30" class="post-list__meta--date date">2018-01-30</time> 
+      </div>
+
+      <div class="excerpt">
+        
+          <p>Window对象是客户端JavaScript程序的全局对象，本文介绍Window对象的属性和方法，这些属性定义了许多不同的API。</p>
+        
+      </div>
+
+      <hr class="post-list__divider" />
+    </li>
+    
+    <li>
+
+      <h2 class="post-list__post-title post-title">
         <a href="/2018/01/29/js-7/">JS(7) 客户端JavaScript</a>
       </h2>
 
@@ -204,106 +304,6 @@
       <div class="excerpt">
         
           <p>数组是值的有序集合，每个值叫做一个元素，而每个元素在数组中有一个位置，以数字表示，称为索引。JavaScript数组的索引是基于零的32位数，第一个元素的索引为0，最大可能的索引为<code>4 294 967 294</code>（<code>2e32-2</code>），数组最大能容纳<code>4 294 967 295</code>个元素。</p>
-        
-      </div>
-
-      <hr class="post-list__divider" />
-    </li>
-    
-    <li>
-
-      <h2 class="post-list__post-title post-title">
-        <a href="/2018/01/22/js-2/">JS(2) 对象</a>
-      </h2>
-
-      <div class="post-list__meta">
-
-        <time datetime="2018-01-22" class="post-list__meta--date date">2018-01-22</time> 
-      </div>
-
-      <div class="excerpt">
-        
-          <p>对象是JavaScript的基本数据类型。对象是一种复合值：它将很多值（原始值或者其他对象）聚合在一起，可以通过名字访问这些值。对象也可看作是属性的无序集合，每个属性都是一个名值对，属性名是字符串，因此我们可以把对象看成是从字符串到值的映射。</p>
-        
-      </div>
-
-      <hr class="post-list__divider" />
-    </li>
-    
-    <li>
-
-      <h2 class="post-list__post-title post-title">
-        <a href="/2018/01/22/js-1/">JS(1) 实现继承</a>
-      </h2>
-
-      <div class="post-list__meta">
-
-        <time datetime="2018-01-22" class="post-list__meta--date date">2018-01-22</time> 
-      </div>
-
-      <div class="excerpt">
-        
-          <p>JS作为面向对象的弱类型语言，继承也是其非常强大的特性之一。那么如何在JS中实现继承呢？让我们拭目以待。</p>
-        
-      </div>
-
-      <hr class="post-list__divider" />
-    </li>
-    
-    <li>
-
-      <h2 class="post-list__post-title post-title">
-        <a href="/2018/01/22/web-1/">Web(1) 域名发散与域名收敛</a>
-      </h2>
-
-      <div class="post-list__meta">
-
-        <time datetime="2018-01-22" class="post-list__meta--date date">2018-01-22</time> 
-      </div>
-
-      <div class="excerpt">
-        
-          <p>浏览器对于同一域名下允许的并发请求做了限制，通常同一域名下最大并发请求数量为6个</p>
-        
-      </div>
-
-      <hr class="post-list__divider" />
-    </li>
-    
-    <li>
-
-      <h2 class="post-list__post-title post-title">
-        <a href="/2018/01/22/css3-10/">CSS3(10) 补充样式和属性</a>
-      </h2>
-
-      <div class="post-list__meta">
-
-        <time datetime="2018-01-22" class="post-list__meta--date date">2018-01-22</time> 
-      </div>
-
-      <div class="excerpt">
-        
-          <p>本文主要对CSS3中的一些内容比较少，但也非常重要的样式和属性进行简要介绍。</p>
-        
-      </div>
-
-      <hr class="post-list__divider" />
-    </li>
-    
-    <li>
-
-      <h2 class="post-list__post-title post-title">
-        <a href="/2018/01/22/css3-9/">CSS3(9) Media Queries相关样式</a>
-      </h2>
-
-      <div class="post-list__meta">
-
-        <time datetime="2018-01-22" class="post-list__meta--date date">2018-01-22</time> 
-      </div>
-
-      <div class="excerpt">
-        
-          <p>在css3的众多模块中，有一个与各种媒体相关的重要模块——<code>Media Queries</code>，该模块中允许添加媒体查询表达式，用以指定媒体类型，然后根据媒体类型来选择应该使用的样式。换句话说，允许我们在不改变内容的情况下在样式中选择一种页面的布局以精确地适应不同的设备，从而改善用户体验。</p>
         
       </div>
 

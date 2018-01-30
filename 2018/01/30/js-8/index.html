@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      Window对象 | 张啸 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="Leon">
+    
+    
+    <meta name="description" content="Window对象是客户端JavaScript程序的全局对象，本文介绍Window对象的属性和方法，这些属性定义了许多不同的API。">
+<meta name="keywords" content="Window对象">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Window对象 | 张啸">
+<meta property="og:url" content="http://www.xiaoleon.cn/2018/01/30/js-8/index.html">
+<meta property="og:site_name" content="张啸">
+<meta property="og:description" content="Window对象是客户端JavaScript程序的全局对象，本文介绍Window对象的属性和方法，这些属性定义了许多不同的API。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-01-30T14:21:55.347Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Window对象 | 张啸">
+<meta name="twitter:description" content="Window对象是客户端JavaScript程序的全局对象，本文介绍Window对象的属性和方法，这些属性定义了许多不同的API。">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+        <a href="/"><img src="/images/logo.jpg" width="80" alt="张啸 logo" class="panel-cover__logo logo" /></a>
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/">张啸</a></h1>
+        <hr class="panel-cover__divider" />
+
+        
+        <p class="panel-cover__description">
+          世界上最快乐的事，莫过于为理想而奋斗。
+        </p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title="" class="">关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title="" class="">归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h2 class="post-title">JS(8) Window对象</h2>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2018-01-30" class="post-meta__date date">2018-01-30</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+            &#8226; 分类:
+            <font class="categories">
+              <a class="categories-link" href="/categories/JavaScript抄书笔记/">JavaScript抄书笔记</a>
+            </font>
+          
+
+          
+            &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/Window对象/">Window对象</a>
+            </font>
+          
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <p>Window对象是客户端JavaScript程序的全局对象，本文介绍Window对象的属性和方法，这些属性定义了许多不同的API。</p>
+<a id="more"></a>
+<p>本文主要介绍以下方面：</p>
+<ul>
+<li><p><code>setTimeout()</code>和<code>setInterval()</code></p>
+</li>
+<li><p><code>location</code>属性，以及如何获取当前显示文档的url和载入新的文档</p>
+</li>
+<li><p><code>history</code>属性，以及如何在历史记录中向前和向后移动</p>
+</li>
+<li><p><code>navigator</code>属性，以及如何获取浏览器厂商和版本信息，如何使用screen属性查询窗口尺寸</p>
+</li>
+<li><p><code>alert()</code>、<code>promt()</code>、<code>confirm()</code>、<code>showModalDialog()</code></p>
+</li>
+<li><p><code>onerror</code>处理方法，以及如何在未捕获的JavaScript异常发生时调用</p>
+</li>
+<li><p>HTML元素的<code>ID</code>和<code>name</code>作为<code>Window</code>对象的属性来使用</p>
+</li>
+<li><p>如何打开和关闭浏览器窗口，以及如何编写可以在多个窗口和嵌套窗体中工作的JavaScript代码</p>
+</li>
+</ul>
+<hr>
+<h3 id="一、计时器"><a href="#一、计时器" class="headerlink" title="一、计时器"></a>一、计时器</h3><p><code>setTimeout()</code>和<code>setInterval()</code>可以用来注册在指定时间之后单次或重复调用的函数。</p>
+<p>Window对象的<code>setTimeout()</code>方法用来实现一个函数在指定的毫秒数之后运行。<code>setTimeout()</code>返回一个值，这个值可以传递给<code>clearTimeout()</code>用于取消这个函数的执行。</p>
+<p><code>setInterval()</code>和<code>setTimeout()</code>一样，只不过这个函数会在指定毫秒数的间隔里重复调用。</p>
+<p>由于历史原因，<code>setTimeout()</code>和<code>setInterval()</code>的第一个参数可以作为字符串传入。如果这么做，那这个字符串会在指定的超时时间或间隔之后进行求值（相当于执行<code>eval()</code>）。除前两个参数之外，H5规范还允许<code>setTimeout()</code>和<code>setInterval()</code>传入额外的参数，并在调用函数时把这些参数传递过去。</p>
+<p>如果以0毫秒的超时时间来调用<code>setTimeout()</code>，那么指定的函数不会立刻执行。相反，会把它放到队列中，等到前面处于等待状态的事件处理程序全部执行完成后，再“立刻”调用它。</p>
+<hr>
+<h3 id="二、浏览器定位和导航"><a href="#二、浏览器定位和导航" class="headerlink" title="二、浏览器定位和导航"></a>二、浏览器定位和导航</h3><p>Window对象的<code>location</code>属性引用的是Location对象，它表示该窗口中当前显示的文档的url，并定义了方法来使窗口载入新的文档。</p>
+<p>Document对象的<code>location</code>属性也引用到Location对象</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.location == <span class="built_in">document</span>.location;           <span class="comment">// 总是返回true</span></span><br></pre></td></tr></table></figure>
+<p>Document对象也有一个url属性，是文档首次载入后保存该文档的url的静态字符串。如果定位到文档中的片段标识符，Location对象会做相应的更新，而<code>document.url</code>属性则不会改变。</p>
+<h4 id="1-解析url"><a href="#1-解析url" class="headerlink" title="1. 解析url"></a>1. 解析url</h4><p>Window对象的<code>location</code>属性引用的是Location对象，它表示该窗口中当前显示的文档的url。Location对象的href属性是一个字符串，后者包含url的完整文本。Location对象的<code>toString()</code>方法返回href属性的值，因此会隐式调用<code>toString()</code>的情况下，可以使用location代替<code>location.href</code>。</p>
+<p>这个对象的其他属性——<code>protocol</code>、<code>host</code>、<code>hostname</code>、<code>port</code>、<code>pathname</code>和<code>search</code>，分别表示url的各个部分。他们成为“url分解”属性。</p>
+<p>Location对象的<code>hash</code>和<code>search</code>属性比较有趣。如果有的话，<code>hash</code>属性返回url中的“片段标识符”部分。<code>search</code>属性也类似，它返回的是问号之后的url，这部分通常是某种类型的查询字符串。一般来说，这部分内容是用来参数化url并在其中嵌入参数的。</p>
+<h4 id="2-载入新的文档"><a href="#2-载入新的文档" class="headerlink" title="2. 载入新的文档"></a>2. 载入新的文档</h4><p>Location对象的<code>assign()</code>方法可以使窗口载入并显示指定的url中的文档。<code>replace()</code>方法也类似，但它在载入新文档之前会从浏览历史中把当前文档删除。如果脚本无条件地载入一个新文档，<code>replace()</code>方法可能是比<code>assign()</code>方法更好的选择。否则，“后退”按钮会把浏览器带回到原始文档，而相同的脚本则会再次载入新文档。如果检测到用户的浏览器不支持某些特性来显示功能齐全的版本，可以用<code>location.replace()</code>来载入静态的HTML版本</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 如果浏览器不支持XMLHttpRequest对象</span></span><br><span class="line"><span class="comment">// 则将其重定向到一个不需要Ajax的静态页面</span></span><br><span class="line"><span class="keyword">if</span> (!XMLHttpRequest) &#123;</span><br><span class="line">    location.replace(<span class="string">'staticpage.html'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意，在这个例子中传入<code>replace()</code>的是一个相对url。相对url是相对于当前页面所在的目录来解析的，就像将它们用于一个超链接中。</p>
+<p>除了<code>assign()</code>和<code>replace()</code>方法，Location对象还定义了<code>reload()</code>方法，后者可以让浏览器重新载入当前文档。</p>
+<p>使浏览器跳转到新页面的一种更传统的方法是直接把新的url赋值给location属性</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">location = <span class="string">"http://www.orilly.com"</span>;</span><br></pre></td></tr></table></figure>
+<p>还可以吧相对url赋给<code>location</code>，它们会相对当前url进行解析</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">location = <span class="string">"page2.html"</span>;</span><br></pre></td></tr></table></figure>
+<p>纯粹的片段标识符是相对url的一种类型，它不会让浏览器载入新文档，但只会使它滚动到文档的某个位置。<code>#top</code>标识符是个特殊的例子：如果文档中没有元素的ID是“<code>top</code>”，它会让浏览器跳到文档开始处。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 跳转到文档的顶部</span></span><br><span class="line">location = <span class="string">'#top'</span>;</span><br></pre></td></tr></table></figure>
+<p>Location对象的URL分解属性是可写的，对它们重新赋值会改变url的位置，并且导致浏览器载入一个新的文档（如果改变的是<code>hash</code>属性，则在当前文档中进行跳转）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">location.search = <span class="string">'?page='</span> + (pagenum + <span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="三、浏览历史"><a href="#三、浏览历史" class="headerlink" title="三、浏览历史"></a>三、浏览历史</h3><p>History对象用来把窗口的浏览历史用文档和文档状态列表的形式表示。History对象的<code>length</code>属性表示浏览历史列表中的元素数量，但出于安全的因素，脚本不能访问已保存的url。（如果允许，则任意脚本都可以窥探我们的浏览历史）。</p>
+<p>如果窗口包含多个子窗口（比如<code>&lt;iframe&gt;</code>元素），子窗口的浏览历史会按时间顺序穿插在主窗口的历史中。这意味着在主窗口调用<code>history.back()</code>可能会导致其中一个子窗口往回跳转到前一个显示的文档，但主窗口保留当前状态不变。</p>
+<hr>
+<h3 id="四、浏览器和屏幕信息"><a href="#四、浏览器和屏幕信息" class="headerlink" title="四、浏览器和屏幕信息"></a>四、浏览器和屏幕信息</h3><p>脚本有时候需要获取和它们所在的Web浏览器或浏览器所在的桌面相关的信息。本节所介绍Window对象的<code>navigator</code>和<code>screen</code>属性。它们分别引用的是Navigator和Screen对象，而这些对象提供的信息允许脚本来根据环境定制自己的行为。</p>
+<h4 id="1-Navigator对象"><a href="#1-Navigator对象" class="headerlink" title="1. Navigator对象"></a>1. Navigator对象</h4><p>Window对象的<code>navigator</code>属性引用的是包含浏览器厂商和版本信息的Navigator对象。Navigator对象的命名是为了纪念Netscape之后Navigator浏览器，不过所有其他的浏览器也支持它。</p>
+<p>过去，Navigator对象通常被脚本用来确定它们是在IE中还是在Netscape中运行。这种浏览器嗅探方法有问题，因为它要求随着新浏览器和现有浏览器的新版本的引入而不断地调整。如今，有一种更好地功能测试方法，只需要测试所需要的功能，而不是假设特定的浏览器版本及其功能。</p>
+<p>然而，浏览器嗅探有时候仍然有价值。这样的一种情况是，当需要解决存在于某个特定的浏览器的特定版本中的特殊的bug时。Navigator对象有4个属性用于提供关于运行中的浏览器的版本信息，并且可以使用这些属性进行浏览器嗅探。</p>
+<ul>
+<li><p>appName</p>
+<p>  Web浏览器的全称。</p>
+</li>
+<li><p>appVersion</p>
+<p>  此属性通常以数字开始，并跟着包含浏览器厂商和版本信息的详细字符串。</p>
+</li>
+<li><p>userAgent</p>
+<p>  浏览器在它的USER-AGENT HTTP头部中发送的字符串。这个属性通常包含appVersion中的所有信息，并且常常也可能包含其他的细节。</p>
+</li>
+<li><p>platform</p>
+<p>  在其上运行浏览器的操作系统（并且可能是硬件）的字符串。</p>
+</li>
+</ul>
+<p>下文示例中展示了如何使用正则表达式从<code>navigator.userAgent</code>中抽取浏览器名称和版本号的方法（摘自jQuery）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> browser = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> s = navigator.userAgent.toLowerCase();</span><br><span class="line">    <span class="keyword">var</span> match = <span class="regexp">/(webkit)[ \/]([\w.]+)/</span>.exec(s) ||</span><br><span class="line">    /(opera)(?:.*version)?[ \/]([\w.]+)/.exec(s) ||</span><br><span class="line">    /(msie)([\w.]+)/.exec(s) ||</span><br><span class="line">    !<span class="regexp">/compatible/</span>.test(s) &amp;&amp; <span class="regexp">/(mozilla)(?:.*? rv:([\w.]+))?/</span>.exec(s) ||</span><br><span class="line">    [];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> &#123; <span class="attr">name</span>: match[<span class="number">1</span>] || <span class="string">''</span>, <span class="attr">version</span>: match[<span class="number">2</span>] || <span class="string">'0'</span> &#125;</span><br><span class="line">&#125;());</span><br></pre></td></tr></table></figure>
+<p>除了浏览器厂商和版本信息的属性之外，Navigator对象还包含一些杂项的属性和方法。以下是一些标准化的属性以及广泛应用但未标准化的属性：</p>
+<ul>
+<li><p>onLine</p>
+<p>  <code>navigator.onLine</code>属性表示浏览器当前是否连接到网络。</p>
+</li>
+<li><p>geolocation</p>
+<p>  Geolocation对象定义用于确定用户地理位置信息的接口。</p>
+</li>
+<li><p>javaEnabled()</p>
+<p>  一个非标准的方法，当浏览器可以运行Java小程序时返回true。</p>
+</li>
+<li><p>cookieEnabled()</p>
+<p>  一个非标准的方法，如果浏览器可以保存永久的cookie时，返回true。当cookie配置为“视具体情况而定”时可能会返回不正确的值。</p>
+</li>
+</ul>
+<h4 id="2-Screen对象"><a href="#2-Screen对象" class="headerlink" title="2. Screen对象"></a>2. Screen对象</h4><p>Window对象的screen属性引用的是Screen对象。它提供有关窗口显示的大小和可用的颜色数量信息。属性<code>width</code>和<code>height</code>指定的是以像素为单位的窗口大小。属性<code>availWidth</code>和<code>availHeight</code>指定的是实际可用的显示大小，它们排除了像桌面任务栏这样的特性所占用的控件。属性<code>colorDepth</code>指定的是显示的<code>BPP</code>（<code>bits-per-pixel</code>）值，典型的值有16、24和32.</p>
+<p><code>window.screen</code>属性和它引用的Screen对象都是非标准但广泛实现的。可以用Screen对象来确定Web应用是否运行在一个小屏幕的设备上。</p>
+<hr>
+<h3 id="五、对话框"><a href="#五、对话框" class="headerlink" title="五、对话框"></a>五、对话框</h3><p>Window对象提供了3个方法来向用户显示简单的对话框。<code>alert()</code>向用户显示一条信息并等待用户关闭对话框。<code>confirm()</code>也显示一条信息，要求用户单机“确定”或“取消”按钮，并返回一个布尔值。<code>propty()</code>同样也显示一条消息，等待用户输入字符串，并返回那个字符串。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> name = promp(<span class="string">'What is your name?'</span>);</span><br><span class="line">    <span class="keyword">var</span> correct = confirm(<span class="string">'You entered: '</span>) + name + <span class="string">'\n'</span></span><br><span class="line">        + <span class="string">'Click Okay to proceed of Cancel to re-enter;'</span></span><br><span class="line">&#125; <span class="keyword">while</span> (!correct) </span><br><span class="line">alert(<span class="string">'Hello, '</span> + name);</span><br></pre></td></tr></table></figure>
+<p>方法<code>confirm()</code>和<code>prompt()</code>都会产生阻塞，也就是说，在用户关掉它们所显示的对话框之前，它们不会返回。这就意味着在弹出一个对话框前，代码就会停止运行。如果当前正在载入文档，也会停止载入，直到用户用要求的输入进行响应为止。在大多数的浏览器里，<code>alert()</code>也会产生阻塞，并等待用户关闭对话框，但并不总是这样。</p>
+<hr>
+<h3 id="六、错误处理"><a href="#六、错误处理" class="headerlink" title="六、错误处理"></a>六、错误处理</h3><p>Window对象的<code>onerror</code>属性是一个事件处理程序，当未捕获的异常传播到调用栈上时就会调用它，并把错误消息输出到浏览器的JavaScript控制台上。如果给这个属性赋一个函数，那么只要这个窗口中发生了JavaScript错误，就会调用该函数，即它成了窗口的错误处理程序。</p>
+<p>由于历史原因，Window对象的<code>onerror</code>事件处理函数的调用通过三个字符串参数，而不是通过通常传递的一个事件对象。</p>
+<p><code>window.onerror</code>的第一个参数是描述错误的一条消息。第二个参数是一个字符串，它存放引发错误的JavaScript代码所在的文档的url。第三个参数是文档中发生错误的行数。</p>
+<p>除了这三个参数之外，<code>onerror</code>处理程序的返回值也很重要。如果<code>onerror</code>处理程序返回false，它通知浏览器事件处理程序已经处理了错误，不需要其他操作。换句话说，浏览器不应该显示它字迹的错误消息。遗憾的是，由于历史原因，Firefox里的错误处理程序必须返回true来表示它已经处理了错误。</p>
+<p><code>onerror</code>处理程序是早期JavaScript的遗物，那时语言核心不包含<code>try/catch</code>异常处理语句。现代代码很少使用它，但是在开发阶段，你可能要这样定义一个错误处理程序，当由错误发生时，来显式地通知你</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.onerror = <span class="function"><span class="keyword">function</span>(<span class="params">msg, url, line</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (onerror.num++ <span class="xml"><span class="tag">&lt; <span class="attr">onerror.max</span>) &#123;</span></span></span><br><span class="line"><span class="xml">        alert('ERROR: ' + msg + '\n' + url + ':' + line);</span></span><br><span class="line"><span class="xml">        return true;</span></span><br><span class="line"><span class="xml">    &#125;</span></span><br><span class="line"><span class="xml">&#125;</span></span><br><span class="line"><span class="xml">onerror.max = 3;</span></span><br><span class="line"><span class="xml">onerror.num = 0;</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="七、作为Window对象属性的文档元素"><a href="#七、作为Window对象属性的文档元素" class="headerlink" title="七、作为Window对象属性的文档元素"></a>七、作为Window对象属性的文档元素</h3><p>如果在HTML文档中用<code>id</code>属性来为元素命名，并且如果Window对象没有此名字的属性，Window对象会赋予一个属性，它的名字是<code>id</code>属性的值，而它们的值指向表示文档元素的HTMLElement对象。</p>
+<p>在客户端JavaScript中，Window对象是以全局对象的形式存在于作用域链的最上层，这就意味着在HTML文档中使用的<code>id</code>属性会成为可以被脚本访问的全局变量。如果文档包含一个<code>&lt;button id=&quot;okay&quot;/&gt;</code>元素，可以通过全局变量okay来引用此元素。</p>
+<p>但是，有一个重要的警告：如果Window对象已经具有此名字的属性，这就不会发生。比如，id是“history”、“location”或“navigator”的元素，就不会以全局变量的形式出现，因为这些id已经占用了。同样，如果HTML文档包含一个id为“x”的元素，并且还在代码中声明并赋值给全局变量x，那么显式声明的变量会隐藏隐式的元素变量。如果脚本中的变量声明出现在命名元素之前，那这个变量的存在就会阻止元素获取它的window属性。而如果脚本的变量声明出现在命名元素之后，那么变量的显式赋值会覆盖该属性的隐式值。</p>
+<p>元素ID作为全局变量的隐式应用是Web浏览器演化过程中遗留的怪癖。它主要是出于与已有Web页面后向兼容性的考虑。但这里并不推荐使用这种做法——浏览器厂商可以在任何时候为Window对象定义新属性，而这些新属性都会破坏使用了此属性名的隐式定义的代码。</p>
+<p>用<code>document.getElementById()</code>来显示查找元素，如果给它一个更简单的名字，这种用法会变得更加简便。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> $ = <span class="function"><span class="keyword">function</span>(<span class="params">id</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">document</span>.getElementById(id);</span><br><span class="line">&#125;</span><br><span class="line">ui.prompt = $(<span class="string">'prompt'</span>);</span><br></pre></td></tr></table></figure>
+<p>假设<code>ID</code>并没有被Window对象使用的话，那么任何由<code>id</code>属性的HTML元素都会成为全局变量的值。以下HTML元素如果由<code>name</code>属性的话，也会这样表现：</p>
+<p><code>&lt;a&gt; &lt;applet&gt; &lt;area&gt; &lt;embed&gt; &lt;form&gt; &lt;frame&gt; &lt;frameset&gt; &lt;iframe&gt; &lt;img&gt; &lt;object&gt;</code></p>
+<p><code>id</code>元素在文档中必须是唯一的：两个元素不能有相同的<code>id</code>。但是，这对<code>name</code>属性无效。如果上面的元素有多于一个有相同的<code>name</code>属性（或者一个元素有<code>name</code>属性，而另一个元素具有相同值的id属性），具有该名称的隐式全局变量会引用一个类数组对象，这个类数组对象的元素是所有命名的元素。</p>
+<p>有<code>name</code>或<code>id</code>属性的<code>&lt;iframe&gt;</code>元素是个特殊的例子，为它们隐式创建的变量不会引用表示自身的Element对象，而是引用表示<code>&lt;iframe&gt;</code>元素创建的嵌套浏览器窗体的Window对象。</p>
+<hr>
+<h3 id="八、多窗口和窗体"><a href="#八、多窗口和窗体" class="headerlink" title="八、多窗口和窗体"></a>八、多窗口和窗体</h3><p>一个Web浏览器窗口可能在桌面上包含多个标签页。每一个标签页哦都市独立的“浏览上下文”（<code>browsing context</code>），每一个上下文都有独立的Window对象，而且相互之间互不干扰。每个标签页中运行的脚本通常并不知道其他标签页的存在，更不用说和其他标签页的Window对象进行交互操作或者操作其他文档内容了。如果Web浏览器不支持多标签页，或者把标签页关掉了，可能在某一时刻桌面上会有很多打开的Web浏览器窗口。而使用标签页，每个桌面窗口中的Window对象都是独立的，也就是说彼此就是完全独立的，和其他桌面窗口没有任何联系。</p>
+<p>但是窗口并不总是和其他窗口完全没关系。一个窗口或标签页中的脚本可以打开新的窗口或标签页，当一个脚本这样做时，这样多个窗口或窗口与另一个窗口的文档之间就可以互操作。</p>
+<h4 id="1-打开和关闭窗口"><a href="#1-打开和关闭窗口" class="headerlink" title="1. 打开和关闭窗口"></a>1. 打开和关闭窗口</h4><p>使用Window对象的<code>open()</code>方法可以打开一个新的浏览器窗口（或标签页，这通常和浏览器的配置选项有关）。<code>Window.open()</code>载入指定的url到新的或已存在的窗口中，并返回代表那个窗口的Window对象。</p>
+<p>它包含4个可选参数：</p>
+<ul>
+<li><p>第一个参数是要在新窗口中显示文档的url。如果这个参数省略了，那么会使用空白页面的url <code>about:blank</code></p>
+</li>
+<li><p>第二个参数是新打开的窗口的名字。如果指定的是一个已经存在的窗口的名字，会直接使用已存在的窗口。否则，会打开新的窗口，并将这个指定的名字赋值给它。如果省略次参数，会使用指定的名字“<code>_blank</code>”开打一个新的、未命名的窗口。</p>
+<p>窗口的名字是非常重要的，因为它允许<code>open()</code>方法引用已存在的窗口，并同时可以作为<code>&lt;a&gt;</code>和<code>&lt;form&gt;</code>元素上HTML <code>target</code>属性的值，用来表示引用的文档（或表单提交结果）应该显示在命名的窗口中。这个<code>target</code>属性的值可以设置为“<code>_blank</code>”、“<code>_parent</code>”或“<code>_top</code>”，从而使引用的文档显示在新的空白窗口、父窗口/窗体或顶层窗口中。</p>
+</li>
+<li><p>第三个参数是一个以逗号分隔的列表，包含大小和各种属性，用以表明新窗口是如何打开的。如果省略这个参数，那么新窗口就会用一个默认的大小，而且带有一整组标准的UI组件，即菜单栏、状态栏、工具栏等。在标签式浏览器中，会创建一个新的标签。这个参数是非标准的，H5规范也主张浏览器忽略它。注意：当指定第三个参数时，所有没有显式指定的功能都会忽略。出于各种安全原因，浏览器包含对可能指定的功能的限制。</p>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> w = <span class="built_in">window</span>.open(<span class="string">'smallwin.html'</span>, <span class="string">'smallwin'</span>, <span class="string">'width=400,height=350,status=yes,resizable:yes'</span>);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>第四个参数只在第二个参数命名是一个存在的窗口时才有用。它是一个布尔值，声明了由第一个参数指定的url是应用替换掉窗口浏览历史的当前条目（true），还是应该在窗口浏览历史中创建一个新的条目（false），后者是默认的设置。</li>
+</ul>
+<p>就像方法<code>open()</code>打开一个新窗口一样，方法<code>close()</code>将关闭一个窗口。如果已经创建了Window对象，可以使用如下的代码将它关掉。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">win.close();</span><br></pre></td></tr></table></figure>
+<p>运行在那个窗口中的JavaScript代码则可以使用下面的代码关闭</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.close();</span><br></pre></td></tr></table></figure>
+<p>注意：要显式地使用标识符window，这样可以避免混淆Window对象的<code>close()</code>方法和Document对象的<code>close()</code>方法——如果正在从事件处理程序调用<code>close()</code>，这很重要。</p>
+<p>即使一个窗口关闭了，代表它的Window对象仍然存在。已关闭的窗口会有个值为true的closed属性，它的document会是null，它的方法通常也不会再工作。</p>
+<h4 id="2-窗体之间的关系"><a href="#2-窗体之间的关系" class="headerlink" title="2. 窗体之间的关系"></a>2. 窗体之间的关系</h4><p>Window对象的方法<code>open()</code>返回代表新创建的窗口的Window对象。而且这个新窗口具有opener属性，该属性可以打开它的原始窗口。这样，两个窗口就可以相互引用，彼此都可以读取对方的属性或是调用对方的方法。窗体也是这样的，窗口或窗体中运行的代码都可以通过下面介绍的属性引用到自己的窗口或窗体，以及嵌套的子窗体。</p>
+<p>任何窗口中的JavaScript代码都可以将自己的窗口引用为window或self。窗体可以用parent属性引用包含它的窗口或窗体的Window对象</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">parent.history.back();</span><br></pre></td></tr></table></figure>
+<p>如果一个窗口是顶级窗口或标签，而不是窗体，那么其parent属性引用的就是这个窗口本身</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 只有顶级窗口才会返回true</span></span><br><span class="line">parent == self;</span><br></pre></td></tr></table></figure>
+<p>如果一个窗体包含在另一个窗体中，而后者又包含在顶级窗口中，那么该窗体就可以使用<code>parent.parent</code>来引用顶级窗口。top属性是一个通用的快捷方式，无论一个窗体被嵌套了几层，它的top属性引用的都是指向包含它的顶级窗口。如果一个Window对象代表的是一个顶级窗口，那么它的top属性引用的就是窗口本身。对于那些顶级窗口的直接子窗体，top属性就等价于parent属性。</p>
+<p>parent和top属性允许脚本引用它的窗体的祖先。有不止一种方法可以引用窗口或窗体的子孙窗体。窗体是通过<code>&lt;iframe&gt;</code>元素创建的。可以用获取其他元素的方法来获取一个表示<code>&lt;iframe&gt;</code>的元素对象。假定文档里有<code>&lt;iframe id=&quot;f1&quot;&gt;</code>。那么，表示该iframe的元素对象就是</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> iframeElement = <span class="built_in">document</span>.getElementById(<span class="string">'f1'</span>);</span><br></pre></td></tr></table></figure>
+<p><code>&lt;iframe&gt;</code>元素有<code>contentWindow</code>属性，引用该窗体的Window对象，所以此窗体的Window对象就是</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> childFrame = <span class="built_in">document</span>.getElementById(<span class="string">'f1'</span>).contentWindow;</span><br></pre></td></tr></table></figure>
+<p>可以进行反向操作——从表示窗体的Window对象来获取该窗体的<code>&lt;iframe&gt;</code>元素——用Window对象的<code>frameElement</code>属性。表示顶级窗口的Window对象的frameElement属性为null，窗体中的Window对象的frameElement属性不是null</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> elt = <span class="built_in">document</span>.getElementById(<span class="string">'f1'</span>);</span><br><span class="line"><span class="keyword">var</span> win = elt.contentWindow;</span><br><span class="line">win.frameElement == elt;                    <span class="comment">// true</span></span><br><span class="line"><span class="built_in">window</span>.frameElement == <span class="literal">null</span>;                <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<p>尽管如此，通常不需要使用<code>getElementById()</code>方法和<code>contentWindow</code>属性来获取窗口中子窗体的引用。每个Window对象都有一个frames属性，它引用自身包含的窗口或窗体的子窗体。frames属性引用的是类数组对象，并可以通过数字或窗体名进行索引。要引用窗口的第一个子窗体，可以用<code>frames[0]</code>。要引用第二个子窗体的第三个子窗体，可以用<code>frames[1].frames[2]</code>。窗体里创建的代码可以用<code>parent.frames[1]</code>引用兄弟窗体。注意<code>frames[]</code>数组里的元素是Window对象，而不是<code>&lt;iframe&gt;</code>元素。</p>
+<p>如果指定<code>&lt;iframe&gt;</code>元素的name或id属性，那么除了用数字进行索引之外，还可以用名字来进行索引。例如，名字为“f1”的帧应该用<code>frames[&#39;f1&#39;]</code>或<code>frames.f1</code>。</p>
+<p>前面讲过，<code>&lt;iframe&gt;</code>以及其他元素的name和id都可以自动通过Window对象的属性来引用，而<code>&lt;iframe&gt;</code>元素和其他的元素有所不同：对于窗体来说，通过Window对象的属性引用的<code>&lt;iframe&gt;</code>是指窗体中的Window对象，而不是元素对象。也就是说，可以通过窗体的名字“f1”来代替<code>frame.f1</code>。实际上，H5规范指出frames属性是一个自引用（self-referential）的属性，就像window和self一样。而这个Window对象看起来像一个由窗体组成的数组。也就是说可以通过<code>window[0]</code>来获取第一个子窗体的引用，可以通过<code>window.length</code>或<code>length</code>查询窗体的编号。但是这里我们使用frames来代替window会比较清晰一些。</p>
+<h4 id="3-交互窗口中的JavaScript"><a href="#3-交互窗口中的JavaScript" class="headerlink" title="3. 交互窗口中的JavaScript"></a>3. 交互窗口中的JavaScript</h4><p>每个窗口和窗体都是它自身的JavaScript的执行上下文，以Window作为全局对象。但是如果一个窗口或窗体中的代码可以应用到其他窗口或窗体（并且同源策略没有阻止它），那么一个窗口或窗体的脚本就可以和其他窗口或窗体中的脚本进行交互。</p>
+<p>设想一个Web页面里有两个<code>&lt;iframe&gt;</code>元素，分别叫“A”和“B”，并假设这些床体所包含的文档来自于相同的一个服务器，并且包含交互脚本。窗体A里的脚本定义了一个变量i</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> i = <span class="number">3</span>;</span><br></pre></td></tr></table></figure>
+<p>这个变量只是全局对象的一个属性，也是Window对象的一个属性。窗体A中的代码可以用标识符i来引用变量，或者用window对象显式地引用这个变量</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.i;</span><br></pre></td></tr></table></figure>
+<p>由于窗体B中的脚本可以引用窗体A中的Window对象，因此它也可以引用那个Window对象的属性：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">parent.A.i = <span class="number">4</span>;</span><br></pre></td></tr></table></figure>
+<p>同样的，我们可以在窗体B中定义一个函数，在窗体A中进行调用</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">parent.B.f();</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> f = parent.B.f;</span><br></pre></td></tr></table></figure>
+<p>当采用这种方式在窗体或窗口间共享函数时，牢记词法作用域的规则非常重要。函数在定义它的作用域中执行，而不是调用它的作用域中执行。就这个例子来说，如果函数f引用了全局变量，那么将在窗体B的属性中查找这些变量，即使函数是由窗体A调用的。</p>
+<p>要记住构造函数也是函数，所以当用构造函数和相关的额原型对象定义一个类时，那个类只在一个单独的窗口中定义。假设一个窗口包含窗体A和窗体B，并且包含Set类。</p>
+<p>顶级窗口的脚本可以创建新的Set对象，类似这样</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="keyword">new</span> <span class="built_in">Set</span>();</span><br></pre></td></tr></table></figure>
+<p>相反，每个床体中的代码必须显式地用父级窗口的属性类引用<code>Set()</code>构造函数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="keyword">new</span> parent.Set();</span><br></pre></td></tr></table></figure>
+<p>另外，每个窗体中的代码还可以定义自己的变量来引用构造函数，这样就更方便了</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> <span class="built_in">Set</span> = top.Set();</span><br><span class="line"><span class="keyword">var</span> s = <span class="keyword">new</span> <span class="built_in">Set</span>();</span><br></pre></td></tr></table></figure>
+<p>和用户定义的类不同，内置的类（String、Date和RegExp等）都会在所有的窗口中自动预定义。但是要注意，每个窗口都有构造函数的一个独立副本和构造函数对应原型对象的一个独立副本。例如，每个窗口都有自己的<code>String()</code>构造函数和<code>String.prototype</code>对象的副本。因此，如果编写一个操作JavaScript字符串的新方法，并且通过把它赋值给当前窗口中的<code>String.prototype</code>对象而使它称为String类的一个方法，那么该窗口中的所有字符串就都可以使用这个新方法。但是，别的窗口中定义的字符串不能使用这个新方法。</p>
+<p>事实上，每个Window都有自己的原型对象，这意味着instanceof操作符不能跨窗口工作。</p>
+<hr>
+<h3 id="九、-WindowProxy对象"><a href="#九、-WindowProxy对象" class="headerlink" title="九、 WindowProxy对象"></a>九、 WindowProxy对象</h3><p>我们已经讲过很多次，Window对象是客户端JavaScript的全局变量。但是从技术上来看，并不是这样的。Web浏览器每次向窗口或窗体中载入新的内容，它都会开始一个新的JavaScript执行上下文，包含一个新创建的全局对象。但是当多个窗口或窗体在使用时，有一个重要的概念，尽管窗体或窗口载入了新的文档，但是引用窗体或窗口的Window对象还仍然是一个有效的引用。</p>
+<p>所以客户端JavaScript有两个重要的对象。客户端全局对象处于作用域链的顶级，并且是全局变量和函数定义的地方。事实上，全局对象会在窗口或窗体载入新内容时被替换。我们称为“Window对象”的对象实际上不是全局对象，而是全局对象的一个代理。每当查询或设置Window对象的属性时，就会在窗口或窗体的当前全局对象上查询或设置相同的属性。H5规范称这个代理对象为WindowProxy，但本文中我们继续使用名次Window对象。</p>
+<p>由于它的代理行为，除了有更长的生命周期之外，代理对象表现得像真正的全局对象。如果可以比较两个对象，那么区分它们会很困难。但事实上，没有办法可以引用到真正地客户端全局对象。全局对象处于作用域链的顶端，但是<code>window</code>、<code>self</code>、<code>top</code>、<code>parent</code>以及窗体的属性全部返回代理对象。<code>window.open()</code>方法也返回代理对象，甚至顶级函数里this关键字的值都是代理对象，而不是真正的全局对象。</p>
+<hr>
+<h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><ol>
+<li><a href="">《JavaScript权威指南（第6版）》</a></li>
+</ol>
+
+  </section>
+
+
+  
+    <section class="post-comments">
+
+    <!-- 将评论系统（例如Disqus、多说、友言、畅言等）提供的代码片段粘贴在这里 -->
+    <!--PC和WAP自适应版-->
+<div id="SOHUCS" sid="2018/01/30/js-8/"  ></div> 
+<script type="text/javascript"> 
+(function(){ 
+var appid = 'cytoVRn2O';
+var conf = 'prod_8d1d2ca3d3e58602e938a09b0529415d';
+var width = window.innerWidth || document.documentElement.clientWidth; 
+if (width < 960) { 
+window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+
+</section>
+  
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright"><a href="http://www.miitbeian.gov.cn/">苏ICP备18003724号</a> | &copy;<a href="mailto:xiao_leon@qq.com">xiao leon</a> 2015-2018</span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+    
+
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                windowMinWidth: 300,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>
