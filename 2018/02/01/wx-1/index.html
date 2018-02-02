@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      小程序初体验 | 张啸 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="Leon">
+    
+    
+    <meta name="description" content="微信小程序是一种不需要下载安装即可使用的应用，它实现了应用“触手可及”的梦想，用户扫一扫或者搜一下即可打开。这也体现了“用完即走”的理念，用户无需担心安装应用过多的问题。应用将无处不在，随时可用，但又无须安装卸载。">
+<meta name="keywords" content="微信小程序,MINA">
+<meta property="og:type" content="article">
+<meta property="og:title" content="小程序初体验 | 张啸">
+<meta property="og:url" content="http://www.xiaoleon.cn/2018/02/01/wx-1/index.html">
+<meta property="og:site_name" content="张啸">
+<meta property="og:description" content="微信小程序是一种不需要下载安装即可使用的应用，它实现了应用“触手可及”的梦想，用户扫一扫或者搜一下即可打开。这也体现了“用完即走”的理念，用户无需担心安装应用过多的问题。应用将无处不在，随时可用，但又无须安装卸载。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://www.xiaoleon.cn/images/wx-1/mina.jpg">
+<meta property="og:image" content="http://www.xiaoleon.cn/images/wx-1/1.png">
+<meta property="og:updated_time" content="2018-02-02T12:48:52.132Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="小程序初体验 | 张啸">
+<meta name="twitter:description" content="微信小程序是一种不需要下载安装即可使用的应用，它实现了应用“触手可及”的梦想，用户扫一扫或者搜一下即可打开。这也体现了“用完即走”的理念，用户无需担心安装应用过多的问题。应用将无处不在，随时可用，但又无须安装卸载。">
+<meta name="twitter:image" content="http://www.xiaoleon.cn/images/wx-1/mina.jpg">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+        <a href="/"><img src="/images/logo.jpg" width="80" alt="张啸 logo" class="panel-cover__logo logo" /></a>
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/">张啸</a></h1>
+        <hr class="panel-cover__divider" />
+
+        
+        <p class="panel-cover__description">
+          世界上最快乐的事，莫过于为理想而奋斗。
+        </p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title="" class="">关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title="" class="">归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h2 class="post-title">微信(1) 小程序初体验</h2>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2018-02-01" class="post-meta__date date">2018-02-01</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+            &#8226; 分类:
+            <font class="categories">
+              <a class="categories-link" href="/categories/微信小程序/">微信小程序</a>
+            </font>
+          
+
+          
+            &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/MINA/">MINA</a>, <a class="tags-link" href="/tags/微信小程序/">微信小程序</a>
+            </font>
+          
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <p>微信小程序是一种不需要下载安装即可使用的应用，它实现了应用“触手可及”的梦想，用户扫一扫或者搜一下即可打开。这也体现了“用完即走”的理念，用户无需担心安装应用过多的问题。应用将无处不在，随时可用，但又无须安装卸载。</p>
+<a id="more"></a>
+<p>本文对微信小程序的架构进行了简要的介绍，让我们尽可能对小程序有个全局的认知，包括小程序的框架、目录结构、开发步骤等等。</p>
+<p>小程序的开发实际上就是不同页面的展示（视图），以及实现“页面上用户交互事件”、“页面间切换逻辑”、“数据存储及网络调用”等事务和逻辑处理的过程。</p>
+<hr>
+<h3 id="一、小程序执行的生命周期"><a href="#一、小程序执行的生命周期" class="headerlink" title="一、小程序执行的生命周期"></a>一、小程序执行的生命周期</h3><p>一个完整的小程序执行的生命周期如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">app.onLaunch -&gt; app.onShow -&gt; page1.onLoad -&gt; page1.onShow -&gt; page1.onReady</span><br><span class="line">(打开程序，第一个页面page1加载完成)</span><br><span class="line">-&gt; page1.onHide -&gt; page2.onLoad -&gt; page2.onShow -&gt; page2.onReady</span><br><span class="line">(从第一个页面新打开page2)</span><br><span class="line">-&gt; page2.onUnload -&gt; page1.onShow -&gt; ... -&gt; app.onUnload</span><br><span class="line">(关闭page2，返回page1，...退出小程序)</span><br></pre></td></tr></table></figure>
+<p>一个page的生命周期从<code>onLoad</code>开始，整个生命周期内<code>onLoad</code>、<code>onReady</code>、<code>onUnload</code>这三个事件仅执行一次，而<code>onHide</code>和<code>onShow</code>在每次页面隐藏和显示时都会触发。当用户手动触发退出时，小程序仅触发<code>app.onHide</code>，下次进入小程序时会触发<code>app.onShow</code>以及当前<code>page.onShow</code>。仅当小程序在后台运行超过一定时间未被唤醒、或者用户手动在小程序的控制栏里点击退出程序、或者小程序内存占用过大被关闭时，小程序将被销毁，会触发<code>app.onUnload</code>事件。</p>
+<hr>
+<h3 id="二、小程序的线程架构"><a href="#二、小程序的线程架构" class="headerlink" title="二、小程序的线程架构"></a>二、小程序的线程架构</h3><p>每个小程序分为两个线程，<code>view</code>和<code>appServer</code>。其中<code>view</code>负责解析渲染页面（<code>wxml</code>和<code>wxss</code>），而<code>appServer</code>线程负责运行<code>js</code>。<code>appServer</code>线程运行在<code>jsCore</code>中（安卓下运行在<code>X5</code>中，开发工具中运行在<code>nwjs</code>中）。由于js不跑在<code>web-view</code>里，就不能直接操纵DOM和BOM，这就是小程序没有window全局变量的原因。</p>
+<ul>
+<li><p>view线程</p>
+<p>  wxss + wxml</p>
+<p>  ios：safari</p>
+<p>  Android：X5浏览器</p>
+<p>  开发工具：chrome</p>
+</li>
+<li><p>appServer线程</p>
+<p>  JS</p>
+<p>  ios：JavaScriptCore</p>
+<p>  Android：X5内核</p>
+<p>  开发工具：nwjs</p>
+</li>
+</ul>
+<hr>
+<h3 id="三、小程序开发步骤"><a href="#三、小程序开发步骤" class="headerlink" title="三、小程序开发步骤"></a>三、小程序开发步骤</h3><p>理解小程序的线程架构后，我们可以归纳出一个小程序开发的主要步骤，涉及两大步骤：</p>
+<ul>
+<li><p>创建小程序实例（定义、配置及页面执行关联）。即编写3个app前缀的文件，它们共同描述了整个小程序主体逻辑、生命周期及页面构成、样式等。小程序实例将由<code>appServer</code>线程执行。</p>
+</li>
+<li><p>创建页面（页面结构和事务处理逻辑）。在小程序中一个完整的页面（page）是由<code>.js</code>、<code>.json</code>、<code>.wxml</code>、<code>.wxss</code>这四个文件组成，每个界面<code>.js</code>和<code>.wxml</code>是必选项，其他两项是可选项。小程序页面由<code>view</code>线程执行。</p>
+</li>
+</ul>
+<hr>
+<h3 id="四、MINA框架"><a href="#四、MINA框架" class="headerlink" title="四、MINA框架"></a>四、MINA框架</h3><p>微信团队为小程序提供的框架命名为MINA应用框架。MINA框架通过封装微信客户端提供的文件系统、网络通信、任务管理、数据安全等基础功能，对上层提供一整套JavaScript API，让开发者能够非常方便地使用微信客户端提供的各种基础功能与能力，快速构建一个应用。</p>
+<p>小程序框架示意图如下</p>
+<p><img src="/images/wx-1/mina.jpg" alt="小程序MINA框架示意图"></p>
+<p>通过框架图我们可以看到两大部分：在页面视图层，wxml是MINA提供的一套类似html标签的语言以及一系列基础组件。开发者使用wxml文件来搭建页面的基本视图结构，使用wxss文件来控制页面的展现样式。AppService应用逻辑层时MINA的服务中心，由微信客户端启用异步线程单独加载运行。页面渲染所需的数据、页面交互处理逻辑都在AppService中实现。MINA框架中的AppService使用JavaScript来编写交互逻辑、网络请求、数据处理，但不能使用JavaScript中的DOM操作。小程序中的各个页面可以通过AppService实现数据管理、网络通信、应用生命周期管理和页面路由。</p>
+<p>MINA框架为页面组件提供了<code>bindtap</code>、<code>bindtouchstart</code>等事件监听相关的属性，来与AppService中的事件处理函数绑定在一起，实现页面向AppService层同步用户交互数据。MINA框架同时提供了很多方法将AppService中的数据与页面进行单向绑定，当AppService中的数据变更时，会主动触发对应页面组件的重新渲染。MINA使用<code>virtual-dom</code>技术，加快了页面的渲染效率。</p>
+<p>框架的核心是一个响应的数据绑定系统，它让数据与视图非常简单地保持同步。当做数据修改的时候，只需要在逻辑层修改数据，视图层就会做相应的更新。我们通过下面的例子来看一下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- This is our View --&gt;</span><br><span class="line">&lt;view&gt; Hello &#123;&#123; name &#125;&#125;!&lt;/view&gt;</span><br><span class="line">&lt;button bindtap=&quot;changeName&quot;&gt;Click Me!&lt;/button&gt;</span><br><span class="line"></span><br><span class="line">// This is out App Service</span><br><span class="line">// This is our data.</span><br><span class="line">var helloData = &#123;</span><br><span class="line">    name: &apos;WeChat&apos;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Page(&#123;</span><br><span class="line">    data: helloData,</span><br><span class="line">    changeName: function(e) &#123;</span><br><span class="line">        this.setData(&#123;</span><br><span class="line">            name: &apos;MINA&apos;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>开发者通过框架将逻辑层数据中的<code>name</code>与视图层的<code>name</code>进行了绑定，所以在页面一打开的时候会显示“<code>Hello WeChat!</code>”。</p>
+<p>当点击按钮的时候，视图层会发送<code>changeName</code>的事件给逻辑层，逻辑层找到对应的事件处理函数。</p>
+<p>逻辑层执行了<code>setData</code>的操作，将<code>name</code>从<code>WeChat</code>变为<code>MINA</code>，因为该数据和视图层已经绑定了，从而视图层会自动改变为“<code>Hello MINA!</code>”。</p>
+<p>微信小程序不仅在底层架构的运行机制上做了大量的优化，还在重功能（如page切换、tab切换、多媒体、网络连接等）上使用接近于native的组件承载。</p>
+<p>综上所述，微信小程序MINA有着接近原生App的运行速度，做了大量的框架层面的优化设计，对Android端和IOS端做出了高度一致的呈现，并且准备了完备的开发和调试工具。</p>
+<hr>
+<h3 id="五、逻辑层"><a href="#五、逻辑层" class="headerlink" title="五、逻辑层"></a>五、逻辑层</h3><p>对于微信小程序而言，逻辑层就是所有<code>.js</code>脚本文件的集合。微信小程序在逻辑层将数据进行处理后发送给视图层，同时接受视图层的事件反馈。</p>
+<p>微信小程序开发框架的逻辑层是由JavaScript编写，在JavaScript的基础上，微信团队做了一些适当的修改，以便更高效地开发小程序。主要的修改包括：</p>
+<ul>
+<li><p>增加<code>app</code>和<code>page</code>方法，进行程序和页面的注册</p>
+</li>
+<li><p>提供丰富的API，如扫一扫、支付等微信特有能力</p>
+</li>
+<li><p>每个页面有独立的作用域，并提供模块化能力</p>
+</li>
+</ul>
+<p>小程序逻辑层由js编写，但并非运行在浏览器中，所以JavaScript在Web中的一些能力都将无法使用，比如<code>document</code>、<code>window</code>等，这也给我们的开发带来相应的挑战。</p>
+<p>开发者编写的所有代码最终将会打包成一份JavaScript，并在小程序启动时运行，直到小程序销毁。这类似于ServiceWorker或Webpack，所以逻辑层也称之为AppService。</p>
+<hr>
+<h3 id="六、视图层"><a href="#六、视图层" class="headerlink" title="六、视图层"></a>六、视图层</h3><p>框架的视图层由WXML（WeiXin Markup Language）与WXSS（WeiXin Style Sheet）编写，由组件来进行展示。对于微信小程序而言，视图层就是所有的<code>.wxml</code>文件与<code>.wxss</code>文件的集合：</p>
+<ul>
+<li><p><code>.wxml</code>文件用于描述页面的结构</p>
+</li>
+<li><p><code>.wxss</code>文件用于描述页面的样式</p>
+</li>
+</ul>
+<p>微信小程序在逻辑层将数据进行处理后发送给视图层展现出来，同时接受视图层的事件反馈。</p>
+<p>视图层以给定的样式展现数据并反馈给逻辑层，而数据展现是以组件来进行的。组件（Component）是视图的基本组成单元。</p>
+<hr>
+<h3 id="七、数据层"><a href="#七、数据层" class="headerlink" title="七、数据层"></a>七、数据层</h3><p>数据层包括临时数据或缓存、文件存储、网络存储与调用。</p>
+<h4 id="1-页面临时数据或缓存"><a href="#1-页面临时数据或缓存" class="headerlink" title="1. 页面临时数据或缓存"></a>1. 页面临时数据或缓存</h4><p>在<code>Page()</code>中，我们要使用<code>setData</code>函数来将数据从逻辑层发送到视图层，同时改变对应的<code>this.data</code>的值。</p>
+<p><strong>注意</strong></p>
+<ul>
+<li><p>直接修改<code>this.data</code>无效，无法改变页面的状态，还会造成数据不一致</p>
+</li>
+<li><p>单次设置的数据不能超过1024KB，请尽量避免一次设置过多的数据</p>
+</li>
+</ul>
+<p><code>setData()</code>函数的参数接受一个对象。以<code>key</code>，<code>value</code>的形式表示将<code>this.data</code>中的<code>key</code>对应的值改变成<code>value</code>。其中<code>key</code>可以非常灵活，包括以数据路径的形式给出，如<code>array[2].message</code>，<code>a.b.c.d</code>，并且无须在<code>this.data</code>中预先定义。</p>
+<h4 id="2-文件存储（本地存储）"><a href="#2-文件存储（本地存储）" class="headerlink" title="2. 文件存储（本地存储）"></a>2. 文件存储（本地存储）</h4><p>使用数据API接口，如下所示：</p>
+<ul>
+<li><p><code>wx.getStorage</code>：获取本地数据缓存</p>
+</li>
+<li><p><code>wx.setStorage</code>：设置本地数据缓存</p>
+</li>
+<li><p><code>wx.clearStorage</code>：清理本地数据缓存</p>
+</li>
+</ul>
+<h4 id="3-网络存储或调用"><a href="#3-网络存储或调用" class="headerlink" title="3. 网络存储或调用"></a>3. 网络存储或调用</h4><p>上传或下载文件API接口如下：</p>
+<ul>
+<li><p><code>wx.request</code>：发起网络请求</p>
+</li>
+<li><p><code>wx.uploadFile</code>：上传文件</p>
+</li>
+<li><p><code>wx.downloadFile</code>：下载文件</p>
+</li>
+</ul>
+<p>调用URL的API接口如下：</p>
+<ul>
+<li><p><code>wx.navigateTo</code>：新窗口打开页面</p>
+</li>
+<li><p><code>wx.redirectTo</code>：原窗口打开页面</p>
+</li>
+</ul>
+<hr>
+<h3 id="八、小程序加载运行"><a href="#八、小程序加载运行" class="headerlink" title="八、小程序加载运行"></a>八、小程序加载运行</h3><p>整个微信小程序、用户使用加载的流程示意图如下所示：</p>
+<p><img src="/images/wx-1/1.png" alt="小程序发布与运行加载的流程"></p>
+<p>小程序通过微信团队审核发布后，会同步到微信云端。最终用户通过某个入口，关注到该小程序。第一次运行时要经过短暂的代码下载过程（将所有资源下载到本地），即可在用户的微信中运行。</p>
+<p>小程序在用户的微信中启动，相当于开启一个<code>webview</code>，这与HTML5不一样，在一定的时间内除非手动关闭，即使返回打开另一个小程序，原来的小程序也一直以后台的形式运行在内存里，即在后台运行。</p>
+<p>小程序的版本更新将在启动时进行。首先与微信客户端版本进行对比是否有新版本，若有则小程序更新后再运行；否则，直接使用本地资源运行。</p>
+<hr>
+<h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><ol>
+<li><a href="">《小程序，巧应用（微信小程序开发实战）——熊普江 谢宇华》</a></li>
+</ol>
+
+  </section>
+
+
+  
+    <section class="post-comments">
+
+    <!-- 将评论系统（例如Disqus、多说、友言、畅言等）提供的代码片段粘贴在这里 -->
+    <!--PC和WAP自适应版-->
+<div id="SOHUCS" sid="2018/02/01/wx-1/"  ></div> 
+<script type="text/javascript"> 
+(function(){ 
+var appid = 'cytoVRn2O';
+var conf = 'prod_8d1d2ca3d3e58602e938a09b0529415d';
+var width = window.innerWidth || document.documentElement.clientWidth; 
+if (width < 960) { 
+window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+
+</section>
+  
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright"><a href="http://www.miitbeian.gov.cn/">苏ICP备18003724号</a> | &copy;<a href="mailto:xiao_leon@qq.com">xiao leon</a> 2015-2018</span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+    
+
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                windowMinWidth: 300,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>

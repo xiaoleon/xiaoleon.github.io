@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      GraphQL简要介绍 | 张啸 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="Leon">
+    
+    
+    <meta name="description" content="GraphQL是什么？GraphQL是一种既用于API的查询语言，也满足数据查询的运行时语言。GraphQL对你的API中的数据提供了一套易于理解的完整描述，使得客户端能够准确地获取它需要的数据，而且没有任何冗余，也让API更容易地随着时间推移而演进，还能用于构建强大的开发者工具。">
+<meta name="keywords" content="GraphQL,网络接口">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GraphQL简要介绍 | 张啸">
+<meta property="og:url" content="http://www.xiaoleon.cn/2018/01/31/web-2/index.html">
+<meta property="og:site_name" content="张啸">
+<meta property="og:description" content="GraphQL是什么？GraphQL是一种既用于API的查询语言，也满足数据查询的运行时语言。GraphQL对你的API中的数据提供了一套易于理解的完整描述，使得客户端能够准确地获取它需要的数据，而且没有任何冗余，也让API更容易地随着时间推移而演进，还能用于构建强大的开发者工具。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://www.xiaoleon.cn/images/web-2/1.png">
+<meta property="og:image" content="http://www.xiaoleon.cn/images/web-2/2.png">
+<meta property="og:image" content="http://www.xiaoleon.cn/images/web-2/3.png">
+<meta property="og:image" content="http://www.xiaoleon.cn/images/web-2/4.png">
+<meta property="og:image" content="http://www.xiaoleon.cn/images/web-2/5.png">
+<meta property="og:updated_time" content="2018-01-31T13:00:47.937Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="GraphQL简要介绍 | 张啸">
+<meta name="twitter:description" content="GraphQL是什么？GraphQL是一种既用于API的查询语言，也满足数据查询的运行时语言。GraphQL对你的API中的数据提供了一套易于理解的完整描述，使得客户端能够准确地获取它需要的数据，而且没有任何冗余，也让API更容易地随着时间推移而演进，还能用于构建强大的开发者工具。">
+<meta name="twitter:image" content="http://www.xiaoleon.cn/images/web-2/1.png">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+        <a href="/"><img src="/images/logo.jpg" width="80" alt="张啸 logo" class="panel-cover__logo logo" /></a>
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/">张啸</a></h1>
+        <hr class="panel-cover__divider" />
+
+        
+        <p class="panel-cover__description">
+          世界上最快乐的事，莫过于为理想而奋斗。
+        </p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title="" class="">关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title="" class="">归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h2 class="post-title">Web(2) GraphQL简要介绍</h2>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2018-01-31" class="post-meta__date date">2018-01-31</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+            &#8226; 分类:
+            <font class="categories">
+              <a class="categories-link" href="/categories/Web知识学习/">Web知识学习</a>
+            </font>
+          
+
+          
+            &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/GraphQL/">GraphQL</a>, <a class="tags-link" href="/tags/网络接口/">网络接口</a>
+            </font>
+          
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <p>GraphQL是什么？GraphQL是一种既用于API的查询语言，也满足数据查询的运行时语言。GraphQL对你的API中的数据提供了一套易于理解的完整描述，使得客户端能够准确地获取它需要的数据，而且没有任何冗余，也让API更容易地随着时间推移而演进，还能用于构建强大的开发者工具。</p>
+<a id="more"></a>
+<p>GraphQL is a query language created by Facebook in 2012 which provides a common interface between the client and the server for data fetching and manipulations.</p>
+<p>The client ask for various data from the GraphQL server via queries. The response format is described in the query and defined by the client instead of the server: they are called client-specified queries. The structure of the data is not hardcoded as in traditional REST APIs - this makes retrieving data from the server more efficient for the client.</p>
+<hr>
+<h3 id="一、场景分析"><a href="#一、场景分析" class="headerlink" title="一、场景分析"></a>一、场景分析</h3><p>现有的数据业务场景一般是这样的，业务方提出需求，然后寻找开发资源，由后端提供数据，让前端实现各种不同的业务视图。这样的做法存在很多的重复劳动，如果能够将其中通用的内容抽取出来提供给各个业务方反复使用，必然能够节省宝贵的开发时间和开发人力。</p>
+<p>前端的解决方案时将视图组件化，各个业务线既可以是组件的使用者，也可以是组件的生产者。那么问题来了，前端通过组件实现了跨业务的复用，后端接口如何相应地提高开发效率呢？</p>
+<p>我们假设某个业务需要以下数据内容a：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    user(id: 3500401) &#123;</span><br><span class="line">        id,</span><br><span class="line">        name,</span><br><span class="line">        isViewerFriend</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>很明显这不是一个JSON，但是我们仍然可以看懂它表示的是查询<code>id</code>为3500401用户的<code>id</code>、<code>name</code>和<code>isViewerFriend</code>信息。用户信息对于各个业务都是通用的，假设另外一个业务需要这样的用户信息b：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    user(id: 3500401) &#123;</span><br><span class="line">        name,</span><br><span class="line">        profilePicture(size: 50) &#123;</span><br><span class="line">            uri,</span><br><span class="line">            width,</span><br><span class="line">            height</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对比一下，我们发现只是少了两个字段，多了一个字段而已。如果要实现我们的目标，即复用同一个接口来支持这两种业务的话，会有以下几种做法：</p>
+<ul>
+<li><p>用同一个接口，这个接口提供了所有数据。这样做的好处是实现起来简单，但缺点是对业务做判断的逻辑会增多，而且对于业务来说，响应内容中有些数据根本用不到</p>
+</li>
+<li><p>使用参数来区分不同的业务方并返回相应的数据。好处仍然是实现简单，虽然不会有用不到的数据返回，但是仍然需要增加业务逻辑判断，会造成以后维护的困难。</p>
+</li>
+</ul>
+<p>此外，这样还会造成不同业务之间的强依赖，每次发布都需要各个业务线一起测试和回归。不重用接口则没法提高开发效率，重用接口则会有这些问题。</p>
+<hr>
+<h3 id="二、GraphQL解决方案"><a href="#二、GraphQL解决方案" class="headerlink" title="二、GraphQL解决方案"></a>二、GraphQL解决方案</h3><p>我们知道，用户信息对应的数据模型是固定的，每次请求其实是对这些数据做了过滤和筛选。对应到数据库操作，就是数据的查询操作。如果客户端也能够像“查询”一样发送请求，那不就可以从后端接口这个大的“大数据库”去过滤筛选业务需要的数据了吗？</p>
+<p>GraphQL就是基于这样的思想来设计的。上面提到的（a）和（b）类型的数据结构就是GraphQL的查询内容。使用上面的查询，GraphQL服务器会分别返回如下响应内容。</p>
+<p>a查询对应的响应</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"user"</span>: &#123;</span><br><span class="line">        <span class="attr">"id"</span>: <span class="number">3500401</span>,</span><br><span class="line">        <span class="attr">"name"</span>: <span class="string">"Jing Chen"</span>,</span><br><span class="line">        <span class="attr">"isViewerFriend"</span>: <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>b查询对应的响应</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"user"</span>: &#123;</span><br><span class="line">        <span class="attr">"name"</span>: <span class="string">"Jing Chen"</span>,</span><br><span class="line">        <span class="attr">"profilePicture"</span>: &#123;</span><br><span class="line">            <span class="attr">"uri"</span>: <span class="string">"http://example/pic.jpg"</span>,</span><br><span class="line">            <span class="attr">"width"</span>: <span class="number">50</span>,</span><br><span class="line">            <span class="attr">"height"</span>: <span class="number">50</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>只需要改变查询内容，前端就能定制服务器返回的响应内容，这就是GraphQL的客户端制定查询（<code>Client Specified Queries</code>）。</p>
+<hr>
+<h3 id="三、使用NodeJS实现GraphQL服务器"><a href="#三、使用NodeJS实现GraphQL服务器" class="headerlink" title="三、使用NodeJS实现GraphQL服务器"></a>三、使用NodeJS实现GraphQL服务器</h3><p>我们先按照官方文档搭建一个GraphQL服务器</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> graphql-intro &amp;&amp; <span class="built_in">cd</span> ./graphql-intro</span><br><span class="line">npm init</span><br><span class="line">npm install express --save</span><br><span class="line">npm install babel --save</span><br><span class="line">npm install babel-register --save</span><br><span class="line"><span class="built_in">type</span> <span class="built_in">nul</span>&gt; ./server.js</span><br><span class="line"><span class="built_in">type</span> <span class="built_in">nul</span>&gt; ./index.js</span><br></pre></td></tr></table></figure>
+<p><code>index.js</code>的内容如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span>(<span class="string">'babel-register'</span>);</span><br><span class="line"><span class="built_in">require</span>(<span class="string">'./server.js'</span>);</span><br></pre></td></tr></table></figure>
+<p><code>server.js</code>的内容如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> app = express();</span><br><span class="line"><span class="keyword">let</span> PORT = <span class="number">3000</span>;</span><br><span class="line"></span><br><span class="line">app.post(<span class="string">'/graphql'</span>, (req, res) =&gt; &#123;</span><br><span class="line">    res.send(<span class="string">'Hello'</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> server = app.listen(PORT, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> host = server.address().address;</span><br><span class="line">    <span class="keyword">let</span> port = server.address().port;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`GraphQL listening at http:<span class="subst">$&#123;host&#125;</span>:<span class="subst">$&#123;port&#125;</span>`</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>然后执行代码</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nodemon index.js</span><br></pre></td></tr></table></figure>
+<p>测试是否有效</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -XPOST http://localhost:<span class="number">3000</span>/graphql           // =&gt; 'Hello'</span><br></pre></td></tr></table></figure>
+<p>接着编写<code>GraphQL Schema</code>（<code>Schema</code>是GraphQL请求的入口，用户的GraphQL请求会对应到具体的<code>Schema</code>），首先回忆一下GraphQL请求是这样的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">query getHightScore &#123; score &#125;</span><br></pre></td></tr></table></figure>
+<p>上面的请求是获取<code>getHightScore</code>的<code>score</code>值。也可以加上查询条件，例如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">query getHightScore(limit: 10) &#123; score &#125;</span><br></pre></td></tr></table></figure>
+<p>这样的请求格式就是GraphQL中的<code>schema</code>。通过<code>schema</code>可以定义服务器的响应内容。</p>
+<p>接下来我们在项目中使用graphql</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install graphql --save</span><br><span class="line">npm install body-parser --save</span><br></pre></td></tr></table></figure>
+<p>graphql的npm包会负责组装服务器<code>schema</code>并处理GraphQL请求。</p>
+<h4 id="1-创建schema"><a href="#1-创建schema" class="headerlink" title="1. 创建schema"></a>1. 创建schema</h4><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">type</span> <span class="built_in">nul</span>&gt; ./schema.js</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;</span><br><span class="line">    GraphQLObjectType,</span><br><span class="line">    GraphQLSchema,</span><br><span class="line">    GraphQLInt</span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">'graphql'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> count = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> schema = <span class="keyword">new</span> GraphQLSchema(&#123;</span><br><span class="line">    query: <span class="keyword">new</span> GraphQLObjectType(&#123;</span><br><span class="line">        name: <span class="string">'RootQueryType'</span>,</span><br><span class="line">        fields: &#123;</span><br><span class="line">            count: &#123;</span><br><span class="line">                type: GraphQLInt,</span><br><span class="line">                resolve: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">                    <span class="keyword">return</span> count;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> schema;</span><br></pre></td></tr></table></figure>
+<p>这段代码创建了一个<code>GraphQL Schema</code>实例。这个<code>schema</code>的顶级查询对象会返回一个<code>RootQueryType</code>对象，这个<code>RootQueryType</code>对象有一个整数类型的<code>count</code>域。GraphQL除了支持整数（<code>Interger</code>），还支持字符串（<code>String</code>）、列表（<code>List</code>）等多种类型的数据。</p>
+<h4 id="2-连接schema"><a href="#2-连接schema" class="headerlink" title="2. 连接schema"></a>2. 连接schema</h4><p>下面将<code>GraphQL Schema</code>和服务器连接起来，我们需要修改<code>server.js</code>为如下所示</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> express <span class="keyword">from</span> <span class="string">'express'</span>;</span><br><span class="line"><span class="keyword">import</span> schema <span class="keyword">from</span> <span class="string">'./schema'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123; graphql &#125; <span class="keyword">from</span> <span class="string">'graphql'</span>;</span><br><span class="line"><span class="keyword">import</span> bodyParser <span class="keyword">from</span> <span class="string">'body-parser'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> app = express();</span><br><span class="line"><span class="keyword">let</span> PORT = <span class="number">3000</span>;</span><br><span class="line"></span><br><span class="line">app.use(bodyParser.text(&#123; <span class="attr">text</span>: <span class="string">'application/graphql'</span> &#125;));</span><br><span class="line"></span><br><span class="line">app.post(<span class="string">'/graphql'</span>, (req, res) =&gt; &#123;</span><br><span class="line">    graphql(schema, req.body)</span><br><span class="line">        .then(<span class="function">(<span class="params">result</span>) =&gt;</span> &#123;</span><br><span class="line">            res.send(<span class="built_in">JSON</span>.stringify(result, <span class="literal">null</span>, <span class="number">2</span>));</span><br><span class="line">        &#125;)</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> server = app.listen(PORT, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> host = server.address().address;</span><br><span class="line">    <span class="keyword">let</span> port = server.address().port;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`GraphQL listening at http:<span class="subst">$&#123;host&#125;</span>:<span class="subst">$&#123;port&#125;</span>`</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>验证下效果</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -v -XPOST -H "Content-<span class="built_in">Type</span>:application/graphql" -d "query RootQueryType &#123; count &#125;" http://localhost:<span class="number">3000</span>/graphql</span><br></pre></td></tr></table></figure>
+<p>结果如下图所示</p>
+<p><img src="/images/web-2/1.png" alt="验证效果"></p>
+<p>GraphQL查询还可以省略掉<code>queryRootQueryType</code>前缀</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -v -XPOST -H "Content-<span class="built_in">Type</span>:application/graphql" -d "&#123; count &#125;" http://localhost:<span class="number">3000</span>/graphql</span><br></pre></td></tr></table></figure>
+<p><img src="/images/web-2/2.png" alt="验证效果"></p>
+<h4 id="3-检查服务器"><a href="#3-检查服务器" class="headerlink" title="3. 检查服务器"></a>3. 检查服务器</h4><p>GraphQL最让人感兴趣的是可以编写GraphQL查询来让GraphQL服务器告诉我们它支持哪些查询，即官方文档提到的自检性（<code>introspection</code>）。</p>
+<p>例如：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -XPOST -H "Content-<span class="built_in">Type</span>:application/graphql" -d "&#123; __schema &#123; queryType &#123; name, fields &#123; name, description &#125; &#125; &#125; &#125;" http://localhost:<span class="number">3000</span>/graphql</span><br></pre></td></tr></table></figure>
+<p><img src="/images/web-2/3.png" alt="验证效果"></p>
+<p>而我们实际的GraphQL查询请求内容为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    __schema &#123;</span><br><span class="line">        queryType &#123;</span><br><span class="line">            name,</span><br><span class="line">            fields &#123;</span><br><span class="line">                name,</span><br><span class="line">                description</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>基本上每个GraphQL根域都会自动加上一个<code>__schema</code>域，这个域有一个子域叫<code>queryType</code>。我们可以通过查询这些域来了解GraphQL服务器支持哪些查询。我们可以修改<code>schema.js</code>来为<code>count</code>域加上<code>description</code>：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> schema = <span class="keyword">new</span> GraphQLSchema(&#123;</span><br><span class="line">    query = <span class="keyword">new</span> GraphQLObjectType(&#123;</span><br><span class="line">        name: <span class="string">'RootQueryType'</span>,</span><br><span class="line">        fields: &#123;</span><br><span class="line">            count: &#123;</span><br><span class="line">                type: GraphQLInt,</span><br><span class="line">                description: <span class="string">'The count!'</span>,</span><br><span class="line">                resolve: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">                    <span class="keyword">return</span> count;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>验证一下</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -XPOST -H "Content-<span class="built_in">Type</span>:application/graphql" -d "&#123; __schema &#123; queryType &#123; name, fields &#123; name, description &#125; &#125; &#125; &#125;" http://localhost:<span class="number">3000</span>/graphql</span><br></pre></td></tr></table></figure>
+<p><img src="/images/web-2/4.png" alt="验证效果"></p>
+<h4 id="4-变异（mutation）"><a href="#4-变异（mutation）" class="headerlink" title="4. 变异（mutation）"></a>4. 变异（mutation）</h4><p>GraphQL中将对数据的修改操作称为<code>mutation</code>，在GraphQL Schema中按照如下形式来定义一个<code>mutation</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let schema = new GraphQLSchema(&#123;</span><br><span class="line">    query: ...</span><br><span class="line">    mutation: //TODO</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p><code>mutation</code>查询和普通查询请求（<code>query</code>）的重要区别在于<code>mutation</code>操作是序列化执行的。例如GraphQL规范中给出的示例，服务器一定会序列化下面的<code>mutation</code>请求：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    first: changeTheNumber(newNumber: 1) &#123;</span><br><span class="line">        theNumber</span><br><span class="line">    &#125;,</span><br><span class="line">    second: changeTheNumber(newNumber: 3) &#123;</span><br><span class="line">        theNumber</span><br><span class="line">    &#125;,</span><br><span class="line">    third: changeTheNumber(newNumber: 2) &#123;</span><br><span class="line">        theNumber</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>请求结束时<code>theNumber</code>的值会是<code>2</code>。下面为我们的服务器添加一个<code>mutation</code>查询，修改<code>schema.js</code>为如下所示：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;</span><br><span class="line">    GraphQLObjectType,</span><br><span class="line">    GraphQLSchema,</span><br><span class="line">    GraphQLInt</span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">'graphql'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> count = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> schema = <span class="keyword">new</span> GraphQLSchema(&#123;</span><br><span class="line">    query: <span class="keyword">new</span> GraphQLObjectType(&#123;</span><br><span class="line">        name: <span class="string">'RootQueryType'</span>,</span><br><span class="line">        fields: &#123;</span><br><span class="line">            count: &#123;</span><br><span class="line">                type: GraphQLInt,</span><br><span class="line">                <span class="comment">// Add description</span></span><br><span class="line">                description: <span class="string">'The count!'</span>,</span><br><span class="line">                resolve: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">                    <span class="keyword">return</span> count;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;),</span><br><span class="line">    <span class="comment">// Note: this is the newly added mutation query</span></span><br><span class="line">    mutation: <span class="keyword">new</span> GraphQLObjectType(&#123;</span><br><span class="line">        name: <span class="string">'RootMutationType'</span>,</span><br><span class="line">        fields: &#123;</span><br><span class="line">            updateCount: &#123;</span><br><span class="line">                type: GraphQLInt,</span><br><span class="line">                description: <span class="string">'Update the count'</span>,</span><br><span class="line">                resolve: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">                    count += <span class="number">1</span>;</span><br><span class="line">                    <span class="keyword">return</span> count;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> schema;</span><br></pre></td></tr></table></figure>
+<p>验证一下</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -XPOST -H "Content-<span class="built_in">Type</span>:application/graphql" -d "mutation RootMutationType &#123; updateCount &#125;" http://localhost:<span class="number">3000</span>/graphql</span><br></pre></td></tr></table></figure>
+<p><img src="/images/web-2/5.png" alt="验证效果"></p>
+<hr>
+<h3 id="四、业务场景模拟"><a href="#四、业务场景模拟" class="headerlink" title="四、业务场景模拟"></a>四、业务场景模拟</h3><p>搭建好GraphQL服务器后，我们来模拟下业务场景的实际需求，对于电商平台来说，最常用的就是商品信息，假设目前的商品数据模型可以用下面的<code>GraphQLObject</code>来表示</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ItemType = <span class="keyword">new</span> GraphQLObjectType(&#123;</span><br><span class="line">    name: <span class="string">'item'</span>,</span><br><span class="line">    descriptions: <span class="string">'item'</span>,</span><br><span class="line">    fields: &#123;</span><br><span class="line">        id: &#123;</span><br><span class="line">            type: GraphQLString,</span><br><span class="line">            description: <span class="string">'item id'</span></span><br><span class="line">        &#125;,</span><br><span class="line">        title: &#123;</span><br><span class="line">            type: GraphQLString,</span><br><span class="line">            description: <span class="string">'item title'</span></span><br><span class="line">        &#125;,</span><br><span class="line">        price: &#123;</span><br><span class="line">            type: GraphQLString,</span><br><span class="line">            description: <span class="string">'item price'</span>,</span><br><span class="line">            resolve: <span class="function"><span class="keyword">function</span>(<span class="params">root, param, context</span>) </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> (root.price / <span class="number">100</span>).toFixed(<span class="number">2</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        pic: &#123;</span><br><span class="line">            type: GraphQLString,</span><br><span class="line">            description: <span class="string">'item pic url'</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>查询商品的<code>schema</code>如下所示</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ItemSchema = <span class="keyword">new</span> GraphQLSchema(&#123;</span><br><span class="line">    query: &#123;</span><br><span class="line">        name: <span class="string">'ItemQuery'</span>,</span><br><span class="line">        description: <span class="string">'query item'</span>,</span><br><span class="line">        fields: &#123;</span><br><span class="line">            item: &#123;</span><br><span class="line">                type: ItemType,</span><br><span class="line">                description: <span class="string">'item'</span>,</span><br><span class="line">                args: &#123;</span><br><span class="line">                    id: &#123;</span><br><span class="line">                        type: GraphQLInt,</span><br><span class="line">                        required: <span class="literal">true</span></span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;,</span><br><span class="line">                resolve: <span class="function"><span class="keyword">function</span>(<span class="params">root, obj, ctx</span>) </span>&#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">yield</span> ItemService(obj[<span class="string">'id'</span>]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>通过如下<code>query</code>可以查询id为12345的商品信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">query ItemQuery(id: 12345) &#123;</span><br><span class="line">    id</span><br><span class="line">    title</span><br><span class="line">    price</span><br><span class="line">    pic</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>商品详情页展示时需要加上优惠价格信息，我们可以修改<code>ItemType</code>，为它加上一个<code>promotion</code>字段</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ItemType = <span class="keyword">new</span> GraphQLObjectType(&#123;</span><br><span class="line">    name: <span class="string">'item'</span>,</span><br><span class="line">    description: <span class="string">'item'</span>,</span><br><span class="line">    fields: &#123;</span><br><span class="line">        id: &#123;</span><br><span class="line">            type: GraphQLString,</span><br><span class="line">            description: <span class="string">'item id'</span></span><br><span class="line">        &#125;,</span><br><span class="line">        title: &#123;</span><br><span class="line">            type: GraphQLString,</span><br><span class="line">            description: <span class="string">'item title'</span></span><br><span class="line">        &#125;,</span><br><span class="line">        price: &#123;</span><br><span class="line">            type: GraphQLString,</span><br><span class="line">            description: <span class="string">'item price'</span>,</span><br><span class="line">            resolve: <span class="function"><span class="keyword">function</span>(<span class="params">root, param, context</span>) </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> (root.price / <span class="number">100</span>).toFixed(<span class="number">2</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        pic: &#123;</span><br><span class="line">            type: GraphQLString,</span><br><span class="line">            description: <span class="string">'item pic url'</span></span><br><span class="line">        &#125;,</span><br><span class="line">        promotion: &#123;</span><br><span class="line">            type: GraphQLInt,</span><br><span class="line">            description: <span class="string">'promotion price'</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>商品详情页的查询为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">query ItemQuery(id: 12345) &#123;</span><br><span class="line">    id</span><br><span class="line">    title</span><br><span class="line">    price</span><br><span class="line">    pic</span><br><span class="line">    promotion</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>ItemSchema</code>无需修改，只要在<code>ItemService</code>的返回结果中加上<code>promotion</code>就可以了。这样接口的修改对于原有业务是透明的，而新的业务也能基于已有的代码快速开发和迭代。</p>
+<p>再假设有一个新的页面，只需要用到宝贝的图片信息，业务方可以使用下面的查询</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">query ItemQuery(id: 12345) &#123;</span><br><span class="line">    id</span><br><span class="line">    pic</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>服务器代码不用做任何修改。</p>
+<p>至此我们已经实现了一个GraphQL基础服务器。在实际业务中数据模型肯定会更加复杂，而GraphQL也提供了强大的类型系统（<code>Type System</code>）让我们能够轻松地描述各种数据类型，它提供的抽象层能够为依赖同一套数据模型的不同业务方提供灵活的数据支持。</p>
+<hr>
+<h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><ol>
+<li><p><a href="www.graphql.cn">GraphQL | 一种为你的API而生的查询语言</a></p>
+</li>
+<li><p><a href="https://www.jianshu.com/p/0343b83e0cbb" target="_blank" rel="noopener">GraphQL 初体验：GraphQL + Node.js</a></p>
+</li>
+<li><p><a href="http://taobaofed.org/blog/2015/11/26/graphql-basics-server-implementation/" target="_blank" rel="noopener">Node.js服务端实践之GraphQL初探</a></p>
+</li>
+</ol>
+
+  </section>
+
+
+  
+    <section class="post-comments">
+
+    <!-- 将评论系统（例如Disqus、多说、友言、畅言等）提供的代码片段粘贴在这里 -->
+    <!--PC和WAP自适应版-->
+<div id="SOHUCS" sid="2018/01/31/web-2/"  ></div> 
+<script type="text/javascript"> 
+(function(){ 
+var appid = 'cytoVRn2O';
+var conf = 'prod_8d1d2ca3d3e58602e938a09b0529415d';
+var width = window.innerWidth || document.documentElement.clientWidth; 
+if (width < 960) { 
+window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+
+</section>
+  
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright"><a href="http://www.miitbeian.gov.cn/">苏ICP备18003724号</a> | &copy;<a href="mailto:xiao_leon@qq.com">xiao leon</a> 2015-2018</span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+    
+
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                windowMinWidth: 300,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>

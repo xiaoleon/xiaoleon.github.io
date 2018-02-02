@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      Nginx设置动态Proxy_Pass | 张啸 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="Leon">
+    
+    
+    <meta name="description" content="前端开发过程中，我们为了避免与后端进行接口联调时反复修改请求地址，通常会采用服务器地址相对路径的方法，以../rest/api/的模式请求前端文件所在服务器的http://192.168.1.100/rest/api接口。这样可以规避开发阶段（develop）和生产阶段（production）代码不一致的问题，但是在接口联调阶段（debug），特别是前后端由不同的人开发的情况下，则需要使用代理服务">
+<meta name="keywords" content="Nginx配置,proxy_pass">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nginx设置动态Proxy_Pass | 张啸">
+<meta property="og:url" content="http://www.xiaoleon.cn/2018/02/01/web-4/index.html">
+<meta property="og:site_name" content="张啸">
+<meta property="og:description" content="前端开发过程中，我们为了避免与后端进行接口联调时反复修改请求地址，通常会采用服务器地址相对路径的方法，以../rest/api/的模式请求前端文件所在服务器的http://192.168.1.100/rest/api接口。这样可以规避开发阶段（develop）和生产阶段（production）代码不一致的问题，但是在接口联调阶段（debug），特别是前后端由不同的人开发的情况下，则需要使用代理服务">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-02-01T12:41:24.418Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Nginx设置动态Proxy_Pass | 张啸">
+<meta name="twitter:description" content="前端开发过程中，我们为了避免与后端进行接口联调时反复修改请求地址，通常会采用服务器地址相对路径的方法，以../rest/api/的模式请求前端文件所在服务器的http://192.168.1.100/rest/api接口。这样可以规避开发阶段（develop）和生产阶段（production）代码不一致的问题，但是在接口联调阶段（debug），特别是前后端由不同的人开发的情况下，则需要使用代理服务">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+        <a href="/"><img src="/images/logo.jpg" width="80" alt="张啸 logo" class="panel-cover__logo logo" /></a>
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/">张啸</a></h1>
+        <hr class="panel-cover__divider" />
+
+        
+        <p class="panel-cover__description">
+          世界上最快乐的事，莫过于为理想而奋斗。
+        </p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title="" class="">关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title="" class="">归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h2 class="post-title">Web(4) Nginx设置动态Proxy_Pass</h2>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2018-02-01" class="post-meta__date date">2018-02-01</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+            &#8226; 分类:
+            <font class="categories">
+              <a class="categories-link" href="/categories/Web知识学习/">Web知识学习</a>
+            </font>
+          
+
+          
+            &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/Nginx配置/">Nginx配置</a>, <a class="tags-link" href="/tags/proxy-pass/">proxy_pass</a>
+            </font>
+          
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <p>前端开发过程中，我们为了避免与后端进行接口联调时反复修改请求地址，通常会采用服务器地址相对路径的方法，以<code>../rest/api/</code>的模式请求前端文件所在服务器的<code>http://192.168.1.100/rest/api</code>接口。这样可以规避开发阶段（<code>develop</code>）和生产阶段（<code>production</code>）代码不一致的问题，但是在接口联调阶段（<code>debug</code>），特别是前后端由不同的人开发的情况下，则需要使用代理服务器进行转发。</p>
+<a id="more"></a>
+<hr>
+<h3 id="一、问题所在"><a href="#一、问题所在" class="headerlink" title="一、问题所在"></a>一、问题所在</h3><p>通常情况下我们的nginx配置如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen          80;</span><br><span class="line">    server_name     localhost;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        root  D:\project\branch;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    location /rest/api/ &#123;</span><br><span class="line">        proxy_pass  http://192.168.1.100/rest/api/;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在接口复杂的情况下，我们的<code>location</code>匹配地址可能会出现较多个。而且因为工作需要，我们可能会同时与多个后台开发者进行接口联调，那么可能会出现如下的nginx配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen          80;</span><br><span class="line">    server_name     localhost;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        root  D:\project\branch;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    location /rest/api/ &#123;</span><br><span class="line">        proxy_pass  http://192.168.1.100/rest/api/;</span><br><span class="line">        #proxy_pass  http://192.168.1.101/rest/api/;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    location /rest2/api2/ &#123;</span><br><span class="line">        proxy_pass  http://192.168.1.100/rest2/api2/;</span><br><span class="line">        #proxy_pass  http://192.168.1.101/rest/api/;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    location /rest3/api3/ &#123;</span><br><span class="line">        proxy_pass  http://192.168.1.100/rest3/api3/;</span><br><span class="line">        #proxy_pass  http://192.168.1.101/rest/api/;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="二、修改方法"><a href="#二、修改方法" class="headerlink" title="二、修改方法"></a>二、修改方法</h3><p>为了工作方便，我们可能会将不同后台开发人员的地址以注释的方式记录在nginx配置文件内，需要切换后台服务器时，修改配置项中的注释内容，然后执行<code>nginx -s reload</code>来重启nginx服务。</p>
+<p>那么，既然配置文件中有大量的重复地址信息，比如<code>http://192.168.1.100</code>，我们是不是可以把它提取出来作为nginx变量呢？然后<code>proxy_pass</code>读取它，这样在修改文件时只需要修改一个地方即可。</p>
+<p>按照如下方式进行测试</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen          80;</span><br><span class="line">    server_name     localhost;</span><br><span class="line"></span><br><span class="line">    set $host &apos;192.168.1.100&apos;;</span><br><span class="line">    #set $host &apos;192.168.1.101&apos;;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        root  D:\project\branch;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    location /rest/api/ &#123;</span><br><span class="line">        proxy_pass  http://$host/rest/api/;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    location /rest2/api2/ &#123;</span><br><span class="line">        proxy_pass  http://$host/rest2/api2/;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    location /rest3/api3/ &#123;</span><br><span class="line">        proxy_pass  http://$host/rest3/api3/;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>重启服务后，<strong>nginx不报错，但是代理无效</strong>，无法访问。接着使用<code>geo</code>、<code>map</code>，<strong>均无法正常进行代理转发</strong>。</p>
+<p>最后发现可以使用<code>upstream</code>模式实现此项功能，修改后的配置文件如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">upstream host &#123;</span><br><span class="line">    server  192.168.1.100;</span><br><span class="line">    #server  192.168.1.101;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">    listen          80;</span><br><span class="line">    server_name     localhost;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        root  D:\project\branch;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    location /rest/api/ &#123;</span><br><span class="line">        proxy_pass  http://host;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    location /rest2/api2/ &#123;</span><br><span class="line">        proxy_pass  http://host;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    location /rest3/api3/ &#123;</span><br><span class="line">        proxy_pass  http://host;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>再次精简一点，采用正则匹配的方式进行修改</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">upstream host &#123;</span><br><span class="line">    server  192.168.1.100;</span><br><span class="line">    #server  192.168.1.101;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">    listen          80;</span><br><span class="line">    server_name     localhost;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        root  D:\project\branch;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    location ~ /rest(.*)/api(.*)/ &#123;</span><br><span class="line">        rewrite /rest(.*)/api(.*)/ /rest$1/api$2/ break;</span><br><span class="line">        proxy_pass  http://host;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样采用正则匹配方式后，不仅可以匹配原有的<code>/rest1/api1/</code>、<code>/rest2/api2/</code>、<code>/rest3/api3/</code>，还可以匹配诸如<code>/project/rest1/api1/</code>等等前面含有项目文件路径的<code>location</code>。</p>
+<p>等后期有时间，再研究一下nginx的<code>rewrite</code>、<code>upstream</code>详细使用方法。</p>
+<hr>
+<h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><ol>
+<li><p><a href="http://blog.csdn.net/a19860903/article/details/49914131" target="_blank" rel="noopener">proxy_set_header设置Host为$proxy_host，$host与$local_host的区别</a></p>
+</li>
+<li><p><a href="https://www.cnblogs.com/luxianghao/p/6807081.html" target="_blank" rel="noopener">Nginx中的proxy_pass和rewrite</a></p>
+</li>
+</ol>
+
+  </section>
+
+
+  
+    <section class="post-comments">
+
+    <!-- 将评论系统（例如Disqus、多说、友言、畅言等）提供的代码片段粘贴在这里 -->
+    <!--PC和WAP自适应版-->
+<div id="SOHUCS" sid="2018/02/01/web-4/"  ></div> 
+<script type="text/javascript"> 
+(function(){ 
+var appid = 'cytoVRn2O';
+var conf = 'prod_8d1d2ca3d3e58602e938a09b0529415d';
+var width = window.innerWidth || document.documentElement.clientWidth; 
+if (width < 960) { 
+window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+
+</section>
+  
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright"><a href="http://www.miitbeian.gov.cn/">苏ICP备18003724号</a> | &copy;<a href="mailto:xiao_leon@qq.com">xiao leon</a> 2015-2018</span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+    
+
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                windowMinWidth: 300,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>
