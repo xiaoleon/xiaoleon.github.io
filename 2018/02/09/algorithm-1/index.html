@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      斐波那契数列 | 张啸 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="Leon">
+    
+    
+    <meta name="description" content="本文针对斐波那契数列的求值方法，分别采用递归法、尾递归法和迭代法进行分析，并提供其相关的代码实现。">
+<meta name="keywords" content="斐波那契数列,递归,尾递归">
+<meta property="og:type" content="article">
+<meta property="og:title" content="斐波那契数列 | 张啸">
+<meta property="og:url" content="http://www.xiaoleon.cn/2018/02/09/algorithm-1/index.html">
+<meta property="og:site_name" content="张啸">
+<meta property="og:description" content="本文针对斐波那契数列的求值方法，分别采用递归法、尾递归法和迭代法进行分析，并提供其相关的代码实现。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-02-27T13:36:40.181Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="斐波那契数列 | 张啸">
+<meta name="twitter:description" content="本文针对斐波那契数列的求值方法，分别采用递归法、尾递归法和迭代法进行分析，并提供其相关的代码实现。">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+        <a href="/"><img src="/images/logo.jpg" width="80" alt="张啸 logo" class="panel-cover__logo logo" /></a>
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/">张啸</a></h1>
+        <hr class="panel-cover__divider" />
+
+        
+        <p class="panel-cover__description">
+          世界上最快乐的事，莫过于为理想而奋斗。
+        </p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title="" class="">关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title="" class="">归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h2 class="post-title">算法(1) 斐波那契数列</h2>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2018-02-09" class="post-meta__date date">2018-02-09</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+            &#8226; 分类:
+            <font class="categories">
+              <a class="categories-link" href="/categories/算法分析/">算法分析</a>
+            </font>
+          
+
+          
+            &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/尾递归/">尾递归</a>, <a class="tags-link" href="/tags/斐波那契数列/">斐波那契数列</a>, <a class="tags-link" href="/tags/递归/">递归</a>
+            </font>
+          
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <p>本文针对斐波那契数列的求值方法，分别采用递归法、尾递归法和迭代法进行分析，并提供其相关的代码实现。</p>
+<a id="more"></a>
+<p>今天看到公司笔试的一道算法题，题目如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">存在如下斐波那契数列： </span><br><span class="line"></span><br><span class="line">0, 1, 1, 2, 3, 5, 8, 13, 21...</span><br><span class="line"></span><br><span class="line">请编写函数，计算数列中第n项的值。</span><br></pre></td></tr></table></figure>
+<h3 id="一、递归"><a href="#一、递归" class="headerlink" title="一、递归"></a>一、递归</h3><p>经过简单思考后，我们可以很容易的想到，可以采用递归的方式进行代码编写，因为第<code>n</code>项的值等于第<code>n-1</code>项和第<code>n-2</code>项的和，实现代码如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Fib</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> Fib(n - <span class="number">2</span>) + Fib(n - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> (<span class="params">n</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">arguments</span>.callee(n - <span class="number">1</span>) + <span class="built_in">arguments</span>.callee(n - <span class="number">2</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="二、尾递归"><a href="#二、尾递归" class="headerlink" title="二、尾递归"></a>二、尾递归</h3><p>然而，这种方式进行<code>n</code>值较大的计算时，非常耗费内存，因为需要同时保存成千上百个调用帧，很容易发生“栈溢出”错误（<code>stack overflow</code>）。这时，我们可以考虑采用<strong>尾递归</strong>的模式，实现代码如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Fib</span>(<span class="params">n, ret1 = <span class="number">0</span>, ret2 = <span class="number">1</span></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">0</span>) <span class="keyword">return</span> ret1;</span><br><span class="line">    <span class="keyword">return</span> Fib(n - <span class="number">1</span>, ret2, ret1 + ret2);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>通过尾递归的方式，由于只存在一个调用帧，所以永远不会发生“栈溢出”错误。前面的代码需要保存<code>2n</code>个数据记录，复杂度<code>O(n)</code>。如果改成尾递归，只保留<code>3</code>个数据记录，复杂度<code>O(1)</code>。</p>
+<p>尾递归实现的方式，在思路上采用了从前往后计算的方法，等效于使用了一个正向的<code>while</code>循环。而前面的递归采用的是从后往前倒推的方式。</p>
+<h3 id="三、迭代法"><a href="#三、迭代法" class="headerlink" title="三、迭代法"></a>三、迭代法</h3><p>我们还可以采用一个迭代的方法，代码如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Fib</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> [num1, num2, num3] = [<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (n &gt; <span class="number">2</span>) &#123;</span><br><span class="line">        [num3, num1, num2] = [num1 + num2, num2, num1 + num2];</span><br><span class="line">        n--;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> num3;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>迭代实现的方法其实与尾递归是一个道理，迭代法比较通俗易懂，而且和尾递归比较起来，因为不用开辟栈空间，所以相对而言，迭代法的效率是最高的。</p>
+<h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><ol>
+<li><a href="http://es6.ruanyifeng.com/#docs/function#%E4%BB%80%E4%B9%88%E6%98%AF%E5%B0%BE%E8%B0%83%E7%94%A8%EF%BC%9F" target="_blank" rel="noopener">ESMAScript 6 入门 —— 阮一峰</a></li>
+</ol>
+
+  </section>
+
+
+  
+    <section class="post-comments">
+
+    <!-- 将评论系统（例如Disqus、多说、友言、畅言等）提供的代码片段粘贴在这里 -->
+    <!--PC和WAP自适应版-->
+<div id="SOHUCS" sid="2018/02/09/algorithm-1/"  ></div> 
+<script type="text/javascript"> 
+(function(){ 
+var appid = 'cytoVRn2O';
+var conf = 'prod_8d1d2ca3d3e58602e938a09b0529415d';
+var width = window.innerWidth || document.documentElement.clientWidth; 
+if (width < 960) { 
+window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+
+</section>
+  
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright"><a href="http://www.miitbeian.gov.cn/">苏ICP备18003724号</a> | &copy;<a href="mailto:xiao_leon@qq.com">xiao leon</a> 2015-2018</span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+    
+
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                windowMinWidth: 300,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>

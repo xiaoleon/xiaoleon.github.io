@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      用Transition实现过渡动画 | 张啸 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="Leon">
+    
+    
+    <meta name="description" content="transition是网页上的过渡动画，在CSS3出现之前，网页上的动画大多是用flash实现的，但flash动画会产生很大的弊端，比如操作不便等等。">
+<meta name="keywords" content="transition">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用Transition实现过渡动画 | 张啸">
+<meta property="og:url" content="http://www.xiaoleon.cn/2018/02/27/css3-11/index.html">
+<meta property="og:site_name" content="张啸">
+<meta property="og:description" content="transition是网页上的过渡动画，在CSS3出现之前，网页上的动画大多是用flash实现的，但flash动画会产生很大的弊端，比如操作不便等等。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://www.xiaoleon.cn/images/css3-11/1.png">
+<meta property="og:image" content="http://www.xiaoleon.cn/images/css3-11/2.png">
+<meta property="og:updated_time" content="2018-02-27T13:40:26.229Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="用Transition实现过渡动画 | 张啸">
+<meta name="twitter:description" content="transition是网页上的过渡动画，在CSS3出现之前，网页上的动画大多是用flash实现的，但flash动画会产生很大的弊端，比如操作不便等等。">
+<meta name="twitter:image" content="http://www.xiaoleon.cn/images/css3-11/1.png">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+        <a href="/"><img src="/images/logo.jpg" width="80" alt="张啸 logo" class="panel-cover__logo logo" /></a>
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/">张啸</a></h1>
+        <hr class="panel-cover__divider" />
+
+        
+        <p class="panel-cover__description">
+          世界上最快乐的事，莫过于为理想而奋斗。
+        </p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title="" class="">关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title="" class="">归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h2 class="post-title">CSS3(11) 用Transition实现过渡动画</h2>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2018-02-27" class="post-meta__date date">2018-02-27</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+            &#8226; 分类:
+            <font class="categories">
+              <a class="categories-link" href="/categories/CSS小技巧/">CSS小技巧</a>
+            </font>
+          
+
+          
+            &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/transition/">transition</a>
+            </font>
+          
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <p><code>transition</code>是网页上的过渡动画，在CSS3出现之前，网页上的动画大多是用flash实现的，但flash动画会产生很大的弊端，比如操作不便等等。</p>
+<a id="more"></a>
+<h3 id="一、定义和用法"><a href="#一、定义和用法" class="headerlink" title="一、定义和用法"></a>一、定义和用法</h3><p><code>transition</code>属性是一个简写属性，用于设置四个过渡属性</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">transition</span>: <span class="selector-tag">property</span> <span class="selector-tag">duration</span> <span class="selector-tag">timing-function</span> <span class="selector-tag">delay</span>;</span><br></pre></td></tr></table></figure>
+<h4 id="1-transition-property"><a href="#1-transition-property" class="headerlink" title="1. transition-property"></a>1. <code>transition-property</code></h4><p><code>transition-property</code>属性规定应用过渡效果的CSS属性的名称。（当指定的CSS属性改变时，过渡效果将开始）。</p>
+<blockquote>
+<p>过渡效果通常在用户将鼠标指针浮动到元素上时发生。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>none</code></td>
+<td>没有属性会获得过渡效果</td>
+</tr>
+<tr>
+<td><code>all</code></td>
+<td>所有属性都将获得过渡效果</td>
+</tr>
+<tr>
+<td><code>property</code></td>
+<td>定义应用过渡效果的css属性名称列表，列表以逗号分隔</td>
+</tr>
+</tbody>
+</table>
+<h4 id="2-transition-duration"><a href="#2-transition-duration" class="headerlink" title="2. transition-duration"></a>2. <code>transition-duration</code></h4><p><code>transition-duration</code>属性规定完成过渡效果需要多少秒或毫秒。需要始终设置该属性，否则时长为0，就不会产生过渡效果。</p>
+<h4 id="3-transition-timing-function"><a href="#3-transition-timing-function" class="headerlink" title="3. transition-timing-function"></a>3. <code>transition-timing-function</code></h4><p><code>transition-timing-function</code>属性规定过渡效果的速度曲线。</p>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>linear</code></td>
+<td>规定以相同速度开始至结束的过渡效果（等于<code>cubic-bezier(0, 0, 1, 1)</code>）</td>
+</tr>
+<tr>
+<td><code>ease</code></td>
+<td>规定慢速开始，然后变快，然后慢速结束的过渡效果（<code>cubic-bezier(0.25, 0.1, 0.25, 1)</code>）</td>
+</tr>
+<tr>
+<td><code>ease-in</code></td>
+<td>规定以慢速开始的过渡效果（等于<code>cubic-bezier(0.42, 0.1, 1)</code>）</td>
+</tr>
+<tr>
+<td><code>ease-out</code></td>
+<td>规定以慢速结束的过渡效果（等于<code>cubic-bezier(0, 0, 0.58, 1)</code>）</td>
+</tr>
+<tr>
+<td><code>ease-in-out</code></td>
+<td>规定以慢速开始和结束的过渡效果（等于<code>cubic-bezier(0.42, 0, 0.58, 1)</code>）</td>
+</tr>
+<tr>
+<td><code>cubic-bezier(n, n, n, n)</code></td>
+<td>在<code>cubic-bezier</code>函数中定义自己的值。可能的值是0至1之间的数值</td>
+</tr>
+</tbody>
+</table>
+<h5 id="4-transition-delay"><a href="#4-transition-delay" class="headerlink" title="4. transition-delay"></a>4. <code>transition-delay</code></h5><p><code>transition-delay</code>规定在过渡效果开始之前需要等待的时间，以秒或毫秒计。</p>
+<hr>
+<h3 id="二、使用案例"><a href="#二、使用案例" class="headerlink" title="二、使用案例"></a>二、使用案例</h3><p>首先我们写一个字体出来</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">    div &#123;</span></span><br><span class="line"><span class="undefined">        width: 300px;</span></span><br><span class="line"><span class="undefined">        height: 100px;</span></span><br><span class="line"><span class="undefined">        padding-top: 20px;</span></span><br><span class="line"><span class="undefined">        line-height: 100px;</span></span><br><span class="line"><span class="undefined">        margin: 200px auto 0;</span></span><br><span class="line"><span class="undefined">        text-align: center;</span></span><br><span class="line"><span class="undefined">        font-size: 40px;</span></span><br><span class="line"><span class="undefined">        font-weight: bold;</span></span><br><span class="line"><span class="undefined">        font-family: '华文行楷';</span></span><br><span class="line"><span class="css">        <span class="selector-tag">background</span>: <span class="selector-id">#000</span>;</span></span><br><span class="line"><span class="css">        <span class="selector-tag">color</span>: <span class="selector-id">#ff6600</span>;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>超炫火焰字<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>效果如图</p>
+<p><img src="/images/css3-11/1.png" alt="效果图"></p>
+<p>然后，我们给div加上hover效果</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="css">    <span class="selector-tag">div</span><span class="selector-pseudo">:hover</span> &#123;</span></span><br><span class="line"><span class="css">        <span class="selector-tag">text-shadow</span>: 0<span class="selector-tag">px</span> 0<span class="selector-tag">px</span> 2<span class="selector-tag">px</span> <span class="selector-id">#fff</span>,</span></span><br><span class="line"><span class="css">                0<span class="selector-tag">px</span> <span class="selector-tag">-3px</span> 3<span class="selector-tag">px</span> <span class="selector-id">#1eb</span>,</span></span><br><span class="line"><span class="css">                0<span class="selector-tag">px</span> <span class="selector-tag">-6px</span> 4<span class="selector-tag">px</span> <span class="selector-id">#01defd</span>,</span></span><br><span class="line"><span class="css">                0<span class="selector-tag">px</span> <span class="selector-tag">-12px</span> 6<span class="selector-tag">px</span> <span class="selector-id">#08f</span>;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>我们会发现当鼠标进入这个div时，文字阴影一瞬间出现</p>
+<p><img src="/images/css3-11/2.png" alt="效果图"></p>
+<p>接着，我们修改hover效果</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">    div &#123;</span></span><br><span class="line"><span class="undefined">        transition: all 1s liner 0s;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>可以看到，鼠标进入div时，背景阴影经过了1s的过渡过程。</p>
+<hr>
+<h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><ol>
+<li><a href="http://blog.csdn.net/JianXingDeFeng/article/details/78708274" target="_blank" rel="noopener">用css3的transition实现过渡动画</a></li>
+</ol>
+
+  </section>
+
+
+  
+    <section class="post-comments">
+
+    <!-- 将评论系统（例如Disqus、多说、友言、畅言等）提供的代码片段粘贴在这里 -->
+    <!--PC和WAP自适应版-->
+<div id="SOHUCS" sid="2018/02/27/css3-11/"  ></div> 
+<script type="text/javascript"> 
+(function(){ 
+var appid = 'cytoVRn2O';
+var conf = 'prod_8d1d2ca3d3e58602e938a09b0529415d';
+var width = window.innerWidth || document.documentElement.clientWidth; 
+if (width < 960) { 
+window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+
+</section>
+  
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright"><a href="http://www.miitbeian.gov.cn/">苏ICP备18003724号</a> | &copy;<a href="mailto:xiao_leon@qq.com">xiao leon</a> 2015-2018</span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+    
+
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                windowMinWidth: 300,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>
