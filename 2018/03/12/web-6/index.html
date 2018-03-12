@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      浏览器页面的渲染过程 | 张啸 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="Leon">
+    
+    
+    <meta name="description" content="浏览器在下载好HTML、CSS、JS等文件后，是如何将这些内容组装成绚丽的页面呈现给用户呢？不同的浏览器渲染过程实际上并不相同，但是依旧存在相一致的部分。">
+<meta name="keywords" content="页面渲染,重绘,回流">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浏览器页面的渲染过程 | 张啸">
+<meta property="og:url" content="http://www.xiaoleon.cn/2018/03/12/web-6/index.html">
+<meta property="og:site_name" content="张啸">
+<meta property="og:description" content="浏览器在下载好HTML、CSS、JS等文件后，是如何将这些内容组装成绚丽的页面呈现给用户呢？不同的浏览器渲染过程实际上并不相同，但是依旧存在相一致的部分。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-03-12T14:01:55.037Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="浏览器页面的渲染过程 | 张啸">
+<meta name="twitter:description" content="浏览器在下载好HTML、CSS、JS等文件后，是如何将这些内容组装成绚丽的页面呈现给用户呢？不同的浏览器渲染过程实际上并不相同，但是依旧存在相一致的部分。">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+        <a href="/"><img src="/images/logo.jpg" width="80" alt="张啸 logo" class="panel-cover__logo logo" /></a>
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/">张啸</a></h1>
+        <hr class="panel-cover__divider" />
+
+        
+        <p class="panel-cover__description">
+          世界上最快乐的事，莫过于为理想而奋斗。
+        </p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title="" class="">关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title="" class="">归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h2 class="post-title">Web(6) 浏览器页面的渲染过程</h2>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2018-03-12" class="post-meta__date date">2018-03-12</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+            &#8226; 分类:
+            <font class="categories">
+              <a class="categories-link" href="/categories/Web知识学习/">Web知识学习</a>
+            </font>
+          
+
+          
+            &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/回流/">回流</a>, <a class="tags-link" href="/tags/重绘/">重绘</a>, <a class="tags-link" href="/tags/页面渲染/">页面渲染</a>
+            </font>
+          
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <p>浏览器在下载好HTML、CSS、JS等文件后，是如何将这些内容组装成绚丽的页面呈现给用户呢？不同的浏览器渲染过程实际上并不相同，但是依旧存在相一致的部分。</p>
+<a id="more"></a>
+<h3 id="一、浏览器渲染页面"><a href="#一、浏览器渲染页面" class="headerlink" title="一、浏览器渲染页面"></a>一、浏览器渲染页面</h3><p>从浏览器地址栏的请求链接开始，浏览器通过DNS解析查到域名映射的IP地址，成功之后浏览器端向此IP地址取得连接。成功连接之后，浏览器端将请求头信息通过HTTP协议向此IP地址所在服务器发起请求。服务器接收到请求之后等待处理，最后向浏览器端发回响应，此时在HTTP协议下，浏览器从服务器接收到text/html类型的代码，浏览器开始显示此HTML，并获取其中内嵌资源文件，然后浏览器再发起请求来获取这些资源，并在浏览器的html中显示。</p>
+<p>浏览器解析的大概的工作流程可以分为以下几个步骤：</p>
+<ul>
+<li><p>1) 用户输入网址（假设是HTML页面，第一次访问，无缓存情况），浏览器向服务器发出HTTP请求，服务器返回HTML文件</p>
+<p>  优化方案：善用缓存，减少HTTP请求，减轻服务器压力</p>
+</li>
+<li><p>2) 浏览器载入HTML代码，发现head内有一个link引用外部css文件，则浏览器立即发送css文件请求，获取浏览器返回的css文件</p>
+<p>  优化方案：css文件合并，减少HTTP请求</p>
+</li>
+<li><p>3) 浏览器继续载入HTML中body部分的代码，并且css文件已经拿到手了，可以开始渲染页面了</p>
+<p>  优化方案：css文件要放在最上面，避免网页重新渲染</p>
+</li>
+<li><p>4) 浏览器在代码中发现一个img标签引用了一张图片，向服务器发出请求，此时浏览器不会等到图片下载完，而是继续渲染后面的代码</p>
+<p>  优化方案：图片文件合并，减少HTTP请求</p>
+</li>
+<li><p>5) 服务器返回图片文件，由于占用了一定面积，影响后面段落的布局，因此浏览器需要回过头来重新渲染这部分代码</p>
+<p>  优化方案：最好图片都设置尺寸，避免重新渲染</p>
+</li>
+<li><p>6) 浏览器发现一个包含一行JavaScript的script标签，会立即运行该js代码</p>
+<p>  优化方案：script最好放在页面最下面</p>
+</li>
+<li><p>7) js脚本执行了语句，它令浏览器隐藏掉代码中的某个div，突然就少了一个元素，浏览器不得不重新渲染这部分代码</p>
+<p>  优化方案：页面初始化样式不要使用js控制</p>
+</li>
+<li><p>8) 浏览器完成渲染，展示HTML页面</p>
+</li>
+</ul>
+<hr>
+<h3 id="二、重绘和回流"><a href="#二、重绘和回流" class="headerlink" title="二、重绘和回流"></a>二、重绘和回流</h3><h4 id="1-什么是重绘和回流"><a href="#1-什么是重绘和回流" class="headerlink" title="1. 什么是重绘和回流"></a>1. 什么是重绘和回流</h4><p>为什么页面会慢？那是因为浏览器需要花时间去渲染，尤其是当它发现某个部分发生了点变化影响了布局，需要倒回去重新渲染，该过程称为回流（<code>reflow</code>）。</p>
+<p><code>reflow</code>几乎是无法避免的，现在界面上流行的一些效果，比如树状目录的折叠、展开（实质上是元素的显示与隐藏）等，都将引起浏览器的<code>reflow</code>。鼠标滑过、点击等等，只要这些行为引起了页面上某些元素的占位面积、定位方式、边距等属性的变化，都会引起它内部、周围甚至整个页面的重新渲染。通常我们都无法预估浏览器到底会<code>reflow</code>哪一部分的代码，它们都彼此相互影响着。</p>
+<p>如果只是改变某个元素的背景色、文字颜色、边框颜色等等不影响它周围或内部布局的属性，将只会引起浏览器的重绘（<code>repaint</code>）。</p>
+<p><code>repaint</code>的速度明显快于<code>reflow</code>（在IE下需要换一下说法，<code>reflow</code>要比<code>repaint</code>更缓慢）。</p>
+<p><code>repaint操</code>作触发时，元素的外观被改变，且在没有改变布局的情况下发生，如改变<code>outline</code>、<code>visibility</code>、<code>background-color</code>，不会影响到dom结构渲染。</p>
+<p><code>reflow</code>与<code>repaint</code>区别就是它会影响到dom的结构渲染，同时它会触发<code>repaint</code>，它会改变它本身与所有父辈元素，这种开销是非常昂贵的，导致性能下降是必然的，页面元素越多效果越明显。</p>
+<p>注意：回流必将引起重绘，重绘不一定引起回流。</p>
+<h4 id="2-如何减少重绘和回流"><a href="#2-如何减少重绘和回流" class="headerlink" title="2. 如何减少重绘和回流"></a>2. 如何减少重绘和回流</h4><p><code>reflow</code>是不可避免的，只能将<code>reflow</code>对性能的影响减少到最小</p>
+<ul>
+<li><p>1) 不要一条一条地修改DOM样式，通过设置<code>style</code>属性改变节点样式的话，每设置一次都会导致一次<code>reflow</code>。所以最好通过设置<code>class</code>的方式，这样可以将多次改变样式属性的操作合并成一次操作</p>
+</li>
+<li><p>2) 让要操作的元素进行“离线处理”，处理完后一起更新</p>
+<ul>
+<li><p>使用<code>DocumentFragment</code>进行缓存操作，引发一次重绘与回流</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fragment = <span class="built_in">document</span>.createDocumentFragment();</span><br><span class="line"></span><br><span class="line">fragment.appendChild(<span class="built_in">document</span>.createTextNode(<span class="string">'Hello Zhang Xiao!'</span>));</span><br><span class="line"></span><br><span class="line">fragment.appendChild(<span class="built_in">document</span>.createElement(<span class="string">'br'</span>));</span><br><span class="line"></span><br><span class="line">fragment.appendChild(<span class="built_in">document</span>.createTextNode(<span class="string">'Hello Leon!'</span>));</span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.body.appendChild(fragment);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用<code>display: none</code>技术，只引发两次重绘与回流</p>
+<p>原理：由于<code>display</code>属性为<code>none</code>的元素不在渲染树中，对隐藏的元素操作不会引发其他元素的重排。如果要对一个元素进行复杂的操作时，可以先隐藏它，操作完成后再显示。这样在隐藏和显示时触发2次重排。</p>
+</li>
+</ul>
+</li>
+<li><p>3) 设置元素的<code>position</code>为<code>absolute</code>或<code>fixed</code></p>
+</li>
+</ul>
+<p>元素脱离标准文档流，也从DOM树结构中脱离出来，在需要<code>reflow</code>时只需要<code>reflow</code>自身与下级元素。</p>
+<ul>
+<li>4) 不要使用table布局</li>
+</ul>
+<p>table中某个元素一旦触发<code>reflow</code>就会导致table里所有的其他元素<code>reflow</code>。在适合用table的场合，可以设置<code>table-layout</code>为<code>auto</code>或<code>fixed</code>，这样可以让table一行一行的渲染，这种做法也是为了限制<code>reflow</code>的影响范围。</p>
+<ul>
+<li>5) 避免使用css的JavaScript表达式，如果css里有<code>expression</code>，每次都会重新计算一次。</li>
+</ul>
+<hr>
+<h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><ol>
+<li><a href="https://www.jianshu.com/p/7fbd239ca0e2?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=seo_notes&amp;utm_source=recommendation" target="_blank" rel="noopener">浏览器如何渲染页面</a></li>
+</ol>
+
+  </section>
+
+
+  
+    <section class="post-comments">
+
+    <!-- 将评论系统（例如Disqus、多说、友言、畅言等）提供的代码片段粘贴在这里 -->
+    <!--PC和WAP自适应版-->
+<div id="SOHUCS" sid="2018/03/12/web-6/"  ></div> 
+<script type="text/javascript"> 
+(function(){ 
+var appid = 'cytoVRn2O';
+var conf = 'prod_8d1d2ca3d3e58602e938a09b0529415d';
+var width = window.innerWidth || document.documentElement.clientWidth; 
+if (width < 960) { 
+window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+
+</section>
+  
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright"><a href="http://www.miitbeian.gov.cn/">苏ICP备18003724号</a> | &copy;<a href="mailto:xiao_leon@qq.com">xiao leon</a> 2015-2018</span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+    
+
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                windowMinWidth: 300,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>

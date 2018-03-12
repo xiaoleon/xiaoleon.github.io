@@ -23,7 +23,7 @@
 <meta property="og:site_name" content="张啸">
 <meta property="og:description" content="数组是值的有序集合，每个值叫做一个元素，而每个元素在数组中有一个位置，以数字表示，称为索引。JavaScript数组的索引是基于零的32位数，第一个元素的索引为0，最大可能的索引为4 294 967 294（2e32-2），数组最大能容纳4 294 967 295个元素。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-02-02T12:48:05.169Z">
+<meta property="og:updated_time" content="2018-03-08T11:53:12.061Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数组 | 张啸">
 <meta name="twitter:description" content="数组是值的有序集合，每个值叫做一个元素，而每个元素在数组中有一个位置，以数字表示，称为索引。JavaScript数组的索引是基于零的32位数，第一个元素的索引为0，最大可能的索引为4 294 967 294（2e32-2），数组最大能容纳4 294 967 295个元素。">
@@ -266,7 +266,7 @@
 <blockquote>
 <p>注意，这里使用匿名函数表达式非常方便，既然比较函数只使用一次，就没必要给它们命名了</p>
 </blockquote>
-<h4 id="4-concat"><a href="#4-concat" class="headerlink" title="4. concat()"></a>4. concat()</h4><p>Array.concat()方法创建并返回一个新书组，它的元素包括调用concat()的原是数组的元素和concat()的每个参数。如果这些参数中的任何一个自身是数组，则连接的是数组的元素，而非数组本身。但要注意，concat()不会递归扁平化的数组，concat()也不会修改调用的数组</p>
+<h4 id="4-concat"><a href="#4-concat" class="headerlink" title="4. concat()"></a>4. concat()</h4><p>Array.concat()方法创建并返回一个新数组，它的元素包括调用concat()的原是数组的元素和concat()的每个参数。如果这些参数中的任何一个自身是数组，则连接的是数组的元素，而非数组本身。但要注意，concat()不会递归扁平化的数组，concat()也不会修改调用的数组</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line">a.concat(<span class="number">4</span>, <span class="number">5</span>);                         <span class="comment">// [1,2,3,4,5]</span></span><br><span class="line">a.concat([<span class="number">4</span>, <span class="number">5</span>]);                       <span class="comment">// [1,2,3,4,5]</span></span><br><span class="line">a.concat([<span class="number">4</span>, <span class="number">5</span>], [<span class="number">6</span>, <span class="number">7</span>]);               <span class="comment">// [1,2,3,4,5,6,7]</span></span><br><span class="line">a.concat(<span class="number">4</span>, [<span class="number">5</span>, [<span class="number">6</span>, <span class="number">7</span>]]);               <span class="comment">// [1,2,3,4,5,[6,7]]</span></span><br></pre></td></tr></table></figure>
 <h4 id="5-slice"><a href="#5-slice" class="headerlink" title="5. slice()"></a>5. slice()</h4><p>Array.slice()方法返回指定数组的一个片段或子数组。它的两个参数分别指定了片段的开始和结束位置。返回的数组包含第一个参数指定的位置和所有到但不含第二个参数指定的位置之间的所有数组元素。如果只指定一个参数，返回的数组将包含从开始位置到数组结尾的所有元素。如参数中出现负数，它表示相对于数组的最后一个元素的位置。</p>
 <p>注意，slice()方法不会修改调用的数组</p>

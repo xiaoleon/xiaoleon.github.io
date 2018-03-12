@@ -26,7 +26,11 @@
 <meta property="og:image" content="http://www.xiaoleon.cn/images/react-2/1.png">
 <meta property="og:image" content="http://www.xiaoleon.cn/images/react-2/2.png">
 <meta property="og:image" content="http://www.xiaoleon.cn/images/react-2/3.png">
-<meta property="og:updated_time" content="2018-03-04T15:01:16.626Z">
+<meta property="og:image" content="http://www.xiaoleon.cn/images/react-2/5.png">
+<meta property="og:image" content="http://www.xiaoleon.cn/images/react-2/6.png">
+<meta property="og:image" content="http://www.xiaoleon.cn/images/react-2/7.png">
+<meta property="og:image" content="http://www.xiaoleon.cn/images/react-2/8.png">
+<meta property="og:updated_time" content="2018-03-06T15:04:35.170Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="设计高质量的React组件 | 张啸">
 <meta name="twitter:description" content="作为一个合格的开发者，不能只满足于编写出可以运行的代码，而要了解代码背后的工作原理；不能只满足于自己编写的程序能够运行，还要让自己的代码可读而且易于维护。这样才能开发出高质量的软件。">
@@ -319,10 +323,125 @@
 <p>在浏览器的console里我们能够看见：</p>
 <figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">enter constructor: First</span><br><span class="line">enter componentWillMount First</span><br><span class="line">enter render First</span><br><span class="line">enter constructor: Second</span><br><span class="line">enter componentWillMount Second</span><br><span class="line">enter render Second</span><br><span class="line">enter constructor: Third</span><br><span class="line">enter componentWillMount Third</span><br><span class="line">enter render Third</span><br><span class="line">enter componentDidMount First</span><br><span class="line">enter componentDidMount Second</span><br><span class="line">enter componentDidMount Third</span><br></pre></td></tr></table></figure>
 <p>可以清楚的看到，虽然componentWillMount都是紧贴着自己组件的render函数之前被调用，componentDidMount可不是紧跟着render函数被调用，当所有三个组建的render函数都被调用之后，三个组件的componentDidMount才连在一起被调用。</p>
+<p>之所以会有上面的现象，是因为render函数本身并不往DOM树上渲染或者装载内容，它只是返回一个JSX表示的对象，然后由React库来根据返回对象决定如何渲染。而React库肯定是要把所有的组件返回的结果综合起来，才能知道如何产生对应的DOM修改。所以，只有React库调用三个Counter组件的render函数之后，才有可能完成装载，这时候才会依次调用各个组件的componentDidMount函数作为装载过程的收尾。</p>
+<p>componentWillMount和componentDidMount这对兄弟函数还有一个区别，就是componentWillMount可以在服务器端被调用，也可以在浏览器端被调用；而componentDidMount只能在浏览器端被调用，在服务器端使用React的时候不会被调用。</p>
+<p>目前为止，我们构造的React应用例子都只是在浏览器端使用React，所以看不出区别，在后面关于“同构”应用的介绍时，我们会探讨在服务器端使用React的情况。</p>
+<p>至于为什么只有componentDidMount仅在浏览器端执行，这是一个实现上的决定，而不是设计时刻有意而为之。不过，如果非要有个解释的话，可以这么说，既然“装载”是一个创建组件并放到DOM树上的过程，那么，真正的“装载”是不可能在服务器端完成的，因为服务器端渲染并不会产生DOM树，通过React组件产生的只是一个纯粹的字符串而已。</p>
+<p>不管怎样，componentDidMount只在浏览器端执行，倒是给了我们开发者一个很好地位置去做只有浏览器端才做的逻辑，比如通过Ajax获取数据来填充组件的内容。</p>
+<p>在componentDidMount被调用的时候，组件已经被装载到DOM树上了，可以放心获取渲染出来的任何DOM。</p>
+<p>在实际开发过程中，可能会需要让React和其他UI库配合使用，比如，因为项目前期已经用jQuery开发了很多功能，需要继续使用这些基于jQuery的代码，有时候其他的UI库做某些功能比React更合适，比如d3.js已经支持了丰富的绘制图表的功能，在这些情况下，我们不得不考虑如何让React和其他UI库和平共处。</p>
+<p>以和jQuery配合为例，我们知道，React是用来取代jQuery的，但如果真的要让React和jQuery配合，就需要利用componentDidMount函数，当componentDidMount被执行时，React组件对应的DOM已经存在，所有的事件处理函数也已经设置好，这时候就可以调用jQuery的代码，让jQuery在已经绘制的DOM基础上增强新的功能。</p>
+<p>在componentDidMount中调用jQuery代码只处理了装载过程，要和jQuery完全结合，又要考虑React的更新过程，就需要使用下面要讲的componentDidUpdate函数。</p>
+<h4 id="2-更新过程"><a href="#2-更新过程" class="headerlink" title="2. 更新过程"></a>2. 更新过程</h4><p>当组件被装载到DOM树上之后，用户在网页上可以看到组件的第一印象，但是要提供更好的交互体验，就要让该组件可以随着用户操作改变展现的内容，当props或者state修改的时候，就会引发组件的更新过程。</p>
+<p>更新过程会依次调用下面的生命周期函数，其中render函数和装载过程一样，没有差别。</p>
+<ul>
+<li><p>componentWillReceiveProps</p>
+</li>
+<li><p>shouldComponentUpdate</p>
+</li>
+<li><p>componentWillUpdate</p>
+</li>
+<li><p>render</p>
+</li>
+<li><p>componentDidUpdate</p>
+</li>
+</ul>
+<p>有意思的是，并不是所有的更新过程都会执行全部函数，下面会介绍到各种特例。</p>
+<ul>
+<li>1) componentWillReceiveProps(nextProps)</li>
+</ul>
+<p>关于这个componentWillReceiveProps存在一些误解。在网上有些教材声称这个函数只有当组件的props发生改变的时候才会被调用，其实是不正确的。实际上，只要是父组件的render函数被调用，在render函数里面被渲染的子组件就会经历更新过程，不管父组件传给子组件的props有没有改变，都会触发子组件的componentWillReceiveProps函数。</p>
+<p>注意，通过this.setState方法触发的更新过程不会调用这个函数，这是因为这个函数适合根据新的props值（也就是参数nextProps）来计算出是不是要更新内部状态state。更新组件内部状态的方法就是this.setState，如果this.setState的调用导致componentWillReceiveProps再一次被调用，那就是一个死循环了。</p>
+<p>让我们对ControlPanel做一些小的改进，来体会一下上面提到的规则。</p>
+<p>我们首先在Counter组件类里增加函数定义，让这个函数componentWillReceiveProps在console上输出一些文字，代码如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">componentWillReceiveProps(nextProps) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'enter componentWillReceiveProps '</span> + <span class="keyword">this</span>.props.caption);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在ControlPanel组件的render函数中，我们也做如下修改</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">render() &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'enter ControlPanel render'</span>);</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div style=&#123;style&#125;&gt;</span><br><span class="line">      ...</span><br><span class="line">      &lt;button onClick=&#123; () =&gt; <span class="keyword">this</span>.forceUpdate() &#125;&gt;</span><br><span class="line">        Click me to repaint!</span><br><span class="line">      &lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>div&gt;</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>除了在ControlPanel的render函数入口处增加console输出，我们还增加了一个按钮，这个按钮的onClick事件引发了一个匿名函数，当这个函数被点击的时候，调用this.forceUpdate，每个React组件都可以通过forceUpdate函数强行引发一次重新绘制。</p>
+<p>在网页中，我们去点击那个新增加的按钮，可以看到浏览器的console中有如下输出：</p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">enter ControlPanel render</span><br><span class="line">enter componentWillReceiveProps First</span><br><span class="line">enter render First</span><br><span class="line">enter componentWillReceiveProps Second</span><br><span class="line">enter render Second</span><br><span class="line">enter componentWillReceiveProps Third</span><br><span class="line">enter render Third</span><br></pre></td></tr></table></figure>
+<p>可以看到，引发forceUpdate之后，首先是ControlPanel的render函数被调用，随后第一个Counter组件的componentWillReceiveProps函数被调用，然后Counter组件的render函数被调用，随后第二个第三个组件的这两个函数也依次被调用。</p>
+<p>然而，ControlPanel在渲染三个子组件的时候，提供的props值一直就没有变化，可见componentWillReceiveProps并不是当props值变化的时候才被调用，所以，这个函数有必要把传入参数nextProps和this.props做必要对比。nextProps代表的是这一次渲染传入的props值，this.props代表的上一次渲染时的props值，只有两者有变化的时候才有必要调用this.setState更新内部状态。</p>
+<p>在网页中，我们再次尝试点击第一个Counter组件的“<code>+</code>”按钮，可以看到浏览器的console输出如下：</p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">enter render First</span><br></pre></td></tr></table></figure>
+<p>明显，只有第一个组件的Counter的render函数被调用，函数componentWillReceiveProps没有被调用。因为点击“<code>+</code>”按钮引发的是第一个Counter组件的this.setState函数的调用，就像上面说过的一样，this.setState不会引发这个函数componentWillReceiveProps被调用。</p>
+<p>从这个例子我们也会发现，在React的组件组合中，完全可以只渲染一个子组件，而其它组件完全不需要渲染，这是提高React性能的重要方式。</p>
+<ul>
+<li>2) shouldComponentUpdate(nextProps, nextState)</li>
+</ul>
+<p>除了render函数，shouldComponentUpdate可能是React组件生命周期中最重要的一个函数了。</p>
+<p>说render函数重要，是因为render函数决定了该渲染什么，而说shouldComponentUpdate函数重要，是因为它决定了一个组件什么时候不需要渲染。</p>
+<p>render和shouldComponentUpdate函数，也是React生命周期函数中唯二两个要求有返回结果的函数。render函数的返回结果将用于构造DOM对象，而shouldComponentUpdate函数返回一个布尔值，告诉React库这个组件在这次更新过程中是否要继续。</p>
+<p>在更新过程中，React库首先调用shouldComponentUpdate函数，如果这个函数返回true，那就会继续更新过程，接下来调用render函数；反之，如果得到一个false，那就立刻停止更新过程，也就不会引发后续的渲染了。</p>
+<p>说shouldComponentUpdate重要，就是因为只要使用恰当，它就能够大大提高React组件的性能，虽然React的渲染性能已经很不错了，但是，不管渲染有多快，如果发现没必要重新渲染，那就干脆不用渲染好了，速度会更快。</p>
+<p>我们知道render函数应该是一个纯函数，这个纯函数的逻辑输入就是组件的props和state。所以，shouldComponentUpdate的参数就是接下来的props和state值。如果我们要定义shouldComponentUpdate，那就根据这两个参数，外加this.props和this.state来判断出返回true还是返回false。</p>
+<p>如果我们给组件添加shouldComponentUpdate函数，那就沿用所有React组件父类React.Component中的默认实现方式，默认实现方式就是简单地返回true，也就是每次更新过程都要重新渲染。当然，这是最稳妥的方式，大不了浪费一点，但是绝对不会出错。不过若我们要追求更高的性能，就不能满足于默认实现，需要定制这个函数shouldComponentUpdate。</p>
+<p>让我们尝试来给Counter组件增加一个shouldComponentUpdate函数。先来看看props，Counter组件支持两个props，一个叫caption，一个叫initValue。很明显，只有caption这个prop改变的时候，才有必要重新渲染。对于initValue，只是创建Counter组件实例时用于初始化计数值，在组件实例创建之后，无论怎么改，都不应该让Counter组件重新渲染。</p>
+<p>再来看看state，Counter组件的state只有一个值count，如果count发生了变化，那肯定应该重新渲染，如果count没变化，那就没必要了。</p>
+<p>现在，让我们给Counter组件类增加shouldComponentUpdate函数的定义，代码如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">shouldComponentUpdate(nextProps, nextState) &#123;</span><br><span class="line">  <span class="keyword">return</span> (nextProps.caption !== <span class="keyword">this</span>.props.caption) ||</span><br><span class="line">    (nextState.count !== <span class="keyword">this</span>.state.count);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>现在，只有当caption改变，或者state中的count值改变，shouldComponentUpdate才会返回true。</p>
+<p>值得一提的是，通过this.setState函数引发更新过程，并不是立刻更新组件的state值，在执行到函数shouldComponentUpdate的时候，this.state依然是this.setState函数执行之前的值，所以我们要做的实际上就是在nextProps、nextState、this.props和this.state中互相比对。</p>
+<p>我们在网页中引发一次ControlPanel的重新绘制，可以看到浏览器的console中输出这样：</p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">enter ControlPanel render</span><br><span class="line">enter componentWillReceiveProps First</span><br><span class="line">enter componentWillReceiveProps Second</span><br><span class="line">enter componentWillReceiveProps Third</span><br></pre></td></tr></table></figure>
+<p>可以看到，三个Counter组件的render函数都没有被调用，因为这个刷新没有改变caption的值，更没有引发组件内状态的改变，所以完全没有必要重新绘制counter。</p>
+<p>对于Counter这个简单的组件，我们无法感觉到性能的提高，但是，实际开发中会遇到更复杂更庞大的组件，这种情况下避免没必要的重新渲染，就会大大提高性能。</p>
+<ul>
+<li>3) componentWillUpdate和componentDidUpdate</li>
+</ul>
+<p>如果组件的shouldComponentUpdate函数返回true，React接下来就会依次调用对应组件的componentWillUpdate、render和componentDidUpdate函数。</p>
+<p>componentWillMount和componentDidMount，componentWillUpdate和componentDidUpdate，这两对函数一前一后地把render函数夹在中间。</p>
+<p>和装载过程不同的是，当在服务器端使用React渲染时，这一对函数中的Did函数，也就是componentDidUpdate函数，并不是只在浏览器端才执行的，无论更新过程发生在服务器端还是浏览器端，该函数都会被调用。</p>
+<p>在介绍componentDidMount函数时，我们说到可以利用componentDidMount函数执行其他UI库的代码，比如jQuery代码。当React组件被更新时，原有的内容被重新绘制，这时候就需要在componentDidUpdate函数再次调用jQuery代码。</p>
+<p>那么，componentDidUpdate函数不是可能会在服务器端也被执行吗？在服务器端怎么能够使用jQuery呢？实际上，使用React做服务器端渲染时，基本不会经历更新过程，因为服务器端只需要产出HTML字符串，一个装载过程就足够产出HTML了，所以正常情况下服务器端不会调用componentDidUpdate函数，如果调用了，说明我们的程序有错误，需要改进。</p>
+<h4 id="3-卸载过程"><a href="#3-卸载过程" class="headerlink" title="3. 卸载过程"></a>3. 卸载过程</h4><p>React组件的卸载过程只涉及一个函数componentWillUnmount，当React组件要从DOM树上删除掉之前，对应的componentWillUnmount函数会被调用，所以这个函数适合做一些清理性的工作。</p>
+<p>和装载过程和更新过程不一样，这个函数没有配对的Did函数，就一个函数，因为卸载完就完了，没有“卸载完再做的事情”。</p>
+<p>不过，componentWillUnmount中的工作往往和componentDidMount有关，比如，在componentDidMount中用非React的方法创造一些DOM元素，如果撒手不管可能会造成内存的泄漏，那就需要在componentWillUnmount中把这些创造的DOM元素清理掉。</p>
 <hr>
-<h3 id="四、"><a href="#四、" class="headerlink" title="四、"></a>四、</h3><!-- Todo -->
+<h3 id="四、组件向外传递数据"><a href="#四、组件向外传递数据" class="headerlink" title="四、组件向外传递数据"></a>四、组件向外传递数据</h3><p>通过构造ControlPanel和Counter，现在我们已经知道了如何通过props从父组件传递数据给子组件，但是，组件之间的交流是相互的，子组件某些情况下也需要把数据传递给父组件，我们接下来看看在React中如何实现这个功能。</p>
+<p>在ControlPanel中，包含三个Control子组件实例，每个Counter都有一个可以动态改变的计数值，我们希望ControlPanel能够即时显示出这三个子组件当前计数值之和。</p>
+<p>这个功能看起来很简单，但是要解决一个问题，就是要让ControlPanel“知道”三个子组件当前的计数值，而且是每次改变都要立刻知道，而Counter组件的当前值是组件的内部状态，如何让外部世界知道这个值呢？</p>
+<p>解决这个问题的方法，依然是利用prop。组件的prop可以是任何JavaScript对象，而在JavaScript中，函数是一等公民，函数本身就可以被看作一种对象，既可以像其他对象一样作为prop的值从父组件传递给子组件，又可以被子组件作为函数调用，这样事情就好办了。</p>
+<h4 id="1-应用实例"><a href="#1-应用实例" class="headerlink" title="1. 应用实例"></a>1. 应用实例</h4><p>我们看到修改后的功能图如图所示</p>
+<p><img src="/images/react-2/5.png" alt="包含总数的ControlPanel应用效果图"></p>
+<p>点击任何一个Counter的“<code>+</code>”按钮或者“<code>-</code>”按钮，可以看见除了所属Counter的计数变化，底部的总计数也会随之变化，这是因为Counter能够把自己状态改变的信息传递给外层的组件。</p>
+<p>接下来看实现这个功能的关键代码。</p>
+<p>在Counter组件中，对于点击“<code>+</code>”和“<code>-</code>”按钮的事件处理方法做了改动，代码如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">onClickIncrementButton() &#123;</span><br><span class="line">  <span class="keyword">this</span>.updateCount(<span class="literal">true</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">onCLickDecrementButton() &#123;</span><br><span class="line">  <span class="keyword">this</span>.updateCount(<span class="literal">false</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">updateCount(isIncrement) &#123;</span><br><span class="line">  <span class="keyword">const</span> previousValue = <span class="keyword">this</span>.state.count;</span><br><span class="line">  <span class="keyword">const</span> newValue = isIncrement ? previousValue + <span class="number">1</span> : previousValue - <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">this</span>.setState(&#123; <span class="attr">count</span>: newValue &#125;);</span><br><span class="line">  <span class="keyword">this</span>.props.onUpdate(newValue, previousValue);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>现在，onClickIncrementButton函数和onClickDecrementButton函数的任务除了调用this.setState改变内部状态，还要调用this.props.onUpdate这个函数，为了避免重复代码，我们对原有代码做一下重构，提取了共同部分到updateCount函数里。</p>
+<p>对应的，Counter组件的propTypes和defaultProps就要增加onUpdate的定义，代码如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Counter.propTypes = &#123;</span><br><span class="line">  caption: PropTypes.string.isRequires,</span><br><span class="line">  initValue: PropTypes.number,</span><br><span class="line">  onUpdate: PropTypes.func</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Counter.defaultProps = &#123;</span><br><span class="line">  initValue: <span class="number">0</span>,</span><br><span class="line">  onUpdate: <span class="function"><span class="params">f</span> =&gt;</span> f</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>新增加的prop叫做onUpdate，类型是一个函数，当Counter的状态改变的时候，就会调用这个给定的函数，从而达到通知父组件的作用。</p>
+<p>这样，Counter的onUpdate就成了作为子组件的Counter向父组件ControlPanel传递数据的渠道，我们先约定这个函数的第一个参数是Counter更新之后的值，第二个参数是更新之前的值，至于如何使用这两个参数的值，是父组件ControlPanel的逻辑，Counter不用操心，而且根据两个参数的值足够推导出数值是增加还是减少。</p>
+<p>从使用Counter组件的角度，在ControlPanel组件中也要做一些修改，现在ControlPanel需要包含自己的state，首先是构造函数部分，代码如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">  <span class="keyword">super</span>(props);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">this</span>.onCounterUpdate = <span class="keyword">this</span>.onCounterUpdate.bind(<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">this</span>.initValues = [<span class="number">0</span>, <span class="number">10</span>, <span class="number">20</span>];</span><br><span class="line">  <span class="keyword">const</span> initSum = <span class="keyword">this</span>.initValues.reduce(<span class="function">(<span class="params">a, b</span>) =&gt;</span> a + b, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">this</span>.state = &#123;</span><br><span class="line">    sum: initSum</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在ControlPanel组件被第一次渲染的时候，就需要显示三个计数器数值的综合，所以我们在构造函数中使用initValues数组记录所有的Counter的初始值，在初始化this.state之前，将initValues数组中所有值加在一起，作为this.state中sum字段的初始值。</p>
+<p>ControlPanel传递给Counter组件的onUpdate这个prop的值是onCounterUpdate函数，代码如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">onCounterUpdate(newValue, previousValue) &#123;</span><br><span class="line">  <span class="keyword">const</span> valueChange = newValue - previousValue;</span><br><span class="line">  <span class="keyword">this</span>.setState(&#123;</span><br><span class="line">    sum: <span class="keyword">this</span>.state.sum + valueChange</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>onCounterUpdate函数的参数和Counter中调用的onUpdate prop的参数规格一致，第一个参数为新值，第二个参数为之前的值，两者之差就是改变值，将这个改变作用到this.state.sum上就是sum的新状态。</p>
+<p>遗憾的是，React虽然有PropType能够检查prop的类型，却没有任何机制来限制prop的参数规格，参数的一致性只能靠开发者来保证。</p>
+<p>ControlPanel组件的render函数中需要增加对this.state.sum和onCountUpdate的使用，代码如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">render() &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div style=&#123;style&#125;&gt;</span><br><span class="line">      &lt;Counter onUpdate=&#123;<span class="keyword">this</span>.onCountUpdate&#125; caption=<span class="string">"First"</span> /&gt;</span><br><span class="line">      &lt;Count onUpdate=&#123;<span class="keyword">this</span>.onCountUpdate&#125; caption=<span class="string">"Second"</span> initValue=&#123;<span class="keyword">this</span>.initValues[<span class="number">1</span>]&#125; /&gt;</span><br><span class="line">      &lt;Count onUpdate=&#123;<span class="keyword">this</span>.onCountUpdate&#125; caption=<span class="string">"Third"</span> initValue=&#123;<span class="keyword">this</span>.initValues[<span class="number">2</span>]&#125; /&gt;</span><br><span class="line">      &lt;hr /&gt;</span><br><span class="line">      &lt;div&gt;Total Count: &#123;<span class="keyword">this</span>.state.sum&#125;&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="五、React组件state和prop的局限"><a href="#五、React组件state和prop的局限" class="headerlink" title="五、React组件state和prop的局限"></a>五、React组件state和prop的局限</h3><p>是时候重新思考一下多个组件之间的数据管理问题了。在上面修改的代码中，不难发现其实实现得并不精妙，每个Count组件有自己的状态记录当前计数，而父组件ControlPanel也有一个状态来存储所有Counter计数总和，也就是说，数据发生了重复。</p>
+<p>数据如果出现重复，带来的一个问题就是如何保证重复的数据一致，如果数据存多份而且不一致，那就很难决定到底使用哪个数据作为正确结果了。</p>
+<p>在上面的例子中，ControlPanel通过onUpdate回调函数传递的新值和旧值来计算新的计数总和，设想一下，由于某种bug的原因，某个按钮的点击更新没有通知到ControlPanel，就会让ControlPanel中的sum状态和所有子组件Counter的count状态之和不一致，这时候，是应该相信ControlPanel还是Count呢？</p>
+<p>如图所示，逻辑上应该相同的状态，分别存放在不同组件中，就会导致这种困局。</p>
+<p><img src="/images/react-2/6.png" alt="组件状态不一致的困惑"></p>
+<p>对于上面所说的问题，一个直观的解决方法是以某一个组件的状态为准，这个组件是状态的“领头羊”，其余组件都保持和“领头羊”的状态同步，但是在实际情况下这种方法可能很难实施。比如上面的例子中，每个Counter记录自己的计数值是很自然的，但是有三个Counter组件，也就有三只“领头羊”，让ControlPanel跟着三只“领头羊”走，似乎不是一个好主意。</p>
+<p>另一种思路，就是干脆不要让任何一个React组件扮演“领头羊”的角色，把数据源放在React组件之外形成全局状态，如下图所示，让各个组件保持和全局状态的一致，这样更容易控制。</p>
+<p><img src="/images/react-2/7.png" alt="React中提取出来"></p>
+<p>图中全局状态就是唯一可靠的数据源，下一章我们会介绍，这就是Flux和Redux中Store的概念。</p>
+<p>除了state，利用prop在组件之间传递信息也会遇到问题。设想一下，在一个应用中，包含三级或者三级以上的组件结构，顶层的祖父级组件想要传递一个数据给最底层的子组件，用prop的方式，就只能通过父组件中转，而中间那一层父组件可能根本用不上这个prop，但是依然要支持这个prop，扮演好搬运工的角色，只因为子组件用得上，这明显违反了低耦合的设计要求。</p>
+<p><img src="/images/react-2/8.png" alt="跨级传递prop的困局"></p>
+<hr>
+<h3 id="六、本章小结"><a href="#六、本章小结" class="headerlink" title="六、本章小结"></a>六、本章小结</h3><p>本章中，我们学习了构建高质量组件的原则，应用React一样要以构建高内聚低耦合的组件为目标，而保证组件高质量的一个重要工作就是保持组件对外接口清晰简洁。</p>
+<p>React利用prop来定义组件的对外接口，用state来代表内部的状态，某个数据选择用prop还是用state表示，取决于这个数据是对内还是对外。</p>
+<p>我们还介绍了React的生命周期，了解了装载过程、更新过程和卸载过程涉及的所有生命周期函数。</p>
+<p>在本章中我们利用ControlPanel和Counter两个组件演示了组件之间的通信方式，包括子组件向父组件传递信息的方式，同时也看出了使用React的state来存储状态的一个缺点，那就是数据的冗余和重复，这就是我们接下来要解决的问题。</p>
+<hr>
 <h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><ol>
-<li><a href="">《Todo》</a></li>
+<li><a href="">《深入浅出React和Redux —— 程墨》</a></li>
 </ol>
 
   </section>
