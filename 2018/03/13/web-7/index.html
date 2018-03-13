@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      前端路由实现方法 | 张啸 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="Leon">
+    
+    
+    <meta name="description" content="什么是路由？简单的来说，路由是 URL –&amp;gt; 函数 的映射关系。 大部分复杂的网站，都会把业务解耦为模块进行处理。这些网站中又有很多的网站会把适合的部分应用Ajax进行数据交互，展现给用户，很明显处理这样的数据通信交互，不可避免的会涉及到跟URL打交道，让数据交互的变化反映到URL的变化上，进而可以给用户机会去通过保存的URL链接，还原刚才的页面内容板块的布局，这其中包括Ajax局部刷新的变">
+<meta name="keywords" content="前端路由,Hash,History">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端路由实现方法 | 张啸">
+<meta property="og:url" content="http://www.xiaoleon.cn/2018/03/13/web-7/index.html">
+<meta property="og:site_name" content="张啸">
+<meta property="og:description" content="什么是路由？简单的来说，路由是 URL –&amp;gt; 函数 的映射关系。 大部分复杂的网站，都会把业务解耦为模块进行处理。这些网站中又有很多的网站会把适合的部分应用Ajax进行数据交互，展现给用户，很明显处理这样的数据通信交互，不可避免的会涉及到跟URL打交道，让数据交互的变化反映到URL的变化上，进而可以给用户机会去通过保存的URL链接，还原刚才的页面内容板块的布局，这其中包括Ajax局部刷新的变">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-03-13T14:27:42.743Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端路由实现方法 | 张啸">
+<meta name="twitter:description" content="什么是路由？简单的来说，路由是 URL –&amp;gt; 函数 的映射关系。 大部分复杂的网站，都会把业务解耦为模块进行处理。这些网站中又有很多的网站会把适合的部分应用Ajax进行数据交互，展现给用户，很明显处理这样的数据通信交互，不可避免的会涉及到跟URL打交道，让数据交互的变化反映到URL的变化上，进而可以给用户机会去通过保存的URL链接，还原刚才的页面内容板块的布局，这其中包括Ajax局部刷新的变">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+        <a href="/"><img src="/images/logo.jpg" width="80" alt="张啸 logo" class="panel-cover__logo logo" /></a>
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/">张啸</a></h1>
+        <hr class="panel-cover__divider" />
+
+        
+        <p class="panel-cover__description">
+          世界上最快乐的事，莫过于为理想而奋斗。
+        </p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title="" class="">关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title="" class="">归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h2 class="post-title">Web(7) 前端路由实现方法</h2>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2018-03-13" class="post-meta__date date">2018-03-13</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+            &#8226; 分类:
+            <font class="categories">
+              <a class="categories-link" href="/categories/Web知识学习/">Web知识学习</a>
+            </font>
+          
+
+          
+            &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/Hash/">Hash</a>, <a class="tags-link" href="/tags/History/">History</a>, <a class="tags-link" href="/tags/前端路由/">前端路由</a>
+            </font>
+          
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <p>什么是路由？简单的来说，路由是 <strong><em>URL –&gt; 函数</em></strong> 的映射关系。</p>
+<p>大部分复杂的网站，都会把业务解耦为模块进行处理。这些网站中又有很多的网站会把适合的部分应用Ajax进行数据交互，展现给用户，很明显处理这样的数据通信交互，不可避免的会涉及到跟URL打交道，让数据交互的变化反映到URL的变化上，进而可以给用户机会去通过保存的URL链接，还原刚才的页面内容板块的布局，这其中包括Ajax局部刷新的变化。</p>
+<a id="more"></a>
+<h3 id="一、router和route的区别"><a href="#一、router和route的区别" class="headerlink" title="一、router和route的区别"></a>一、<code>router</code>和<code>route</code>的区别</h3><p><code>route</code>是一条路由，它将一个 <strong><em>URL</em></strong> 路径和一个 <strong><em>函数</em></strong> 进行映射，例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/users          --&gt;     getAllUsers()  </span><br><span class="line">/users/count    --&gt;     getUsersCount()</span><br></pre></td></tr></table></figure>
+<p><code>router</code>可以理解为一个容器，或者一种机制，它管理了一组<code>route</code>。</p>
+<p><code>router</code>是<code>route</code>的一组Map映射表，接收到一个URL后，由<code>router</code>来从映射表中查找相应的函数。</p>
+<hr>
+<h3 id="二、服务端路由"><a href="#二、服务端路由" class="headerlink" title="二、服务端路由"></a>二、服务端路由</h3><p>对于服务器来说，当接收到客户端发来的HTTP请求，会根据请求的URL，来找到相应的映射函数，然后执行该函数，并将函数的返回值发送给客户端。</p>
+<ul>
+<li><p>静态资源，可以认为，URL的映射函数就是一个文件的读取操作。 </p>
+</li>
+<li><p>动态资源，映射函数可能是一个数据库的读取操作，也可能是一些数据处理等等。</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">app.get(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">    res.sendFile(<span class="string">'index'</span>);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.get(<span class="string">'/users'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> data = db.queryAllUsers();</span><br><span class="line">    res.send(data);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p><code>router</code>匹配<code>route</code>的过程中，不仅会根据URL来匹配，还会根据请求的方法来匹配，如<code>POST</code>、<code>GET</code>、<code>PUT</code>、<code>DELETE</code>等等。</p>
+<hr>
+<h3 id="三、客户端路由"><a href="#三、客户端路由" class="headerlink" title="三、客户端路由"></a>三、客户端路由</h3><p>对于客户端来说，路由的映射函数通常是进行一些DOM元素的<strong>显示和隐藏</strong>操作。这样，当访问不同的路径的时候，会显示不同的页面组件。</p>
+<p>客户端路由最常见的是下面两种实现方案：</p>
+<h4 id="1-基于Hash（锚点）"><a href="#1-基于Hash（锚点）" class="headerlink" title="1. 基于Hash（锚点）"></a>1. 基于Hash（锚点）</h4><p>URL中 <code>#</code> 或者 <code>#!</code> 及其后面的部分为hash，例如</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> url = <span class="built_in">require</span>(<span class="string">'url'</span>)</span><br><span class="line"><span class="keyword">var</span> a = url.parse(<span class="string">'http://example.com/a/b/#/foo/bar'</span>)</span><br><span class="line"><span class="built_in">console</span>.log(a.has)</span><br><span class="line"><span class="comment">// =&gt; #/foo/bar</span></span><br></pre></td></tr></table></figure>
+<p>H5中对has有一个<code>hashchange</code>事件，当页面的<code>hash</code>变化时，即会出发<code>hashchange</code>。</p>
+<p>锚点<code>Hash</code>起到引导浏览器将这次记录推入<strong>历史记录栈顶</strong>的作用，<code>window.location</code>对象处理 <code>#</code> 的改变并不会重新加载页面，而是将之当成新页面，放入历史栈里。</p>
+<p>当<code>前进(-&gt;)</code>或者<code>后退(&lt;-)</code>或者触发<code>hashchange</code>事件时，我们可以在对应的事件处理函数里注册ajax等操作。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.onhashchange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> hash = <span class="built_in">window</span>.location.hash;</span><br><span class="line">    <span class="keyword">var</span> path = hash.substring(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">switch</span> (path) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">'/'</span>:</span><br><span class="line">            showHome();</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">'/users'</span>:</span><br><span class="line">            showUsersList();</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            show404NotFound();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>但是hashchange这个事件并不是每个浏览器都有，地基浏览器需要用轮询检测URL是否在变化，来检测锚点的变化。  </p>
+<p>当锚点内容 <code>location.hash</code> 被操作时，如果锚点内容发生改变浏览器才会将其放入历史栈中；否则历史栈并不会增加，并且也不会触发<code>hashchange</code>事件。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">window</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 如果浏览器不支持原生实现的事件，则开始模拟，否则退出。</span></span><br><span class="line">    <span class="keyword">if</span> ( <span class="string">"onhashchange"</span> <span class="keyword">in</span> <span class="built_in">window</span>.document.body ) &#123; <span class="keyword">return</span>; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> location = <span class="built_in">window</span>.location,</span><br><span class="line">    oldURL = location.href,</span><br><span class="line">    oldHash = location.hash;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 每隔100ms检查hash是否发生变化</span></span><br><span class="line">    setInterval(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> newURL = location.href,</span><br><span class="line">        newHash = location.hash;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// hash发生变化且全局注册有onhashchange方法（这个名字是为了和模拟的事件名保持统一）；</span></span><br><span class="line">        <span class="keyword">if</span> ( newHash != oldHash &amp;&amp; <span class="keyword">typeof</span> <span class="built_in">window</span>.onhashchange === <span class="string">"function"</span>  ) &#123;</span><br><span class="line">            <span class="comment">// 执行方法</span></span><br><span class="line">            <span class="built_in">window</span>.onhashchange(&#123;</span><br><span class="line">                type: <span class="string">"hashchange"</span>,</span><br><span class="line">                oldURL: oldURL,</span><br><span class="line">                newURL: newURL</span><br><span class="line">            &#125;);</span><br><span class="line"></span><br><span class="line">            oldURL = newURL;</span><br><span class="line">            oldHash = newHash;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;, <span class="number">100</span>);</span><br><span class="line">&#125;)(<span class="built_in">window</span>);</span><br></pre></td></tr></table></figure>
+<h4 id="2-基于History"><a href="#2-基于History" class="headerlink" title="2. 基于History"></a>2. 基于History</h4><p>我们首先熟悉几个H5的 <code>History Api</code>，下面是<code>Mozilla</code>在H5中实现的<code>History Api</code>的官方文档描述。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*Returns the number of entries in the joint session history.*/</span></span><br><span class="line"><span class="built_in">window</span>.history.length</span><br><span class="line"></span><br><span class="line"><span class="comment">/*Returns the current state object.*/</span></span><br><span class="line"><span class="built_in">window</span>.history.state</span><br><span class="line"></span><br><span class="line"><span class="comment">/*Goes back or forward the specified number of steps in the joint session history.A zero delta will reload the current page.If the delta is out of range, does nothing.*/</span></span><br><span class="line"><span class="built_in">window</span>.history.go([delta])</span><br><span class="line"></span><br><span class="line"><span class="comment">/*Goes back one step in the joint session history.If there is no previous page, does nothing.*/</span></span><br><span class="line"><span class="built_in">window</span>.history.back()</span><br><span class="line"></span><br><span class="line"><span class="comment">/*Goes forward one step in the joint session history.If there is no next page, does nothing.*/</span></span><br><span class="line"><span class="built_in">window</span>.history.forward()</span><br><span class="line"></span><br><span class="line"><span class="comment">/*Pushes the given data onto the session history, with the given title, and, if provided and not null, the given URL.*/</span></span><br><span class="line"><span class="built_in">window</span>.history.pushState(data, title[url])</span><br><span class="line"></span><br><span class="line"><span class="comment">/*Updates the current entry in the session history to have the given data, title, and,if provided and not null, URL.*/</span></span><br><span class="line"><span class="built_in">window</span>.history.replaceState(data, title[url])</span><br></pre></td></tr></table></figure>
+<p>其中最后的两个方法<code>history.pushState</code>和<code>history.replaceState</code>，为前端操控浏览器历史栈提供了可能性。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">*parameters</span></span><br><span class="line"><span class="comment">*@data &#123;object&#125; state对象，这是一个javascript对象，一般是JSON格式的对象</span></span><br><span class="line"><span class="comment">*字面量。</span></span><br><span class="line"><span class="comment">*@title &#123;string&#125; 可以理解为document.title，在这里是作为新页面传入参数的。</span></span><br><span class="line"><span class="comment">*@url &#123;string&#125; 增加或改变的记录，对应的url，可以是相对路径或者绝对路径，</span></span><br><span class="line"><span class="comment">*url的具体格式可以自定。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">history.pushState(data, title, url) <span class="comment">//向浏览器历史栈中增加一条记录。</span></span><br><span class="line">history.replaceState(data, title, url) <span class="comment">//替换历史栈中的当前记录。</span></span><br></pre></td></tr></table></figure>
+<p>这两个Api都会操作浏览器的历史栈，而不会引起页面的刷新。不同的是，<code>pushState</code>会增加一条新的历史记录，而<code>replaceState</code>则会替换当前的历史记录。</p>
+<p>在将新的历史记录存入栈后，会把传入的<code>data(即state对象)</code>同时存入，方便以后调用，存在用户的本地硬盘上，最大支持到640k。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> currentState = history.state; <span class="comment">//如果没有则为null</span></span><br></pre></td></tr></table></figure>
+<p>同时，这俩api都会更新或者覆盖当前浏览器的title和url为对应传入的参数。</p>
+<p>URL参数可以为绝对路径，也可以为相对路径，但是不能跨域</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//假设当前网页URL为：http://tonylee.pw</span></span><br><span class="line"><span class="built_in">window</span>.history.pushState(<span class="literal">null</span>, <span class="literal">null</span>, <span class="string">"http://tonylee.pw?name=tonylee"</span>);</span><br><span class="line"><span class="comment">//url变化：http://tonylee.pw -&gt; http://tonylee.pw?name=tonylee</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.history.pushState(<span class="literal">null</span>, <span class="literal">null</span>, <span class="string">"http://tonylee.pw/name/tonylee"</span>);</span><br><span class="line"><span class="comment">//url变化：http://tonylee.pw -&gt; http://tonylee.pw/name/tonylee</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.history.pushState(<span class="literal">null</span>, <span class="literal">null</span>, <span class="string">"?name=tonylee"</span>);</span><br><span class="line"><span class="comment">//url变化：http://tonylee.pw -&gt; http://tonylee.pw?name=tonylee</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.history.pushState(<span class="literal">null</span>, <span class="literal">null</span>, <span class="string">"name=tonylee"</span>);</span><br><span class="line"><span class="comment">//url变化：http://tonylee.pw -&gt; http://tonylee.pw/name=tonylee</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.history.pushState(<span class="literal">null</span>, <span class="literal">null</span>, <span class="string">"/name/tonylee"</span>);</span><br><span class="line"><span class="comment">//url变化：http://tonylee.pw -&gt; http://tonylee.pw/name/tonylee</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.history.pushState(<span class="literal">null</span>, <span class="literal">null</span>, <span class="string">"name/tonylee"</span>);</span><br><span class="line"><span class="comment">//url变化：http://tonylee.pw -&gt; http://tonylee.pw/name/tonylee</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//错误的用法：</span></span><br><span class="line"><span class="built_in">window</span>.history.pushState(<span class="literal">null</span>, <span class="literal">null</span>, <span class="string">"http://www.tonylee.pw?name=tonylee"</span>);</span><br><span class="line"><span class="comment">//error: 由于跨域将产生错误</span></span><br></pre></td></tr></table></figure>
+<p>可以看到，URL作为一个改变当前浏览器地址的参数，用法是非常灵活的。传入的URL默认以“<code>/</code>”相隔，也可以自己指定为“<code>?</code>”等。</p>
+<p><strong><em>根据URL的变化 –&gt; 页面板块变化 –&gt; 页面发出XHR请求 –&gt; 页面没有reload</em></strong></p>
+<p>这里我们可以看一下<code>mozilla</code>提供的一个<code>pushState</code>和<code>replaceState</code>的小demo，已经接近一个前端路由的雏形。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE HTML&gt;</span><br><span class="line">&lt;!-- <span class="keyword">this</span> starts off <span class="keyword">as</span> http:<span class="comment">//example.com/line?x=5 --&gt;</span></span><br><span class="line">&lt;title&gt;Line Game - <span class="number">5</span>&lt;<span class="regexp">/title&gt;</span></span><br><span class="line"><span class="regexp">&lt;p&gt;You are at coordinate &lt;span id="coord"&gt;5&lt;/</span>span&gt; on the line.&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">&lt;p&gt;</span></span><br><span class="line"><span class="regexp">&lt;a href="?x=6" onclick="go(1); return false;"&gt;Advance to 6&lt;/</span>a&gt; or</span><br><span class="line">&lt;a href=<span class="string">"?x=4"</span> onclick=<span class="string">"go(-1); return false;"</span>&gt;retreat to <span class="number">4</span>&lt;<span class="regexp">/a&gt;?</span></span><br><span class="line"><span class="regexp">&lt;/</span>p&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line"><span class="keyword">var</span> currentPage = <span class="number">5</span>; <span class="comment">// prefilled by server！！！！</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">go</span>(<span class="params">d</span>) </span>&#123;</span><br><span class="line">    setupPage(currentPage + d);</span><br><span class="line">    history.pushState(currentPage, <span class="built_in">document</span>.title, <span class="string">'?x='</span> + currentPage);</span><br><span class="line">&#125;</span><br><span class="line">onpopstate = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">    setupPage(event.state);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">setupPage</span>(<span class="params">page</span>) </span>&#123;</span><br><span class="line">    currentPage = page;</span><br><span class="line">    <span class="built_in">document</span>.title = <span class="string">'Line Game - '</span> + currentPage;</span><br><span class="line">    <span class="built_in">document</span>.getElementById(<span class="string">'coord'</span>).textContent = currentPage;</span><br><span class="line">    <span class="built_in">document</span>.links[<span class="number">0</span>].href = <span class="string">'?x='</span> + (currentPage+<span class="number">1</span>);</span><br><span class="line">    <span class="built_in">document</span>.links[<span class="number">0</span>].textContent = <span class="string">'Advance to '</span> + (currentPage+<span class="number">1</span>);</span><br><span class="line">    <span class="built_in">document</span>.links[<span class="number">1</span>].href = <span class="string">'?x='</span> + (currentPage<span class="number">-1</span>);</span><br><span class="line">    <span class="built_in">document</span>.links[<span class="number">1</span>].textContent = <span class="string">'retreat to '</span> + (currentPage<span class="number">-1</span>);</span><br><span class="line">&#125;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+<p>从例子中我们看到一个<code>popstate</code>的事件，这里也看看<code>mozalla</code>官方文档</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">An event handler <span class="keyword">for</span> the popstate event on the window.</span><br><span class="line"></span><br><span class="line">A popstate event is dispatched to the window every <span class="built_in">time</span> the active history entry changes between two history entries <span class="keyword">for</span> the same document. <span class="keyword">If</span> the history entry being activated was created by a <span class="keyword">call</span> to history.pushState() or was affected by a <span class="keyword">call</span> to history.replaceState(), the popstateevent's state property contains a <span class="built_in">copy</span> of the history entry's state object.</span><br><span class="line"></span><br><span class="line">Note that just calling history.pushState() or history.replaceState() won't trigger apopstate event. The popstate event is only triggered by doing a browser action such as clicking on the back button (or calling history.back() <span class="keyword">in</span> JavaScript). And the event is only triggered when the user navigates between two history entries <span class="keyword">for</span> the same document.</span><br><span class="line"></span><br><span class="line">Browsers tend to handle the popstate event differently on page load. Chrome (prior to v34) and Safari always emit a popstate event on page load, but Firefox doesn't.</span><br><span class="line"></span><br><span class="line">Syntax</span><br><span class="line">    window.onpopstate = funcRef;</span><br><span class="line">    //funcRef is a handler function.</span><br></pre></td></tr></table></figure>
+<p>简单来说，当同一个页面在历史记录间切换时，就会派发<code>popstate</code>事件。</p>
+<p>正常情况下，用户点击后退按钮或者调用<code>history.back() or history.go()</code>，页面根本没有处理事件的机会，因为这些操作会使得页面<code>reload</code>，所以<code>popstate</code>只在不会让浏览器页面刷新的历史记录之间切换才能触发，这些历史记录一般由<code>pushState/replaceState</code>或者是由<code>hash</code>锚点等操作产生，并且在事件的句柄中可以访问state对象的引用副本！</p>
+<p>单纯的调用<code>pushState/replaceState</code>并不会触发<code>popstate</code>事件。</p>
+<p>页面初次加载时，是否会主动触发<code>popstate</code>事件，不同的浏览器实现不一样。下面是一个官方demo。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.onpopstate = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">    alert(<span class="string">"location: "</span> + <span class="built_in">document</span>.location + <span class="string">", state: "</span> +   <span class="built_in">JSON</span>.stringify(event.state));</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">history.pushState(&#123;<span class="attr">page</span>: <span class="number">1</span>&#125;, <span class="string">"title 1"</span>, <span class="string">"?page=1"</span>);</span><br><span class="line">history.pushState(&#123;<span class="attr">page</span>: <span class="number">2</span>&#125;, <span class="string">"title 2"</span>, <span class="string">"?page=2"</span>);</span><br><span class="line">history.replaceState(&#123;<span class="attr">page</span>: <span class="number">3</span>&#125;, <span class="string">"title 3"</span>, <span class="string">"?page=3"</span>);</span><br><span class="line">history.back(); <span class="comment">// alerts "location: http://example.com/example.html?page=1, state: &#123;"page":1&#125;"</span></span><br><span class="line">history.back(); <span class="comment">// alerts "location: http://example.com/example.html, state: null</span></span><br><span class="line">history.go(<span class="number">2</span>); <span class="comment">// alerts "location: http://example.com/example.html?page=3, state: &#123;"page":3&#125;</span></span><br></pre></td></tr></table></figure>
+<p>兼容性测试脚本：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span> src=<span class="string">"node_modules/jquery/dist/jquery.js"</span>&gt;&lt;/script&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">$(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(history &amp;&amp; history.pushState) &#123;</span><br><span class="line">        alert(<span class="string">"true"</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        alert(<span class="string">"false"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    $(<span class="built_in">window</span>).on(<span class="string">"hashchange"</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        alert(<span class="string">"hashchange"</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+<p>兼容性概览：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">history &amp;&amp; history.pushState兼容如下：</span><br><span class="line">    chrome true；</span><br><span class="line">    Firefox true；</span><br><span class="line">    IE10 true;</span><br><span class="line">    IE &lt;= <span class="number">9</span> false;  </span><br><span class="line"><span class="function">    PS:<span class="title">IE</span> &lt;= 9既然不支持这些<span class="title">api</span>那就只能采用<span class="title">hash</span>方案，来实现路由系统的兼容了。</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="title">hashchange</span>兼容如下：</span></span><br><span class="line"><span class="function">    <span class="title">IE9</span> <span class="title">true</span>;</span></span><br><span class="line"><span class="function">    <span class="title">IE8</span> <span class="title">true</span>;</span></span><br><span class="line"><span class="function">    <span class="title">IE7</span> <span class="title">false</span>;</span></span><br><span class="line"><span class="function">...</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">页面<span class="title">load</span>时，<span class="title">onhashchange</span>默认触发情况：</span></span><br><span class="line"><span class="function">    <span class="title">chrome</span> 需主动<span class="title">trigger</span>才能触发</span></span><br><span class="line"><span class="function">    <span class="title">FF</span> 需主动<span class="title">trigger</span>才能触发</span></span><br><span class="line"><span class="function">    <span class="title">IE</span> 需主动<span class="title">trigger</span>才能触发</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">页面<span class="title">load</span>时，<span class="title">onpopstate</span>默认触发情况：</span></span><br><span class="line"><span class="function">    <span class="title">chrome</span> &lt; 34版本之前的默认触发 </span></span><br><span class="line"><span class="function">    <span class="title">FF</span> 默认不触发</span></span><br><span class="line"><span class="function">    <span class="title">IE</span> 默认不触发</span></span><br></pre></td></tr></table></figure>
+<p>只有webkit内核浏览器才会默认触发<code>popstate</code>。</p>
+<h4 id="3-两种实现的比较"><a href="#3-两种实现的比较" class="headerlink" title="3. 两种实现的比较"></a>3. 两种实现的比较</h4><ul>
+<li><p>基于<code>Hash</code>的路由，兼容性更好</p>
+</li>
+<li><p>基于<code>History API</code>的路由，更加直观和正式</p>
+</li>
+</ul>
+<p>有一点很大的区别是，基于<code>Hash</code>的路由不需要对服务器做改动，基于<code>History API</code>的路由需要对服务器做一些改造。</p>
+<p>浏览器第一次打开某个链接时，首先会定向到<code>server</code>端进行路由解析。上边所说的前端路由系统，都是建立在页面已经打开的前提下，前端才可以通过<code>History API</code>进行URL拦截，确保这些URL变化不会发送给<code>server</code>端返回新页面。</p>
+<p>但是需要考虑这种情况，链接时在一个新的浏览器tab中打开的，那么这个时候就无法拦截下这个URL，所以，这就要求server和前端制定好一个规则，区分URL中<strong><em>前端解析的部分</em></strong>和<strong><em>后端解析的部分</em></strong>，<code>server</code>端判断出这个URL的某个部分不属于自己的范围时，就应该把这部分URL定向到前端路由页面的<code>javascript</code>代码。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// nodejs</span></span><br><span class="line">app.use(<span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (req.path.indexOf(<span class="string">'/routeForServer'</span>) &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">        res.send(<span class="string">'这里返回的都是server端处理的路由'</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        res.sendfile(<span class="string">'这里返回配置好路由的页面'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>正常情况下，URL中的“/”一般是server端路由采用的标记，而“?”或者“#”再或者“#!”，则一般是前端路由采用的开始标记，我们可以在这些符号后边，通过键值对的形式，描述一个页面具有哪些板块配置信息。也不乏有的网站为了美观，前后端共用“/”进行路由索引。</p>
+<p>URL中采用“#”或者“#!”进行前后端的区分，是为了照顾到更多浏览器，因为利用hash方案，IE对这套路由系统有很好的支持性。</p>
+<hr>
+<h3 id="四、动态路由"><a href="#四、动态路由" class="headerlink" title="四、动态路由"></a>四、动态路由</h3><p>上面提到的例子都是静态路由，即路径都是固定的。但是我们经常会需要在路径中传入参数，例如或者某个用户的信息</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// nodejs</span></span><br><span class="line">app.get(<span class="string">'/user/:id'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// ... ...</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">百度：</span><br><span class="line"><span class="function">    https://<span class="title">wenku.baidu.com</span>/<span class="title">album</span>/<span class="title">list</span>?<span class="title">cid</span>=197</span></span><br><span class="line"><span class="function">    <span class="title">https</span>://<span class="title">zhidao.baidu.com</span>/<span class="title">daily</span>/<span class="title">view</span>?<span class="title">id</span>=47009</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">新浪：</span><br><span class="line"><span class="function">    http://<span class="title">sz.sina.com.cn</span>/<span class="title">news</span>/<span class="title">yz</span>/2016-09-02/<span class="title">detail</span>-<span class="title">ifxvqcts9207231.shtml</span>?<span class="title">from</span>=<span class="title">sz_tttj</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">京东：</span><br><span class="line"><span class="function">    https://<span class="title">item.jd.com</span>/3995645.<span class="title">html</span>#<span class="title">crumb</span>-<span class="title">wrap</span></span></span><br><span class="line"><span class="function">    <span class="title">https</span>://<span class="title">list.jd.com</span>/<span class="title">list.html</span>?<span class="title">cat</span>=9987,653,655&amp;<span class="title">ev</span>=%40<span class="title">exbrand_14026</span>&amp;<span class="title">go</span>=0</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Google Gmail</span><br><span class="line"><span class="function">    https://<span class="title">mail.google.com</span>/<span class="title">mail</span>/<span class="title">u</span>/1/#<span class="title">inbox</span></span></span><br><span class="line"><span class="function">    <span class="title">https</span>://<span class="title">mail.google.com</span>/<span class="title">mail</span>/<span class="title">u</span>/1/#<span class="title">starred</span></span></span><br><span class="line"><span class="function">    <span class="title">https</span>://<span class="title">mail.google.com</span>/<span class="title">mail</span>/<span class="title">u</span>/1/#<span class="title">sent</span></span></span><br><span class="line"><span class="function">    <span class="title">https</span>://<span class="title">mail.google.com</span>/<span class="title">mail</span>/<span class="title">u</span>/1/#<span class="title">drafts</span></span></span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><ol>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowEventHandlers/onpopstate" target="_blank" rel="noopener">MDN官方文档</a></li>
+</ol>
+
+  </section>
+
+
+  
+    <section class="post-comments">
+
+    <!-- 将评论系统（例如Disqus、多说、友言、畅言等）提供的代码片段粘贴在这里 -->
+    <!--PC和WAP自适应版-->
+<div id="SOHUCS" sid="2018/03/13/web-7/"  ></div> 
+<script type="text/javascript"> 
+(function(){ 
+var appid = 'cytoVRn2O';
+var conf = 'prod_8d1d2ca3d3e58602e938a09b0529415d';
+var width = window.innerWidth || document.documentElement.clientWidth; 
+if (width < 960) { 
+window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+
+</section>
+  
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright"><a href="http://www.miitbeian.gov.cn/">苏ICP备18003724号</a> | &copy;<a href="mailto:xiao_leon@qq.com">xiao leon</a> 2015-2018</span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+    
+
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                windowMinWidth: 300,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>
