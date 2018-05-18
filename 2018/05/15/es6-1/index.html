@@ -15,18 +15,18 @@
       <meta name="author" content="Leon">
     
     
-    <meta name="description" content="本文介绍ES6新标准中添加的let和const指令。">
+    <meta name="description" content="本文介绍ES6新标准中添加的let和const指令。节选自《ESMAScript 6 入门 —— 阮一峰》)">
 <meta name="keywords" content="JavaScript,ES6">
 <meta property="og:type" content="article">
 <meta property="og:title" content="let和const命令 | 张啸">
 <meta property="og:url" content="http://www.xiaoleon.cn/2018/05/15/es6-1/index.html">
 <meta property="og:site_name" content="张啸">
-<meta property="og:description" content="本文介绍ES6新标准中添加的let和const指令。">
+<meta property="og:description" content="本文介绍ES6新标准中添加的let和const指令。节选自《ESMAScript 6 入门 —— 阮一峰》)">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-05-15T15:00:03.929Z">
+<meta property="og:updated_time" content="2018-05-16T13:22:30.217Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="let和const命令 | 张啸">
-<meta name="twitter:description" content="本文介绍ES6新标准中添加的let和const指令。">
+<meta name="twitter:description" content="本文介绍ES6新标准中添加的let和const指令。节选自《ESMAScript 6 入门 —— 阮一峰》)">
     
     
     
@@ -137,7 +137,7 @@
   </header>
 
   <section id="post-content" class="article-content post">
-    <p>本文介绍ES6新标准中添加的<code>let</code>和<code>const</code>指令。</p>
+    <p>本文介绍ES6新标准中添加的<code>let</code>和<code>const</code>指令。节选自<a href="(http://es6.ruanyifeng.com/#docs/let">《ESMAScript 6 入门 —— 阮一峰》</a>)</p>
 <a id="more"></a>
 <h3 id="一、let命令"><a href="#一、let命令" class="headerlink" title="一、let命令"></a>一、let命令</h3><h4 id="1-基本用法"><a href="#1-基本用法" class="headerlink" title="1. 基本用法"></a>1. 基本用法</h4><p><code>let</code>命令用来声明变量，它的用法类似于<code>var</code>，但是所声明的变量，只在<code>let</code>命令所在的代码块内有效。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="keyword">let</span> a = <span class="number">10</span>;</span><br><span class="line">  <span class="keyword">var</span> b = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">a       <span class="comment">// ReferenceError: a is not defined</span></span><br><span class="line">b       <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
@@ -281,7 +281,7 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// CommonJS写法</span></span><br><span class="line"><span class="keyword">var</span> global = <span class="built_in">require</span>(<span class="string">'system.global'</span>)();</span><br><span class="line"></span><br><span class="line"><span class="comment">// ES6模块写法</span></span><br><span class="line"><span class="keyword">import</span> getGlobal <span class="keyword">from</span> <span class="string">'system.global'</span>;</span><br><span class="line"><span class="keyword">const</span> global = getGlobal();</span><br></pre></td></tr></table></figure>
 <p>上面代码将顶层对象放入变量<code>global</code>。</p>
 <h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><ol>
-<li><a href="http://es6.ruanyifeng.com/#docs/let" target="_blank" rel="noopener">ESMAScript 6 入门 —— 阮一峰</a></li>
+<li><a href="http://es6.ruanyifeng.com/#docs/let" target="_blank" rel="noopener">《ESMAScript 6 入门 —— 阮一峰》</a></li>
 </ol>
 
   </section>
