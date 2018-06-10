@@ -15,18 +15,18 @@
       <meta name="author" content="Leon">
     
     
-    <meta name="description" content="本文介绍ES6新标准中Module的语法及使用方法。节选自《ESMAScript 6 入门 —— 阮一峰》)">
+    <meta name="description" content="本文介绍ES6新标准中Module的加载实现。节选自《ESMAScript 6 入门 —— 阮一峰》)">
 <meta name="keywords" content="JavaScript,ES6">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Module的加载实现 | 张啸">
 <meta property="og:url" content="http://www.xiaoleon.cn/2018/05/19/es6-5/index.html">
 <meta property="og:site_name" content="张啸">
-<meta property="og:description" content="本文介绍ES6新标准中Module的语法及使用方法。节选自《ESMAScript 6 入门 —— 阮一峰》)">
+<meta property="og:description" content="本文介绍ES6新标准中Module的加载实现。节选自《ESMAScript 6 入门 —— 阮一峰》)">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-05-22T15:05:13.529Z">
+<meta property="og:updated_time" content="2018-05-24T13:44:35.530Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Module的加载实现 | 张啸">
-<meta name="twitter:description" content="本文介绍ES6新标准中Module的语法及使用方法。节选自《ESMAScript 6 入门 —— 阮一峰》)">
+<meta name="twitter:description" content="本文介绍ES6新标准中Module的加载实现。节选自《ESMAScript 6 入门 —— 阮一峰》)">
     
     
     
@@ -137,7 +137,7 @@
   </header>
 
   <section id="post-content" class="article-content post">
-    <p>本文介绍ES6新标准中<code>Module</code>的语法及使用方法。节选自<a href="(http://es6.ruanyifeng.com/#docs/module-loader">《ESMAScript 6 入门 —— 阮一峰》</a>)</p>
+    <p>本文介绍ES6新标准中<code>Module</code>的加载实现。节选自<a href="(http://es6.ruanyifeng.com/#docs/module-loader">《ESMAScript 6 入门 —— 阮一峰》</a>)</p>
 <a id="more"></a>
 <h3 id="一、浏览器加载"><a href="#一、浏览器加载" class="headerlink" title="一、浏览器加载"></a>一、浏览器加载</h3><h4 id="1-传统方法"><a href="#1-传统方法" class="headerlink" title="1. 传统方法"></a>1. 传统方法</h4><p>HTML网页中，浏览器通过<code>&lt;script&gt;</code>标签加载JavaScript脚本。</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 页面内嵌的脚本 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"application/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">  <span class="comment">// module code</span></span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 外部脚本 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"application/javascript"</span> <span class="attr">src</span>=<span class="string">"path/to/myModule.js"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
