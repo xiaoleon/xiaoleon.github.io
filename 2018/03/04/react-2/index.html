@@ -30,7 +30,7 @@
 <meta property="og:image" content="http://www.xiaoleon.cn/images/react-2/6.png">
 <meta property="og:image" content="http://www.xiaoleon.cn/images/react-2/7.png">
 <meta property="og:image" content="http://www.xiaoleon.cn/images/react-2/8.png">
-<meta property="og:updated_time" content="2018-03-19T13:15:53.841Z">
+<meta property="og:updated_time" content="2018-06-14T23:23:28.107Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="设计高质量的React组件 | 张啸">
 <meta name="twitter:description" content="作为一个合格的开发者，不能只满足于编写出可以运行的代码，而要了解代码背后的工作原理；不能只满足于自己编写的程序能够运行，还要让自己的代码可读而且易于维护。这样才能开发出高质量的软件。">
@@ -315,7 +315,7 @@
 <ul>
 <li>4) componentWillMount和componentDidMount</li>
 </ul>
-<p>在装在过程中，componentWillMount会在调用render函数之前被调用，componentDidMount会在调用render函数之后被调用，这两个函数就像是render函数的前哨和后卫，一前一后，把render函数夹住，正好分别做render前后必要的工作。</p>
+<p>在装载过程中，componentWillMount会在调用render函数之前被调用，componentDidMount会在调用render函数之后被调用，这两个函数就像是render函数的前哨和后卫，一前一后，把render函数夹住，正好分别做render前后必要的工作。</p>
 <p>不过，我们通常不用定义componentWillMount函数，顾名思义，componentWillMount发生在“将要装载”的时候，这个时候没有任何渲染出来的结果，即使调用this.setState修改状态也不会引发重新绘制，一切都迟了。换句话说，所有可以在这个componentWillMount中做的事情，都可以提前到constructor中去做，可以认为这个函数存在的主要目的就是为了和componentDidMount对称。</p>
 <p>而componentDidMount作用就大了，需要注意的是，render函数被调用完之后，componentDidMount函数并不是会被立刻调用，componentDidMount被调用的时候，render函数返回的东西已经引发了渲染，组件已经被装载到了DOM树上。</p>
 <p>我们还是以ControlPanel为例，在ControlPanel中有三个Counter组件，我们稍微修改Counter的代码，让装在过程中所有生命周期函数都用console.log输出函数名和caption的值，比如，componentWillMount函数的内容如下：</p>
@@ -470,7 +470,7 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
 
             <footer class="footer">
 
-    <span class="footer__copyright"><a href="http://www.miitbeian.gov.cn/">苏ICP备18003724号</a> | &copy;<a href="mailto:xiao_leon@qq.com">xiao leon</a> 2015-2018</span>
+    <span class="footer__copyright"><a href="http://www.miitbeian.gov.cn/">苏ICP备18003724号</a> | &copy;<a href="mailto:xiao_leon@qq.com">xiao leon</a> 2015-2019</span>
     
 </footer>
         </div>
