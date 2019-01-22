@@ -2,13 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://www.xiaoleon.cn/2019/01/22/pmp-1/</loc>
-    
-    <lastmod>2019-01-22T14:35:35.110Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://www.xiaoleon.cn/2018/07/09/es6-17/</loc>
     
     <lastmod>2019-01-22T14:35:18.837Z</lastmod>
@@ -58,14 +51,14 @@
   </url>
   
   <url>
-    <loc>http://www.xiaoleon.cn/2018/06/04/es6-9/</loc>
+    <loc>http://www.xiaoleon.cn/2018/06/07/es6-11/</loc>
     
     <lastmod>2018-06-11T11:25:12.909Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.xiaoleon.cn/2018/06/07/es6-11/</loc>
+    <loc>http://www.xiaoleon.cn/2018/06/04/es6-9/</loc>
     
     <lastmod>2018-06-11T11:25:12.909Z</lastmod>
     
@@ -254,13 +247,6 @@
   </url>
   
   <url>
-    <loc>http://www.xiaoleon.cn/2018/01/21/html5-9/</loc>
-    
-    <lastmod>2018-02-02T12:48:05.189Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://www.xiaoleon.cn/2018/01/21/html5-7/</loc>
     
     <lastmod>2018-02-02T12:48:05.189Z</lastmod>
@@ -268,16 +254,9 @@
   </url>
   
   <url>
-    <loc>http://www.xiaoleon.cn/2018/01/30/js-12/</loc>
+    <loc>http://www.xiaoleon.cn/2018/01/21/html5-9/</loc>
     
-    <lastmod>2018-02-02T12:48:05.179Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.xiaoleon.cn/2018/01/22/css3-8/</loc>
-    
-    <lastmod>2018-02-02T12:48:05.179Z</lastmod>
+    <lastmod>2018-02-02T12:48:05.189Z</lastmod>
     
   </url>
   
@@ -289,14 +268,14 @@
   </url>
   
   <url>
-    <loc>http://www.xiaoleon.cn/2018/01/21/html5-3/</loc>
+    <loc>http://www.xiaoleon.cn/2018/01/30/js-10/</loc>
     
     <lastmod>2018-02-02T12:48:05.179Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.xiaoleon.cn/2018/01/21/html5-5/</loc>
+    <loc>http://www.xiaoleon.cn/2018/01/21/html5-3/</loc>
     
     <lastmod>2018-02-02T12:48:05.179Z</lastmod>
     
@@ -317,6 +296,20 @@
   </url>
   
   <url>
+    <loc>http://www.xiaoleon.cn/2018/01/21/html5-5/</loc>
+    
+    <lastmod>2018-02-02T12:48:05.179Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.xiaoleon.cn/2018/01/30/js-12/</loc>
+    
+    <lastmod>2018-02-02T12:48:05.179Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.xiaoleon.cn/2018/01/22/css3-4/</loc>
     
     <lastmod>2018-02-02T12:48:05.179Z</lastmod>
@@ -331,9 +324,23 @@
   </url>
   
   <url>
-    <loc>http://www.xiaoleon.cn/2018/01/30/js-10/</loc>
+    <loc>http://www.xiaoleon.cn/2018/01/22/css3-8/</loc>
     
     <lastmod>2018-02-02T12:48:05.179Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.xiaoleon.cn/2018/01/22/html5-10/</loc>
+    
+    <lastmod>2018-02-02T12:48:05.169Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.xiaoleon.cn/2018/01/22/css3-10/</loc>
+    
+    <lastmod>2018-02-02T12:48:05.169Z</lastmod>
     
   </url>
   
@@ -345,7 +352,7 @@
   </url>
   
   <url>
-    <loc>http://www.xiaoleon.cn/2018/01/30/js-11/</loc>
+    <loc>http://www.xiaoleon.cn/2018/01/21/html5-6/</loc>
     
     <lastmod>2018-02-02T12:48:05.169Z</lastmod>
     
@@ -366,13 +373,6 @@
   </url>
   
   <url>
-    <loc>http://www.xiaoleon.cn/2018/01/22/css3-10/</loc>
-    
-    <lastmod>2018-02-02T12:48:05.169Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://www.xiaoleon.cn/2018/01/29/js-7/</loc>
     
     <lastmod>2018-02-02T12:48:05.169Z</lastmod>
@@ -380,7 +380,7 @@
   </url>
   
   <url>
-    <loc>http://www.xiaoleon.cn/2018/01/22/html5-10/</loc>
+    <loc>http://www.xiaoleon.cn/2018/01/30/js-11/</loc>
     
     <lastmod>2018-02-02T12:48:05.169Z</lastmod>
     
@@ -401,44 +401,9 @@
   </url>
   
   <url>
-    <loc>http://www.xiaoleon.cn/2018/01/21/html5-6/</loc>
-    
-    <lastmod>2018-02-02T12:48:05.169Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://www.xiaoleon.cn/2018/01/29/js-5/</loc>
     
     <lastmod>2018-02-02T12:48:05.169Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.xiaoleon.cn/2018/01/22/css3-1/</loc>
-    
-    <lastmod>2018-02-02T12:48:05.159Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.xiaoleon.cn/2018/01/22/html5-13/</loc>
-    
-    <lastmod>2018-02-02T12:48:05.159Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.xiaoleon.cn/2018/01/22/js-1/</loc>
-    
-    <lastmod>2018-02-02T12:48:05.159Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.xiaoleon.cn/2018/01/30/js-8/</loc>
-    
-    <lastmod>2018-02-02T12:48:05.159Z</lastmod>
     
   </url>
   
@@ -457,7 +422,35 @@
   </url>
   
   <url>
+    <loc>http://www.xiaoleon.cn/2018/01/22/css3-1/</loc>
+    
+    <lastmod>2018-02-02T12:48:05.159Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.xiaoleon.cn/2018/01/22/css3-3/</loc>
+    
+    <lastmod>2018-02-02T12:48:05.159Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.xiaoleon.cn/2018/01/30/js-8/</loc>
+    
+    <lastmod>2018-02-02T12:48:05.159Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.xiaoleon.cn/2018/01/22/html5-13/</loc>
+    
+    <lastmod>2018-02-02T12:48:05.159Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.xiaoleon.cn/2018/01/22/js-1/</loc>
     
     <lastmod>2018-02-02T12:48:05.159Z</lastmod>
     
